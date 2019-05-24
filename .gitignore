@@ -3,3 +3,4 @@
 **/.idea
 **/*.iml
 **/etc/*.json
+**/node_modules/
