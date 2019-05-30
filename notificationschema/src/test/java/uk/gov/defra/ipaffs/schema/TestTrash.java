@@ -8,7 +8,7 @@ public class TestTrash {
   private final Trash objectUnderTest = new Trash();
 
   @Test
-  public void testTrash(){
+  public void testTrash() {
     Assert.assertNotNull(objectUnderTest);
   }
 }
