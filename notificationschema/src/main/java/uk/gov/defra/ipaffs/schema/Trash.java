@@ -1,7 +1,7 @@
 package uk.gov.defra.ipaffs.schema;
-//TODO : Get rid off this file once we merge real content of the repo
-public class Trash {
 
+public class Trash {
+  //TODO : Get rid off this file once we merge real content of the repo
   public Trash(){
 
   }
