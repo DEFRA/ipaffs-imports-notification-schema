@@ -12,6 +12,19 @@
     <maven.checkstyle.version>3.0.0</maven.checkstyle.version>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Releases</name>
+      <url>${repo.releases.url}</url>
+    </repository>
+  </distributionManagement>
+
+  <scm>
+    <connection>${parent.scm.connection}</connection>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency>
