@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <profiles>
+    <profile>
+      <id>release</id>
+      <properties>
+        <repo.releases.url>https://artifactory.azure.defra.cloud/artifactory/maven-releases-local</repo.releases.url>
+      </properties>
+      <repositories>
+        <repository>
+          <id>release</id>
+          <name>artifactory.azure.defra.cloud-releases</name>
+          <url>${repo.releases.url}</url>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>artifactory</id>
+      <repositories>
+        <repository>
+          <id>releases-local</id>
+          <name>artifactory.azure.defra.cloud-releases</name>
+          <url>https://artifactory.azure.defra.cloud/artifactory/maven-releases-local</url>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+        <repository>
+          <id>jitpack.io</id>
+          <url>https://jitpack.io</url>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>

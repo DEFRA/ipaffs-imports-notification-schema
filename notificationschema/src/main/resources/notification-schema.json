@@ -7,7 +7,7 @@
   "properties": {
     "id": {
       "type": "integer",
-      "description": "The INS ID number for this notification."
+      "description": "The IPAFFS ID number for this notification."
     },
     "etag": {
       "type": "string",

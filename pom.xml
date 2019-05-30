@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>IPAFFS-Common-Schema</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+  <name>imports-notification-schema</name>
+  <description>Shared Common Schema library for IPAFFS services</description>
+  <packaging>pom</packaging>
+  <groupId>uk.gov.defra.tracesx</groupId>
+
+  <properties>
+    <project.scm.id>gitlab</project.scm.id>
+    <maven.checkstyle.version>3.0.0</maven.checkstyle.version>
+  </properties>
+
+  <scm>
+    <connection>scm:git:https://giteux.azure.defra.cloud/imports/imports-notification-schema.git</connection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <modules>
+    <module>notificationschema</module>
+  </modules>
+
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Releases</name>
+      <url>${repo.releases.url}</url>
+    </repository>
+  </distributionManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.3</version>
+          <configuration>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <tagNameFormat>@{project.version}-${env.BUILD_NUMBER}</tagNameFormat>
+            <releaseProfiles>release</releaseProfiles>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
