@@ -1,25 +1,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>IPAFFS-Common-Schema</artifactId>
-  <version>1.0.7-SNAPSHOT</version>
+  <version>1.0.8-SNAPSHOT</version>
   <name>imports-notification-schema</name>
   <description>Shared Common Schema library for IPAFFS services</description>
   <packaging>pom</packaging>
   <groupId>uk.gov.defra.tracesx</groupId>
 
+  <modules>
+    <module>notification-schema-core</module>
+    <module>notification-schema-java</module>
+  </modules>
+
   <properties>
     <project.scm.id>gitlab</project.scm.id>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.checkstyle.version>3.0.0</maven.checkstyle.version>
+    <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+    <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
+    <lombok.version>1.18.4</lombok.version>
+    <jackson.annotations.version>2.9.0</jackson.annotations.version>
+    <jackson.databind.version>2.9.8</jackson.databind.version>
+    <apache.commons.lang3.version>3.8</apache.commons.lang3.version>
+    <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
+    <swagger.annotations.version>1.5.17</swagger.annotations.version>
+    <hibernate.validator.version>6.0.14.Final</hibernate.validator.version>
+    <junit.version>4.12</junit.version>
+    <jqno.equalsverifier.version>2.4.6</jqno.equalsverifier.version>
+    <mockito.core.version>2.13.0</mockito.core.version>
   </properties>
 
   <scm>
     <connection>scm:git:https://giteux.azure.defra.cloud/imports/imports-notification-schema.git</connection>
     <tag>HEAD</tag>
   </scm>
-
-  <modules>
-    <module>notificationschema</module>
-  </modules>
 
   <distributionManagement>
     <repository>
@@ -34,7 +49,7 @@
       <plugins>
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
+          <version>${maven.release.plugin.version}</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <tagNameFormat>@{project.version}-${env.BUILD_NUMBER}</tagNameFormat>

@@ -1,0 +1,60 @@
+package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import uk.gov.defra.tracesx.notificationschema.validation.CED;
+import uk.gov.defra.tracesx.notificationschema.validation.CVEDA;
+import uk.gov.defra.tracesx.notificationschema.validation.CVEDP;
+import uk.gov.defra.tracesx.notificationschema.validation.EntityProperty;
+
+public enum DecisionEnum implements EntityProperty {
+  @CED
+  @CVEDP
+  @CVEDA
+  NON_ACCEPTABLE("Non Acceptable"),
+  @CED
+  @CVEDP
+  @CVEDA
+  ACCEPTABLE_FOR_INTERNAL_MARKET("Acceptable for Internal Market"),
+  @CVEDP
+  ACCEPTABLE_IF_CHANNELED("Acceptable if Channeled"),
+  @CED
+  @CVEDP
+  @CVEDA
+  ACCEPTABLE_FOR_TRANSHIPMENT("Acceptable for Transhipment"),
+  @CVEDP
+  @CVEDA
+  ACCEPTABLE_FOR_TRANSIT("Acceptable for Transit"),
+  @CVEDA
+  ACCEPTABLE_FOR_TEMPORARY_IMPORT("Acceptable for Temporary Import"),
+  @CVEDP
+  ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE("Acceptable for Specific Warehouse"),
+  @CVEDA
+  HORSE_REENTRY("Horse Reentry");
+
+  private String value;
+
+  DecisionEnum(String value) {
+    this.value = value;
+  }
+
+  @JsonCreator
+  public static DecisionEnum fromValue(String text) {
+    for (DecisionEnum b : DecisionEnum.values()) {
+      if (b.value.equals(text)) {
+        return b;
+      }
+    }
+    return null;
+  }
+
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return value;
+  }
+}

@@ -1,0 +1,38 @@
+package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+public enum PurposeGroupEnum {
+  IMPORT("For Import"),
+  NON_CONFORMING_CONSIGNMENTS("For NON-Conforming Consignments"),
+  TRANSHIPMENT_TO("For Transhipment to"),
+  TRANSIT_TO_3RD_COUNTRY("For Transit to 3rd Country"),
+  RE_IMPORT("For Re-Import");
+
+  private String value;
+
+  PurposeGroupEnum(String value) {
+    this.value = value;
+  }
+
+  @JsonCreator
+  public static PurposeGroupEnum fromValue(String text) {
+    for (PurposeGroupEnum u : PurposeGroupEnum.values()) {
+      if (u.value.equals(text)) {
+        return u;
+      }
+    }
+    return null;
+  }
+
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return value;
+  }
+}

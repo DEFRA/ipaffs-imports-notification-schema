@@ -1,0 +1,49 @@
+package uk.gov.defra.tracesx.notificationschema.representation;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnalysisType;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ConservationOfSample;
+import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+
+import javax.validation.constraints.NotNull;
+
+@Builder
+@Getter
+@Setter
+@JsonInclude(Include.NON_EMPTY)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+public class Applicant {
+
+  private AnalysisType analysisType;
+
+  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  private String laboratory;
+
+  private String laboratoryAddress;
+  private String laboratoryIdentification;
+  private String laboratoryEmail;
+  private String laboratoryPhoneNumber;
+
+  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  private String sampleBatchNumber;
+
+  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  private Integer numberOfSamples;
+
+  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  private String sampleType;
+
+  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  private ConservationOfSample conservationOfSample;
+
+  private Inspector inspector;
+}
