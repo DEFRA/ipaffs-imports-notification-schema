@@ -4,7 +4,7 @@
 
   <groupId>uk.gov.defra.tracesx</groupId>
   <artifactId>notification-schema</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -22,7 +22,7 @@
 
   <scm>
     <connection>${parent.scm.connection}</connection>
-    <tag>1.0.2-5</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
