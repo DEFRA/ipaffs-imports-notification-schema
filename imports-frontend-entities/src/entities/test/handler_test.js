@@ -1,9 +1,9 @@
 const chai = require('chai')
 
-const handler = require('../base/handler')
+const handler = require.main.require('src/entities/base/handler')
 
 describe('Entities handler tests', () => {
-  let encapsulatedObject;
+  let encapsulatedObject
   beforeEach(() => {
     encapsulatedObject = {
       fieldOne: 0

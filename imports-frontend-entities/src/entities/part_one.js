@@ -2,14 +2,12 @@ const _ = require('lodash')
 const handler = require('./base/handler')
 const EconomicOperator = require('./economic_operator')
 const Party = require('./party')
-const Commodity = require('./commodity')
 const Commodities = require('./commodities')
 const Purpose = require('./purpose')
 const MeansOfTransport = require('./means_of_transport')
 const VeterinaryInformation = require('./veterinary_information')
 const Route = require('./route')
 const NotificationSealsContainers = require('./notification_seals_containers')
-const Transport = require('./transport')
 const ConsignmentValidation = require('./consignment_validation')
 
 module.exports = class PartOne {
@@ -30,11 +28,6 @@ module.exports = class PartOne {
         : undefined
     this.placeOfDestination = _.get(obj, 'placeOfDestination')
         ? new EconomicOperator(obj.placeOfDestination) : undefined
-    this.temporaryAddress = _.get(obj, 'temporaryAddress')
-        ? new EconomicOperator(obj.temporaryAddress) : undefined
-    this.premisesOfOrigin = _.get(obj, 'premisesOfOrigin')
-        ? new EconomicOperator(obj.premisesOfOrigin) : undefined
-    this.commodity = new Commodity(_.get(obj, 'commodity', new Commodity()))
     this.commodities = _.get(obj, 'commodities') ? new Commodities(
         obj.commodities) : undefined
     this.purpose = _.get(obj, 'purpose') ? new Purpose(obj.purpose) : undefined
@@ -59,8 +52,6 @@ module.exports = class PartOne {
     this.route = _.get(obj, 'route') ? new Route(obj.route) : undefined
     this.sealsContainers = getSealsContainers(_.get(obj, 'sealsContainers', []))
     this.submissionDate = obj.submissionDate
-    this.transport = _.get(obj, 'transport') ? new Transport(obj.transport)
-        : undefined
     this.consignmentValidation = getConsignmentValidation(
         _.get(obj, 'consignmentValidation', []))
     this.submittedBy = obj.submittedBy

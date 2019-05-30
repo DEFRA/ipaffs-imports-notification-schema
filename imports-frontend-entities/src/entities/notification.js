@@ -5,7 +5,6 @@ const notificationJsonSchema = require('../../etc/notification-schema.json')
 const PartOne = require('./part_one')
 const PartTwo = require('./part_two')
 const PartThree = require('./part_three')
-const Document = require('./document')
 const ConsignmentValidation = require('./consignment_validation')
 
 module.exports = class Notification {
@@ -30,7 +29,6 @@ module.exports = class Notification {
         : undefined
     this.decisionBy = obj.decisionBy
     this.decisionDate = obj.decisionDate
-    this.documents = getDocuments(_.get(obj, 'documents', []))
     this.consignmentValidation = getConsignmentValidation(
         _.get(obj, 'consignmentValidation', []))
     this.replaces = obj.replaces
@@ -65,16 +63,6 @@ const validate = obj => {
   if (!validate(obj)) {
     throw Error('Notification constructor: ' + JSON.stringify(validate.errors))
   }
-}
-
-const getDocuments = inList => {
-
-  const documentList = []
-  _.forEach(inList, document => {
-    documentList.push(new Document(document))
-  })
-
-  return documentList
 }
 
 const getConsignmentValidation = inList => {
