@@ -1,0 +1,93 @@
+const _ = require('lodash')
+const handler = require('./base/handler')
+const EconomicOperator = require('./economic_operator')
+const Party = require('./party')
+const Commodity = require('./commodity')
+const Commodities = require('./commodities')
+const Purpose = require('./purpose')
+const MeansOfTransport = require('./means_of_transport')
+const VeterinaryInformation = require('./veterinary_information')
+const Route = require('./route')
+const NotificationSealsContainers = require('./notification_seals_containers')
+const Transport = require('./transport')
+const ConsignmentValidation = require('./consignment_validation')
+
+module.exports = class PartOne {
+
+  constructor(obj) {
+
+    if (!obj) {
+      obj = {}
+    }
+
+    this.personResponsible = _.get(obj, 'personResponsible') ? new Party(
+        obj.personResponsible) : undefined
+    this.consignor = _.get(obj, 'consignor') ? new EconomicOperator(
+        obj.consignor) : undefined
+    this.consignee = _.get(obj, 'consignee') ? new EconomicOperator(
+        obj.consignee) : undefined
+    this.importer = _.get(obj, 'importer') ? new EconomicOperator(obj.importer)
+        : undefined
+    this.placeOfDestination = _.get(obj, 'placeOfDestination')
+        ? new EconomicOperator(obj.placeOfDestination) : undefined
+    this.temporaryAddress = _.get(obj, 'temporaryAddress')
+        ? new EconomicOperator(obj.temporaryAddress) : undefined
+    this.premisesOfOrigin = _.get(obj, 'premisesOfOrigin')
+        ? new EconomicOperator(obj.premisesOfOrigin) : undefined
+    this.commodity = new Commodity(_.get(obj, 'commodity', new Commodity()))
+    this.commodities = _.get(obj, 'commodities') ? new Commodities(
+        obj.commodities) : undefined
+    this.purpose = _.get(obj, 'purpose') ? new Purpose(obj.purpose) : undefined
+    this.pointOfEntry = obj.pointOfEntry
+    this.arrivalDate = obj.arrivalDate
+    this.arrivalTime = obj.arrivalTime
+    this.meansOfTransport = _.get(obj, 'meansOfTransport')
+        ? new MeansOfTransport(obj.meansOfTransport) : undefined
+    this.transporter = _.get(obj, 'transporter') ? new EconomicOperator(
+        obj.transporter) : undefined
+    this.transporterDetailsRequired = obj.transporterDetailsRequired
+    this.departureDate = obj.departureDate
+    this.departureTime = obj.departureTime
+    this.estimatedJourneyTimeInMinutes = obj.estimatedJourneyTimeInMinutes
+    this.responsibleForTransport = obj.responsibleForTransport
+    this.meansOfTransportFromEntryPoint = _.get(obj,
+        'meansOfTransportFromEntryPoint') ? new MeansOfTransport(
+            obj.meansOfTransportFromEntryPoint) : undefined
+    this.veterinaryInformation = _.get(obj, 'veterinaryInformation')
+        ? new VeterinaryInformation(obj.veterinaryInformation) : undefined
+    this.importerLocalReferenceNumber = obj.importerLocalReferenceNumber
+    this.route = _.get(obj, 'route') ? new Route(obj.route) : undefined
+    this.sealsContainers = getSealsContainers(_.get(obj, 'sealsContainers', []))
+    this.submissionDate = obj.submissionDate
+    this.transport = _.get(obj, 'transport') ? new Transport(obj.transport)
+        : undefined
+    this.consignmentValidation = getConsignmentValidation(
+        _.get(obj, 'consignmentValidation', []))
+    this.submittedBy = obj.submittedBy
+    this.transporterDetailsRequired = obj.transporterDetailsRequired
+
+    return Object.seal(new Proxy(this, handler))
+  }
+}
+
+const getSealsContainers = inList => {
+
+  const sealsContainersList = []
+  _.forEach(inList, seal => {
+    sealsContainersList.push(new NotificationSealsContainers(seal))
+  })
+
+  return sealsContainersList
+}
+
+const getConsignmentValidation = inList => {
+
+  const consignmentValidationList = []
+  _.forEach(inList, consignmentValidation => {
+    consignmentValidationList.push(
+        new ConsignmentValidation(consignmentValidation))
+  })
+
+  return consignmentValidationList
+}
+
