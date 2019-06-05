@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const Ajv = require('ajv')
 
-const notificationJsonSchema = require('notification-schema/notification-schema.json')
+const notificationJsonSchema = require('../../etc/notification-schema.json')
 const PartOne = require('./part_one')
 const PartTwo = require('./part_two')
 const PartThree = require('./part_three')
