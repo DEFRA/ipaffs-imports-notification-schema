@@ -1,4 +1,4 @@
-@Library('pipeline-library') _
+@Library('pipeline-library@chore/check-schema-build') _
 
 schemaPipeline {
     SERVICE_NAME = "import-notification-schema"
