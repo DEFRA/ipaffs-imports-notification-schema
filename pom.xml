@@ -19,7 +19,6 @@
 
   <modules>
     <module>notificationschema</module>
-    <module>imports-frontend-entities</module>
   </modules>
 
   <distributionManagement>
