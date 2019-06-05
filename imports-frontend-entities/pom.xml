@@ -10,7 +10,7 @@
 
   <groupId>uk.gov.defra.tracesx</groupId>
   <artifactId>node-common-notification-schema</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.5-SNAPSHOT</version>
   <name>notification-frontend-entities</name>
   <url>http://maven.apache.org</url>
   <build>
