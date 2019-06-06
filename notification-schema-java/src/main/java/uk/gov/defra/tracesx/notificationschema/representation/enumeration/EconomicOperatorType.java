@@ -1,0 +1,42 @@
+package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+public enum EconomicOperatorType {
+  CONSIGNEE("consignee"),
+  DESTINATION("destination"),
+  EXPORTER("exporter"),
+  IMPORTER("importer"),
+  COMMERCIAL_TRANSPORTER("commercial transporter"),
+  PRIVATE_TRANSPORTER("private transporter"),
+  VETERINARIAN("veterinarian"),
+  TEMPORARY_ADDRESS("temporary address"),
+  PREMISES_OF_ORIGIN("premises of origin");
+
+  private String value;
+
+  EconomicOperatorType(String value) {
+    this.value = value;
+  }
+
+  @JsonCreator
+  public static EconomicOperatorType fromValue(String text) {
+    for (EconomicOperatorType u : EconomicOperatorType.values()) {
+      if (u.value.equals(text)) {
+        return u;
+      }
+    }
+    return null;
+  }
+
+  @JsonValue
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return value;
+  }
+}
