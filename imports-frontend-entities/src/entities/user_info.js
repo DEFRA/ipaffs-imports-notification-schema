@@ -25,7 +25,6 @@ module.exports = class UserInfo {
     this.tokenType = obj.tokenType
     this.companyDisplayName = obj.companyDisplayName
     this.tracesUnitNumber = obj.tracesUnitNumber
-    this.companiesInfos = obj.companiesInfos
     this.permissions = obj.permissions
     this.organisations = obj.organisations
 
