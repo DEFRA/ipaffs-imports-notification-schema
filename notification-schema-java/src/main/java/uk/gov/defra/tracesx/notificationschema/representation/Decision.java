@@ -28,9 +28,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter

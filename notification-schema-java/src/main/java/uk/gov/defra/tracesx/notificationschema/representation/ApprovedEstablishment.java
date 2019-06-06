@@ -14,8 +14,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter

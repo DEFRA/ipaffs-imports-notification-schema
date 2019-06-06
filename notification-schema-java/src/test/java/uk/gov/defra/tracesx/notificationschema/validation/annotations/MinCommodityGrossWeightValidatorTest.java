@@ -1,13 +1,13 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 
 import java.math.BigDecimal;
-
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
 
 public class MinCommodityGrossWeightValidatorTest {
 

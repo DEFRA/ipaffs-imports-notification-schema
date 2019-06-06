@@ -27,13 +27,13 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFie
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @JsonInclude(Include.NON_EMPTY)
 @Builder

@@ -15,9 +15,9 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoD
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.constraints.NotEmpty;
 
 @Builder
 @Getter

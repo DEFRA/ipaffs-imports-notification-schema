@@ -1,13 +1,13 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import org.junit.Before;
-import org.junit.Test;
-import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
+
+import org.junit.Before;
+import org.junit.Test;
+import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
 public class IdentityCheckEuStandardValidatorTest {
 
