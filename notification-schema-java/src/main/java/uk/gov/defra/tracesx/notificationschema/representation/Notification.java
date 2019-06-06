@@ -25,10 +25,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter

@@ -1,15 +1,15 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 
 import javax.validation.ConstraintValidatorContext;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 
 public class ValidStatusValidatorTest {
 

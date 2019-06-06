@@ -12,9 +12,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKe
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 
 @Builder
 @JsonInclude(Include.NON_EMPTY)

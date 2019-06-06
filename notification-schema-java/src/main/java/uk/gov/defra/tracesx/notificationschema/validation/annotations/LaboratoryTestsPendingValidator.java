@@ -7,9 +7,9 @@ import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTe
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TestReason;
 
+import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.List;
 
 public class LaboratoryTestsPendingValidator
     implements ConstraintValidator<LaboratoryTestsPending, PartTwo> {

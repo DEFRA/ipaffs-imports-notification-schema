@@ -1,14 +1,14 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
-import static org.apache.commons.lang3.StringUtils.isBlank;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 public class MinValueKeyDataPairValidator
     implements ConstraintValidator<MinValueKeyDataPair, List<ComplementParameterSetKeyDataPair>> {

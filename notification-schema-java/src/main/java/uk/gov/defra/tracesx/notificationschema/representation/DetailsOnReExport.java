@@ -16,9 +16,9 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Transp
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 
+import java.time.LocalDate;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 
 @Builder
 @Getter

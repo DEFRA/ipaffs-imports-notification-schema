@@ -1,5 +1,12 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import static java.util.Arrays.asList;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion.PENDING;
+
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTestResult;
@@ -7,13 +14,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TestReason;
-
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static java.util.Arrays.asList;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion.PENDING;
 
 public class LaboratoryTestsPendingValidatorTest {
 

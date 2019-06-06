@@ -2,14 +2,14 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
 
 @Documented
 @Constraint(validatedBy = EuStandardValidatorImpl.class)

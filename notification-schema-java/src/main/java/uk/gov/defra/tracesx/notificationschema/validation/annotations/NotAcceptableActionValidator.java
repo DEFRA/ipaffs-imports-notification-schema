@@ -1,12 +1,12 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static java.lang.Boolean.FALSE;
+import static java.util.Objects.nonNull;
+
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import static java.lang.Boolean.FALSE;
-import static java.util.Objects.nonNull;
 
 public class NotAcceptableActionValidator
     implements ConstraintValidator<NotAcceptableAction, Decision> {

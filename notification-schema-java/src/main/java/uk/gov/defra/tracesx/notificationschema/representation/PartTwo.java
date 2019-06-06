@@ -17,11 +17,11 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Laboratory
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsPending;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @JsonInclude(Include.NON_EMPTY)
 @Builder
