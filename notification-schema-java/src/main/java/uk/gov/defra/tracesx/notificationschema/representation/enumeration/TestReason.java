@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TestReason {
   RANDOM("Random"),
-  SUSPICIOUS("Suspicious");
+  SUSPICIOUS("Suspicious"),
+  REENFORCED("Re-enforced");
 
   private String value;
 
