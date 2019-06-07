@@ -39,19 +39,19 @@ public class ComplementParameterSet {
           },
           field = NUMBER_PACKAGE,
           message =
-              "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_package.message}"),
       @MinValueKeyDataPair(
           groups = NotificationCedOrCvedpFieldValidation.class,
           field = NET_WEIGHT,
           message =
-              "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.net_weight.message}"),
       @MinValueKeyDataPair(
           groups = NotificationCvedaFieldValidation.class,
           field = NUMBER_ANIMAL,
           message =
-              "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_animal.message}")
       })
   private List<ComplementParameterSetKeyDataPair> keyDataPair;

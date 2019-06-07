@@ -41,34 +41,34 @@ import javax.validation.constraints.NotNull;
 @NotAcceptableReason(
     groups = NotificationFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo.decision"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablereasoning.not.null}")
 @NotAcceptableAction(
     groups = NotificationFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo.decision"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableaction.not.null}")
 @NotAcceptableOtherReason(
     groups = NotificationFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo.decision"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableotherreason.not.null}")
 @NotAcceptableEstablishment(
     groups = NotificationCvedpFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo.decision"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableestablishment.not.null}")
 @NotAcceptableCountry(
     groups = NotificationCedOrCvedpFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo.decision"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablecountry.not.null}")
 public class Decision {
 
   @NotNull(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.parttwo.decision"
+          "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
               + ".consignmentacceptable.not.null}")
   private Boolean consignmentAcceptable;
 

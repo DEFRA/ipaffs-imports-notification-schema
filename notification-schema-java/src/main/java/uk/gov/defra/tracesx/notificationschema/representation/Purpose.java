@@ -46,7 +46,7 @@ public class Purpose {
   @NotNull(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.purpose.purposeGroup"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.purposeGroup"
               + ".not.null}")
   private PurposeGroupEnum purposeGroup;
 }

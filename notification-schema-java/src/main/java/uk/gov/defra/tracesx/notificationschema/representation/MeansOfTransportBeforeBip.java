@@ -29,14 +29,14 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
   @NotEmpty(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.not.empty}")
   private String id = null;
 
   @NotNull(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.type.not.null}")
   private TransportMethod type = null;
 

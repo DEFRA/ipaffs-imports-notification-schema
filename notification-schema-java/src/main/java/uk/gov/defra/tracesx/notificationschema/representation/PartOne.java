@@ -49,53 +49,60 @@ public class PartOne {
 
   @NotNull(
       groups = NotificationFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.consignor.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor"
+          + ".not.null}")
   private EconomicOperator consignor;
 
   @NotNull(
       groups = NotificationFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.consignee.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
+          + ".not.null}")
   private EconomicOperator consignee;
 
   @NotNull(
       groups = NotificationFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.importer.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.importer"
+          + ".not.null}")
   private EconomicOperator importer;
 
   @NotNull(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.deliveryaddress.not"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.not"
               + ".null}")
   private EconomicOperator placeOfDestination;
 
   @Valid
   @NotNull(
       groups = NotificationFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.commodities.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+          + ".not.null}")
   private Commodities commodities;
 
   @Valid
   @NotNull(
       groups = NotificationFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.purpose.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   private Purpose purpose;
 
   @NotNull(
       groups = NotificationFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.pointofentry.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
+          + ".not.null}")
   private String pointOfEntry;
 
   @NotNull(
       groups = NotificationCvedaFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.arrivaldate.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
+          + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate arrivalDate;
 
   @NotNull(
       groups = NotificationCvedaFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.arrivaltime.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
+          + ".not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
   private LocalTime arrivalTime;
@@ -103,7 +110,8 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = NotificationAfterMeansOfTransport.class,
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.transporter.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
+          + ".not.null}")
   private EconomicOperator transporter;
 
   private Boolean transporterDetailsRequired;
@@ -112,7 +120,7 @@ public class PartOne {
   @NotNull(
       groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.meansoftransport.not"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
               + ".null}")
   private MeansOfTransportAfterBip meansOfTransport;
 
@@ -120,20 +128,22 @@ public class PartOne {
   @NotNull(
       groups = {NotificationFieldValidation.class, NotificationCedFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansOfTransportFromEntryPoint.not.null}")
   private MeansOfTransportBeforeBip meansOfTransportFromEntryPoint;
 
   @NotNull(
       groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.departuredate.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
+          + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate departureDate;
 
   @NotNull(
       groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
-      message = "{uk.gov.defra.tracesx.notification.representation.partone.departuretime.not.null}")
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
+          + ".not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
   private LocalTime departureTime;
@@ -141,14 +151,14 @@ public class PartOne {
   @NotNull(
       groups = {NotificationCvedaFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".estimatedjourneytimeinminutes.not.null}")
   private Integer estimatedJourneyTimeInMinutes;
 
   @NotEmpty(
       groups = NotificationCvedaFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".responsiblefortransport.not.empty}")
   private String responsibleForTransport;
 
@@ -159,7 +169,7 @@ public class PartOne {
           NotificationVeterinaryApprovedEstablishmentValidation.class
       },
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.veterinaryInformation"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".not.null}")
   private VeterinaryInformation veterinaryInformation;
 
