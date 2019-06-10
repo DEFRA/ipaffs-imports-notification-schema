@@ -1265,7 +1265,8 @@
           "description": "Reason for test",
           "enum": [
             "Random",
-            "Suspicious"
+            "Suspicious",
+            "Re-enforced"
           ]
         },
         "singleLaboratoryTests": {
