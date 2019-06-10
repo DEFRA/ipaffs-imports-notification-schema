@@ -30,12 +30,12 @@ import javax.validation.constraints.NotNull;
 @LaboratoryTestsNotAdded(
     groups = NotificationFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
             + ".reasonlaboratorytestsnotadded.not.empty}")
 @LaboratoryTestsPending(
     groups = NotificationFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.parttwo.laboratorytestspending"
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.laboratorytestspending"
             + ".not.empty}")
 @Getter
 @Setter
@@ -52,7 +52,7 @@ public class PartTwo {
   @NotNull(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.parttwo"
+          "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
               + ".laboratorytestsrequired.not.null}")
   private Boolean laboratoryTestsRequired;
 

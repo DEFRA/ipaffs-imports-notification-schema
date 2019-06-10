@@ -34,7 +34,7 @@ import javax.validation.constraints.NotNull;
 @MinCommoditiesGrossWeight(
     groups = NotificationCedOrCvedpFieldValidation.class,
     message =
-        "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".totalgrossweight.min.message}")
 @EqualsAndHashCode
 @ToString
@@ -43,14 +43,14 @@ public class Commodities {
   @NotNull(
       groups = NotificationCedOrCvedpFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossweight.not.null}")
   private BigDecimal totalGrossWeight;
 
   @NotNull(
       groups = NotificationCedOrCvedpFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalnetweight.not.null}")
   private BigDecimal totalNetWeight;
 
@@ -59,20 +59,20 @@ public class Commodities {
   @NotNull(
       groups = NotificationCedOrCvedpFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".temperature.not.null}")
   private CommodityTemperature temperature = null;
 
   @NotNull(
       groups = NotificationCvedaFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".numberofanimals.not.null}")
   @Min(
       value = 1,
       groups = NotificationCvedaFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".numberofanimals.min.message}")
   private Integer numberOfAnimals = null;
 
@@ -86,7 +86,7 @@ public class Commodities {
   @NotNull(
       groups = NotificationFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".countryoforigin.not.null}")
   private String countryOfOrigin = null;
 
@@ -95,14 +95,14 @@ public class Commodities {
   @NotNull(
       groups = NotificationCedOrCvedpFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".consignedcountry.not.null}")
   private String consignedCountry = null;
 
   @NotNull(
       groups = NotificationCvedaFieldValidation.class,
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.commodities"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".animalscertifiedas.not.null}")
   private AnimalCertification animalsCertifiedAs = null;
 

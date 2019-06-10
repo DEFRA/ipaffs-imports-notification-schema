@@ -30,21 +30,21 @@ public class VeterinaryInformation {
   @NotEmpty(
       groups = {NotificationVeterinaryApprovedEstablishmentValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.veterinaryInformation"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".properties.establishmentsOfOrigin.not.null}")
   private List<ApprovedEstablishment> establishmentsOfOrigin;
 
   @NotEmpty(
       groups = {NotificationVeterinaryValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.veterinaryInformation"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".properties.veterinaryDocument.not.null}")
   private String veterinaryDocument;
 
   @NotEmpty(
       groups = {NotificationVeterinaryValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.veterinaryInformation"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".properties.veterinaryDocumentIssueDate.not.null}")
   private String veterinaryDocumentIssueDate;
 

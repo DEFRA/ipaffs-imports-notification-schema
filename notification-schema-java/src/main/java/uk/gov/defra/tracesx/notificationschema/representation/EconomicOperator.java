@@ -33,21 +33,21 @@ public class EconomicOperator {
   @NotNull(
       groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.transporter.type.not"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.type.not"
               + ".null}")
   private EconomicOperatorType type;
 
   @NotNull(
       groups = {NotificationCvedaFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.transporter.status.not"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.status.not"
               + ".null}")
   private EconomicOperatorStatus status;
 
   @NotNull(
       groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.transporter"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
               + ".companyname.not.null}")
   private String companyName;
 
@@ -60,7 +60,7 @@ public class EconomicOperator {
   @NotNull(
       groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
       message =
-          "{uk.gov.defra.tracesx.notification.representation.partone.transporter.address"
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.address"
               + ".not.null}")
   private EconomicOperatorAddress address;
 }
