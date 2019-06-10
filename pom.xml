@@ -21,7 +21,7 @@
     <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
     <lombok.version>1.18.4</lombok.version>
     <jackson.annotations.version>2.9.0</jackson.annotations.version>
-    <jackson.databind.version>2.9.8</jackson.databind.version>
+    <jackson.databind.version>2.9.9</jackson.databind.version>
     <apache.commons.lang3.version>3.8</apache.commons.lang3.version>
     <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
     <swagger.annotations.version>1.5.17</swagger.annotations.version>
