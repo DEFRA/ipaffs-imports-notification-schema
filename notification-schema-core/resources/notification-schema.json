@@ -53,7 +53,7 @@
     "status": {
       "type": "string",
       "javaType": "uk.gov.defra.tracesx.notification.api.Status",
-      "description": "Current status of the notification. When created by an importer, the notification has the status 'Submitted'. Once the BIP validates the notification, it gets the status 'Validated'.",
+      "description": "Current status of the notification. When created by an importer, the notification has the status 'SUBMITTED'. Before submission of the notification it has the status 'DRAFT'. When the BIP starts validation of the notification it has the status 'IN PROGRESS' Once the BIP validates the notification, it gets the status 'VALIDATED'. 'AMEND' is set when the Part-1 user is modifying the notification. 'MODIFY' is set when Part-2 user is modifying the notification. Replaced - When the notification is replaced by another notification. Rejected - Notification moves to Rejected status when rejected by a Part-2 user. ",
       "enum": [
         "DRAFT",
         "SUBMITTED",
@@ -76,15 +76,15 @@
         },
         "consignor": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "Person/company that sends shipment"
+          "description": "Person or Company that sends shipment"
         },
         "consignee": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "Person/company that receives shipment"
+          "description": "Person or Company that receives shipment"
         },
         "importer": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "Person or company which is importing the consignment"
+          "description": "Person or Company that is importing the consignment"
         },
         "placeOfDestination": {
           "$ref": "#/definitions/EconomicOperator",
@@ -111,7 +111,7 @@
             },
             "temperature": {
               "$ref": "#/definitions/Temperature",
-              "description": "temperature (type) of commodity"
+              "description": "Temperature (type) of commodity"
             },
             "numberOfAnimals": {
               "type": "integer",
@@ -122,12 +122,12 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "description": "holder of additional parameters of commodity",
+                "description": "Holder for additional parameters of a commodity",
                 "additionalProperties": false,
                 "properties": {
                   "commodityDescription": {
                     "type": "string",
-                    "description": "commodity description"
+                    "description": "Description of the commodity"
                   },
                   "commodityID": {
                     "type": "string",
@@ -138,66 +138,66 @@
                   "complementID": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "identifier of complement chosen from speciesFamily,speciesClass and speciesType'"
+                    "description": "Identifier of complement chosen from speciesFamily,speciesClass and speciesType'. This is also used to link to the complementParameterSet"
                   },
                   "speciesID": {
                     "type": "string",
-                    "description": "id of species of commodity that is imported, not every commodity has species id"
+                    "description": "The species ID of the commodity that is imported. Not every commodity has a species ID. This is also used to link to the complementParameterSet"
                   },
                   "speciesName": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 100,
-                    "description": "species name"
+                    "description": "Species name"
                   },
                   "speciesNomination": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 100,
-                    "description": "species nomination"
+                    "description": "Species nomination"
                   },
                   "speciesTypeName": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 255,
-                    "description": "species type name"
+                    "description": "Species type name"
                   },
                   "speciesType": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 15,
-                    "description": "species type identifier of commodity"
+                    "description": "Species type identifier of commodity"
                   },
                   "speciesClassName": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 80,
-                    "description": "species class name"
+                    "description": "Species class name"
                   },
                   "speciesClass": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 15,
-                    "description": "species class identifier of commodity"
+                    "description": "Species class identifier of commodity"
                   },
                   "speciesFamilyName": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 80,
-                    "description": "species family name of commodity"
+                    "description": "Species family name of commodity"
                   },
                   "speciesFamily": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 15,
-                    "description": "species family identifier of commodity"
+                    "description": "Species family identifier of commodity"
                   }
                 }
               }
             },
             "complementParameterSet": {
               "type": "array",
-              "description": "additional data for commodityComplement part containing such data as net weight",
+              "description": "Additional data for commodityComplement part containing such data as net weight",
               "items": {
                 "type": "object",
                 "additionalProperties": false,
@@ -237,21 +237,21 @@
             },
             "countryOfOrigin": {
               "$ref": "#/definitions/Country",
-              "description": "consignments country of origin"
+              "description": "Consignments country of origin"
             },
             "regionOfOrigin": {
               "type": "string",
               "minLength": 1,
               "maxLength": 10,
-              "description": "region of country"
+              "description": "Region of country"
             },
             "consignedCountry": {
               "$ref": "#/definitions/Country",
-              "description": "country from where commodity was sent"
+              "description": "Country from where commodity was sent"
             },
             "animalsCertifiedAs": {
               "$ref": "#/definitions/AnimalCertification",
-              "description": "certification of animals (Breeding, slaughter etc.)"
+              "description": "Certification of animals (Breeding, slaughter etc.)"
             },
             "commodityIntendedFor": {
               "type": "string",
@@ -269,16 +269,16 @@
         "purpose": {
           "additionalProperties": false,
           "type": "object",
-          "description": "purpose of consignment details",
+          "description": "Purpose of consignment details",
           "properties": {
             "conformsToEU": {
               "type": "boolean",
-              "description": "is consignment conforms to UK laws"
+              "description": "Does consignment conforms to UK laws"
             },
             "internalMarketPurpose": {
               "type": "string",
               "javaType": "uk.gov.defra.tracesx.notification.api.InternalMarketPurpose",
-              "description": "detailed purpose of internal market purpose group",
+              "description": "Detailed purpose of internal market purpose group",
               "enum": [
                 "Animal Feeding Stuff",
                 "Human Consumption",
@@ -289,12 +289,12 @@
             },
             "thirdCountryTranshipment": {
               "type": "string",
-              "description": "country that consignment is transshipped through"
+              "description": "Country that consignment is transshipped through"
             },
             "forNonConforming": {
               "type": "string",
               "javaType": "uk.gov.defra.tracesx.notification.api.ForNonConforming",
-              "description": "detailed purpose for non conforming purpose group",
+              "description": "Detailed purpose for non conforming purpose group",
               "enum": [
                 "Customs Warehouse",
                 "Free Zone or Free Warehouse",
@@ -306,17 +306,17 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 20,
-              "description": "registration number"
+              "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.\n"
             },
             "shipName": {
               "type": "string",
-              "description": "ship name"
+              "description": "Ship name"
             },
             "shipPort": {
               "type": "string",
               "minLength": 1,
               "maxLength": 20,
-              "description": "ship port"
+              "description": "Destination Ship port"
             },
             "exitBIP": {
               "type": "string",
@@ -326,11 +326,11 @@
             },
             "thirdCountry": {
               "type": "string",
-              "description": "country to which consignment is transited"
+              "description": "Country to which consignment is transited"
             },
             "transitThirdCountries": {
               "type": "array",
-              "description": "countries that consignment is transited through",
+              "description": "Countries that consignment is transited through",
               "items": {
                 "type": "string"
               }
@@ -355,7 +355,7 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 15,
-              "description": "final Border Inspection Post"
+              "description": "Final Border Inspection Post"
             },
             "purposeGroup": {
               "type": "string",
@@ -375,7 +375,7 @@
           "type": "string",
           "minLength": 0,
           "maxLength": 30,
-          "description": "Either a Border-Inspection-Post or Designated-Point-Of-Entry GBFXT1"
+          "description": "Either a Border-Inspection-Post or Designated-Point-Of-Entry, e.g. GBFXT1"
         },
         "arrivalDate": {
           "type": "string",
@@ -387,44 +387,44 @@
           "type": "string",
           "format": "time",
           "javaType": "java.time.LocalTime",
-          "description": "Time HH:MM when consignment arrives"
+          "description": "Time (HH:MM) when consignment arrives"
         },
         "meansOfTransport": {
           "$ref": "#/definitions/MeansOfTransport",
-          "description": "How consignment is transported after bip"
+          "description": "How consignment is transported after BIP"
         },
         "transporter": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "transporter of consignment details"
+          "description": "Transporter of consignment details"
         },
         "transporterDetailsRequired": {
           "type": "boolean",
-          "description": "are transporter details required for this consignment"
+          "description": "Are transporter details required for this consignment"
         },
         "meansOfTransportFromEntryPoint": {
           "$ref": "#/definitions/MeansOfTransport",
-          "description": "transport to BIP"
+          "description": "Transport to BIP"
         },
         "departureDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
           "format": "date",
-          "description": "date of consignment departure"
+          "description": "Date of consignment departure"
         },
         "departureTime": {
           "type": "string",
           "javaType": "java.time.LocalTime",
           "format": "time",
-          "description": "time of the day of consignment departure"
+          "description": "Time (HH:MM) of consignment departure"
         },
         "estimatedJourneyTimeInMinutes": {
           "type": "number",
           "minimum": 0,
-          "description": "estimated journey time in minutes to point of entry"
+          "description": "Estimated journey time in minutes to point of entry"
         },
         "responsibleForTransport": {
           "type": "string",
-          "description": "person who is responsible for transport"
+          "description": "Person who is responsible for transport"
         },
         "veterinaryInformation": {
           "type": "object",
@@ -440,15 +440,15 @@
             },
             "veterinaryDocument": {
               "type": "string",
-              "description": "veterinary document identification"
+              "description": "Veterinary document identification"
             },
             "veterinaryDocumentIssueDate": {
               "type": "string",
-              "description": "veterinary document issue date"
+              "description": "Veterinary document issue date"
             },
             "accompanyingDocumentNumbers": {
               "type": "array",
-              "description": "additional documents",
+              "description": "Additional documents",
               "items": {
                 "type": "string",
                 "minLength": 1,
@@ -457,7 +457,7 @@
             },
             "identificationDetails": {
               "type": "array",
-              "description": "details helpful for identification",
+              "description": "Details helpful for identification",
               "items": {
                 "type": "object",
                 "additionalProperties": false,
@@ -466,13 +466,13 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 32,
-                    "description": "identification detail"
+                    "description": "Identification detail"
                   },
                   "identificationDescription": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 255,
-                    "description": "identification description"
+                    "description": "Identification description"
                   }
                 }
               }
@@ -488,7 +488,7 @@
         "route": {
           "type": "object",
           "additionalProperties": false,
-          "description": "contains countries and transfer points that consignment is going through",
+          "description": "Contains countries and transfer points that consignment is going through",
           "properties": {
             "transitingStates": {
               "type": "array",
@@ -500,7 +500,7 @@
         },
         "sealsContainers": {
           "type": "array",
-          "description": "array that contains pair of seal number and container number",
+          "description": "Array that contains pair of seal number and container number",
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -526,11 +526,11 @@
         },
         "submittedBy": {
           "$ref": "#/definitions/UserInformation",
-          "description": "information about user who submitted notification"
+          "description": "Information about user who submitted notification"
         },
         "consignmentValidation": {
           "type": "array",
-          "description": "validation messages for whole notification",
+          "description": "Validation messages for whole notification",
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
@@ -539,7 +539,7 @@
     },
     "decisionBy": {
       "$ref": "#/definitions/UserInformation",
-      "description": "information about user that set decision in part 2"
+      "description": "Information about the user who set the decision in Part 2"
     },
     "decisionDate": {
       "type": "string",
@@ -549,19 +549,19 @@
     },
     "partTwo": {
       "$ref": "#/definitions/PartTwo",
-      "description": "part of the notification which contains information filled by inspector at BIP/DPE"
+      "description": "Part of the notification which contains information filled by inspector at BIP/DPE"
     },
     "partThree": {
       "$ref": "#/definitions/PartThree",
-      "description": "part of the notification which contains information filled by lvu if control of consignment is needed"
+      "description": "Part of the notification which contains information filled by LVU if control of consignment is needed."
     },
     "officialVeterinarian": {
       "type": "string",
-      "description": "official veterinarian"
+      "description": "Official veterinarian"
     },
     "consignmentValidation": {
       "type": "array",
-      "description": "validation messages for whole notification",
+      "description": "Validation messages for whole notification",
       "items": {
         "$ref": "#/definitions/ValidationMessageCode"
       }
@@ -576,43 +576,43 @@
     },
     "Applicant": {
       "type": "object",
-      "description": "laboratory tests information details and information about laboratory that did that test",
+      "description": "Laboratory tests information details and information about laboratory that did the test",
       "properties": {
         "laboratory": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "name of laboratory"
+          "description": "Name of laboratory"
         },
         "laboratoryAddress": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "laboratory address"
+          "description": "Laboratory address"
         },
         "laboratoryIdentification": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "laboratory identification"
+          "description": "Laboratory identification"
         },
         "laboratoryPhoneNumber": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "laboratory phone number"
+          "description": "Laboratory phone number"
         },
         "laboratoryEmail": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "laboratory email"
+          "description": "Laboratory email"
         },
         "sampleBatchNumber": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "sample batch number"
+          "description": "Sample batch number"
         },
         "analysisType": {
           "type": "string",
@@ -621,20 +621,20 @@
             "Counter analysis",
             "Second expert analysis"
           ],
-          "description": "type of analysis"
+          "description": "Type of analysis"
         },
         "numberOfSamples": {
           "type": "integer",
           "minimum": 0,
-          "description": "number of samples analysed"
+          "description": "Number of samples analysed"
         },
         "sampleType": {
           "type": "string",
-          "description": "type of sample"
+          "description": "Type of sample"
         },
         "conservationOfSample": {
           "type": "string",
-          "description": "conservation of sample",
+          "description": "Conservation of sample",
           "enum": [
             "Ambient",
             "Chilled",
@@ -647,15 +647,15 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "name of inspector"
+              "description": "Name of inspector"
             },
             "phone": {
               "type": "string",
-              "description": "phone number of inspector"
+              "description": "Phone number of inspector"
             },
             "email": {
               "type": "string",
-              "description": "email address of inspector"
+              "description": "Email address of inspector"
             }
           }
         }
@@ -670,25 +670,25 @@
     },
     "LaboratoryTestResult": {
       "type": "object",
-      "description": "tests results corresponding to LaboratoryTests",
+      "description": "Tests results corresponding to LaboratoryTests",
       "properties": {
         "sampleUseByDate": {
           "type": "string",
           "format": "date",
-          "description": "when sample was used"
+          "description": "When sample was used"
         },
         "releasedDate": {
           "type": "string",
           "format": "date",
-          "description": "when it was released"
+          "description": "When it was released"
         },
         "laboratoryTestMethod": {
           "type": "string",
-          "description": "laboratory test method"
+          "description": "Laboratory test method"
         },
         "results": {
           "type": "string",
-          "description": "result of test"
+          "description": "Result of test"
         },
         "conclusion": {
           "type": "string",
@@ -699,7 +699,7 @@
             "Not interpretable",
             "Pending"
           ],
-          "description": "conclusion of laboratory test"
+          "description": "Conclusion of laboratory test"
         }
       }
     },
@@ -710,28 +710,28 @@
       "properties": {
         "euStandard": {
           "$ref": "#/definitions/Result",
-          "description": "does it conform eu standards"
+          "description": "Does it conform EU standards"
         },
         "additionalGuarantees": {
           "$ref": "#/definitions/Result",
-          "description": "result of additional guarantees"
+          "description": "Result of additional guarantees"
         },
         "documentCheckResult": {
           "$ref": "#/definitions/Result",
-          "description": "result of document check"
+          "description": "Result of document check"
         },
         "nationalRequirements": {
           "$ref": "#/definitions/Result",
-          "description": "result of national requirements check"
+          "description": "Result of national requirements check"
         },
         "identityCheckDone": {
           "type": "boolean",
-          "description": "was identity check done"
+          "description": "Was identity check done"
         },
         "identityCheckType": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.IdentityCheckType",
-          "description": "type of identity check performed",
+          "description": "Type of identity check performed",
           "enum": [
             "Seal Check",
             "Full Identity Check"
@@ -739,20 +739,20 @@
         },
         "identityCheckResult": {
           "$ref": "#/definitions/Result",
-          "description": "result of identity check"
+          "description": "Result of identity check"
         },
         "physicalCheckDone": {
           "type": "boolean",
-          "description": "was physical check done"
+          "description": "Was physical check done"
         },
         "physicalCheckResult": {
           "$ref": "#/definitions/Result",
-          "description": "result of physical check"
+          "description": "Result of physical check"
         },
         "physicalCheckNotDoneReason": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.PhysicalCheckNotDoneReason",
-          "description": "what was the reason for skipping physical check",
+          "description": "What was the reason for skipping physical check",
           "enum": [
             "Reduced checks regime",
             "Other"
@@ -762,38 +762,47 @@
           "type": "string",
           "minLength": 0,
           "maxLength": 255,
-          "description": "other reason to not do physical check"
+          "description": "Other reason to not do physical check"
         },
         "welfareCheck": {
           "$ref": "#/definitions/Result",
-          "description": "welfare check"
+          "description": "Welfare check"
         },
         "numberOfAnimalsChecked": {
           "type": "integer",
           "minimum": 0,
-          "description": "number of animals checked"
+          "description": "Number of animals checked"
         },
         "laboratoryCheckDone": {
           "type": "boolean",
-          "description": "were laboratory tests done"
+          "description": "Were laboratory tests done"
         },
         "laboratoryCheckResult": {
           "$ref": "#/definitions/Result",
-          "description": "result of laboratory tests"
+          "description": "Result of laboratory tests"
         }
       }
     },
     "PartThree": {
       "type": "object",
-      "description": "control part of notification",
+      "description": "Control part of notification",
       "properties": {
+        "controlStatus": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.ControlStatus",
+          "description": "Control status enum",
+          "enum": [
+            "REQUIRED",
+            "COMPLETED"
+          ]
+        },
         "control": {
           "$ref": "#/definitions/Control",
-          "description": "control details"
+          "description": "Control details"
         },
         "consignmentValidation": {
           "type": "array",
-          "description": "validation messages for part 3 - control",
+          "description": "Validation messages for Part 3 - Control",
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
@@ -802,24 +811,24 @@
     },
     "Control": {
       "type": "object",
-      "description": "details of control (part 3)",
+      "description": "Details of Control (Part 3)",
       "properties": {
         "feedbackInformation": {
           "$ref": "#/definitions/FeedbackInformation",
-          "description": "feedback information of control"
+          "description": "Feedback information of Control"
         },
         "detailsOnReExport": {
           "$ref": "#/definitions/DetailsOnReExport",
-          "description": "details on re-export"
+          "description": "Details on re-export"
         },
         "officialInspector": {
           "$ref": "#/definitions/OfficialInspector",
-          "description": "official inspector"
+          "description": "Official inspector"
         },
         "consignmentLeave": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.ConsignmentLeave",
-          "description": "is consignment leaving uk borders?",
+          "description": "Is the consignment leaving UK borders?",
           "enum": [
             "YES",
             "NO",
@@ -830,40 +839,40 @@
     },
     "ControlAuthority": {
       "type": "object",
-      "description": "authority which performed control",
+      "description": "Authority which performed control",
       "properties": {
         "officialVeterinarian": {
           "$ref": "#/definitions/OfficialVeterinarian",
-          "description": "official veterinarian"
+          "description": "Official veterinarian"
         },
         "customsReferenceNo": {
           "type": "string",
           "minLength": 1,
           "maxLength": 32,
-          "description": "customs reference number"
+          "description": "Customs reference number"
         },
         "containerResealed": {
           "type": "boolean",
-          "description": "were containers resealed"
+          "description": "Were containers resealed?"
         },
         "newSealNumber": {
           "type": "string",
           "minLength": 1,
           "maxLength": 32,
-          "description": "when the containers are resealed they need new seal numbers"
+          "description": "When the containers are resealed they need new seal numbers"
         },
         "iuuFishingReference": {
           "type": "string",
-          "description": "iuuu finishing reference number"
+          "description": "Illegal, Unreported and Unregulated (IUU) fishing reference number"
         },
         "iuuCheckRequired": {
           "type": "boolean",
-          "description": "was illegal, unreported and unregulated check required"
+          "description": "Was Illegal, Unreported and Unregulated (IUU) check required"
         },
         "iuuOption": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.IUUOption",
-          "description": "result of IUUU check",
+          "description": "Result of Illegal, Unreported and Unregulated (IUU) check",
           "enum": [
             "IUUOK",
             "IUUNA"
@@ -873,59 +882,59 @@
     },
     "PartTwo": {
       "type": "object",
-      "description": "Part two of notification - Decision at inspection",
+      "description": "Part 2 of notification - Decision at inspection",
       "properties": {
         "decision": {
           "$ref": "#/definitions/Decision",
-          "description": "decision"
+          "description": "Decision on the consignment"
         },
         "consignmentCheck": {
           "$ref": "#/definitions/ConsignmentCheck",
-          "description": "consignment check"
+          "description": "Consignment check"
         },
         "impactOfTransportOnAnimals": {
           "$ref": "#/definitions/ImpactOfTransportOnAnimals",
-          "description": "checks of impact of transport on animals"
+          "description": "Checks of impact of transport on animals"
         },
         "laboratoryTestsRequired": {
           "type": "boolean",
-          "description": "are lab tests required"
+          "description": "Are laboratory tests required"
         },
         "laboratoryTests": {
           "$ref": "#/definitions/LaboratoryTests",
-          "description": "laboratory tests information details"
+          "description": "Laboratory tests information details"
         },
         "resealedContainers": {
           "$ref": "#/definitions/ResealedContainers",
-          "description": "resealed containers information details"
+          "description": "Resealed containers information details"
         },
         "controlAuthority": {
           "$ref": "#/definitions/ControlAuthority",
-          "description": "control authority information details"
+          "description": "Control Authority information details"
         },
         "controlledDestination": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "controlled destination"
+          "description": "Controlled destination"
         },
         "bipLocalReferenceNumber": {
           "type": "string",
           "minLength": 1,
           "maxLength": 32,
-          "description": "local reference number at bip"
+          "description": "Local reference number at BIP"
         },
         "signedOnBehalfOf": {
           "type": "string",
           "minLength": 1,
           "maxLength": 256,
-          "description": "Part II - Sometimes other user can sign decision on behalf of other user"
+          "description": "Part 2 - Sometimes other user can sign decision on behalf of another user"
         },
         "onwardTransportation": {
           "type": "string",
-          "description": "onward transportation"
+          "description": "Onward transportation"
         },
         "consignmentValidation": {
           "type": "array",
-          "description": "validation messages for part 2 - decison",
+          "description": "Validation messages for Part 2 - Decision",
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
@@ -940,11 +949,11 @@
     },
     "Decision": {
       "type": "object",
-      "description": "decision if the consignment can be imported",
+      "description": "Decision if the consignment can be imported",
       "properties": {
         "consignmentAcceptable": {
           "type": "boolean",
-          "description": "is consignment acceptable or not"
+          "description": "Is consignment acceptable or not"
         },
         "notAcceptableAction": {
           "type": "string",
@@ -958,22 +967,22 @@
             "transformation",
             "other"
           ],
-          "description": "filled if consignmentAcceptable is set to false"
+          "description": "Filled if consignmentAcceptable is set to false"
         },
         "notAcceptableDestructionReason": {
           "type": "string",
           "minLength": 0,
           "maxLength": 255,
-          "description": "filled when notAcceptableAction is equal to destruction"
+          "description": "Filled when notAcceptableAction is equal to destruction"
         },
         "notAcceptableActionByDate": {
           "type": "string",
           "format": "date",
-          "description": "filled when consignmentAcceptable is set to false"
+          "description": "Filled when consignmentAcceptable is set to false"
         },
         "notAcceptableReasons": {
           "type": "array",
-          "description": "if the consignment was not accepted what was the reason",
+          "description": "If the consignment was not accepted what was the reason",
           "items": {
             "type": "string",
             "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableReasons",
@@ -1007,26 +1016,26 @@
           "minLength": 0,
           "maxLength": 2,
           "pattern": "^[A-Z][A-Z]$",
-          "description": "2 digits iso code of country (not acceptable country can be empty)"
+          "description": "2 digits ISO code of country (not acceptable country can be empty)"
         },
         "notAcceptableEstablishment": {
           "type": "string",
           "minLength": 0,
           "maxLength": 255,
-          "description": "filled if consignmentAcceptable is set to false"
+          "description": "Filled if consignmentAcceptable is set to false"
         },
         "notAcceptableOtherReason": {
           "type": "string",
-          "description": "filled if consignmentAcceptable is set to false"
+          "description": "Filled if consignmentAcceptable is set to false"
         },
         "detailsOfControlledDestinations": {
           "$ref": "#/definitions/Party",
-          "description": "details of controlled destinations"
+          "description": "Details of controlled destinations"
         },
         "specificWarehouseNonConformingConsignment": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.SpecificWarehouseNonConformingConsignment",
-          "description": "filled if consignment is set to acceptable and decision type is specific warehouse",
+          "description": "Filled if consignment is set to acceptable and decision type is Specific Warehouse",
           "enum": [
             "CustomWarehouse",
             "FreeZoneOrFreeWarehouse",
@@ -1038,12 +1047,12 @@
           "type": "string",
           "javaType": "java.time.LocalDate",
           "format": "date",
-          "description": "deadline until when consignment has to leave borders"
+          "description": "Deadline when consignment has to leave borders"
         },
         "decision": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.DecisionType",
-          "description": "detailed decision for consignment",
+          "description": "Detailed decision for consignment",
           "enum": [
             "Non Acceptable",
             "Acceptable for Internal Market",
@@ -1058,7 +1067,7 @@
         "freeCirculationPurpose": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.FreeCirculationPurpose",
-          "description": "decision over purpose of free circulation in country",
+          "description": "Decision over purpose of free circulation in country",
           "enum": [
             "Animal Feeding Stuff",
             "Human Consumption",
@@ -1071,7 +1080,7 @@
         "definitiveImportPurpose": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.DefinitiveImportPurpose",
-          "description": "decision over purpose of definitive import",
+          "description": "Decision over purpose of definitive import",
           "enum": [
             "slaughter",
             "approvedbodies",
@@ -1081,7 +1090,7 @@
         "ifChanneledOption": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.IfChanneledOption",
-          "description": "decision channeled option based on (article8, article15)",
+          "description": "Decision channeled option based on (article8, article15)",
           "enum": [
             "article8",
             "article15"
@@ -1089,51 +1098,51 @@
         },
         "customWarehouseRegisteredNumber": {
           "type": "string",
-          "description": "custom warehouse registered number"
+          "description": "Custom warehouse registered number"
         },
         "freeWarehouseRegisteredNumber": {
           "type": "string",
-          "description": "free warehouse registered number"
+          "description": "Free warehouse registered number"
         },
         "shipName": {
           "type": "string",
-          "description": "ship name"
+          "description": "Ship name"
         },
         "shipPortOfExit": {
           "type": "string",
-          "description": "port of exit"
+          "description": "Port of exit"
         },
         "shipSupplierRegisteredNumber": {
           "type": "string",
-          "description": "ship supplier registered number"
+          "description": "Ship supplier registered number"
         },
         "transhipmentBip": {
           "type": "string",
-          "description": "transhipment BIP"
+          "description": "Transhipment BIP"
         },
         "transhipmentThirdCountry": {
           "type": "string",
-          "description": "transhipment third country"
+          "description": "Transhipment third country"
         },
         "transitExitBip": {
           "type": "string",
-          "description": "transit exit BIP"
+          "description": "Transit exit BIP"
         },
         "transitThirdCountry": {
           "type": "string",
-          "description": "transit third country"
+          "description": "Transit third country"
         },
         "transitDestinationThirdCountry": {
           "type": "string",
-          "description": "transit destination third country"
+          "description": "Transit destination third country"
         },
         "temporaryExitBip": {
           "type": "string",
-          "description": "temporary exit bip"
+          "description": "Temporary exit BIP"
         },
         "horseReentry": {
           "type": "string",
-          "description": "horse re-entry"
+          "description": "Horse re-entry"
         },
         "transhipmentEuOrThirdCountry": {
           "type": "string",
@@ -1143,19 +1152,19 @@
     },
     "DetailsOnReExport": {
       "type": "object",
-      "description": "details on re-export",
+      "description": "Details on re-export",
       "properties": {
         "date": {
           "type": "string",
           "javaType": "java.time.LocalDate",
           "format": "date",
-          "description": "date of re-export"
+          "description": "Date of re-export"
         },
         "meansOfTransportNo": {
           "type": "string",
           "minLength": 1,
           "maxLength": 50,
-          "description": "number of vehicle"
+          "description": "Number of vehicle"
         },
         "transportType": {
           "type": "string",
@@ -1168,34 +1177,35 @@
             "other",
             "c_ship_road",
             "c_ship_rail"
-          ]
+          ],
+          "description": "Type of transport to be used"
         },
         "document": {
           "type": "string",
           "minLength": 1,
           "maxLength": 32,
-          "description": "document issued for re-export"
+          "description": "Document issued for re-export"
         },
         "countryOfReDispatching": {
           "$ref": "#/definitions/Country",
-          "description": "two letter iso code for country of redispatching"
+          "description": "Two letter ISO code for country of re-dispatching"
         },
         "exitBIP": {
           "type": "string",
           "minLength": 1,
           "maxLength": 15,
-          "description": "exit bip (where consignment will leave country)"
+          "description": "Exit BIP (where consignment will leave the country)"
         }
       }
     },
     "FeedbackInformation": {
       "type": "object",
-      "description": "feedback information from control",
+      "description": "Feedback information from control",
       "properties": {
         "authorityType": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.AuthorityType",
-          "description": "type of authority",
+          "description": "Type of authority",
           "enum": [
             "exitbip",
             "finalbip",
@@ -1205,54 +1215,54 @@
         },
         "consignmentArrival": {
           "type": "boolean",
-          "description": "did consignment arrived"
+          "description": "Did the consignment arrive"
         },
         "consignmentConformity": {
           "type": "boolean",
-          "description": "is consignment conforming"
+          "description": "Does the consignment conform"
         }
       }
     },
     "ImpactOfTransportOnAnimals": {
       "type": "object",
-      "description": "impact of transport on animals",
+      "description": "Impact of transport on animals",
       "properties": {
         "numberOfDeadAnimals": {
           "type": "integer",
-          "description": "number of dead animals specified by units"
+          "description": "Number of dead animals specified by units"
         },
         "numberOfDeadAnimalsUnit": {
           "$ref": "#/definitions/Unit",
-          "description": "unit used for specifying number of dead animals (percent or units)"
+          "description": "Unit used for specifying number of dead animals (percent or units)"
         },
         "numberOfUnfitAnimals": {
           "type": "integer",
-          "description": "number of unfit animals"
+          "description": "Number of unfit animals"
         },
         "numberOfUnfitAnimalsUnit": {
           "$ref": "#/definitions/Unit",
-          "description": "unit used for specifying number of unfit animals"
+          "description": "Unit used for specifying number of unfit animals (percent or units)"
         },
         "numberOfBirthOrAbortion": {
           "type": "integer",
-          "description": "number of births or abortions (unit)"
+          "description": "Number of births or abortions (unit)"
         }
       }
     },
     "LaboratoryTests": {
       "type": "object",
-      "description": "laboratory tests details",
+      "description": "Laboratory tests details",
       "properties": {
         "testDate": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
           "format": "date",
-          "description": "date of tests"
+          "description": "Date of tests"
         },
         "testReason": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.TestReason",
-          "description": "reason for test",
+          "description": "Reason for test",
           "enum": [
             "Random",
             "Suspicious"
@@ -1260,7 +1270,7 @@
         },
         "singleLaboratoryTests": {
           "type": "array",
-          "description": "list of details of individual tests performed or to be performed",
+          "description": "List of details of individual tests performed or to be performed",
           "items": {
             "$ref": "#/definitions/SingleLaboratoryTest"
           }
@@ -1269,12 +1279,12 @@
     },
     "MeansOfTransport": {
       "type": "object",
-      "description": "details of transport",
+      "description": "Details of transport",
       "properties": {
         "type": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.TransportMethod",
-          "description": "type of transport",
+          "description": "Type of transport",
           "enum": [
             "Aeroplane",
             "Road Vehicle",
@@ -1290,203 +1300,203 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 32,
-          "description": "document for transport"
+          "description": "Document for transport"
         },
         "id": {
           "type": "string",
           "minLength": 1,
           "maxLength": 50,
-          "description": "id of transport"
+          "description": "ID of transport"
         }
       }
     },
     "ResealedContainers": {
       "type": "array",
-      "description": "list of resealed containers",
+      "description": "List of resealed containers",
       "items": {
         "type": "string",
         "maxLength": 32
       }
     },
     "Address": {
-      "description": "address",
+      "description": "Inspector Address",
       "type": "object",
       "properties": {
         "street": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "street"
+          "description": "Street"
         },
         "city": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "city"
+          "description": "City"
         },
         "country": {
           "$ref": "#/definitions/Country",
-          "description": "country"
+          "description": "Country"
         },
         "postalCode": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "postal code"
+          "description": "Postal Code"
         }
       }
     },
     "OfficialInspector": {
       "javaType": "uk.gov.defra.tracesx.notification.api.OfficialInspector",
       "type": "object",
-      "description": "official inspector details",
+      "description": "Official inspector details",
       "properties": {
         "firstName": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "first name of inspector"
+          "description": "First name of inspector"
         },
         "lastName": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "last name of inspector"
+          "description": "Last name of inspector"
         },
         "email": {
           "type": "string",
           "maxLength": 255,
-          "description": "email of inspector"
+          "description": "Email of inspector"
         },
         "phone": {
           "type": "string",
           "maxLength": 255,
-          "description": "phone number of inspector"
+          "description": "Phone number of inspector"
         },
         "fax": {
           "type": "string",
           "maxLength": 255,
-          "description": "fax number of inspector"
+          "description": "Fax number of inspector"
         },
         "address": {
           "$ref": "#/definitions/Address",
-          "description": "address of inspector"
+          "description": "Address of inspector"
         },
         "signed": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
           "format": "date",
-          "description": "date of sign"
+          "description": "Date of sign"
         }
       }
     },
     "OfficialVeterinarian": {
       "javaType": "uk.gov.defra.tracesx.notification.api.OfficialVeterinarian",
       "type": "object",
-      "description": "official veterinarian information",
+      "description": "Official veterinarian information",
       "properties": {
         "firstName": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "first name of official veterinarian"
+          "description": "First name of official veterinarian"
         },
         "lastName": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "last name of official veterinarian"
+          "description": "Last name of official veterinarian"
         },
         "email": {
           "type": "string",
           "maxLength": 255,
-          "description": "email address of official veterinarian"
+          "description": "Email address of official veterinarian"
         },
         "phone": {
           "type": "string",
           "maxLength": 255,
-          "description": "phone number of official veterinarian"
+          "description": "Phone number of official veterinarian"
         },
         "fax": {
           "type": "string",
           "maxLength": 255,
-          "description": "fax number of official veterinarian"
+          "description": "Fax number of official veterinarian"
         },
         "signed": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
           "format": "date",
-          "description": "date of sign"
+          "description": "Date of sign"
         }
       }
     },
     "Party": {
       "type": "object",
       "javaType": "uk.gov.defra.tracesx.notification.api.Party",
-      "description": "party details",
+      "description": "Party details",
       "properties": {
         "id": {
           "type": "string",
-          "description": "IPAFFS id of party"
+          "description": "IPAFFS ID of party"
         },
         "name": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "name of party"
+          "description": "Name of party"
         },
         "companyId": {
           "type": "string",
           "minLength": 0,
           "maxLength": 60,
-          "description": "company id"
+          "description": "Company ID"
         },
         "contactId": {
           "type": "string",
           "minLength": 0,
           "maxLength": 60,
-          "description": "contanct id (b2c)"
+          "description": "Contact ID (B2C)"
         },
         "companyName": {
           "type": "string",
-          "description": "company name"
+          "description": "Company name"
         },
         "address": {
           "type": "array",
-          "description": "addresses",
+          "description": "Addresses",
           "items": {
             "type": "string"
           }
         },
         "county": {
           "type": "string",
-          "description": "county"
+          "description": "County"
         },
         "postCode": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "post code of party"
+          "description": "Post code of party"
         },
         "country": {
           "$ref": "#/definitions/Country",
-          "description": "country of party"
+          "description": "Country of party"
         },
         "city": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "city"
+          "description": "City"
         },
         "tracesID": {
           "type": "integer",
           "minimum": 0,
-          "description": "traces id"
+          "description": "TRACES ID"
         },
         "type": {
           "type": "string",
           "javaType": "uk.gov.defra.tracesx.notification.api.PartyType",
-          "description": "type of party",
+          "description": "Type of party",
           "enum": [
             "Commercial transporter",
             "Private transporter"
@@ -1496,19 +1506,19 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 100,
-          "description": "approval number"
+          "description": "Approval number"
         },
         "phone": {
           "type": "string",
-          "description": "phone number of party"
+          "description": "Phone number of party"
         },
         "fax": {
           "type": "string",
-          "description": "fax number of party"
+          "description": "Fax number of party"
         },
         "email": {
           "type": "string",
-          "description": "email number of party"
+          "description": "Email number of party"
         }
       },
       "required": [
@@ -1517,42 +1527,42 @@
     },
     "SingleLaboratoryTest": {
       "type": "object",
-      "description": "information about single laboratory test",
+      "description": "Information about single laboratory test",
       "properties": {
         "commodityCode": {
           "type": "string",
           "minLength": 1,
           "maxLength": 20,
-          "description": "commodity code for which lab test was ordered"
+          "description": "Commodity code for which lab test was ordered"
         },
         "speciesID": {
           "type": "integer",
           "minimum": 0,
-          "description": "species id of commodity for which lab test was ordered"
+          "description": "Species id of commodity for which lab test was ordered"
         },
         "tracesID": {
           "type": "integer",
           "minimum": 0,
-          "description": "traces id"
+          "description": "TRACES ID"
         },
         "testName": {
           "type": "string",
-          "description": "test name"
+          "description": "Test name"
         },
         "applicant": {
           "$ref": "#/definitions/Applicant",
-          "description": "laboratory tests information details and information about laboratory"
+          "description": "Laboratory tests information details and information about laboratory"
         },
         "laboratoryTestResult": {
           "$ref": "#/definitions/LaboratoryTestResult",
-          "description": "information about results of test"
+          "description": "Information about results of test"
         }
       }
     },
     "Unit": {
       "type": "string",
       "javaType": "uk.gov.defra.tracesx.notification.api.Unit",
-      "description": "type of unit",
+      "description": "Type of unit",
       "enum": [
         "percent",
         "number"
@@ -1561,7 +1571,7 @@
     "Temperature": {
       "type": "string",
       "javaType": "uk.gov.defra.tracesx.notification.api.Temperature",
-      "description": "type of temperature",
+      "description": "Type of temperature",
       "enum": [
         "Ambient",
         "Chilled",
@@ -1571,7 +1581,7 @@
     "Result": {
       "type": "string",
       "javaType": "uk.gov.defra.tracesx.notification.api.Result",
-      "description": "result of various checks",
+      "description": "Result of various checks",
       "enum": [
         "Satisfactory",
         "Not Satisfactory",
@@ -1583,7 +1593,7 @@
     "AnimalCertification": {
       "type": "string",
       "javaType": "uk.gov.defra.tracesx.notification.api.AnimalCertification",
-      "description": "certification for animal",
+      "description": "Certification for animal",
       "enum": [
         "Approved",
         "Quarantine",
@@ -1612,7 +1622,7 @@
         },
         "type": {
           "type": "string",
-          "description": "type of organisation",
+          "description": "Type of organisation",
           "enum": [
             "consignee",
             "destination",
@@ -1626,7 +1636,7 @@
         },
         "status": {
           "type": "string",
-          "description": "status of organisation",
+          "description": "Status of organisation",
           "enum": [
             "approved",
             "nonapproved",
@@ -1637,19 +1647,19 @@
           "type": "string",
           "minLength": 0,
           "maxLength": 255,
-          "description": "name of organisation"
+          "description": "Name of organisation"
         },
         "individualName": {
           "type": "string",
           "minLength": 0,
           "maxLength": 255,
-          "description": "indvidual name"
+          "description": "Individual name"
         },
         "address": {
           "type": "object",
           "javaType": "uk.gov.defra.tracesx.notification.api.EconomicOperatorAddress",
           "additionalProperties": false,
-          "description": "address of economic operator",
+          "description": "Address of economic operator",
           "properties": {
             "addressLine1": {
               "type": "string",
@@ -1673,47 +1683,47 @@
               "type": "string",
               "minLength": 0,
               "maxLength": 58,
-              "description": "city"
+              "description": "City"
             },
             "postalZipCode": {
               "type": "string",
               "minLength": 0,
               "maxLength": 32,
-              "description": "post / zip code"
+              "description": "Post / zip code"
             },
             "countryISOCode": {
               "type": "string",
               "pattern": "^[A-Z]{2}$",
-              "description": "country 2-digits iso code"
+              "description": "country 2-digits ISO code"
             },
             "email": {
               "type": "string",
               "maxLength": 255,
-              "description": "email address"
+              "description": "Email address"
             },
             "ukTelephone": {
               "type": "string",
               "minLength": 9,
               "maxLength": 11,
-              "description": "uk phone number"
+              "description": "UK phone number"
             },
             "internationalTelephone": {
               "type": "object",
               "javaType": "uk.gov.defra.tracesx.notification.api.InternationalTelephone",
               "additionalProperties": false,
-              "description": "international phone number",
+              "description": "International phone number",
               "properties": {
                 "countryCode": {
                   "type": "string",
                   "minLength": 1,
                   "maxLength": 3,
-                  "description": "country code of phone number"
+                  "description": "Country code of phone number"
                 },
                 "subscriberNumber": {
                   "type": "string",
                   "minLength": 1,
                   "maxLength": 12,
-                  "description": "phone number"
+                  "description": "Phone number"
                 }
               },
               "required": [
@@ -1739,33 +1749,33 @@
     },
     "ValidationMessageCode": {
       "type": "object",
-      "description": "validation field code-message representation",
+      "description": "Validation field code-message representation",
       "properties": {
         "field": {
           "type": "string",
-          "description": "field"
+          "description": "Field"
         },
         "code": {
           "type": "string",
-          "description": "code"
+          "description": "Code"
         }
       }
     },
     "UserInformation": {
       "type": "object",
-      "description": "information about logged-in user",
+      "description": "Information about logged-in user",
       "properties": {
         "displayName": {
           "type": "string",
-          "description": "display name"
+          "description": "Display name"
         },
         "userId": {
           "type": "string",
-          "description": "user id"
+          "description": "User ID"
         },
         "isControlUser": {
           "type": "boolean",
-          "description": "is this user a control"
+          "description": "Is this user a control"
         }
       },
       "required": [
@@ -1776,25 +1786,25 @@
     "ApprovedEstablishment": {
       "type": "object",
       "javaType": "uk.gov.defra.tracesx.notification.api.ApprovedEstablishment",
-      "description": "approved establishment details",
+      "description": "Approved Establishment details",
       "properties": {
         "id": {
           "type": "string",
-          "description": "id"
+          "description": "ID"
         },
         "name": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
-          "description": "name of approved establishment"
+          "description": "Name of approved establishment"
         },
         "country": {
           "type": "string",
-          "description": "country of approved establishment"
+          "description": "Country of approved establishment"
         },
         "types": {
           "type": "array",
-          "description": "types of approved establishment",
+          "description": "Types of approved establishment",
           "items": {
             "type": "string"
           }
@@ -1803,7 +1813,7 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 100,
-          "description": "approval number"
+          "description": "Approval number"
         }
       },
       "required": [
@@ -1816,7 +1826,7 @@
       "minLength": 2,
       "maxLength": 2,
       "pattern": "^[A-Z][A-Z]$",
-      "description": "2 digits iso code of country"
+      "description": "2 digits ISO code of country"
     }
   }
 }

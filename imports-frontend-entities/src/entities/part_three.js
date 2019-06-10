@@ -14,6 +14,7 @@ module.exports = class PartThree {
     this.control = _.get(obj, 'control') ? new Control(obj.control) : undefined
     this.consignmentValidation = getConsignmentValidation(
         _.get(obj, 'consignmentValidation', []))
+    this.controlStatus = obj.controlStatus
 
     return Object.seal(new Proxy(this, handler))
   }

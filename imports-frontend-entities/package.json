@@ -4,7 +4,7 @@
   "private": false,
   "description": "Baseline schema and entities to use across all frontends",
   "scripts": {
-    "preinstall": "cp ../resources/notification-schema.json ./etc/"
+    "preinstall": "cp ../notification-schema-core/resources/notification-schema.json ./etc/"
   },
   "author": "",
   "license": "ISC",
