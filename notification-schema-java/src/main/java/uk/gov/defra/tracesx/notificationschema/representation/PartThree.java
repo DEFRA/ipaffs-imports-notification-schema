@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ControlStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 
 import java.util.Set;
@@ -22,4 +23,5 @@ public class PartThree {
 
   private Control control;
   private Set<ValidationMessageCode> consignmentValidation;
+  private ControlStatus controlStatus;
 }
