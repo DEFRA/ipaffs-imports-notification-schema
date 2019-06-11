@@ -1220,6 +1220,18 @@
         "consignmentConformity": {
           "type": "boolean",
           "description": "Does the consignment conform"
+        },
+        "consignmentNoArrivalReason":{
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "Reason for consignment not arriving at the entry point"
+        },
+        "destructionDate": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "format": "date",
+          "description": "Date of consignment destruction"
         }
       }
     },
