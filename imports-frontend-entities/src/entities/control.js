@@ -12,6 +12,7 @@ module.exports = class Control {
       obj = {}
     }
 
+    this.consignmentLeave = _.get(obj, 'consignmentLeave')
     this.detailsOnReExport = _.get(obj, 'detailsOnReExport')
         ? new DetailsOnReExport(obj.detailsOnReExport) : undefined
     this.feedbackInformation = _.get(obj, 'feedbackInformation')

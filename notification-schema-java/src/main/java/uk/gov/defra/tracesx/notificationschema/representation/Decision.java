@@ -7,9 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DefinitiveImportPurposeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.FreeCirculationPurposeEnum;
@@ -35,8 +34,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 @Builder
-@Getter
-@Setter
+@Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)

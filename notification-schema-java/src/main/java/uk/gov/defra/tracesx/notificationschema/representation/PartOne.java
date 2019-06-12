@@ -7,11 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
@@ -35,14 +32,11 @@ import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@JsonInclude(Include.NON_EMPTY)
 @Builder
+@Data
+@JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
 public class PartOne {
 
   private Party personResponsible;

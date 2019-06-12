@@ -13,10 +13,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFie
 import javax.validation.constraints.NotNull;
 
 @Builder
+@Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@Data
 public class InternationalTelephone {
 
   @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
