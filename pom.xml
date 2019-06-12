@@ -52,7 +52,7 @@
           <version>${maven.release.plugin.version}</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
-            <tagNameFormat>@{project.version}-${env.BUILD_NUMBER}</tagNameFormat>
+            <tagNameFormat>@{project.version}</tagNameFormat>
             <releaseProfiles>release</releaseProfiles>
           </configuration>
         </plugin>
