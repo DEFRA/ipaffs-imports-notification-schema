@@ -1,10 +1,15 @@
 {
-  "name": "imports-frontend-entities",
-  "version": "1.0.1",
+  "name": "@artifactory/imports-frontend-entities",
+  "version": "1.0.5",
   "private": false,
   "description": "Baseline schema and entities to use across all frontends",
   "scripts": {
-    "preinstall": "cp ../notification-schema-core/resources/notification-schema.json ./etc/"
+    "prepare": "cp ../notification-schema-core/resources/notification-schema.json ./etc/",
+    "test": "nyc mocha --recursive",
+    "release": "release-it --ci"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-virtual-snapshots/"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +26,8 @@
   "dependencies": {
     "ajv": "6.5.3",
     "lodash": "4.17.11",
-    "nyc": "14.1.1"
+    "nyc": "14.1.1",
+    "release-it": "*",
+    "npm-cli-login": "*"
   }
 }
