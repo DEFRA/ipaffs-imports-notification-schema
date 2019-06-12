@@ -2,7 +2,6 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static java.util.Arrays.asList;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion.PENDING;
@@ -14,6 +13,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TestReason;
+
+import java.util.Collections;
 
 public class LaboratoryTestsPendingValidatorTest {
 
@@ -62,7 +63,7 @@ public class LaboratoryTestsPendingValidatorTest {
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.RANDOM);
-    laboratoryTests.setSingleLaboratoryTests(asList(new SingleLaboratoryTest()));
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
     assertTrue(validator.isValid(partTwo, null));
   }
@@ -72,7 +73,7 @@ public class LaboratoryTestsPendingValidatorTest {
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.SUSPICIOUS);
-    laboratoryTests.setSingleLaboratoryTests(asList(new SingleLaboratoryTest()));
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
     assertFalse(validator.isValid(partTwo, null));
   }
@@ -86,7 +87,7 @@ public class LaboratoryTestsPendingValidatorTest {
     LaboratoryTestResult laboratoryTestResult = new LaboratoryTestResult();
     laboratoryTestResult.setConclusion(PENDING);
     singleLaboratoryTest.setLaboratoryTestResult(laboratoryTestResult);
-    laboratoryTests.setSingleLaboratoryTests(asList(singleLaboratoryTest));
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
     assertFalse(validator.isValid(partTwo, null));
   }
@@ -100,7 +101,7 @@ public class LaboratoryTestsPendingValidatorTest {
     LaboratoryTestResult laboratoryTestResult = new LaboratoryTestResult();
     laboratoryTestResult.setConclusion(PENDING);
     singleLaboratoryTest.setLaboratoryTestResult(laboratoryTestResult);
-    laboratoryTests.setSingleLaboratoryTests(asList(singleLaboratoryTest));
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
     assertTrue(validator.isValid(partTwo, null));
   }

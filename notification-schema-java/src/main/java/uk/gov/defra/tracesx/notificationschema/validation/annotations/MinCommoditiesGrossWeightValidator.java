@@ -19,11 +19,8 @@ public class MinCommoditiesGrossWeightValidator
       return true;
     }
 
-    if (commodities.getTotalGrossWeight() != null
-        && commodities.getTotalNetWeight() != null
-        && (commodities.getTotalGrossWeight().compareTo(commodities.getTotalNetWeight()) < 0)) {
-      return false;
-    }
-    return true;
+    return commodities.getTotalGrossWeight() == null
+        || commodities.getTotalNetWeight() == null
+        || (commodities.getTotalGrossWeight().compareTo(commodities.getTotalNetWeight()) >= 0);
   }
 }
