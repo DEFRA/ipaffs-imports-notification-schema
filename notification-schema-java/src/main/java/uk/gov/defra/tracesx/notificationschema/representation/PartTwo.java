@@ -13,8 +13,12 @@ import lombok.Setter;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.CedOrCvedpControlledDestination;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.CvedaControlledDestination;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsNotAdded;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsPending;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
 
 import java.time.LocalDateTime;
@@ -36,6 +40,16 @@ import javax.validation.constraints.NotNull;
     groups = NotificationFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.laboratorytestspending"
+            + ".not.empty}")
+@CvedaControlledDestination(
+    groups = NotificationCvedaFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
+            + ".not.empty}")
+@CedOrCvedpControlledDestination(
+    groups = NotificationCedOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")
 @Getter
 @Setter

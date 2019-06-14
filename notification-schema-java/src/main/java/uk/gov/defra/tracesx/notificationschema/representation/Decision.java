@@ -19,11 +19,13 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcc
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.SpecificWarehouseNonConformingConsignmentEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.IfChanneledOption;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableAction;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableCountry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableEstablishment;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableOtherReason;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableReason;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.SpecificWarehouse;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
@@ -63,6 +65,16 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablecountry.not.null}")
+@SpecificWarehouse(
+    groups = NotificationCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
+        + "specificwarehousenonconformingconsignment.not.null}")
+@IfChanneledOption(
+    groups = NotificationCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
+            + "ifchanneledoption.not.null}")
 public class Decision {
 
   @NotNull(

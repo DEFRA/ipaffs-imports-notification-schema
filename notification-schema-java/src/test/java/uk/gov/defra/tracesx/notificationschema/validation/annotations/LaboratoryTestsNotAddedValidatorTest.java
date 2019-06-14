@@ -11,7 +11,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 public class LaboratoryTestsNotAddedValidatorTest {
 
@@ -63,7 +63,7 @@ public class LaboratoryTestsNotAddedValidatorTest {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
-    laboratoryTests.setSingleLaboratoryTests(Arrays.asList(new SingleLaboratoryTest()));
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
     assertTrue(validator.isValid(partTwo, null));
   }
