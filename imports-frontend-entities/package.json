@@ -1,6 +1,6 @@
 {
   "name": "@artifactory/imports-frontend-entities",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "description": "Baseline schema and entities to use across all frontends",
   "scripts": {
