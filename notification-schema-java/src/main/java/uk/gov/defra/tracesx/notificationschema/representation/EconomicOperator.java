@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorStatus;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorType;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationAfterMeansOfTransport;
@@ -19,13 +16,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import javax.validation.constraints.NotNull;
 
 @Builder
-@Getter
-@Setter
+@Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@ToString
-@EqualsAndHashCode
 public class EconomicOperator {
 
   private String id;

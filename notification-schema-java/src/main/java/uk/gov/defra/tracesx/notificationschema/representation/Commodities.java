@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityIntention;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
@@ -26,8 +23,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Builder
-@Getter
-@Setter
+@Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
@@ -36,8 +32,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".totalgrossweight.min.message}")
-@EqualsAndHashCode
-@ToString
 public class Commodities {
 
   @NotNull(

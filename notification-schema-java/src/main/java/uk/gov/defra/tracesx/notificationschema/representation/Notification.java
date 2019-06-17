@@ -9,11 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
@@ -30,15 +27,12 @@ import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Getter
-@Setter
-@JsonInclude(Include.NON_EMPTY)
-@ValidStatus(groups = BasicValidation.class)
 @Builder(toBuilder = true)
-@EqualsAndHashCode
+@Data
+@JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@ToString
+@ValidStatus(groups = BasicValidation.class)
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")

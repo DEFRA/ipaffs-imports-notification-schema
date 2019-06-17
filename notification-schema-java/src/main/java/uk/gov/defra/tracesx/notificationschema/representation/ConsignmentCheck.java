@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
@@ -25,6 +24,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import javax.validation.constraints.NotNull;
 
 @Builder
+@Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
@@ -58,8 +58,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".eustandard.not.null}")
-@Getter
-@Setter
 public class ConsignmentCheck {
 
   @NotNull(

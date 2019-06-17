@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForNonConformingEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InternalMarketPurpose;
@@ -20,13 +17,10 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 @Builder
-@Getter
-@Setter
+@Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@ToString
-@EqualsAndHashCode
 public class Purpose {
 
   private Boolean conformsToEU;
