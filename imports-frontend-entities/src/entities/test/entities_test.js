@@ -8,6 +8,7 @@ const ConsignmentCheck = require('../consignment_check')
 const ConsignmentValidation = require('../consignment_validation')
 const Control = require('../control')
 const ControlAuthority = require('../control_authority')
+const ControlStatuses = require('../control_status')
 const Decision = require('../decision')
 const DetailsOnReexport = require('../details_on_reexport')
 const EconomicOperator = require('../economic_operator')
@@ -42,6 +43,7 @@ describe('Entities: ', () => {
     Complement,
     ConsignmentCheck,
     ControlAuthority,
+    ControlStatuses,
     Notification,
     Purpose,
     Veterinarian,
