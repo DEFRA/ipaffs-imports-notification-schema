@@ -9,6 +9,7 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum.NON_ACCEPTABLE;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.DESTRUCTION;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.OTHER;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.REDISPATCHING;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.REEXPORT;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.SLAUGHTER;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.SpecificWarehouseNonConformingConsignmentEnum.CUSTOMWAREHOUSE;
@@ -152,6 +153,17 @@ public class CedOrCvedpControlledDestinationValidatorTest {
     partTwo.getDecision().setDecision(ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE);
     partTwo.getDecision().setSpecificWarehouseNonConformingConsignment(CUSTOMWAREHOUSE);
     partTwo.setControlledDestination(EconomicOperator.builder().build());
+
+    boolean result = validator.isValid(partTwo, null);
+
+    assertTrue(result);
+  }
+
+  @Test
+  public void isValid_nonAcceptableReDispatchingWithoutControlledDestination_isTrue() {
+    partTwo.getDecision().setDecision(NON_ACCEPTABLE);
+    partTwo.getDecision().setNotAcceptableAction(REDISPATCHING);
+    partTwo.setControlledDestination(null);
 
     boolean result = validator.isValid(partTwo, null);
 

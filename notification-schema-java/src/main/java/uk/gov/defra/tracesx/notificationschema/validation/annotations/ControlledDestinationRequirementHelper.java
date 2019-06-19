@@ -4,6 +4,7 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum.ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum.ACCEPTABLE_IF_CHANNELED;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum.NON_ACCEPTABLE;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.REDISPATCHING;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.REEXPORT;
 
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
@@ -37,7 +38,7 @@ public class ControlledDestinationRequirementHelper {
   }
 
   private static boolean isControlledDestinationRequiredForEachType(Decision decision) {
-    return isNonAcceptableWithActionOtherThanReexport(decision)
+    return isNonAcceptableWithActionOtherThanReexportOrReDispatching(decision)
         || isChanneled(decision) || isSpecificWarehouse(decision);
   }
 
@@ -54,9 +55,11 @@ public class ControlledDestinationRequirementHelper {
     return ACCEPTABLE_IF_CHANNELED.equals(decision.getDecision());
   }
 
-  private static boolean isNonAcceptableWithActionOtherThanReexport(Decision decision) {
+  private static boolean isNonAcceptableWithActionOtherThanReexportOrReDispatching(
+      Decision decision) {
     return NON_ACCEPTABLE.equals(decision.getDecision())
         && decision.getNotAcceptableAction() != null && !REEXPORT
+        .equals(decision.getNotAcceptableAction()) && !REDISPATCHING
         .equals(decision.getNotAcceptableAction());
   }
 }
