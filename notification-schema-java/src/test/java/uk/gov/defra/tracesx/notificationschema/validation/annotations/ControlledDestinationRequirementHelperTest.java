@@ -11,6 +11,7 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DefinitiveImportPurposeEnum.APPROVEDBODIES;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.DESTRUCTION;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.OTHER;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.REDISPATCHING;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum.REEXPORT;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum.CVEDA;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum.CVEDP;
@@ -106,5 +107,16 @@ public class ControlledDestinationRequirementHelperTest {
         .isControlledDestinationRequired(decision, CVEDA);
 
     assertTrue(result);
+  }
+
+  @Test
+  public void isControlledDestinationRequiredForCedCvedp_decisionNonAcceptableNotAcceptableReDispatching_isFalse() {
+    decision.setDecision(NON_ACCEPTABLE);
+    decision.setNotAcceptableAction(REDISPATCHING);
+
+    boolean result = ControlledDestinationRequirementHelper
+        .isControlledDestinationRequired(decision, CVEDP);
+
+    assertFalse(result);
   }
 }
