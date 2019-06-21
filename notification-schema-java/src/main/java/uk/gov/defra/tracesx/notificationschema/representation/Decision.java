@@ -19,7 +19,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Specif
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IfChanneledOption;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableAction;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableCountry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableEstablishment;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableOtherReason;
@@ -43,11 +42,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablereasoning.not.null}")
-@NotAcceptableAction(
-    groups = NotificationFieldValidation.class,
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
-            + ".notacceptableaction.not.null}")
 @NotAcceptableOtherReason(
     groups = NotificationFieldValidation.class,
     message =
