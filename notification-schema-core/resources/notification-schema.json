@@ -904,6 +904,10 @@
           "$ref": "#/definitions/LaboratoryTests",
           "description": "Laboratory tests information details"
         },
+        "resealedContainersIncluded": {
+          "type": "boolean",
+          "description": "Are the containers resealed"
+        },
         "resealedContainers": {
           "$ref": "#/definitions/ResealedContainers",
           "description": "Resealed containers information details"

@@ -26,6 +26,7 @@ module.exports = class PartTwo {
     this.laboratoryTestsRequired = obj.laboratoryTestsRequired
     this.laboratoryTests = _.get(obj, 'laboratoryTests') ? new LaboratoryTests(
         obj.laboratoryTests) : undefined
+    this.resealedContainersIncluded = obj.resealedContainersIncluded
     this.resealedContainers = _.get(obj, 'resealedContainers', [])
     this.controlAuthority = _.get(obj, 'controlAuthority')
         ? new ControlAuthority(obj.controlAuthority) : undefined
