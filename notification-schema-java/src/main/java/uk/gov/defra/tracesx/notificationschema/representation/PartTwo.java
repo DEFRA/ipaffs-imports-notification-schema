@@ -71,6 +71,8 @@ public class PartTwo {
   @Valid
   private LaboratoryTests laboratoryTests;
 
+  private boolean resealedContainersIncluded;
+
   private List<String> resealedContainers;
 
   @Valid
