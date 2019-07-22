@@ -34,5 +34,10 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
               + ".meansoftransportfromentrypoint.type.not.null}")
   private TransportMethod type = null;
 
+  @NotEmpty(
+      groups = NotificationFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.document.not.empty}")
   private String document = null;
 }
