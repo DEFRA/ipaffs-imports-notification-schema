@@ -86,7 +86,7 @@ public class PartOne {
   private String pointOfEntry;
 
   @NotNull(
-      groups = NotificationCvedaFieldValidation.class,
+      groups = NotificationFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
@@ -94,7 +94,7 @@ public class PartOne {
   private LocalDate arrivalDate;
 
   @NotNull(
-      groups = NotificationCvedaFieldValidation.class,
+      groups = NotificationFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
           + ".not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
