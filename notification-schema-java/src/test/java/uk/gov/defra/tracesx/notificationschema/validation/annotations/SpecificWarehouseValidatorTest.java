@@ -29,7 +29,7 @@ public class SpecificWarehouseValidatorTest {
   private Decision decision;
 
   @DataPoints("Other decisions")
-  public static DecisionEnum[] decisions =
+  public static final DecisionEnum[] decisions =
       new DecisionEnum[]{
           ACCEPTABLE_IF_CHANNELED,
           ACCEPTABLE_FOR_INTERNAL_MARKET,

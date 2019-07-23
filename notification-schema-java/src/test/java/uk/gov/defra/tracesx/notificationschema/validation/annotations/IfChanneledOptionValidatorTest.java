@@ -26,7 +26,7 @@ public class IfChanneledOptionValidatorTest {
   private IfChanneledOptionValidator validator;
 
   @DataPoints("Other decisions")
-  public static DecisionEnum[] decisions =
+  public static final DecisionEnum[] decisions =
       new DecisionEnum[]{
           ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE,
           ACCEPTABLE_FOR_INTERNAL_MARKET,

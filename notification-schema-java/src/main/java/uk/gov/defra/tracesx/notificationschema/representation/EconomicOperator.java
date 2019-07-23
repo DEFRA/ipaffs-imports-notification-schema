@@ -9,9 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorStatus;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorType;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationAfterMeansOfTransport;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 import javax.validation.constraints.NotNull;
 
@@ -25,21 +24,21 @@ public class EconomicOperator {
   private String id;
 
   @NotNull(
-      groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
+      groups = TransporterDetailsRequiredValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.type.not"
               + ".null}")
   private EconomicOperatorType type;
 
   @NotNull(
-      groups = {NotificationCvedaFieldValidation.class},
+      groups = NotificationCvedaFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.status.not"
               + ".null}")
   private EconomicOperatorStatus status;
 
   @NotNull(
-      groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
+      groups = TransporterDetailsRequiredValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
               + ".companyname.not.null}")
@@ -52,7 +51,7 @@ public class EconomicOperator {
   private String otherIdentifier;
 
   @NotNull(
-      groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
+      groups = TransporterDetailsRequiredValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.address"
               + ".not.null}")

@@ -49,19 +49,19 @@ public class CvedaControlledDestinationValidatorTest {
   }
 
   @DataPoints("Decisions for ControlledDestinations without subOption")
-  public static DecisionEnum[] decisionsWithoutSubOption = new DecisionEnum[]{
+  public static final DecisionEnum[] decisionsWithoutSubOption = new DecisionEnum[]{
       ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE,
       ACCEPTABLE_IF_CHANNELED
   };
 
   @DataPoints("Decisions for ControlledDestinations with subOptions")
-  public static DecisionEnum[] decisionsWithSubOption = new DecisionEnum[]{
+  public static final DecisionEnum[] decisionsWithSubOption = new DecisionEnum[]{
       NON_ACCEPTABLE,
       ACCEPTABLE_FOR_INTERNAL_MARKET,
   };
 
   @DataPoints("requiring Controlled Destinations")
-  public static NotAcceptableActionEnum[] notAcceptableActionEnumsRequiringControlledDestinations =
+  public static final NotAcceptableActionEnum[] notAcceptableActionEnumsRequiringControlledDestinations =
       new NotAcceptableActionEnum[]{
           SLAUGHTER,
           EUTHANASIA,
