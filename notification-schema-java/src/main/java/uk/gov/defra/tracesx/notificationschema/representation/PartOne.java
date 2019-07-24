@@ -17,12 +17,13 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationAfterMeansOfTransport;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -103,7 +104,7 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = NotificationAfterMeansOfTransport.class,
+      groups = TransporterDetailsRequiredValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
   private EconomicOperator transporter;
@@ -112,7 +113,8 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
+      groups = {TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
               + ".null}")
@@ -127,7 +129,8 @@ public class PartOne {
   private MeansOfTransportBeforeBip meansOfTransportFromEntryPoint;
 
   @NotNull(
-      groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
+      groups = {TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
@@ -135,7 +138,8 @@ public class PartOne {
   private LocalDate departureDate;
 
   @NotNull(
-      groups = {NotificationAfterMeansOfTransport.class, NotificationCedFieldValidation.class},
+      groups = {TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
           + ".not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)

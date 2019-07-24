@@ -8,7 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TransportMethod;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationAfterMeansOfTransport;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -24,20 +25,23 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".not.empty}",
-      groups = NotificationAfterMeansOfTransport.class)
+      groups = {TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDValidation.class})
   private String id = null;
 
   @NotNull(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.type"
               + ".not.null}",
-      groups = NotificationAfterMeansOfTransport.class)
+      groups = {TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDValidation.class})
   private TransportMethod type = null;
 
   @NotEmpty(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
               + ".document.not.empty}",
-      groups = NotificationAfterMeansOfTransport.class)
+      groups = {TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDValidation.class})
   private String document = null;
 }

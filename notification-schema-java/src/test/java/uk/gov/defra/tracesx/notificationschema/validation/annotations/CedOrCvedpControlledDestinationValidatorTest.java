@@ -33,7 +33,7 @@ public class CedOrCvedpControlledDestinationValidatorTest {
   private CedOrCvedpControlledDestinationValidator validator;
 
   @DataPoints("requiring Controlled Destination")
-  public static NotAcceptableActionEnum[] notAcceptableActions = new NotAcceptableActionEnum[]{
+  public static final NotAcceptableActionEnum[] notAcceptableActions = new NotAcceptableActionEnum[]{
       DESTRUCTION,
       SLAUGHTER,
       OTHER

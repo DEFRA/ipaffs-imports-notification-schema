@@ -47,7 +47,6 @@ public class ControlledDestinationRequirementHelperTest {
     assertTrue(result);
   }
 
-
   @Test
   public void isControlledDestinationRequiredForCveda_nonAcceptableReExportAction_isFalse() {
     decision.setDecision(NON_ACCEPTABLE);
@@ -60,7 +59,7 @@ public class ControlledDestinationRequirementHelperTest {
   }
 
   @DataPoints("Decisions for CED CVEDP that require controlled destinations")
-  public static Decision[] decisionThatRequireControlledDestinations = new Decision[]{
+  public static final Decision[] decisionThatRequireControlledDestinations = new Decision[]{
       Decision.builder().decision(ACCEPTABLE_IF_CHANNELED).build(),
       Decision.builder().decision(ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE).build(),
       Decision.builder().decision(NON_ACCEPTABLE).notAcceptableAction(DESTRUCTION).build(),
@@ -80,7 +79,7 @@ public class ControlledDestinationRequirementHelperTest {
   }
 
   @DataPoints("Decisions for CED CVEDP that not require controlled destinations")
-  public static Decision[] decisionsThatNotRequireControlledDestination = new Decision[]{
+  public static final Decision[] decisionsThatNotRequireControlledDestination = new Decision[]{
       Decision.builder().decision(NON_ACCEPTABLE).notAcceptableAction(REEXPORT).build(),
       Decision.builder().decision(NON_ACCEPTABLE).build(),
       Decision.builder().decision(ACCEPTABLE_FOR_TEMPORARY_IMPORT).build(),
