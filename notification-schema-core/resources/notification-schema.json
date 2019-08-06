@@ -700,6 +700,12 @@
             "Pending"
           ],
           "description": "Conclusion of laboratory test"
+        },
+        "labTestCreatedDate": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "format": "date",
+          "description": "Date of lab test created in IPAFFS"
         }
       }
     },
