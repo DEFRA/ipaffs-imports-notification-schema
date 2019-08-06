@@ -33,4 +33,8 @@ public class LaboratoryTestResult {
   private String laboratoryTestMethod;
   private String results;
   private Conclusion conclusion;
+
+  @JsonSerialize(using = IsoDateSerializer.class)
+  @JsonDeserialize(using = IsoDateDeserializer.class)
+  private LocalDate labTestCreatedDate;
 }
