@@ -13,6 +13,7 @@ module.exports = class LaboratoryTestResult {
     this.laboratoryTestMethod = obj.laboratoryTestMethod
     this.results = obj.results
     this.conclusion = obj.conclusion
+    this.labTestCreatedDate = obj.labTestCreatedDate
 
     return Object.seal(new Proxy(this, handler))
   }
