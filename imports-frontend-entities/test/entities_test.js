@@ -2,6 +2,7 @@ const chai = require('chai')
 
 const Address = require('../src/entities/address')
 const Applicant = require('../src/entities/applicant')
+const ApprovedEstablishment = require('../src/entities/approved_establishment')
 const Commodities = require('../src/entities/commodities')
 const Complement = require('../src/entities/complement')
 const ConsignmentCheck = require('../src/entities/consignment_check')
@@ -17,6 +18,7 @@ const FeedbackInformation = require('../src/entities/feedback_information')
 const IdentificationDetail = require('../src/entities/identification_detail')
 const ImpactOfTransportationOnAnimals = require('../src/entities/impact_of_transportation_on_animals')
 const Inspector = require('../src/entities/official_inspector')
+const InternationalTelephone = require('../src/entities/international_telephone')
 const KeyDataPair = require('../src/entities/key_data_pair')
 const LaboratoryTestResult = require('../src/entities/laboratory_test_result')
 const LaboratoryTests = require('../src/entities/laboratory_tests')
@@ -38,40 +40,42 @@ const SingleLaboratoryTests = require('../src/entities/singlelaboratory_tests')
 describe('Entities: ', () => {
 
   const entities = [
-    PartOne,
+    Address,
+    Applicant,
+    ApprovedEstablishment,
     Commodities,
     Complement,
     ConsignmentCheck,
-    ControlAuthority,
-    Notification,
-    Purpose,
-    Veterinarian,
-    Inspector,
-    Address,
-    Applicant,
     ConsignmentValidation,
     Control,
+    ControlAuthority,
     Decision,
     DetailsOnReexport,
     EconomicOperator,
     EconomicOperatorAddress,
     Error,
     FeedbackInformation,
+    IdentificationDetail,
     ImpactOfTransportationOnAnimals,
+    Inspector,
+    InternationalTelephone,
     KeyDataPair,
     LaboratoryTestResult,
     LaboratoryTests,
     MeansOfTransport,
+    Notification,
     NotificationSealsContainers,
-    PartTwo,
+    PartOne,
     PartThree,
+    PartTwo,
     Party,
+    Purpose,
     Route,
     SingleLaboratoryTests,
     User,
     UserInfo,
-    VeterinaryInformation,
-    IdentificationDetail
+    Veterinarian,
+    VeterinaryInformation
   ]
 
   it('are capable of storing data', () => {

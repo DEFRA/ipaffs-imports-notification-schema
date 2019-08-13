@@ -1,6 +1,9 @@
 {
   "name": "@ipaffs/imports-frontend-entities",
-  "version": "1.0.27",
+  "version": "1.0.29",
+  "repository": {
+    "type": "git"
+  },
   "private": false,
   "description": "Baseline schema and entities to use across all frontends",
   "files": [
@@ -31,9 +34,9 @@
   },
   "dependencies": {
     "ajv": "6.5.3",
-    "lodash": "4.17.11",
+    "lodash": "4.17.15",
     "nyc": "14.1.1",
-    "release-it": "12.3.0",
+    "release-it": "12.3.5",
     "npm-cli-login": "0.1.1"
   }
 }
