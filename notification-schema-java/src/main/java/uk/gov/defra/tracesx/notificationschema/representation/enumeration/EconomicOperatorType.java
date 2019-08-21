@@ -8,6 +8,7 @@ public enum EconomicOperatorType {
   DESTINATION("destination"),
   EXPORTER("exporter"),
   IMPORTER("importer"),
+  CHARITY("charity"),
   COMMERCIAL_TRANSPORTER("commercial transporter"),
   PRIVATE_TRANSPORTER("private transporter"),
   VETERINARIAN("veterinarian"),

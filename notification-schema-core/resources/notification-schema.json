@@ -39,7 +39,8 @@
       "enum": [
         "CVEDA",
         "CVEDP",
-        "CED"
+        "CED",
+        "IMP"
       ]
     },
     "replaces": {
@@ -88,7 +89,7 @@
         },
         "placeOfDestination": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "Where the shipment is to be sent"
+          "description": "Where the shipment is to be sent. For IMP: minimum 48 hour accommodation/holding location."
         },
         "commodities": {
           "type": "object",
@@ -534,6 +535,56 @@
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
+        },
+        "countryOfOrigin" : {
+          "$ref": "#/definitions/Country",
+          "description": "Country of origin. 2-digits ISO code."
+        },
+        "placeOfOriginHarvest": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place in which the animals or products originate"
+        },
+        "permanentAddress": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place where the animals will go after the initial 48 hours (if different from Place of Destination)."
+        },
+        "dateOfImport" : {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "format": "date",
+          "description": "Date when consignment is imported."
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "description": "Species common name."
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Consignment quantity."
+        },
+        "animalsCertifiedFor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "Commodity intended use."
+        },
+        "transitingCountries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Country"
+          },
+          "description": "Transit route in order of country transited."
+        },
+        "identification": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "Any form(s) of identification provided for the consignment - separate each unique ID with a comma."
         }
       }
     },
@@ -1651,6 +1702,7 @@
             "destination",
             "exporter",
             "importer",
+            "charity",
             "commercial transporter",
             "private transporter",
             "temporary address",

@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Builder
 @Data
@@ -172,7 +174,6 @@ public class PartOne {
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;
-
   private Route route;
 
   private List<NotificationSealsContainers> sealsContainers;
@@ -182,6 +183,18 @@ public class PartOne {
   private LocalDateTime submissionDate;
 
   private Set<ValidationMessageCode> consignmentValidation;
-
   private UserInformation submittedBy;
+
+  @Size(min = 2, max = 2)
+  @Pattern(regexp = "^[A-Z][A-Z]$")
+  private String countryOfOrigin;
+
+  private EconomicOperator placeOfOriginHarvest;
+  private EconomicOperator permanentAddress;
+  private LocalDateTime dateOfImport;
+  private List<String> species;
+  private Integer quantity;
+  private String animalsCertifiedFor;
+  private List<String> transitingCountries;
+  private String identification;
 }
