@@ -39,7 +39,9 @@
       "enum": [
         "CVEDA",
         "CVEDP",
-        "CED"
+        "CED",
+        "ITAHC",
+        "DOCOM"
       ]
     },
     "replaces": {
@@ -210,23 +212,8 @@
                     "type": "string"
                   },
                   "keyDataPair": {
-                    "type": "array",
-                    "items": {
-                      "additionalProperties": false,
-                      "type": "object",
-                      "properties": {
-                        "key": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 255
-                        },
-                        "data": {
-                          "type": "string",
-                          "minLength": 1,
-                          "maxLength": 255
-                        }
-                      }
-                    }
+                    "$ref": "#/definitions/KeyDataPair",
+                    "description": "Key data value for commodity complement parameter set"
                   }
                 }
               }
@@ -240,9 +227,7 @@
               "description": "Consignments country of origin"
             },
             "regionOfOrigin": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 10,
+              "$ref": "#/definitions/Region",
               "description": "Region of country"
             },
             "consignedCountry": {
@@ -534,6 +519,84 @@
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
+        },
+        "centralCompetentAuthority": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 15,
+          "description": "Central Competent Authority code - e.g. GBFXT1"
+        },
+        "localCompetentAuthority": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 15,
+          "description": "Local Competent Authority code - e.g. GBFXT1"
+        },
+        "destinationLocalCompetentAuthority": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 15,
+          "description": "Destination Local Competent Authority code - e.g. GBFXT1"
+        },
+        "relatedOriginalCertificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReferenceNumber",
+            "description": "Related original certificate reference numbers of the notification"
+          }
+        },
+        "relatedCitesCertificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CitesReferenceNumber",
+            "description": "Related Cites certificate reference numbers of the notification"
+          }
+        },
+        "relatedIntraTradeCertificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReferenceNumber",
+            "description": "Related ITAHC certificate reference numbers of the notification"
+          }
+        },
+        "relatedCVEDProductCertificates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReferenceNumber",
+            "description": "Related CVEDP certificate reference numbers of the notification"
+          }
+        },
+        "dealer": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Dealer who dealt the consignment"
+        },
+        "countryOfDestination": {
+          "$ref": "#/definitions/Country",
+          "description": "Destination country. 2-digits ISO code. For example: GB"
+        },
+        "regionOfDestination": {
+          "$ref": "#/definitions/Region",
+          "description": "Region of destination country"
+        },
+        "placeOfOriginHarvest": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place in which the animals or products originate"
+        },
+        "placeOfLoading": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Only concerns animals: The town and postal code of the place where the animals are loaded"
+        },
+        "transitInThirdCountry": {
+          "$ref": "#/definitions/ThirdCountry",
+          "description": "Transit Third country properties"
+        },
+        "export": {
+          "$ref": "#/definitions/ThirdCountry",
+          "description": "Export related properties including 3rd country entry and exit points"
+        },
+        "customsNumber": {
+          "$ref": "#/definitions/ReferenceNumber",
+          "description": "Related customs reference number of the notification"
         }
       }
     },
@@ -555,6 +618,14 @@
       "$ref": "#/definitions/PartThree",
       "description": "Part of the notification which contains information filled by LVU if control of consignment is needed."
     },
+    "euImportsAttestation": {
+      "$ref": "#/definitions/EUImportsAttestation",
+      "description": "EU imports decision on the consignment"
+    },
+    "euImportsControl": {
+      "$ref": "#/definitions/EUImportsControl",
+      "description": "EU imports control checks on the consignment"
+    },
     "officialVeterinarian": {
       "type": "string",
       "description": "Official veterinarian"
@@ -573,6 +644,12 @@
       "minLength": 1,
       "maxLength": 90,
       "description": "TRACES certificate reference. It consists of certificateType.countryOfDestination.Year.GeneratedNumber ie. CVEDA.GB.2018.7654321"
+    },
+    "CitesReferenceNumber": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30,
+      "description": "Unique identifier of a CITES certificate"
     },
     "Applicant": {
       "type": "object",
@@ -1160,6 +1237,72 @@
         }
       }
     },
+    "EUImportsAttestation": {
+      "type": "object",
+      "description": "IntraTrade Decision on the consignment",
+      "properties": {
+        "intraTradeDecisionOfficialVeterinarian": {
+          "$ref": "#/definitions/OfficialVeterinarian",
+          "description": "Details about the intratrade official veterinarian"
+        },
+        "decisionParameters": {
+          "$ref": "#/definitions/KeyDataPair",
+          "description": "Decision parameters - an array of KeyValue pairs"
+        }
+      }
+    },
+    "EUImportsControl": {
+      "type": "object",
+      "description": "IntraTrade Control on the consignment",
+      "properties": {
+        "dateOfControl": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "format": "date-time",
+          "description": "User entered date when control checks were completed"
+        },
+        "documentaryCheck": {
+          "$ref": "#/definitions/DocumentaryCheck",
+          "description": "Result of documentary check"
+        },
+        "identityCheck": {
+          "$ref": "#/definitions/Result",
+          "description": "Identity check results"
+        },
+        "physicalCheck": {
+          "$ref": "#/definitions/PhysicalCheck",
+          "description": "Physical check results"
+        },
+        "laboratoryTests": {
+          "$ref": "#/definitions/LaboratoryTests",
+          "description": "Laboratory test results"
+        },
+        "welfareCheck": {
+          "$ref": "#/definitions/Result",
+          "description": "Welfare check test results"
+        },
+        "infringements": {
+          "$ref": "#/definitions/Infringements",
+          "description": "Infringement details"
+        },
+        "impactOfTransportOnAnimals": {
+          "$ref": "#/definitions/ImpactOfTransportOnAnimals",
+          "description": "Impact of transport on animals"
+        },
+        "actionFollowingQuarantine": {
+          "$ref": "#/definitions/ActionFollowingQuarantine",
+          "description": "Action following quaratine of the animals"
+        },
+        "officialVeterinarian": {
+          "$ref": "#/definitions/OfficialVeterinarian",
+          "description": "Details about the official veterinarian"
+        },
+        "placeOfControl": {
+          "$ref": "#/definitions/PlaceOfControl",
+          "description": "Place where control checks were carried out"
+        }
+      }
+    },
     "DetailsOnReExport": {
       "type": "object",
       "description": "Details on re-export",
@@ -1231,7 +1374,7 @@
           "type": "boolean",
           "description": "Does the consignment conform"
         },
-        "consignmentNoArrivalReason":{
+        "consignmentNoArrivalReason": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
@@ -1418,6 +1561,11 @@
       "type": "object",
       "description": "Official veterinarian information",
       "properties": {
+        "id": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Identifier of official veterinarian"
+        },
         "firstName": {
           "type": "string",
           "minLength": 1,
@@ -1450,6 +1598,33 @@
           "javaType": "java.time.LocalDateTime",
           "format": "date",
           "description": "Date of sign"
+        },
+        "competentAuthority": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 15,
+          "description": "Competent Authority code - e.g. GBFXT1"
+        },
+        "relatedLVU": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 15,
+          "description": "Related LVU code - e.g. GBFXT1"
+        },
+        "capacity": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.Capacity",
+          "description": "Capacity of the veterinarian",
+          "enum": [
+            "OfficialInspector",
+            "VeterinaryInspector"
+          ]
+        },
+        "placeOfSignature": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "City/town where the consignment was checked"
         }
       }
     },
@@ -1619,6 +1794,10 @@
       "description": "Certification for animal",
       "enum": [
         "Approved",
+        "Transhumance",
+        "ApprovedBodies",
+        "RegisteredHorses",
+        "Storage",
         "Quarantine",
         "Fattening",
         "Registered",
@@ -1627,7 +1806,12 @@
         "Pets",
         "Other",
         "Breeding",
-        "Circus"
+        "Circus",
+        "ArtificialReproduction",
+        "HumaneConsumption",
+        "TechnicalUse",
+        "AnimalFeedingstuff",
+        "PharmaceuticalUse"
       ]
     },
     "EconomicOperator": {
@@ -1850,6 +2034,247 @@
       "maxLength": 2,
       "pattern": "^[A-Z][A-Z]$",
       "description": "2 digits ISO code of country"
+    },
+    "Region": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10,
+      "description": "Region of country"
+    },
+    "ThirdCountry": {
+      "type": "object",
+      "description": "Third country parameters",
+      "properties": {
+        "thirdCountryISOCode": {
+          "$ref": "#/definitions/Country",
+          "description": "Third country ISO code"
+        },
+        "exitPoint": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 15,
+          "description": "Third country exit point"
+        },
+        "entryPoint": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 15,
+          "description": "Third country entry point"
+        }
+      }
+    },
+    "KeyDataPair": {
+      "type": "array",
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "data": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        }
+      }
+    },
+    "PlaceOfControl": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.PlaceOfControl",
+      "description": "Place of control",
+      "enum": [
+        "airport",
+        "enroute",
+        "approvedbody",
+        "assemblycenter",
+        "exitpoint",
+        "port",
+        "etablish",
+        "other",
+        "semen",
+        "dealerspremise",
+        "holding",
+        "controlpost"
+      ]
+    },
+    "ActionFollowingQuarantine": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.ActionFollowingQuarantine",
+      "description": "Action following quarantine",
+      "enum": [
+        "humankilling",
+        "release"
+      ]
+    },
+    "Infringements": {
+      "type": "object",
+      "description": "Infringements",
+      "properties": {
+        "infringementToWelfareRegulation": {
+          "$ref": "#/definitions/InfringementToWelfareRegulation",
+          "description": "Infringement to welfare regulation"
+        },
+        "infringementToAnimalHealthLegislation": {
+          "$ref": "#/definitions/InfringementToAnimalHealthLegislation",
+          "description": "Infringement to animal health legislation"
+        },
+        "correctiveAction": {
+          "type": "object",
+          "description": "Corrective action",
+          "properties": {
+            "correctiveActionType": {
+              "$ref": "#/definitions/CorrectiveActionType",
+              "description": "Corrective Action type"
+            },
+            "correctiveActionIdentification": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 96,
+              "description": "Corrective action identification in plain text"
+            }
+          }
+        }
+      }
+    },
+    "InfringementToWelfareRegulation": {
+      "type": "object",
+      "description": "Infringement to welfare regulation",
+      "properties": {
+        "infringementToWelfareRegulationType": {
+          "$ref": "#/definitions/InfringementToWelfareRegulationType",
+          "description": "Infringement to welfare regulation type"
+        },
+        "averageSpace": {
+          "type": "number",
+          "minimum": 0,
+          "description": "A non negative decimal number"
+        }
+      }
+    },
+    "InfringementToAnimalHealthLegislation": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.InfringementToAnimalHealthLegislation",
+      "description": "Infringement to animal health legislation",
+      "enum": [
+        "AbsenceOrInvalidCertificate",
+        "MisMatchwithDocuments",
+        "NonAuthorisedMemberstate",
+        "NonApprovedRegionOrZone",
+        "ProhibitedSpecies",
+        "AbsenceAdditionalGuarantees",
+        "NonApprovedHolding",
+        "DiseasedOrSuspectAnimals",
+        "NonSatisfactoryTests",
+        "AbsenceOrNonLegalIdentification",
+        "AbsenceNationalRequirements",
+        "AddressOfDestinationInvalid",
+        "Other"
+      ]
+    },
+    "InfringementToWelfareRegulationType": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.InfringementToWelfareRegulationType",
+      "description": "Infringement to welfare regulation type",
+      "enum": [
+        "TransporterAuthorisationInvalid",
+        "NonComplianceOfTheMeansOfTransport",
+        "ExceededDensity",
+        "TravelTimesExceeded",
+        "WateringAndFeedingNotFulfilled",
+        "MishandlingOrNegligenceToTheAnimals",
+        "SupplMeasuresLongJourney",
+        "DriverProficiency",
+        "RegisteredData",
+        "Other"
+      ]
+    },
+    "CorrectiveActionType": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.CorrectiveActionType",
+      "description": "Infringement corrective action type",
+      "enum": [
+        "DelayedDeparture",
+        "TransferProcedure",
+        "ReturnOfConsignment",
+        "HumanelyKilling",
+        "DestructionOfCarcassesOrProducts",
+        "UseOfProduct",
+        "TreatOfProducts",
+        "Quarantine"
+      ]
+    },
+    "DocumentaryCheck": {
+      "type": "object",
+      "description": "Infringement to welfare regulation",
+      "properties": {
+        "satisfactoryCheck": {
+          "$ref": "#/definitions/Result",
+          "description": "Documentary check results"
+        },
+        "additionalGuarantees": {
+          "$ref": "#/definitions/AdditionalGuarantee",
+          "description": "Satisfactory check results"
+        },
+        "nationalRequirements": {
+          "$ref": "#/definitions/Result",
+          "description": "National requirement check results"
+        }
+      }
+    },
+    "AdditionalGuarantee": {
+      "type": "object",
+      "description": "Additional guarantees including labtests",
+      "properties": {
+        "guarantee": {
+          "$ref": "#/definitions/LaboratoryTestGuarantee",
+          "description": "Labtest guarantee"
+        },
+        "satisfactoryCheck": {
+          "$ref": "#/definitions/Result",
+          "description": "Documentary check results"
+        }
+      }
+    },
+    "LaboratoryTestGuarantee": {
+      "type": "object",
+      "description": "Laboratory test guarantee",
+      "properties": {
+        "tracesId": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Traces identifier"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255,
+          "description": "Disease or residue being tested"
+        },
+        "speciesId": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Species identifier"
+        }
+      }
+    },
+    "PhysicalCheck": {
+      "type": "object",
+      "description": "Physical check on the consignment",
+      "properties": {
+        "satisfactoryCheck": {
+          "$ref": "#/definitions/Result",
+          "description": "Documentary check results"
+        },
+        "totalAnimalsChecked": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Number of animals checked"
+        }
+      }
     }
   }
 }
