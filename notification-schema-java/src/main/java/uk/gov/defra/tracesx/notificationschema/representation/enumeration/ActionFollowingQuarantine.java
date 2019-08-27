@@ -3,25 +3,22 @@ package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum NotificationTypeEnum {
+public enum  ActionFollowingQuarantine {
 
-  CVEDA("CVEDA"),
-  CVEDP("CVEDP"),
-  CED("CED"),
-  ITAHC("ITAHC"),
-  DOCOM("DOCOM");
+  HUMANE_KILLING("humankilling"),
+  RELEASE("release");
 
   private String value;
 
-  NotificationTypeEnum(String value) {
+  ActionFollowingQuarantine(String value) {
     this.value = value;
   }
 
   @JsonCreator
-  public static NotificationTypeEnum fromValue(String text) {
-    for (NotificationTypeEnum b : NotificationTypeEnum.values()) {
-      if (b.value.equals(text)) {
-        return b;
+  public static ActionFollowingQuarantine fromValue(String text) {
+    for (ActionFollowingQuarantine u : ActionFollowingQuarantine.values()) {
+      if (u.value.equals(text)) {
+        return u;
       }
     }
     return null;

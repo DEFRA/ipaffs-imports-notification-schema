@@ -184,4 +184,20 @@ public class PartOne {
   private Set<ValidationMessageCode> consignmentValidation;
 
   private UserInformation submittedBy;
+
+  private String centralCompetentAuthority;
+  private String localCompetentAuthority;
+  private String destinationLocalCompetentAuthority;
+  private List<String> relatedOriginalCertificates;
+  private List<String> relatedCitesCertificates;
+  private List<String> relatedIntraTradeCertificates;
+  private List<String> relatedCVEDProductCertificates;
+  private EconomicOperator dealer;
+  private EconomicOperator placeOfOriginHarvest;
+  private EconomicOperator placeOfLoading;
+  private String countryOfDestination;
+  private String regionOfDestination;
+  private ThirdCountry transitInThirdCountry;
+  private ThirdCountry export;
+  private String customsNumber;
 }
