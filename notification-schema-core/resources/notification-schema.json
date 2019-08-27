@@ -1237,13 +1237,13 @@
         }
       }
     },
-    "EUImportsAttestation": {
+    "EUImportsDecision": {
       "type": "object",
-      "description": "IntraTrade Decision on the consignment",
+      "description": "EU imports Decision on the consignment",
       "properties": {
-        "intraTradeDecisionOfficialVeterinarian": {
+        "officialVeterinarian": {
           "$ref": "#/definitions/OfficialVeterinarian",
-          "description": "Details about the intratrade official veterinarian"
+          "description": "Details about the EU imports signatory"
         },
         "decisionParameters": {
           "$ref": "#/definitions/KeyDataPair",
@@ -1253,7 +1253,7 @@
     },
     "EUImportsControl": {
       "type": "object",
-      "description": "IntraTrade Control on the consignment",
+      "description": "EU imports control on the consignment",
       "properties": {
         "dateOfControl": {
           "type": "string",

@@ -15,7 +15,7 @@ import java.util.List;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class EuImportsAttestation {
+public class EuImportsDecision {
 
   private OfficialVeterinarian officialVeterinarian;
   private List<KeyDataPair> keyDataPair;

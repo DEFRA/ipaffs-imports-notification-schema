@@ -116,6 +116,6 @@ public class Notification {
     return NotificationTypeEnum.CED.equals(type);
   }
 
-  private EuImportsAttestation euImportsAttestation;
+  private EuImportsDecision euImportsDecision;
   private EuImportsControl euImportsControl;
 }
