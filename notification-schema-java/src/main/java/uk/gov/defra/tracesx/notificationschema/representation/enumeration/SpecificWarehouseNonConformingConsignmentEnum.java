@@ -10,6 +10,7 @@ public enum SpecificWarehouseNonConformingConsignmentEnum implements EntityPrope
   CUSTOMWAREHOUSE("CustomWarehouse"),
   @CVEDP
   FREEZONEORFREEWAREHOUSE("FreeZoneOrFreeWarehouse"),
+  @CVEDP
   SHIPSUPPLIER("ShipSupplier"),
   @CVEDP
   SHIP("Ship");
