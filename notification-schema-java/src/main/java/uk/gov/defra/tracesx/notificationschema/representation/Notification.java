@@ -115,7 +115,4 @@ public class Notification {
   public boolean isCed() {
     return NotificationTypeEnum.CED.equals(type);
   }
-
-  private EuImportsAttestation euImportsAttestation;
-  private EuImportsControl euImportsControl;
 }
