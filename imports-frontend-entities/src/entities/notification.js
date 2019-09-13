@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const Ajv = require('ajv')
 
+const handler = require('./base/handler')
 const notificationJsonSchema = require('../../etc/notification-schema.json')
 const PartOne = require('./part_one')
 const PartTwo = require('./part_two')
@@ -37,23 +38,7 @@ module.exports = class Notification {
 
     validate(this)
 
-    return Object.seal(new Proxy(this, {
-      get(target, name) {
-        if (String(name).split('').every(c => +c < 10)) {
-          return target._items[+name]
-        }
-
-        return target[name]
-      },
-      set(target, name, value) {
-        if (String(name).split('').every(c => +c < 10)) {
-          target._items[+name] = value
-        } else {
-          target[name] = value
-        }
-      }
-    }))
-
+    return Object.seal(new Proxy(this, handler))
   }
 }
 

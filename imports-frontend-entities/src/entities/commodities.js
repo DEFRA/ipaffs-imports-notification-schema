@@ -1,5 +1,6 @@
 const _ = require('lodash')
 
+const handler = require('./base/handler')
 const CommodityComplement = require('./complement')
 
 module.exports = class Commodities {
@@ -24,22 +25,7 @@ module.exports = class Commodities {
     this.animalsCertifiedAs = obj.animalsCertifiedAs
     this.commodityIntendedFor = obj.commodityIntendedFor
 
-    return Object.seal(new Proxy(this, {
-      get(target, name) {
-        if (String(name).split('').every(c => +c < 10)) {
-          return target._items[+name]
-        }
-
-        return target[name]
-      },
-      set(target, name, value) {
-        if (String(name).split('').every(c => +c < 10)) {
-          target._items[+name] = value
-        } else {
-          target[name] = value
-        }
-      }
-    }))
+    return Object.seal(new Proxy(this, handler))
   }
 
 }

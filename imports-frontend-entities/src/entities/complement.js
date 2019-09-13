@@ -1,3 +1,5 @@
+const handler = require('./base/handler')
+
 module.exports = class CommodityComplement {
   constructor(obj) {
 
@@ -18,21 +20,6 @@ module.exports = class CommodityComplement {
     this.speciesFamily = obj.speciesFamily
     this.speciesNomination = obj.speciesNomination
 
-    return Object.seal(new Proxy(this, {
-      get(target, name) {
-        if (String(name).split('').every(c => +c < 10)) {
-          return target._items[+name]
-        }
-
-        return target[name]
-      },
-      set(target, name, value) {
-        if (String(name).split('').every(c => +c < 10)) {
-          target._items[+name] = value
-        } else {
-          target[name] = value
-        }
-      }
-    }))
+    return Object.seal(new Proxy(this, handler))
   }
 }
