@@ -39,7 +39,8 @@
       "enum": [
         "CVEDA",
         "CVEDP",
-        "CED"
+        "CED",
+        "IMP"
       ]
     },
     "replaces": {
@@ -88,7 +89,7 @@
         },
         "placeOfDestination": {
           "$ref": "#/definitions/EconomicOperator",
-          "description": "Where the shipment is to be sent"
+          "description": "Where the shipment is to be sent? For IMP minimum 48 hour accommodation/holding location."
         },
         "commodities": {
           "type": "object",
@@ -534,6 +535,24 @@
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
+        },
+        "complexCommoditySelected": {
+          "type": "boolean",
+          "description": "Was complex commodity selected. Indicating if importer provided commodity code."
+        },
+        "placeOfOriginHarvest": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place in which the animals or products originate"
+        },
+        "permanentAddress": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place where the animals will go after the initial 48 hours (if different from Place of Destination)."
+        },
+        "animalsCertifiedFor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "Commodity intended use."
         }
       }
     },
@@ -1651,6 +1670,7 @@
             "destination",
             "exporter",
             "importer",
+            "charity",
             "commercial transporter",
             "private transporter",
             "temporary address",

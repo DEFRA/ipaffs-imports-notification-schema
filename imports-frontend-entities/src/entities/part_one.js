@@ -56,6 +56,10 @@ module.exports = class PartOne {
         _.get(obj, 'consignmentValidation', []))
     this.submittedBy = obj.submittedBy
     this.transporterDetailsRequired = obj.transporterDetailsRequired
+    this.complexCommoditySelected = obj.complexCommoditySelected
+    this.placeOfOriginHarvest = obj.placeOfOriginHarvest
+    this.permanentAddress = obj.permanentAddress
+    this.animalsCertifiedFor = obj.animalsCertifiedFor
 
     return Object.seal(new Proxy(this, handler))
   }
