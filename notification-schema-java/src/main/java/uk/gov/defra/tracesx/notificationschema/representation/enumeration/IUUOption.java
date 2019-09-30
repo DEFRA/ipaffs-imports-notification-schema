@@ -16,7 +16,7 @@ public enum IUUOption {
   @JsonCreator
   public static IUUOption fromValue(String text) {
     for (IUUOption u : IUUOption.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

@@ -17,7 +17,7 @@ public enum ForImportOrAdmissionEnum {
   @JsonCreator
   public static ForImportOrAdmissionEnum fromValue(String text) {
     for (ForImportOrAdmissionEnum u : ForImportOrAdmissionEnum.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

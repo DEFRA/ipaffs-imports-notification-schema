@@ -18,7 +18,7 @@ public enum ForNonConformingEnum {
   @JsonCreator
   public static ForNonConformingEnum fromValue(String text) {
     for (ForNonConformingEnum u : ForNonConformingEnum.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

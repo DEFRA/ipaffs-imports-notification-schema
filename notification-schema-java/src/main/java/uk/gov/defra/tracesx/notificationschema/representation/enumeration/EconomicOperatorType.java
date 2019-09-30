@@ -24,7 +24,7 @@ public enum EconomicOperatorType {
   @JsonCreator
   public static EconomicOperatorType fromValue(String text) {
     for (EconomicOperatorType u : EconomicOperatorType.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

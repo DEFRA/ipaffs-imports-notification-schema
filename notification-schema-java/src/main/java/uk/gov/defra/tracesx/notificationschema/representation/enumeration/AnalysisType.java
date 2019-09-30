@@ -17,7 +17,7 @@ public enum AnalysisType {
   @JsonCreator
   public AnalysisType fromValue(String text) {
     for (AnalysisType u : AnalysisType.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

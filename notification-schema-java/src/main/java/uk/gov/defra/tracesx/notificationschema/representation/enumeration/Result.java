@@ -19,7 +19,7 @@ public enum Result {
   @JsonCreator
   public static Result fromValue(String text) {
     for (Result u : Result.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

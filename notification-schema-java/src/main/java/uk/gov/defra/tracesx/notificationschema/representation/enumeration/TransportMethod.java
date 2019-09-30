@@ -22,7 +22,7 @@ public enum TransportMethod {
   @JsonCreator
   public static TransportMethod fromValue(String text) {
     for (TransportMethod u : TransportMethod.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

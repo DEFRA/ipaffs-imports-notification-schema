@@ -16,7 +16,7 @@ public enum AnimalsUnit {
   @JsonCreator
   public static AnimalsUnit fromValue(String text) {
     for (AnimalsUnit u : AnimalsUnit.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

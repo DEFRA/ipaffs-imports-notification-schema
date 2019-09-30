@@ -19,7 +19,7 @@ public enum InternalMarketPurpose {
   @JsonCreator
   public static InternalMarketPurpose fromValue(String text) {
     for (InternalMarketPurpose u : InternalMarketPurpose.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

@@ -16,7 +16,7 @@ public enum IdentificationCheckType {
   @JsonCreator
   public static IdentificationCheckType fromValue(String text) {
     for (IdentificationCheckType u : IdentificationCheckType.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

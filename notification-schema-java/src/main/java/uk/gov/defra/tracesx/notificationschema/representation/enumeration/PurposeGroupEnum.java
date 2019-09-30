@@ -19,7 +19,7 @@ public enum PurposeGroupEnum {
   @JsonCreator
   public static PurposeGroupEnum fromValue(String text) {
     for (PurposeGroupEnum u : PurposeGroupEnum.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }
