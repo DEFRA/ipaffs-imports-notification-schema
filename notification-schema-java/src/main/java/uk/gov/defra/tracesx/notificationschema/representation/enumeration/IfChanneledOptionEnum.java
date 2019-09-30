@@ -20,7 +20,7 @@ public enum IfChanneledOptionEnum implements EntityProperty {
   @JsonCreator
   public static IfChanneledOptionEnum fromValue(String text) {
     for (IfChanneledOptionEnum u : IfChanneledOptionEnum.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

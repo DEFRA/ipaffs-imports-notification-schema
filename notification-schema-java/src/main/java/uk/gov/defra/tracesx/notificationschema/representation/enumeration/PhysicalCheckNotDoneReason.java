@@ -16,7 +16,7 @@ public enum PhysicalCheckNotDoneReason {
   @JsonCreator
   public static PhysicalCheckNotDoneReason fromValue(String text) {
     for (PhysicalCheckNotDoneReason u : PhysicalCheckNotDoneReason.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

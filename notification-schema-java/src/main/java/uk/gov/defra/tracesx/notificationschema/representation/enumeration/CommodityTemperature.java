@@ -17,7 +17,7 @@ public enum CommodityTemperature {
   @JsonCreator
   public static CommodityTemperature fromValue(String text) {
     for (CommodityTemperature u : CommodityTemperature.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

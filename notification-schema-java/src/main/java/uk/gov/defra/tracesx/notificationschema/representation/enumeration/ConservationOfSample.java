@@ -17,7 +17,7 @@ public enum ConservationOfSample {
   @JsonCreator
   public static ConservationOfSample fromValue(String text) {
     for (ConservationOfSample u : ConservationOfSample.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

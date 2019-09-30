@@ -16,7 +16,7 @@ public enum PartyType {
   @JsonCreator
   public static PartyType fromValue(String text) {
     for (PartyType u : PartyType.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }

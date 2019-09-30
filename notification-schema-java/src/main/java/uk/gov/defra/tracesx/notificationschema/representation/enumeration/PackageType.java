@@ -37,7 +37,7 @@ public enum PackageType {
   @JsonCreator
   public static PackageType fromValue(String text) {
     for (PackageType u : PackageType.values()) {
-      if (u.value.equals(text)) {
+      if (u.value.equalsIgnoreCase(text)) {
         return u;
       }
     }
