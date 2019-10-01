@@ -13,7 +13,19 @@ public enum AnimalCertification {
   PETS("Pets"),
   OTHER("Other"),
   BREEDING("Breeding"),
-  CIRCUS("Circus");
+  CIRCUS("Circus"),
+  FEEDING("Animal feeding stuff"),
+  REPRODUCTION("Artificial reproduction"),
+  COMMERCIAL_SALE("Commercial sale"),
+  GAME_RESTOCKING("Game restocking"),
+  HUMAN_CONSUMPTION("Human consumption"),
+  TECHNICAL_PHARMACEUTICAL_USE("Technical/Pharmaceutical use"),
+  PRODUCTION("Production"),
+  RACING_COMPETITION("Racing/competition"),
+  REGISTERED_EQUIDAE("Registered equidae"),
+  RESCUE("Rescue/Rehoming"),
+  RESEARCH("Research"),
+  ZOO("Zoo/Collection");
 
   private String value;
 

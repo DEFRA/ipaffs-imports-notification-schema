@@ -32,8 +32,6 @@ import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Builder
 @Data
@@ -188,5 +186,5 @@ public class PartOne {
   private Boolean complexCommoditySelected;
   private EconomicOperator placeOfOriginHarvest;
   private EconomicOperator permanentAddress;
-  private String animalsCertifiedFor;
+  private String portOfEntry;
 }

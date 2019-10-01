@@ -548,11 +548,11 @@
           "$ref": "#/definitions/EconomicOperator",
           "description": "Place where the animals will go after the initial 48 hours (if different from Place of Destination)."
         },
-        "animalsCertifiedFor": {
+        "portOfEntry": {
           "type": "string",
-          "minLength": 1,
+          "minLength": 0,
           "maxLength": 255,
-          "description": "Commodity intended use."
+          "description": "Entry port for EU Import notification."
         }
       }
     },
@@ -1646,7 +1646,19 @@
         "Pets",
         "Other",
         "Breeding",
-        "Circus"
+        "Circus",
+        "Animal feeding stuff",
+        "Artificial reproduction",
+        "Commercial sale",
+        "Game restocking",
+        "Human consumption",
+        "Technical/Pharmaceutical use",
+        "Production",
+        "Racing/competition",
+        "Registered equidae",
+        "Rescue/Rehoming",
+        "Research",
+        "Zoo/Collection"
       ]
     },
     "EconomicOperator": {
