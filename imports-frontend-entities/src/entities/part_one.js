@@ -59,7 +59,7 @@ module.exports = class PartOne {
     this.complexCommoditySelected = obj.complexCommoditySelected
     this.placeOfOriginHarvest = obj.placeOfOriginHarvest
     this.permanentAddress = obj.permanentAddress
-    this.animalsCertifiedFor = obj.animalsCertifiedFor
+    this.portOfEntry = obj.portOfEntry
 
     return Object.seal(new Proxy(this, handler))
   }
