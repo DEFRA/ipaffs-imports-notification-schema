@@ -10,7 +10,6 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.FreeCirculationPurposeEnum.HUMAN_CONSUMPTION;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.FreeCirculationPurposeEnum.OTHER;
 
-import com.sun.istack.internal.localization.NullLocalizable;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;

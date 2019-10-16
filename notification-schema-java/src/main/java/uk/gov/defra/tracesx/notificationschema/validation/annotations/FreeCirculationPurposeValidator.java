@@ -11,7 +11,8 @@ public class FreeCirculationPurposeValidator implements
 
   @Override
   public boolean isValid(Decision decision, ConstraintValidatorContext constraintValidatorContext) {
-    return decision == null || !(DecisionEnum.ACCEPTABLE_FOR_INTERNAL_MARKET.equals(decision.getDecision())
-        && decision.getFreeCirculationPurpose() == null);
+    return decision == null
+        || !(DecisionEnum.ACCEPTABLE_FOR_INTERNAL_MARKET.equals(decision.getDecision())
+            && decision.getFreeCirculationPurpose() == null);
   }
 }
