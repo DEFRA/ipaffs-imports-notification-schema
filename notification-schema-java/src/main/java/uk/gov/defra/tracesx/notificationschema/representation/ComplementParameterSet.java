@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKeyDataPair;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 
@@ -25,6 +26,7 @@ public class ComplementParameterSet {
   public static final String NUMBER_PACKAGE = "number_package";
   public static final String NET_WEIGHT = "netweight";
   public static final String NUMBER_ANIMAL = "number_animal";
+  public static final String TYPE_PACKAGE = "type_package";
   private Integer complementID;
   private String speciesID;
 
@@ -51,7 +53,15 @@ public class ComplementParameterSet {
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_animal.message}")
-      })
+  })
+  @NotNullKeyDataPair.List({
+      @NotNullKeyDataPair(
+          groups = NotificationCedOrCvedpFieldValidation.class,
+          field = TYPE_PACKAGE,
+          message =
+              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+                  + ".complementparameterset.keydatapair.type_package.message}")
+  })
   private List<ComplementParameterSetKeyDataPair> keyDataPair;
 
   public ComplementParameterSet addKeyDataPairItem(

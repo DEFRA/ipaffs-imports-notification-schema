@@ -6,28 +6,32 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class KeyDataPairValidatorTest {
+@RunWith(MockitoJUnitRunner.class)
+public class MinValueKeyDataPairValidatorTest {
 
-  MinValueKeyDataPairValidator validator;
-  MinValueKeyDataPair mockKeyDataPair;
-  List<ComplementParameterSetKeyDataPair> keyDataPairList;
+  @Mock
+  private MinValueKeyDataPair mockKeyDataPair;
+
+  private MinValueKeyDataPairValidator validator;
+  private List<ComplementParameterSetKeyDataPair> keyDataPairList;
 
   @Before
   public void setUp() {
     validator = new MinValueKeyDataPairValidator();
-    mockKeyDataPair = Mockito.mock(MinValueKeyDataPair.class);
     when(mockKeyDataPair.field()).thenReturn("number_package");
-    keyDataPairList = new ArrayList();
+    keyDataPairList = new ArrayList<>();
   }
 
   @Test
-  public void testNumPackagesIsValidIfObjectPassedIsNull() {
+  public void testKeyDataPairIsValidIfObjectPassedIsNull() {
     assertTrue(validator.isValid(null, null));
   }
 
@@ -36,7 +40,11 @@ public class KeyDataPairValidatorTest {
     validator.initialize(mockKeyDataPair);
 
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
-    pair.setKey("key");
+    pair.setKey("netweight");
+    keyDataPairList.add(pair);
+    pair.setKey("number_animal");
+    keyDataPairList.add(pair);
+    pair.setKey("type_package");
     keyDataPairList.add(pair);
 
     assertFalse(validator.isValid(keyDataPairList, null));
