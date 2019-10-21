@@ -53,7 +53,7 @@ public class ComplementParameterSet {
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_animal.message}")
-  })
+      })
   @NotNullKeyDataPair.List({
       @NotNullKeyDataPair(
           groups = NotificationCedOrCvedpFieldValidation.class,
@@ -61,7 +61,7 @@ public class ComplementParameterSet {
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.type_package.message}")
-  })
+      })
   private List<ComplementParameterSetKeyDataPair> keyDataPair;
 
   public ComplementParameterSet addKeyDataPairItem(
