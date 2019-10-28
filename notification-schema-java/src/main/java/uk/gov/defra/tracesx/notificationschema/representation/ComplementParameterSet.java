@@ -64,6 +64,8 @@ public class ComplementParameterSet {
       })
   private List<ComplementParameterSetKeyDataPair> keyDataPair;
 
+  private List<Identifier> identifiers;
+
   public ComplementParameterSet addKeyDataPairItem(
       ComplementParameterSetKeyDataPair keyDataPairItem) {
     if (this.keyDataPair == null) {
