@@ -20,6 +20,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoD
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.FreeCirculationPurpose;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IfChanneledOption;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.InternalMarket;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableCountry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableEstablishment;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableOtherReason;
@@ -63,7 +64,7 @@ import javax.validation.constraints.NotNull;
     groups = NotificationCvedpFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
-        + "specificwarehousenonconformingconsignment.not.null}")
+            + "specificwarehousenonconformingconsignment.not.null}")
 @IfChanneledOption(
     groups = NotificationCvedpFieldValidation.class,
     message =
@@ -74,6 +75,11 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
             + "freecirculationpurpose.not.null}")
+@InternalMarket(
+    groups = NotificationCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
+            + "internalmarketdetails.not.null}")
 public class Decision {
 
   @NotNull(
