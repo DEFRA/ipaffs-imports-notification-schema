@@ -14,18 +14,7 @@
 
   <properties>
     <dir.resources>./resources</dir.resources>
-    <java.version>11</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
   </properties>
-
-  <distributionManagement>
-    <repository>
-      <id>release</id>
-      <name>Releases</name>
-      <url>${repo.releases.url}</url>
-    </repository>
-  </distributionManagement>
 
   <scm>
     <connection>${parent.scm.connection}</connection>
@@ -70,15 +59,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven.resources.plugin.version}</version>
         <configuration>
           <useDefaultDelimiters>true</useDefaultDelimiters>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
       </plugin>
     </plugins>
   </build>
