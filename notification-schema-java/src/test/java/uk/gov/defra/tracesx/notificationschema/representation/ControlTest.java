@@ -11,6 +11,7 @@ public class ControlTest {
     EqualsVerifier.forClass(Control.class)
         .usingGetClass()
         .suppress(Warning.NONFINAL_FIELDS)
+        .suppress(Warning.ANNOTATION)
         .verify();
   }
 }
