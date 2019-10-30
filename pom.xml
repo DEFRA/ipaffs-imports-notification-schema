@@ -27,7 +27,7 @@
     <swagger.annotations.version>1.5.17</swagger.annotations.version>
     <hibernate.validator.version>6.0.14.Final</hibernate.validator.version>
     <junit.version>4.12</junit.version>
-    <jqno.equalsverifier.version>2.4.6</jqno.equalsverifier.version>
+    <jqno.equalsverifier.version>3.1.10</jqno.equalsverifier.version>
     <mockito.core.version>3.1.0</mockito.core.version>
   </properties>
 
