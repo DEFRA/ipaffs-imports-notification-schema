@@ -19,6 +19,7 @@ module.exports = class CommodityComplement {
     this.speciesFamilyName = obj.speciesFamilyName
     this.speciesFamily = obj.speciesFamily
     this.speciesNomination = obj.speciesNomination
+    this.speciesCommonName = obj.speciesCommonName
 
     return Object.seal(new Proxy(this, handler))
   }

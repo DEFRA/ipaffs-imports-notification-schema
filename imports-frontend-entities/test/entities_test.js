@@ -5,6 +5,7 @@ const Applicant = require('../src/entities/applicant')
 const ApprovedEstablishment = require('../src/entities/approved_establishment')
 const Commodities = require('../src/entities/commodities')
 const Complement = require('../src/entities/complement')
+const ComplementParameterSet = require('../src/entities/parameter_set')
 const ConsignmentCheck = require('../src/entities/consignment_check')
 const ConsignmentValidation = require('../src/entities/consignment_validation')
 const Control = require('../src/entities/control')
@@ -16,6 +17,7 @@ const EconomicOperatorAddress = require('../src/entities/economic_operator_addre
 const Error = require('../src/entities/error')
 const FeedbackInformation = require('../src/entities/feedback_information')
 const IdentificationDetail = require('../src/entities/identification_detail')
+const Identifiers = require('../src/entities/identifiers')
 const ImpactOfTransportationOnAnimals = require('../src/entities/impact_of_transportation_on_animals')
 const Inspector = require('../src/entities/official_inspector')
 const InternationalTelephone = require('../src/entities/international_telephone')
@@ -45,6 +47,7 @@ describe('Entities: ', () => {
     ApprovedEstablishment,
     Commodities,
     Complement,
+    ComplementParameterSet,
     ConsignmentCheck,
     ConsignmentValidation,
     Control,
@@ -56,6 +59,7 @@ describe('Entities: ', () => {
     Error,
     FeedbackInformation,
     IdentificationDetail,
+    Identifiers,
     ImpactOfTransportationOnAnimals,
     Inspector,
     InternationalTelephone,

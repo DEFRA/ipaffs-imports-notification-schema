@@ -2,6 +2,8 @@ const _ = require('lodash')
 
 const handler = require('./base/handler')
 const CommodityComplement = require('./complement')
+const ComplementParameterSet = require('./parameter_set')
+const {getList} = require('../utils/list')
 
 module.exports = class Commodities {
   constructor(obj) {
@@ -15,9 +17,10 @@ module.exports = class Commodities {
     this.numberOfPackages = obj.numberOfPackages
     this.temperature = obj.temperature
     this.numberOfAnimals = obj.numberOfAnimals
-    this.commodityComplement = getComplements(
-        _.get(obj, 'commodityComplement', []))
-    this.complementParameterSet = _.get(obj, 'complementParameterSet', [])
+    this.commodityComplement = getList(
+        _.get(obj, 'commodityComplement', []), CommodityComplement)
+    this.complementParameterSet = getList(
+      _.get(obj, 'complementParameterSet', []), ComplementParameterSet)
     this.includeNonAblactedAnimals = obj.includeNonAblactedAnimals
     this.countryOfOrigin = obj.countryOfOrigin
     this.regionOfOrigin = obj.regionOfOrigin
@@ -27,14 +30,4 @@ module.exports = class Commodities {
 
     return Object.seal(new Proxy(this, handler))
   }
-
-}
-
-const getComplements = inList => {
-  const complementList = []
-  _.forEach(inList, function (complement) {
-    complementList.push(new CommodityComplement(complement))
-  })
-
-  return complementList
 }

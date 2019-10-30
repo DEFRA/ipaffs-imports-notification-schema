@@ -192,6 +192,12 @@
                     "minLength": 1,
                     "maxLength": 15,
                     "description": "Species family identifier of commodity"
+                  },
+                  "speciesCommonName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "description": "Species common name of commodity for IMP notification simple commodity selection"
                   }
                 }
               }
@@ -225,6 +231,28 @@
                           "type": "string",
                           "minLength": 1,
                           "maxLength": 255
+                        }
+                      }
+                    }
+                  },
+                  "identifiers": {
+                    "type": "array",
+                    "description": "Data used to identify the complements inside an IMP consignment",
+                    "items": {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "speciesNumber": {
+                          "description": "Number used to identify which item the identifiers are related to",
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "data": {
+                          "type": "object",
+                          "description": "List of identifiers and their keys",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
                         }
                       }
                     }
