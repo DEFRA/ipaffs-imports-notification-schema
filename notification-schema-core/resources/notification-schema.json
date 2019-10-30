@@ -976,7 +976,7 @@
         "bipLocalReferenceNumber": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 32,
+          "maxLength": 90,
           "description": "Local reference number at BIP"
         },
         "signedOnBehalfOf": {
