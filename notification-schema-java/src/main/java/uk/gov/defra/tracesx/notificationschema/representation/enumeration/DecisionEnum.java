@@ -30,7 +30,7 @@ public enum DecisionEnum implements EntityProperty {
   @CVEDP
   ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE("Acceptable for Specific Warehouse"),
   @CVEDA
-  HORSE_REENTRY("Horse Reentry");
+  HORSE_REENTRY("Horse Re-entry");
 
   private String value;
 
