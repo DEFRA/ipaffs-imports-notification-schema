@@ -1790,6 +1790,12 @@
               "maxLength": 11,
               "description": "UK phone number"
             },
+            "telephone": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30,
+              "description": "Telephone number"
+            },
             "internationalTelephone": {
               "type": "object",
               "javaType": "uk.gov.defra.tracesx.notification.api.InternationalTelephone",
