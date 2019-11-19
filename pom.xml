@@ -29,6 +29,7 @@
 
 
   <modules>
+    <module>imports-frontend-entities</module>
     <module>notification-schema-core</module>
     <module>notification-schema-java</module>
   </modules>

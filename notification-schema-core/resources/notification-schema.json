@@ -531,20 +531,7 @@
           "type": "array",
           "description": "Array that contains pair of seal number and container number",
           "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "sealNumber": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 32
-              },
-              "containerNumber": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 32
-              }
-            }
+            "$ref": "#/definitions/SealContainer"
           }
         },
         "submissionDate": {
@@ -963,7 +950,14 @@
         },
         "resealedContainers": {
           "$ref": "#/definitions/ResealedContainers",
-          "description": "Resealed containers information details"
+          "description": "(Deprecated - To be removed as part of IMTA-6256) Resealed containers information details"
+        },
+        "resealedContainersMapping": {
+          "type": "array",
+          "description": "Resealed containers information details",
+          "items": {
+            "$ref": "#/definitions/SealContainer"
+          }
         },
         "controlAuthority": {
           "$ref": "#/definitions/ControlAuthority",
@@ -1916,6 +1910,28 @@
       "maxLength": 2,
       "pattern": "^[A-Z][A-Z]$",
       "description": "2 digits ISO code of country"
+    },
+    "SealContainer": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notification.api.NotificationSealsContainers",
+      "description": "Seal container details",
+      "properties": {
+        "sealNumber": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "containerNumber": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "resealedSealNumber": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        }
+      }
     }
   }
 }

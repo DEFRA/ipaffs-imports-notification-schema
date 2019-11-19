@@ -28,6 +28,7 @@ module.exports = class PartTwo {
         obj.laboratoryTests) : undefined
     this.resealedContainersIncluded = obj.resealedContainersIncluded
     this.resealedContainers = _.get(obj, 'resealedContainers', [])
+    this.resealedContainersMapping = getSealsContainers(_.get(obj, 'resealedContainersMapping', []))
     this.controlAuthority = _.get(obj, 'controlAuthority')
         ? new ControlAuthority(obj.controlAuthority) : undefined
     this.bipLocalReferenceNumber = obj.bipLocalReferenceNumber
@@ -41,6 +42,16 @@ module.exports = class PartTwo {
 
     return Object.seal(new Proxy(this, handler))
   }
+}
+
+const getSealsContainers = inList => {
+
+  const sealsContainersList = []
+  _.forEach(inList, seal => {
+    sealsContainersList.push(new NotificationSealsContainers(seal))
+})
+
+  return sealsContainersList
 }
 
 const getConsignmentValidation = inList => {

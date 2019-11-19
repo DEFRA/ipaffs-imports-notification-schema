@@ -9,6 +9,7 @@ module.exports = class NotificationSealsContainers {
 
     this.sealNumber = obj.sealNumber
     this.containerNumber = obj.containerNumber
+    this.resealedSealNumber = obj.resealedSealNumber
 
     return Object.seal(new Proxy(this, handler))
   }
