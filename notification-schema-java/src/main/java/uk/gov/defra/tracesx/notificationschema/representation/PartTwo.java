@@ -75,6 +75,8 @@ public class PartTwo {
 
   private List<String> resealedContainers;
 
+  private List<NotificationSealsContainers> resealedContainersMapping;
+
   @Valid
   private ControlAuthority controlAuthority;
 
