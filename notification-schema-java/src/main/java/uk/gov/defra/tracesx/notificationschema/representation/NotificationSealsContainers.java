@@ -17,5 +17,6 @@ public class NotificationSealsContainers {
 
   private String sealNumber = null;
   private String containerNumber = null;
+  private Boolean officialSeal = null;
   private String resealedSealNumber = null;
 }

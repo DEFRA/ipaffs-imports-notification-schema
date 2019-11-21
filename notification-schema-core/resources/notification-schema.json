@@ -1926,6 +1926,9 @@
           "minLength": 1,
           "maxLength": 32
         },
+        "officialSeal": {
+          "type": "boolean"
+        },
         "resealedSealNumber": {
           "type": "string",
           "minLength": 1,
