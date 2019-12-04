@@ -29,7 +29,6 @@ public class EconomicOperatorAddress {
   @NotNull(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private String city;
 
-  @NotNull(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private String postalZipCode;
 
   @NotNull(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_NULL)
@@ -39,6 +38,8 @@ public class EconomicOperatorAddress {
 
   @Valid
   private InternationalTelephone internationalTelephone;
+
+  private String telephone;
 
   private String email;
 }

@@ -19,6 +19,7 @@ module.exports = class EconomicOperatorAddress {
         ? new InternationalTelephone(obj.internationalTelephone) : undefined
     this.email = obj.email
     this.ukTelephone = obj.ukTelephone
+    this.telephone = obj.telephone
     return Object.seal(new Proxy(this, handler))
   }
 }
