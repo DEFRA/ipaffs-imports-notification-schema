@@ -27,6 +27,7 @@ public class DocumentCheckEuStandardValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueIfIsDocumentCheckResultReturnsNull() {
     ConsignmentCheck check = new ConsignmentCheck();
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -34,6 +35,7 @@ public class DocumentCheckEuStandardValidatorTest {
   public void testThatValidatorReturnsFalseIfDocumentCheckResultIsNotSet() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setDocumentCheckResult(NOT_SET);
+
     assertFalse(validator.isValid(check, null));
   }
 
@@ -41,6 +43,7 @@ public class DocumentCheckEuStandardValidatorTest {
   public void testThatValidatorReturnsTrueIfDocumentCheckResultIsSatisfactory() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setDocumentCheckResult(SATISFACTORY);
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -48,6 +51,7 @@ public class DocumentCheckEuStandardValidatorTest {
   public void testThatValidatorReturnsTrueIffDocumentCheckResultIsNotSatisfactory() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setDocumentCheckResult(NOT_SATISFACTORY);
+
     assertTrue(validator.isValid(check, null));
   }
 }

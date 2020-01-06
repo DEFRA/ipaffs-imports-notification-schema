@@ -40,6 +40,7 @@ public class LaboratoryTestsPendingValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsFalse() {
     partTwo.setLaboratoryTestsRequired(FALSE);
+
     assertTrue(validator.isValid(partTwo, null));
   }
 
@@ -47,6 +48,7 @@ public class LaboratoryTestsPendingValidatorTest {
   public void
   testThatValidatorReturnsFalseWhenLaboratoryTestsRequiredIsTrueAndLaboratoryTestsNull() {
     partTwo.setLaboratoryTestsRequired(TRUE);
+
     assertTrue(validator.isValid(partTwo, null));
   }
 
@@ -55,6 +57,7 @@ public class LaboratoryTestsPendingValidatorTest {
   testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsTrueAndEmptyLaboratoryTestsList() {
     partTwo.setLaboratoryTestsRequired(TRUE);
     partTwo.setLaboratoryTests(new LaboratoryTests());
+
     assertTrue(validator.isValid(partTwo, null));
   }
 
@@ -65,6 +68,7 @@ public class LaboratoryTestsPendingValidatorTest {
     laboratoryTests.setTestReason(TestReason.RANDOM);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
+
     assertTrue(validator.isValid(partTwo, null));
   }
 
@@ -75,6 +79,7 @@ public class LaboratoryTestsPendingValidatorTest {
     laboratoryTests.setTestReason(TestReason.SUSPICIOUS);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
+
     assertFalse(validator.isValid(partTwo, null));
   }
 
@@ -89,6 +94,33 @@ public class LaboratoryTestsPendingValidatorTest {
     singleLaboratoryTest.setLaboratoryTestResult(laboratoryTestResult);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
+
+    assertFalse(validator.isValid(partTwo, null));
+  }
+
+  @Test
+  public void shouldFailValidationWhenReasonIsReEnforcedNoTests() {
+    partTwo.setLaboratoryTestsRequired(TRUE);
+    LaboratoryTests laboratoryTests = new LaboratoryTests();
+    laboratoryTests.setTestReason(TestReason.REENFORCED);
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
+    partTwo.setLaboratoryTests(laboratoryTests);
+
+    assertFalse(validator.isValid(partTwo, null));
+  }
+
+  @Test
+  public void shouldFailValidationWhenReasonIsReEnforcedAndOnePendingTest() {
+    partTwo.setLaboratoryTestsRequired(TRUE);
+    LaboratoryTests laboratoryTests = new LaboratoryTests();
+    laboratoryTests.setTestReason(TestReason.REENFORCED);
+    SingleLaboratoryTest singleLaboratoryTest = new SingleLaboratoryTest();
+    LaboratoryTestResult laboratoryTestResult = new LaboratoryTestResult();
+    laboratoryTestResult.setConclusion(PENDING);
+    singleLaboratoryTest.setLaboratoryTestResult(laboratoryTestResult);
+    laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
+    partTwo.setLaboratoryTests(laboratoryTests);
+
     assertFalse(validator.isValid(partTwo, null));
   }
 
@@ -103,6 +135,7 @@ public class LaboratoryTestsPendingValidatorTest {
     singleLaboratoryTest.setLaboratoryTestResult(laboratoryTestResult);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
+
     assertTrue(validator.isValid(partTwo, null));
   }
 }

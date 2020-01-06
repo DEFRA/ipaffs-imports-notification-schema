@@ -30,6 +30,7 @@ public class IdentityCheckTypeValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueIfIdentityCheckResultIsNotSatisfactory() {
     check.setIdentityCheckResult(NOT_SATISFACTORY);
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -37,6 +38,7 @@ public class IdentityCheckTypeValidatorTest {
   public void testThatValidatorReturnsTrueIfIdentityCheckResultIsSatisfactoryAndTypeIsSealCheck() {
     check.setIdentityCheckResult(SATISFACTORY);
     check.setIdentityCheckType(SEAL_CHECK);
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -45,12 +47,14 @@ public class IdentityCheckTypeValidatorTest {
   testThatValidatorReturnsTrueIfIdentityCheckResultIsSatisfactoryAndTypeIsFullIdentityCheck() {
     check.setIdentityCheckResult(SATISFACTORY);
     check.setIdentityCheckType(FULL_IDENTITY_CHECK);
+
     assertTrue(validator.isValid(check, null));
   }
 
   @Test
   public void testThatValidatorReturnsFalseIfIdentityCheckResultIsSatisfactoryButTypeIsNull() {
     check.setIdentityCheckResult(SATISFACTORY);
+
     assertFalse(validator.isValid(check, null));
   }
 }
