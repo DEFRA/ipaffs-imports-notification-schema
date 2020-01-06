@@ -28,6 +28,7 @@ public class NotAcceptableReasonValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueIfConsignmentAcceptableReturnsNull() {
     Decision decision = new Decision();
+
     assertTrue(validator.isValid(decision, null));
   }
 
@@ -35,6 +36,7 @@ public class NotAcceptableReasonValidatorTest {
   public void testThatValidatorReturnsTrueIfConsignmentAcceptableIsTrue() {
     Decision decision = new Decision();
     decision.setConsignmentAcceptable(Boolean.TRUE);
+
     assertTrue(validator.isValid(decision, null));
   }
 
@@ -43,6 +45,7 @@ public class NotAcceptableReasonValidatorTest {
   testThatValidatorReturnsFalseIfConsignmentAcceptableIsFalseAndNotAcceptableReasonsIsNull() {
     Decision decision = new Decision();
     decision.setConsignmentAcceptable(Boolean.FALSE);
+
     assertFalse(validator.isValid(decision, null));
   }
 
@@ -52,6 +55,7 @@ public class NotAcceptableReasonValidatorTest {
     Decision decision = new Decision();
     decision.setConsignmentAcceptable(Boolean.FALSE);
     decision.setNotAcceptableReasons(new ArrayList<>());
+
     assertFalse(validator.isValid(decision, null));
   }
 
@@ -63,6 +67,7 @@ public class NotAcceptableReasonValidatorTest {
     List<NotAcceptableReasonsEnum> reasons = new ArrayList<>();
     reasons.add(NotAcceptableReasonsEnum.ABSENCEADDITIONALGUARANTEES);
     decision.setNotAcceptableReasons(reasons);
+
     assertTrue(validator.isValid(decision, null));
   }
 }

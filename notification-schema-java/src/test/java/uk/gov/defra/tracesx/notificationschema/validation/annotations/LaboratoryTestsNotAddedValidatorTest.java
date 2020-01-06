@@ -30,6 +30,7 @@ public class LaboratoryTestsNotAddedValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueIfIsLaboratoryTestsNotAddedNull() {
     PartTwo partTwo = new PartTwo();
+
     assertTrue(validator.isValid(partTwo, null));
   }
 
@@ -37,6 +38,7 @@ public class LaboratoryTestsNotAddedValidatorTest {
   public void testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsFalse() {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(FALSE);
+
     assertTrue(validator.isValid(partTwo, null));
   }
 
@@ -45,6 +47,7 @@ public class LaboratoryTestsNotAddedValidatorTest {
   testThatValidatorReturnsFalseWhenLaboratoryTestsRequiredIsTrueAndLaboratoryTestsNull() {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(TRUE);
+
     assertFalse(validator.isValid(partTwo, null));
   }
 
@@ -54,6 +57,7 @@ public class LaboratoryTestsNotAddedValidatorTest {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(TRUE);
     partTwo.setLaboratoryTests(new LaboratoryTests());
+
     assertFalse(validator.isValid(partTwo, null));
   }
 
@@ -65,6 +69,7 @@ public class LaboratoryTestsNotAddedValidatorTest {
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
+
     assertTrue(validator.isValid(partTwo, null));
   }
 }

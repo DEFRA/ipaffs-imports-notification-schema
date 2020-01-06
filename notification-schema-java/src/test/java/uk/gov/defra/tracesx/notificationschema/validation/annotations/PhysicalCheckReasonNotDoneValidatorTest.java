@@ -28,6 +28,7 @@ public class PhysicalCheckReasonNotDoneValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueIfIsPhysicalCheckDoneReturnsNull() {
     ConsignmentCheck check = new ConsignmentCheck();
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -36,6 +37,7 @@ public class PhysicalCheckReasonNotDoneValidatorTest {
   testThatValidatorReturnsFalseIfPhysicalCheckIsNotDoneAndPhysicalCheckNotDoneReasonIsNull() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setPhysicalCheckResult(NOT_DONE);
+
     assertFalse(validator.isValid(check, null));
   }
 
@@ -45,6 +47,7 @@ public class PhysicalCheckReasonNotDoneValidatorTest {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setPhysicalCheckDone(FALSE);
     check.setPhysicalCheckNotDoneReason(REDUCED_CHECKS_REGIME);
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -54,6 +57,7 @@ public class PhysicalCheckReasonNotDoneValidatorTest {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setPhysicalCheckDone(FALSE);
     check.setPhysicalCheckNotDoneReason(OTHER);
+
     assertTrue(validator.isValid(check, null));
   }
 }

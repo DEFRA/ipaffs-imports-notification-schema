@@ -35,6 +35,7 @@ public class IdentityCheckEuStandardValidatorTest {
   public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsSatisfactory() {
     check.setIdentityCheckDone(true);
     check.setIdentityCheckResult(SATISFACTORY);
+
     assertTrue(validator.isValid(check, null));
   }
 
@@ -42,12 +43,14 @@ public class IdentityCheckEuStandardValidatorTest {
   public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsNotSatisfactory() {
     check.setIdentityCheckDone(true);
     check.setIdentityCheckResult(NOT_SATISFACTORY);
+
     assertTrue(validator.isValid(check, null));
   }
 
   @Test
   public void testThatValidatorReturnsFalseIfIdentityCheckDoneIsTrueAndResultIsNull() {
     check.setIdentityCheckDone(true);
+
     assertFalse(validator.isValid(check, null));
   }
 }

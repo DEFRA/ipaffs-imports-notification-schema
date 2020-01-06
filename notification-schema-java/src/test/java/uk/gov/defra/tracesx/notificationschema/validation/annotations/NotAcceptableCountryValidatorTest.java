@@ -28,6 +28,7 @@ public class NotAcceptableCountryValidatorTest {
   @Test
   public void testThatValidatorReturnsTrueIfConsignmentAcceptableReturnsNull() {
     Decision decision = new Decision();
+
     assertTrue(validator.isValid(decision, null));
   }
 
@@ -35,6 +36,7 @@ public class NotAcceptableCountryValidatorTest {
   public void testThatValidatorReturnsTrueIfConsignmentAcceptableIsTrue() {
     Decision decision = new Decision();
     decision.setConsignmentAcceptable(Boolean.TRUE);
+
     assertTrue(validator.isValid(decision, null));
   }
 
@@ -43,6 +45,7 @@ public class NotAcceptableCountryValidatorTest {
   testThatValidatorReturnsTrueIfConsignmentAcceptableIsFalseAndNotAcceptableReasonsIsNull() {
     Decision decision = new Decision();
     decision.setConsignmentAcceptable(Boolean.FALSE);
+
     assertTrue(validator.isValid(decision, null));
   }
 
@@ -52,6 +55,7 @@ public class NotAcceptableCountryValidatorTest {
     Decision decision = new Decision();
     decision.setConsignmentAcceptable(Boolean.FALSE);
     decision.setNotAcceptableReasons(new ArrayList<>());
+
     assertTrue(validator.isValid(decision, null));
   }
 
@@ -63,6 +67,7 @@ public class NotAcceptableCountryValidatorTest {
     List<NotAcceptableReasonsEnum> reasons = new ArrayList<>();
     reasons.add(NotAcceptableReasonsEnum.NONAPPROVEDCOUNTRY);
     decision.setNotAcceptableReasons(reasons);
+
     assertFalse(validator.isValid(decision, null));
   }
 }
