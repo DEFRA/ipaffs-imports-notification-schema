@@ -32,21 +32,7 @@ public class VeterinaryInformation {
               + ".properties.establishmentsOfOrigin.not.null}")
   private List<ApprovedEstablishment> establishmentsOfOrigin;
 
-  @NotEmpty(
-      groups = {NotificationVeterinaryValidation.class},
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
-              + ".properties.veterinaryDocument.not.null}")
-  private String veterinaryDocument;
-
-  @NotEmpty(
-      groups = {NotificationVeterinaryValidation.class},
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
-              + ".properties.veterinaryDocumentIssueDate.not.null}")
-  private String veterinaryDocumentIssueDate;
-
-  private List<String> accompanyingDocumentNumbers;
+  private List<AccompanyingDocument> accompanyingDocuments;
   private List<NotificationIdentificationDetails> identificationDetails;
 
   @JsonSerialize(using = IsoDateSerializer.class)

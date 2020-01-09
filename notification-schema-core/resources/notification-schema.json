@@ -467,21 +467,30 @@
                 "$ref": "#/definitions/ApprovedEstablishment"
               }
             },
-            "veterinaryDocument": {
-              "type": "string",
-              "description": "Veterinary document identification"
-            },
-            "veterinaryDocumentIssueDate": {
-              "type": "string",
-              "description": "Veterinary document issue date"
-            },
-            "accompanyingDocumentNumbers": {
+            "accompanyingDocuments": {
               "type": "array",
               "description": "Additional documents",
               "items": {
-                "type": "string",
-                "minLength": 1,
-                "maxLength": 32
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "documentType": {
+                    "type": "string",
+                    "description": "Additional document type",
+                    "enum": [
+                      "Veterinary health certificate",
+                      "Air Waybill"
+                    ]
+                  },
+                  "documentReference": {
+                    "type": "string",
+                    "description": "Additional document reference"
+                  },
+                  "documentIssueDate": {
+                    "type": "string",
+                    "description": "Additional document issue date"
+                  }
+                }
               }
             },
             "identificationDetails": {
