@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -31,22 +30,10 @@ public class VeterinaryInformation {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".properties.establishmentsOfOrigin.not.null}")
   private List<ApprovedEstablishment> establishmentsOfOrigin;
-
-  @NotEmpty(
-      groups = {NotificationVeterinaryValidation.class},
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
-              + ".properties.veterinaryDocument.not.null}")
   private String veterinaryDocument;
-
-  @NotEmpty(
-      groups = {NotificationVeterinaryValidation.class},
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
-              + ".properties.veterinaryDocumentIssueDate.not.null}")
   private String veterinaryDocumentIssueDate;
-
   private List<String> accompanyingDocumentNumbers;
+  private List<AccompanyingDocument> accompanyingDocuments;
   private List<NotificationIdentificationDetails> identificationDetails;
 
   @JsonSerialize(using = IsoDateSerializer.class)

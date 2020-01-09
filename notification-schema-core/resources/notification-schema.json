@@ -484,6 +484,13 @@
                 "maxLength": 32
               }
             },
+            "accompanyingDocuments": {
+              "type": "array",
+              "description": "Accompanying documents",
+              "items": {
+                "$ref": "#/definitions/AccompanyingDocument"
+              }
+            },
             "identificationDetails": {
               "type": "array",
               "description": "Details helpful for identification",
@@ -1933,6 +1940,32 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 32
+        }
+      }
+    },
+    "AccompanyingDocument": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notification.api.AccompanyingDocument",
+      "description": "Accompanying document",
+      "properties": {
+        "documentType": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.DocumentType",
+          "description": "Additional document type",
+          "enum": [
+            "airWaybill",
+            "veterinaryHealthCertificate"
+          ]
+        },
+        "documentReference": {
+          "type": "string",
+          "description": "Additional document reference"
+        },
+        "documentIssueDate": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "format": "date",
+          "description": "Additional document issue date"
         }
       }
     }
