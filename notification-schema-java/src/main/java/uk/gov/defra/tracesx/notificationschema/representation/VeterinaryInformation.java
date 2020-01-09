@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 
 import java.time.LocalDate;
 import java.util.List;
