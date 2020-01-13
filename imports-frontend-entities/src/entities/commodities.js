@@ -27,6 +27,8 @@ module.exports = class Commodities {
     this.consignedCountry = obj.consignedCountry
     this.animalsCertifiedAs = obj.animalsCertifiedAs
     this.commodityIntendedFor = obj.commodityIntendedFor
+    this.totalGrossVolume = obj.totalGrossVolume
+    this.totalGrossVolumeUnit = obj.totalGrossVolumeUnit
 
     return Object.seal(new Proxy(this, handler))
   }

@@ -102,6 +102,10 @@ public class Commodities {
 
   private CommodityIntention commodityIntendedFor = null;
 
+  private BigDecimal totalGrossVolume;
+
+  private String totalGrossVolumeUnit;
+
   public Commodities addCommodityComplementItem(CommodityComplement commodityComplementItem) {
     if (this.commodityComplement == null) {
       this.commodityComplement = new ArrayList<>();

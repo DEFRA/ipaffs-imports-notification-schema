@@ -105,6 +105,15 @@
               "minimum": 0,
               "description": "The total net weight of the commodities within this consignment"
             },
+            "totalGrossVolume": {
+              "type": "number",
+              "minimum": 0,
+              "description": "The total gross volume of the commodities within this consignment"
+            },
+            "totalGrossVolumeUnit": {
+              "type": "string",
+              "description": "Unit used for specifying total gross volume of this consignment (litres or metres cubed)"
+            },
             "numberOfPackages": {
               "type": "integer",
               "minimum": 0,
