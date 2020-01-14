@@ -24,6 +24,7 @@ public enum NotAcceptableActionEnum implements EntityProperty {
   @CVEDP
   TRANSFORMATION("transformation"),
   @CED
+  @CVEDP
   OTHER("other");
 
   private String value;

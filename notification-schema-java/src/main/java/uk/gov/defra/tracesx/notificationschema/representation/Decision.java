@@ -91,6 +91,7 @@ public class Decision {
 
   private NotAcceptableActionEnum notAcceptableAction;
   private String notAcceptableDestructionReason;
+  private String notAcceptableActionOtherReason;
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
