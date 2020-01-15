@@ -1042,6 +1042,12 @@
           "maxLength": 255,
           "description": "Filled when notAcceptableAction is equal to destruction"
         },
+        "notAcceptableActionOtherReason": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255,
+          "description": "Filled when notAcceptableAction is equal to other"
+        },
         "notAcceptableActionByDate": {
           "type": "string",
           "format": "date",
