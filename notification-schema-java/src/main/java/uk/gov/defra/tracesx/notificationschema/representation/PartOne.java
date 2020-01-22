@@ -17,6 +17,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullVeterinaryDocument;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
@@ -169,6 +170,11 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".not.null}")
+  @NotNullVeterinaryDocument(
+      groups = {NotificationVeterinaryValidation.class},
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
+              + ".properties.accompanyingDocuments.must.have.veterinary.document}")
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;
