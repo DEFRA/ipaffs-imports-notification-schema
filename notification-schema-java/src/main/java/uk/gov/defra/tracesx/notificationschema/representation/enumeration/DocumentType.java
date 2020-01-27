@@ -5,6 +5,17 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DocumentType {
   AIR_WAYBILL("airWaybill"),
+  BILL_OF_LADING("billOfLading"),
+  CATCH_CERTIFICATE("catchCertificate"),
+  COMMERCIAL_INVOICE("commercialInvoice"),
+  CUSTOMS_DECLARATION("customsDeclaration"),
+  HEALTH_CERTIFICATE("healthCertificate"),
+  IMPORT_PERMIT("importPermit"),
+  LABORATORY_SAMPLING_RESULTS_FOR_AFLATOXIN("laboratorySamplingResultsForAflatoxin"),
+  LETTER_OF_AUTHORITY("letterOfAuthority"),
+  OTHER("other"),
+  RAILWAY_BILL("railwayBill"),
+  SEA_WAYBILL("seaWaybill"),
   VETERINARY_HEALTH_CERTIFICATE("veterinaryHealthCertificate");
 
   private String value;

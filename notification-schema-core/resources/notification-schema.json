@@ -1971,6 +1971,17 @@
           "description": "Additional document type",
           "enum": [
             "airWaybill",
+            "billOfLading",
+            "catchCertificate",
+            "commercialInvoice",
+            "customsDeclaration",
+            "healthCertificate",
+            "importPermit",
+            "laboratorySamplingResultsForAflatoxin",
+            "letterOfAuthority",
+            "other",
+            "railwayBill",
+            "seaWaybill",
             "veterinaryHealthCertificate"
           ]
         },
