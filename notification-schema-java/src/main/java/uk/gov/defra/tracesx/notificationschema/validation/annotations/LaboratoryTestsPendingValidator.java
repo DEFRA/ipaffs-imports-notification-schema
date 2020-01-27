@@ -36,14 +36,15 @@ public class LaboratoryTestsPendingValidator
   private boolean atLeastOneLabTestIsPendingAndSuspicious(PartTwo partTwo) {
     final LaboratoryTests laboratoryTests = partTwo.getLaboratoryTests();
     return hasAtLeastOneLaboratoryTest(laboratoryTests)
-        && isSuspiciousOrReEnforced(laboratoryTests)
+        && requiresResultsWhenPending(laboratoryTests)
         && isThereAPendingTestResult(laboratoryTests.getSingleLaboratoryTests());
   }
 
-  private boolean isSuspiciousOrReEnforced(LaboratoryTests laboratoryTests) {
+  private boolean requiresResultsWhenPending(LaboratoryTests laboratoryTests) {
     return laboratoryTests.getTestReason() != null
         && (laboratoryTests.getTestReason() == TestReason.SUSPICIOUS
-        || laboratoryTests.getTestReason() == TestReason.REENFORCED);
+        || laboratoryTests.getTestReason() == TestReason.REENFORCED
+        || laboratoryTests.getTestReason() == TestReason.INTENSIFIED_CONTROLS);
   }
 
   private boolean hasAtLeastOneLaboratoryTest(LaboratoryTests laboratoryTests) {
