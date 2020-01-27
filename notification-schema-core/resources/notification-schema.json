@@ -1351,7 +1351,9 @@
           "enum": [
             "Random",
             "Suspicious",
-            "Re-enforced"
+            "Re-enforced",
+            "Intensified controls",
+            "Required"
           ]
         },
         "singleLaboratoryTests": {
