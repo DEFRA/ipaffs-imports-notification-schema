@@ -79,6 +79,10 @@
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that sends shipment"
         },
+        "consignorTwo": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Person or Company that sends shipment"
+        },
         "consignee": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that receives shipment"
@@ -90,6 +94,35 @@
         "placeOfDestination": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Where the shipment is to be sent? For IMP minimum 48 hour accommodation/holding location."
+        },
+        "placeOfOriginHarvest": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place in which the animals or products originate"
+        },
+        "permanentAddress": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Place where the animals will go after the initial 48 hours (if different from Place of Destination)."
+        },
+        "additionalPermanentAddresses": {
+          "type": "array",
+          "description": "List of additional permanent addresses",
+          "items": {
+            "$ref": "#/definitions/EconomicOperator"
+          }
+        },
+        "cphNumber": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Charity Parish Holding number"
+        },
+        "importingFromCharity": {
+          "type": "boolean",
+          "description": "Is the importer importing from a charity?"
+        },
+        "isPlaceOfDestinationThePermanentAddress": {
+          "type": "boolean",
+          "description": "Is the place of destination the permanent address?"
         },
         "commodities": {
           "type": "object",
@@ -570,14 +603,6 @@
         "complexCommoditySelected": {
           "type": "boolean",
           "description": "Was complex commodity selected. Indicating if importer provided commodity code."
-        },
-        "placeOfOriginHarvest": {
-          "$ref": "#/definitions/EconomicOperator",
-          "description": "Place in which the animals or products originate"
-        },
-        "permanentAddress": {
-          "$ref": "#/definitions/EconomicOperator",
-          "description": "Place where the animals will go after the initial 48 hours (if different from Place of Destination)."
         },
         "portOfEntry": {
           "type": "string",

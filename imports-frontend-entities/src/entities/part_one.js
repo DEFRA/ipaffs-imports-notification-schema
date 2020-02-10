@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const handler = require('./base/handler')
+const { getList } = require('../utils/list')
 const EconomicOperator = require('./economic_operator')
 const Party = require('./party')
 const Commodities = require('./commodities')
@@ -20,14 +21,26 @@ module.exports = class PartOne {
 
     this.personResponsible = _.get(obj, 'personResponsible') ? new Party(
         obj.personResponsible) : undefined
+
     this.consignor = _.get(obj, 'consignor') ? new EconomicOperator(
         obj.consignor) : undefined
+    this.consignorTwo = _.get(obj, 'consignorTwo') ? new EconomicOperator(
+      obj.consignorTwo) : undefined
     this.consignee = _.get(obj, 'consignee') ? new EconomicOperator(
         obj.consignee) : undefined
     this.importer = _.get(obj, 'importer') ? new EconomicOperator(obj.importer)
         : undefined
     this.placeOfDestination = _.get(obj, 'placeOfDestination')
         ? new EconomicOperator(obj.placeOfDestination) : undefined
+    this.placeOfOriginHarvest = _.get(obj, 'placeOfOriginHarvest')
+      ? new EconomicOperator(obj.placeOfOriginHarvest) : undefined
+    this.permanentAddress = _.get(obj, 'permanentAddress')
+      ? new EconomicOperator(obj.permanentAddress) : undefined
+    this.additionalPermanentAddresses = getList(_.get(obj, 'additionalPermanentAddresses', []), EconomicOperator)
+
+    this.cphNumber = obj.cphNumber
+    this.importingFromCharity = obj.importingFromCharity
+    this.isPlaceOfDestinationThePermanentAddress = obj.isPlaceOfDestinationThePermanentAddress
     this.commodities = _.get(obj, 'commodities') ? new Commodities(
         obj.commodities) : undefined
     this.purpose = _.get(obj, 'purpose') ? new Purpose(obj.purpose) : undefined
@@ -57,8 +70,6 @@ module.exports = class PartOne {
     this.submittedBy = obj.submittedBy
     this.transporterDetailsRequired = obj.transporterDetailsRequired
     this.complexCommoditySelected = obj.complexCommoditySelected
-    this.placeOfOriginHarvest = obj.placeOfOriginHarvest
-    this.permanentAddress = obj.permanentAddress
     this.portOfEntry = obj.portOfEntry
 
     return Object.seal(new Proxy(this, handler))

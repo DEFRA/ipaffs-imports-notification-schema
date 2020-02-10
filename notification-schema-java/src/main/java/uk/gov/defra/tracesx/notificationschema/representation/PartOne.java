@@ -49,6 +49,8 @@ public class PartOne {
           + ".not.null}")
   private EconomicOperator consignor;
 
+  private EconomicOperator consignorTwo;
+
   @NotNull(
       groups = NotificationFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
@@ -67,6 +69,14 @@ public class PartOne {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.not"
               + ".null}")
   private EconomicOperator placeOfDestination;
+
+  private EconomicOperator placeOfOriginHarvest;
+  private EconomicOperator permanentAddress;
+  private List<EconomicOperator> additionalPermanentAddresses;
+
+  private String cphNumber;
+  private Boolean importingFromCharity;
+  private Boolean isPlaceOfDestinationThePermanentAddress;
 
   @Valid
   @NotNull(
@@ -190,7 +200,5 @@ public class PartOne {
   private UserInformation submittedBy;
 
   private Boolean complexCommoditySelected;
-  private EconomicOperator placeOfOriginHarvest;
-  private EconomicOperator permanentAddress;
   private String portOfEntry;
 }
