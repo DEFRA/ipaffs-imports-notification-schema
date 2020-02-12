@@ -99,10 +99,6 @@
           "$ref": "#/definitions/EconomicOperator",
           "description": "Place in which the animals or products originate"
         },
-        "permanentAddress": {
-          "$ref": "#/definitions/EconomicOperator",
-          "description": "Place where the animals will go after the initial 48 hours (if different from Place of Destination)."
-        },
         "additionalPermanentAddresses": {
           "type": "array",
           "description": "List of additional permanent addresses",
@@ -1956,9 +1952,9 @@
     "Country": {
       "type": "string",
       "minLength": 2,
-      "maxLength": 2,
-      "pattern": "^[A-Z][A-Z]$",
-      "description": "2 digits ISO code of country"
+      "maxLength": 3,
+      "pattern": "^[A-Z]{2,3}$",
+      "description": "2-3 digits ISO code of country"
     },
     "SealContainer": {
       "type": "object",

@@ -34,8 +34,6 @@ module.exports = class PartOne {
         ? new EconomicOperator(obj.placeOfDestination) : undefined
     this.placeOfOriginHarvest = _.get(obj, 'placeOfOriginHarvest')
       ? new EconomicOperator(obj.placeOfOriginHarvest) : undefined
-    this.permanentAddress = _.get(obj, 'permanentAddress')
-      ? new EconomicOperator(obj.permanentAddress) : undefined
     this.additionalPermanentAddresses = getList(_.get(obj, 'additionalPermanentAddresses', []), EconomicOperator)
 
     this.cphNumber = obj.cphNumber
