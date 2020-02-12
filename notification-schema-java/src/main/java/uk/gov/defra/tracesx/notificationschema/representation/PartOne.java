@@ -71,7 +71,6 @@ public class PartOne {
   private EconomicOperator placeOfDestination;
 
   private EconomicOperator placeOfOriginHarvest;
-  private EconomicOperator permanentAddress;
   private List<EconomicOperator> additionalPermanentAddresses;
 
   private String cphNumber;
