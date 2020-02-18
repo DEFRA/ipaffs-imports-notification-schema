@@ -18,6 +18,7 @@ public class CommodityComplement {
   private String commodityID;
   private String commodityDescription;
   private Integer complementID;
+  private String complementName;
   private String speciesID;
   private String speciesName;
   private String speciesTypeName;
