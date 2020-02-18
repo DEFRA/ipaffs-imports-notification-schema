@@ -10,6 +10,7 @@ module.exports = class CommodityComplement {
     this.commodityDescription = obj.commodityDescription
     this.commodityID = obj.commodityID
     this.complementID = obj.complementID
+    this.complementName = obj.complementName
     this.speciesID = obj.speciesID
     this.speciesName = obj.speciesName
     this.speciesTypeName = obj.speciesTypeName
