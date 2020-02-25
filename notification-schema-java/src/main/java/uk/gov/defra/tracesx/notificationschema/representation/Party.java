@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PartyType;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import java.util.List;
 import javax.validation.constraints.NotEmpty;
@@ -38,7 +38,7 @@ public class Party {
   private String county;
   private String postCode;
 
-  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private String country;
 
   private String city;

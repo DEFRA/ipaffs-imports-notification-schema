@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import javax.validation.constraints.NotNull;
 
@@ -19,9 +19,9 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class InternationalTelephone {
 
-  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private String countryCode;
 
-  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private String subscriberNumber;
 }

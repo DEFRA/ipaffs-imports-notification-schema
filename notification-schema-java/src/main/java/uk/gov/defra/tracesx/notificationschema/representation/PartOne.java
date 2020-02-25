@@ -17,10 +17,12 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullVeterinaryDocument;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
@@ -39,12 +41,17 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@DogPlaceOfOriginImp(
+    groups = NotificationLowRiskFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
+            + ".consignor.not.null}")
 public class PartOne {
 
   private Party personResponsible;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor"
           + ".not.null}")
   private EconomicOperator consignor;
@@ -52,19 +59,23 @@ public class PartOne {
   private EconomicOperator consignorTwo;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
           + ".not.null}")
   private EconomicOperator consignee;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.importer"
+          + ".not.null}")
+  @NotNull(
+      groups = NotificationLowRiskFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp.importer"
           + ".not.null}")
   private EconomicOperator importer;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.not"
               + ".null}")
@@ -79,33 +90,37 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
           + ".not.null}")
   private Commodities commodities;
 
   @Valid
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   private Purpose purpose;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
   private String pointOfEntry;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
+          + ".not.null}")
+  @NotNull(
+      groups = NotificationLowRiskFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp.arrivaldate"
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate arrivalDate;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
           + ".not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
@@ -132,7 +147,7 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = {NotificationFieldValidation.class, NotificationCedFieldValidation.class},
+      groups = {NotificationHighRiskFieldValidation.class, NotificationCedFieldValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansOfTransportFromEntryPoint.not.null}")

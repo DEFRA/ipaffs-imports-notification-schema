@@ -19,7 +19,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
 
 import java.time.LocalDateTime;
@@ -69,7 +69,7 @@ public class Notification {
               + "status 'Validated'.")
   private StatusEnum status;
 
-  @NotNull(groups = NotificationFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private PartOne partOne;
 
   @ApiModelProperty(value = "Identification of the user checking the consignment")

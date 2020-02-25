@@ -29,7 +29,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.SpecificWa
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -41,12 +41,12 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NotAcceptableReason(
-    groups = NotificationFieldValidation.class,
+    groups = NotificationHighRiskFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablereasoning.not.null}")
 @NotAcceptableOtherReason(
-    groups = NotificationFieldValidation.class,
+    groups = NotificationHighRiskFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableotherreason.not.null}")
@@ -83,7 +83,7 @@ import javax.validation.constraints.NotNull;
 public class Decision {
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
               + ".consignmentacceptable.not.null}")
