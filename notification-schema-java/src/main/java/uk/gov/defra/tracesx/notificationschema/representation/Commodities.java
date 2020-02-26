@@ -11,9 +11,11 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Animal
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityIntention;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Builder
 @Data
@@ -70,15 +73,24 @@ public class Commodities {
               + ".numberofanimals.min.message}")
   private Integer numberOfAnimals = null;
 
+  @NotNull(
+      groups = NotificationLowRiskFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
+              + ".commodities.commodityComplement.min.message}")
   private List<CommodityComplement> commodityComplement = null;
 
   @Valid
+  @QuantityImp(
+      groups = NotificationLowRiskFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
+              + ".commodities.complementParameterSet.has.value}")
   private List<ComplementParameterSet> complementParameterSet = null;
 
   private Boolean includeNonAblactedAnimals = null;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".countryoforigin.not.null}")

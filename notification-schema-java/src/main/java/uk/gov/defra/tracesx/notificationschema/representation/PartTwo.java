@@ -18,7 +18,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Laboratory
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsPending;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,12 +32,12 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @LaboratoryTestsNotAdded(
-    groups = NotificationFieldValidation.class,
+    groups = NotificationHighRiskFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
             + ".reasonlaboratorytestsnotadded.not.empty}")
 @LaboratoryTestsPending(
-    groups = NotificationFieldValidation.class,
+    groups = NotificationHighRiskFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.laboratorytestspending"
             + ".not.empty}")
@@ -62,7 +62,7 @@ public class PartTwo {
   private ImpactOfTransportOnAnimals impactOfTransportOnAnimals;
 
   @NotNull(
-      groups = NotificationFieldValidation.class,
+      groups = NotificationHighRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
               + ".laboratorytestsrequired.not.null}")
