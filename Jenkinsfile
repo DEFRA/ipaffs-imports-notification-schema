@@ -6,5 +6,4 @@ schemaPipeline {
     SERVICE_VERSION = "1.0"
     ENVIRONMENT = "Sandpit"
     SELENIUM_BRANCH = "master"
-    JAVA_VERSION = "11"
 }
