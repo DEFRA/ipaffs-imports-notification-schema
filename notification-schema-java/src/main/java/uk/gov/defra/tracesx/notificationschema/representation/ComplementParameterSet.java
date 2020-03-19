@@ -66,6 +66,8 @@ public class ComplementParameterSet {
 
   private List<Identifier> identifiers;
 
+  private List<CatchCertificate> catchCertificates;
+
   public ComplementParameterSet addKeyDataPairItem(
       ComplementParameterSetKeyDataPair keyDataPairItem) {
     if (this.keyDataPair == null) {
