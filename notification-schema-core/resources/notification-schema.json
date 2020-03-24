@@ -279,6 +279,26 @@
                       }
                     }
                   },
+                  "catchCertificates": {
+                    "type": "array",
+                    "description": "Catch certificate details",
+                    "items": {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "properties": {
+                        "certificateNumber": {
+                          "type": "string",
+                          "description": "The catch certificate number",
+                          "maxLength": 64
+                        },
+                        "weight": {
+                          "type": "number",
+                          "description": "The catch certificate weight number",
+                          "minimum": 0
+                        }
+                      }
+                    }
+                  },
                   "identifiers": {
                     "type": "array",
                     "description": "Data used to identify the complements inside an IMP consignment",
