@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 
 public class CatchCertificate {
-  private String certificateNumber;
-  private BigDecimal weight;
+    private String certificateNumber;
+    private BigDecimal weight;
 }
 

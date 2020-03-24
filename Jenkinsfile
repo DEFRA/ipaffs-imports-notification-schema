@@ -1,4 +1,4 @@
-@Library('pipeline-library') _
+@Library('pipeline-library@feature/IMTA-6892-schema-pipeline-merge-green-only') _
 
 schemaPipeline {
     SERVICE_NAME = "import-notification-schema"
