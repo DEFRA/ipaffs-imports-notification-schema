@@ -44,6 +44,12 @@ public class Notification {
               + ".Year.GeneratedNumber ie. CVEDA.GB.2018.7654321")
   private String referenceNumber;
 
+  @ApiModelProperty(
+      value =
+          "TracesNT Reference. Added to the notification when either sent to Traces NT "
+              + "or sent from Traces NT")
+  private String tracesNtReference;
+
   @ApiModelProperty(value = "Notification version.")
   private int version;
 

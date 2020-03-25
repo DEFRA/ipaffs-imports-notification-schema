@@ -17,6 +17,12 @@
       "$ref": "#/definitions/ReferenceNumber",
       "description": "Reference number of the notification"
     },
+    "tracesNtReference": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 90,
+      "description": "TracesNT Reference. Added to the notification when either sent to Traces NT or sent from Traces NT"
+    },
     "version": {
       "type": "integer",
       "minimum": 0,

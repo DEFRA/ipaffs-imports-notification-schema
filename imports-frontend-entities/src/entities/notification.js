@@ -20,6 +20,7 @@ module.exports = class Notification {
     this.id = obj.id
     this.etag = obj.etag
     this.referenceNumber = obj.referenceNumber
+    this.tracesNtReference = obj.tracesNtReference
     this.version = obj.version
     this.lastUpdated = obj.lastUpdated
     this.type = obj.type
