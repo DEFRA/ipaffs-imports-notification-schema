@@ -13,6 +13,13 @@
       "type": "string",
       "description": "The etag for this notification."
     },
+    "externalReferences": {
+      "type": "array",
+      "description": "List of external references, which relate to downstream services",
+      "items": {
+        "$ref": "#/definitions/ExternalReference"
+      }
+    },
     "referenceNumber": {
       "$ref": "#/definitions/ReferenceNumber",
       "description": "Reference number of the notification"
@@ -670,6 +677,25 @@
       "minLength": 1,
       "maxLength": 90,
       "description": "TRACES certificate reference. It consists of certificateType.countryOfDestination.Year.GeneratedNumber ie. CVEDA.GB.2018.7654321"
+    },
+    "ExternalReference": {
+      "type": "object",
+      "description": "External Reference number that relates to a downstream system subscribed to IPAFFS",
+      "properties": {
+        "system": {
+          "type": "string",
+          "description": "Identifier for the downstream system to which the reference relates to",
+          "enum": [
+            "TRACESNT"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "description": "Reference which is added to the notification when either sent to the downstream system or received from it",
+          "minLength": 1,
+          "maxLength": 90
+        }
+      }
     },
     "Applicant": {
       "type": "object",

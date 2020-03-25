@@ -1,12 +1,14 @@
 const _ = require('lodash')
 const Ajv = require('ajv')
 
+const { getList } = require('../utils/list')
 const handler = require('./base/handler')
 const notificationJsonSchema = require('../../etc/notification-schema.json')
 const PartOne = require('./part_one')
 const PartTwo = require('./part_two')
 const PartThree = require('./part_three')
 const ConsignmentValidation = require('./consignment_validation')
+const ExternalReference = require('./external_reference')
 
 module.exports = class Notification {
   constructor(obj) {
@@ -20,6 +22,7 @@ module.exports = class Notification {
     this.id = obj.id
     this.etag = obj.etag
     this.referenceNumber = obj.referenceNumber
+    this.externalReferences = getList(_.get(obj, 'externalReferences', []), ExternalReference)
     this.version = obj.version
     this.lastUpdated = obj.lastUpdated
     this.type = obj.type
