@@ -23,6 +23,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -43,6 +44,11 @@ public class Notification {
           "TRACES certificate reference. It consists of certificateType.countryOfDestination"
               + ".Year.GeneratedNumber ie. CVEDA.GB.2018.7654321")
   private String referenceNumber;
+
+  @ApiModelProperty(
+      value =
+          "List of external references, which relate to downstream services")
+  private List<ExternalReference> externalReferences;
 
   @ApiModelProperty(value = "Notification version.")
   private int version;
