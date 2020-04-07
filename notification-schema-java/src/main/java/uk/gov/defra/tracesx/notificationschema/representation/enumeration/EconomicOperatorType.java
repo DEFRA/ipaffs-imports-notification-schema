@@ -13,7 +13,8 @@ public enum EconomicOperatorType {
   PRIVATE_TRANSPORTER("private transporter"),
   VETERINARIAN("veterinarian"),
   TEMPORARY_ADDRESS("temporary address"),
-  PREMISES_OF_ORIGIN("premises of origin");
+  PREMISES_OF_ORIGIN("premises of origin"),
+  ORGANISATION_BRANCH_ADDRESS("organisation branch address");
 
   private String value;
 
