@@ -1805,7 +1805,8 @@
             "commercial transporter",
             "private transporter",
             "temporary address",
-            "premises of origin"
+            "premises of origin",
+            "organisation branch address"
           ]
         },
         "status": {
