@@ -8,6 +8,8 @@ const LaboratoryTests = require('./laboratory_tests')
 const ControlAuthority = require('./control_authority')
 const ConsignmentValidation = require('./consignment_validation')
 const EconomicOperator = require('./economic_operator')
+const AccompanyingDocument = require('./accompanying_document')
+const { getList } = require('../utils/list')
 
 module.exports = class PartTwo {
 
@@ -39,6 +41,7 @@ module.exports = class PartTwo {
     this.checkDate = obj.checkDate
     this.controlledDestination = _.get(obj, 'controlledDestination')
         ? new EconomicOperator(obj.controlledDestination) : undefined
+    this.accompanyingDocuments = getList(_.get(obj, 'accompanyingDocuments', []), AccompanyingDocument)
 
     return Object.seal(new Proxy(this, handler))
   }

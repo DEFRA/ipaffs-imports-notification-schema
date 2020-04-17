@@ -89,4 +89,6 @@ public class PartTwo {
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
   private LocalDateTime checkDate;
+
+  private List<AccompanyingDocument> accompanyingDocuments;
 }

@@ -14,6 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoD
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Builder
 @Data
@@ -28,4 +29,8 @@ public class AccompanyingDocument {
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate documentIssueDate = null;
+
+  private UUID attachmentId = null;
+  private String attachmentFilename = null;
+  private String attachmentContentType = null;
 }
