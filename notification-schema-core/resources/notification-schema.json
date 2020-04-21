@@ -1084,6 +1084,13 @@
           "javaType": "java.time.LocalDateTime",
           "format": "date-time",
           "description": "User entered date when the checks were completed"
+        },
+        "accompanyingDocuments": {
+          "type": "array",
+          "description": "Accompanying documents",
+          "items": {
+            "$ref": "#/definitions/AccompanyingDocument"
+          }
         }
       }
     },
@@ -2068,6 +2075,18 @@
           "javaType": "java.time.LocalDate",
           "format": "date",
           "description": "Additional document issue date"
+        },
+        "attachmentId": {
+          "type": "string",
+          "description": "The UUID used for the uploaded file in blob storage"
+        },
+        "attachmentFilename": {
+          "type": "string",
+          "description": "The original filename of the uploaded file"
+        },
+        "attachmentContentType": {
+          "type": "string",
+          "description": "The MIME type of the uploaded file"
         }
       }
     }

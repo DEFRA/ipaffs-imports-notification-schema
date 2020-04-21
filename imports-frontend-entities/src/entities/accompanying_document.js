@@ -11,6 +11,9 @@ module.exports = class AccompanyingDocument {
     this.documentType = obj.documentType
     this.documentReference = obj.documentReference
     this.documentIssueDate = obj.documentIssueDate
+    this.attachmentId = obj.attachmentId
+    this.attachmentFilename = obj.attachmentFilename
+    this.attachmentContentType = obj.attachmentContentType
 
     return Object.seal(new Proxy(this, handler))
   }
