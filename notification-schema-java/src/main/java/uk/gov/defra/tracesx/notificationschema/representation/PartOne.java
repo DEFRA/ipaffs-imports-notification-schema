@@ -48,6 +48,11 @@ import javax.validation.constraints.NotNull;
             + ".consignor.not.null}")
 public class PartOne {
 
+  @Valid
+  @NotNull(
+      groups = NotificationHighRiskFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
+          + ".not.null}")
   private Party personResponsible;
 
   @NotNull(
