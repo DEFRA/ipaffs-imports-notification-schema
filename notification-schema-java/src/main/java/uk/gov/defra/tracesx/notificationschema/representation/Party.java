@@ -32,7 +32,9 @@ public class Party {
 
   private String companyName;
 
-  @NotEmpty(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_EMPTY)
+  @NotEmpty(groups = NotificationHighRiskFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
+      + ".address.not.empty}")
   private List<String> address;
 
   private String county;
