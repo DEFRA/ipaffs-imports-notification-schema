@@ -14,8 +14,8 @@ module.exports = class User {
     this.conversationId = obj.conversationId
     this.conversationIp = obj.conversationIp
     this.landingPage = obj.landingPage
-    this.userInfo = _.get(obj, 'userInfo') ? new UserInfo(obj.userInfo)
-        : undefined
+    this.userInfo = _.get(obj, 'userInfo') ? new UserInfo(obj.userInfo) : undefined
+    this.permissions = _.get(obj, 'permissions', [])
 
     return Object.seal(new Proxy(this, handler))
   }
