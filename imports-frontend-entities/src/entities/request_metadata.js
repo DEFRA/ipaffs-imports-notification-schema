@@ -16,6 +16,7 @@ module.exports = class RequestMetadata {
         '')
     this.conversationId = _.get(obj, 'loggedInUser.conversationId', '')
     this.conversationIp = _.get(obj, 'loggedInUser.conversationIp', '')
+    this.permissions = _.get(obj, 'loggedInUser.permissions', '')
 
     return Object.seal(new Proxy(this, handler))
   }
