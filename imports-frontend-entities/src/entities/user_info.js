@@ -25,7 +25,6 @@ module.exports = class UserInfo {
     this.tokenType = obj.tokenType
     this.companyDisplayName = obj.companyDisplayName
     this.tracesUnitNumber = obj.tracesUnitNumber
-    this.permissions = obj.permissions
     this.organisations = obj.organisations
 
     return Object.seal(new Proxy(this, handler))
