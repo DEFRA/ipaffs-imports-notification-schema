@@ -12,8 +12,10 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Commod
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 
@@ -23,7 +25,6 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Builder
 @Data
@@ -31,21 +32,33 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @MinCommoditiesGrossWeight(
-    groups = NotificationCedOrCvedpFieldValidation.class,
+    groups = {
+        NotificationCedFieldValidation.class,
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".totalgrossweight.min.message}")
 public class Commodities {
 
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {
+          NotificationCedFieldValidation.class,
+          NotificationCvedpFieldValidation.class,
+          NotificationChedppFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossweight.not.null}")
   private BigDecimal totalGrossWeight;
 
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {
+          NotificationCedFieldValidation.class,
+          NotificationCvedpFieldValidation.class,
+          NotificationChedppFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalnetweight.not.null}")
@@ -54,7 +67,11 @@ public class Commodities {
   private Integer numberOfPackages;
 
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {
+          NotificationCedFieldValidation.class,
+          NotificationCvedpFieldValidation.class,
+          NotificationChedppFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".temperature.not.null}")
@@ -99,7 +116,11 @@ public class Commodities {
   private String regionOfOrigin = null;
 
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {
+          NotificationCedFieldValidation.class,
+          NotificationCvedpFieldValidation.class,
+          NotificationChedppFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".consignedcountry.not.null}")
@@ -115,7 +136,11 @@ public class Commodities {
   private CommodityIntention commodityIntendedFor = null;
 
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {
+          NotificationCedFieldValidation.class,
+          NotificationCvedpFieldValidation.class,
+          NotificationChedppFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossvolume.not.null}")

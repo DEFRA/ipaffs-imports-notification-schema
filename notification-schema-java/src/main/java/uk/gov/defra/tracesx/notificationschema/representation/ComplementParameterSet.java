@@ -9,8 +9,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKeyDataPair;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,15 +36,21 @@ public class ComplementParameterSet {
   @MinValueKeyDataPair.List({
       @MinValueKeyDataPair(
           groups = {
-              NotificationCedOrCvedpFieldValidation.class,
-              NotificationCvedaFieldValidation.class
+              NotificationCedFieldValidation.class,
+              NotificationCvedpFieldValidation.class,
+              NotificationCvedaFieldValidation.class,
+              NotificationChedppFieldValidation.class
           },
           field = NUMBER_PACKAGE,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_package.message}"),
       @MinValueKeyDataPair(
-          groups = NotificationCedOrCvedpFieldValidation.class,
+          groups = {
+              NotificationCedFieldValidation.class,
+              NotificationCvedpFieldValidation.class,
+              NotificationChedppFieldValidation.class
+          },
           field = NET_WEIGHT,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -56,7 +64,11 @@ public class ComplementParameterSet {
       })
   @NotNullKeyDataPair.List({
       @NotNullKeyDataPair(
-          groups = NotificationCedOrCvedpFieldValidation.class,
+          groups = {
+              NotificationCedFieldValidation.class,
+              NotificationCvedpFieldValidation.class,
+              NotificationChedppFieldValidation.class
+          },
           field = TYPE_PACKAGE,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"

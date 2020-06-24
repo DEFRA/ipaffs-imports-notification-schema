@@ -28,9 +28,9 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Defini
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum;
 
 @RunWith(Theories.class)
-public class CedOrCvedpControlledDestinationValidatorTest {
+public class CedOrCvedpOrChedppControlledDestinationValidatorTest {
 
-  private CedOrCvedpControlledDestinationValidator validator;
+  private CedOrCvedpOrChedppControlledDestinationValidator validator;
 
   @DataPoints("requiring Controlled Destination")
   public static final NotAcceptableActionEnum[] notAcceptableActions = new NotAcceptableActionEnum[]{
@@ -42,7 +42,7 @@ public class CedOrCvedpControlledDestinationValidatorTest {
 
   @Before
   public void setUp() {
-    this.validator = new CedOrCvedpControlledDestinationValidator();
+    this.validator = new CedOrCvedpOrChedppControlledDestinationValidator();
     this.partTwo = PartTwo.builder().decision(Decision.builder().build()).build();
   }
 

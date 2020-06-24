@@ -16,6 +16,7 @@ module.exports = class Decision {
     this.notAcceptableActionOtherReason = obj.notAcceptableActionOtherReason
     this.notAcceptableActionByDate = obj.notAcceptableActionByDate
     this.notAcceptableReasons = _.get(obj, 'notAcceptableReasons', [])
+    this.chedppNotAcceptableReasons = _.get(obj, 'chedppNotAcceptableReasons', [])
     this.notAcceptableCountry = obj.notAcceptableCountry
     this.notAcceptableEstablishment = obj.notAcceptableEstablishment
     this.notAcceptableOtherReason = obj.notAcceptableOtherReason

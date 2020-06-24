@@ -12,12 +12,14 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.CedOrCvedpControlledDestination;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.CedOrCvedpOrChedppControlledDestination;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.CvedaControlledDestination;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsNotAdded;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsPending;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import java.time.LocalDateTime;
@@ -46,8 +48,12 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")
-@CedOrCvedpControlledDestination(
-    groups = NotificationCedOrCvedpFieldValidation.class,
+@CedOrCvedpOrChedppControlledDestination(
+    groups = {
+        NotificationCedFieldValidation.class,
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")

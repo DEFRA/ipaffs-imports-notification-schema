@@ -18,6 +18,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcc
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.SpecificWarehouseNonConformingConsignmentEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotAcceptableReason;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.FreeCirculationPurpose;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IfChanneledOption;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.InternalMarket;
@@ -27,12 +28,13 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAccepta
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableReason;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.SpecificWarehouse;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Builder
@@ -45,28 +47,46 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablereasoning.not.null}")
+@ChedppNotAcceptableReason(
+    groups = NotificationChedppFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".chedppnotacceptablereason.not.null}")
 @NotAcceptableOtherReason(
     groups = NotificationHighRiskFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableotherreason.not.null}")
 @NotAcceptableEstablishment(
-    groups = NotificationCvedpFieldValidation.class,
+    groups = {
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableestablishment.not.null}")
 @NotAcceptableCountry(
-    groups = NotificationCedOrCvedpFieldValidation.class,
+    groups = {
+        NotificationCedFieldValidation.class,
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablecountry.not.null}")
 @SpecificWarehouse(
-    groups = NotificationCvedpFieldValidation.class,
+    groups = {
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
             + "specificwarehousenonconformingconsignment.not.null}")
 @IfChanneledOption(
-    groups = NotificationCvedpFieldValidation.class,
+    groups = {
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
             + "ifchanneledoption.not.null}")
@@ -76,7 +96,10 @@ import javax.validation.constraints.NotNull;
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
             + "freecirculationpurpose.not.null}")
 @InternalMarket(
-    groups = NotificationCvedpFieldValidation.class,
+    groups = {
+        NotificationCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
             + "internalmarketdetails.not.null}")
@@ -96,6 +119,9 @@ public class Decision {
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate notAcceptableActionByDate;
+
+  @Valid
+  private List<SingleChedppNotAcceptableReason> chedppNotAcceptableReasons;
 
   private List<NotAcceptableReasonsEnum> notAcceptableReasons;
 
