@@ -46,6 +46,7 @@
       "enum": [
         "CVEDA",
         "CVEDP",
+        "CHEDPP",
         "CED",
         "IMP"
       ]
@@ -81,6 +82,15 @@
         "personResponsible": {
           "$ref": "#/definitions/Party",
           "description": "The individual who has submitted the notification"
+        },
+        "customsReferenceNumber": {
+          "type": "string",
+          "maxLength": 64,
+          "description": "Customs reference number"
+        },
+        "containsWoodPackaging": {
+          "type": "boolean",
+          "description": "Does the consignment contain wood packaging?"
         },
         "consignor": {
           "$ref": "#/definitions/EconomicOperator",
@@ -191,6 +201,15 @@
                     "minLength": 1,
                     "maxLength": 255,
                     "description": "Represents the lowest granularity - either type, class, family or species name - for the commodity selected.  This is also used to drive behaviour for EU Import journeys"
+                  },
+                  "eppoCode": {
+                    "type": "string",
+                    "maxLength": 10,
+                    "description": "EPPO Code related to plant commodities and wood packaging"
+                  },
+                  "isWoodPackaging": {
+                    "type": "boolean",
+                    "description": "Is this commodity wood packaging?"
                   },
                   "speciesID": {
                     "type": "string",
@@ -2053,14 +2072,20 @@
           "enum": [
             "airWaybill",
             "billOfLading",
+            "cargoManifest",
             "catchCertificate",
             "commercialInvoice",
+            "containerManifest",
             "customsDeclaration",
             "healthCertificate",
+            "heatTreatmentCertificate",
             "importPermit",
+            "inspectionCertificate",
             "laboratorySamplingResultsForAflatoxin",
             "letterOfAuthority",
+            "originCertificate",
             "other",
+            "phytosanitaryCertificate",
             "railwayBill",
             "seaWaybill",
             "veterinaryHealthCertificate"
