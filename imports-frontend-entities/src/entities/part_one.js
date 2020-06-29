@@ -22,6 +22,9 @@ module.exports = class PartOne {
     this.personResponsible = _.get(obj, 'personResponsible') ? new Party(
         obj.personResponsible) : undefined
 
+    this.customsReferenceNumber = obj.customsReferenceNumber
+    this.containsWoodPackaging = obj.containsWoodPackaging
+
     this.consignor = _.get(obj, 'consignor') ? new EconomicOperator(
         obj.consignor) : undefined
     this.consignorTwo = _.get(obj, 'consignorTwo') ? new EconomicOperator(

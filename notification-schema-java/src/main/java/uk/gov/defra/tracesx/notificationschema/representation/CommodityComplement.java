@@ -19,6 +19,8 @@ public class CommodityComplement {
   private String commodityDescription;
   private Integer complementID;
   private String complementName;
+  private String eppoCode;
+  private Boolean isWoodPackaging;
   private String speciesID;
   private String speciesName;
   private String speciesTypeName;

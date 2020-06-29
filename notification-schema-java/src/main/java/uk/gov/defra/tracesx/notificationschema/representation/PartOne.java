@@ -55,6 +55,10 @@ public class PartOne {
           + ".not.null}")
   private Party personResponsible;
 
+  private String customsReferenceNumber;
+
+  private Boolean containsWoodPackaging;
+
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor"

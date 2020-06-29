@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum NotificationTypeEnum {
   CVEDA("CVEDA"),
   CVEDP("CVEDP"),
+  CHEDPP("CHEDPP"),
   CED("CED"),
   IMP("IMP");
 
