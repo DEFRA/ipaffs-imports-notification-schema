@@ -3,6 +3,7 @@ package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CED;
+import uk.gov.defra.tracesx.notificationschema.validation.CHEDPP;
 import uk.gov.defra.tracesx.notificationschema.validation.CVEDA;
 import uk.gov.defra.tracesx.notificationschema.validation.CVEDP;
 import uk.gov.defra.tracesx.notificationschema.validation.EntityProperty;
@@ -11,6 +12,7 @@ public enum NotAcceptableActionEnum implements EntityProperty {
   @CVEDA
   SLAUGHTER("slaughter"),
   @CVEDP
+  @CHEDPP
   @CVEDA
   REEXPORT("reexport"),
   @CVEDA
@@ -19,12 +21,15 @@ public enum NotAcceptableActionEnum implements EntityProperty {
   REDISPATCHING("redispatching"),
   @CED
   @CVEDP
+  @CHEDPP
   DESTRUCTION("destruction"),
   @CED
   @CVEDP
+  @CHEDPP
   TRANSFORMATION("transformation"),
   @CED
   @CVEDP
+  @CHEDPP
   OTHER("other");
 
   private String value;
