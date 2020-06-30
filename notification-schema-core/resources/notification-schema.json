@@ -1452,7 +1452,8 @@
             "Suspicious",
             "Re-enforced",
             "Intensified controls",
-            "Required"
+            "Required",
+            "Latent infection sampling"
           ]
         },
         "singleLaboratoryTests": {
