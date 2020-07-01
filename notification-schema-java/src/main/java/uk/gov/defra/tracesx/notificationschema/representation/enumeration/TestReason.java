@@ -8,7 +8,8 @@ public enum TestReason {
   SUSPICIOUS("Suspicious"),
   REENFORCED("Re-enforced"),
   INTENSIFIED_CONTROLS("Intensified controls"),
-  REQUIRED("Required");
+  REQUIRED("Required"),
+  LATENT_INFECTION_SAMPLING("Latent infection sampling");
 
   private String value;
 

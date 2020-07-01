@@ -7,8 +7,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class CedOrCvedpControlledDestinationValidator implements
-    ConstraintValidator<CedOrCvedpControlledDestination, PartTwo> {
+public class CedOrCvedpOrChedppControlledDestinationValidator implements
+    ConstraintValidator<CedOrCvedpOrChedppControlledDestination, PartTwo> {
 
   @Override
   public boolean isValid(PartTwo partTwo, ConstraintValidatorContext constraintValidatorContext) {

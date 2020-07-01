@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKeyDataPair;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class ComplementParameterSet {
   @MinValueKeyDataPair.List({
       @MinValueKeyDataPair(
           groups = {
-              NotificationCedOrCvedpFieldValidation.class,
+              NotificationCedOrCvedpOrChedppFieldValidation.class,
               NotificationCvedaFieldValidation.class
           },
           field = NUMBER_PACKAGE,
@@ -42,7 +42,7 @@ public class ComplementParameterSet {
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_package.message}"),
       @MinValueKeyDataPair(
-          groups = NotificationCedOrCvedpFieldValidation.class,
+          groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
           field = NET_WEIGHT,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -56,7 +56,7 @@ public class ComplementParameterSet {
       })
   @NotNullKeyDataPair.List({
       @NotNullKeyDataPair(
-          groups = NotificationCedOrCvedpFieldValidation.class,
+          groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
           field = TYPE_PACKAGE,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"

@@ -1152,6 +1152,14 @@
           "format": "date",
           "description": "Filled when consignmentAcceptable is set to false"
         },
+        "chedppNotAcceptableReasons": {
+          "type": "array",
+          "javaType": "uk.gov.defra.tracesx.notification.api.ChedppNotAcceptableReasons",
+          "description": "List of details for individual chedpp not acceptable reasons",
+          "items": {
+            "$ref": "#/definitions/ChedppNotAcceptableReason"
+          }
+        },
         "notAcceptableReasons": {
           "type": "array",
           "description": "If the consignment was not accepted what was the reason",
@@ -1452,7 +1460,8 @@
             "Suspicious",
             "Re-enforced",
             "Intensified controls",
-            "Required"
+            "Required",
+            "Latent infection sampling"
           ]
         },
         "singleLaboratoryTests": {
@@ -1711,6 +1720,57 @@
       "required": [
         "country"
       ]
+    },
+    "ChedppNotAcceptableReason": {
+      "type": "object",
+      "description": "Information about not acceptable reason",
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "reason for refusal",
+          "enum": [
+            "doc-phmdm",
+            "doc-phmdii",
+            "doc-pa",
+            "doc-pic",
+            "doc-pill",
+            "doc-ped",
+            "doc-pmod",
+            "doc-pfi",
+            "doc-pnol",
+            "doc-pcne",
+            "doc-padm",
+            "doc-padi",
+            "doc-ppni",
+            "doc-pf",
+            "doc-po",
+            "doc-ncevd",
+            "doc-ncpqefi",
+            "doc-ncpqebec",
+            "doc-ncts",
+            "doc-nco",
+            "doc-orii",
+            "doc-orsr",
+            "ori-orrnu",
+            "phy-orpp",
+            "phy-orho",
+            "phy-is",
+            "phyorsr",
+            "oth-cnl",
+            "oth-o"
+          ]
+        },
+        "commodityOrPackage": {
+          "type": "string",
+          "description": "commodity or package",
+          "enum": [
+            "c",
+            "p",
+            "cp"
+          ]
+        }
+      }
     },
     "SingleLaboratoryTest": {
       "type": "object",
