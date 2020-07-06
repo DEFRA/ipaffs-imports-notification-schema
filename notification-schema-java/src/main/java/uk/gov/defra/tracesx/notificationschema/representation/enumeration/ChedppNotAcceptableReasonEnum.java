@@ -32,7 +32,7 @@ public enum ChedppNotAcceptableReasonEnum {
   PHYORPP("phy-orpp"),
   PHYORHO("phy-orho"),
   PHYIS("phy-is"),
-  PHYORSR("phyorsr"),
+  PHYORSR("phy-orsr"),
   OTHCNL("oth-cnl"),
   OTHO("oth-o");
 
