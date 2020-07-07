@@ -2135,6 +2135,7 @@
             "cargoManifest",
             "catchCertificate",
             "commercialInvoice",
+            "conformityCertificate",
             "containerManifest",
             "customsDeclaration",
             "healthCertificate",
