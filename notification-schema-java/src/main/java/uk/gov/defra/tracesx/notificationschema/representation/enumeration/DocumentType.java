@@ -9,6 +9,7 @@ public enum DocumentType {
   CARGO_MANIFEST("cargoManifest"),
   CATCH_CERTIFICATE("catchCertificate"),
   COMMERCIAL_INVOICE("commercialInvoice"),
+  CONFORMITY_CERTIFICATE("conformityCertificate"),
   CONTAINER_MANIFEST("containerManifest"),
   CUSTOMS_DECLARATION("customsDeclaration"),
   HEALTH_CERTIFICATE("healthCertificate"),
