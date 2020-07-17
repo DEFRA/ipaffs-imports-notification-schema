@@ -11,9 +11,11 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Animal
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityIntention;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
@@ -35,6 +37,21 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".totalgrossweight.min.message}")
+@NotNullWoodPackagingKeyDataPair(
+    groups = NotificationChedppFieldValidation.class,
+    field = "units-quantity",
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+        + ".wood.packaging.number.units.not.null}")
+@NotNullWoodPackagingKeyDataPair(
+    groups = NotificationChedppFieldValidation.class,
+    field = "units-type",
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+        + ".wood.packaging.unit.type.not.null}")
+@NotNullWoodPackagingKeyDataPair(
+    groups = NotificationChedppFieldValidation.class,
+    field = "country-of-origin",
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+        + ".wood.packaging.country.of.origin.not.null}")
 public class Commodities {
 
   @NotNull(
