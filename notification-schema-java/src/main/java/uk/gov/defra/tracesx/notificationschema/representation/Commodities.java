@@ -12,6 +12,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Commod
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
@@ -53,7 +54,7 @@ public class Commodities {
   private Integer numberOfPackages;
 
   @NotNull(
-      groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+      groups = NotificationCedOrCvedpFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".temperature.not.null}")
@@ -83,7 +84,7 @@ public class Commodities {
   @QuantityImp(
       groups = NotificationLowRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
-              + ".commodities.complementParameterSet.has.value}")
+          + ".commodities.complementParameterSet.has.value}")
   private List<ComplementParameterSet> complementParameterSet = null;
 
   private Boolean includeNonAblactedAnimals = null;
