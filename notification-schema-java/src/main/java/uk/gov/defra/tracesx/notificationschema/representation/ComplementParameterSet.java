@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKeyDataPair;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ public class ComplementParameterSet {
   public static final String NET_WEIGHT = "netweight";
   public static final String NUMBER_ANIMAL = "number_animal";
   public static final String TYPE_PACKAGE = "type_package";
+  public static final String TYPE_PRODUCT = "type_product";
   private Integer complementID;
   private String speciesID;
 
@@ -34,7 +35,7 @@ public class ComplementParameterSet {
   @MinValueKeyDataPair.List({
       @MinValueKeyDataPair(
           groups = {
-              NotificationCedOrCvedpOrChedppFieldValidation.class,
+              NotificationCedOrCvedpFieldValidation.class,
               NotificationCvedaFieldValidation.class
           },
           field = NUMBER_PACKAGE,
@@ -42,7 +43,7 @@ public class ComplementParameterSet {
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.number_package.message}"),
       @MinValueKeyDataPair(
-          groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+          groups = NotificationCedOrCvedpFieldValidation.class,
           field = NET_WEIGHT,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -56,7 +57,7 @@ public class ComplementParameterSet {
       })
   @NotNullKeyDataPair.List({
       @NotNullKeyDataPair(
-          groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+          groups = NotificationCedOrCvedpFieldValidation.class,
           field = TYPE_PACKAGE,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"

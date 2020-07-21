@@ -1,5 +1,10 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NET_WEIGHT;
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NUMBER_PACKAGE;
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PACKAGE;
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PRODUCT;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -17,9 +22,12 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullVeterinaryDocument;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
@@ -102,6 +110,30 @@ public class PartOne {
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
           + ".not.null}")
+  @ChedppMinValueKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = NUMBER_PACKAGE,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.number_package.message}")
+  @ChedppMinValueKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = NET_WEIGHT,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.net_weight.message}")
+  @ChedppNotNullKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = TYPE_PACKAGE,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.type_package.message}")
+  @ChedppNotNullKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = TYPE_PRODUCT,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.type_product.message}")
   private Commodities commodities;
 
   @Valid

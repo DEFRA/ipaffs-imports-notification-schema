@@ -28,6 +28,7 @@ public class MinValueKeyDataPairValidatorTest {
     validator = new MinValueKeyDataPairValidator();
     when(mockKeyDataPair.field()).thenReturn("number_package");
     keyDataPairList = new ArrayList<>();
+    validator.initialize(mockKeyDataPair);
   }
 
   @Test
@@ -37,8 +38,6 @@ public class MinValueKeyDataPairValidatorTest {
 
   @Test
   public void testNumPackagesIsInvalidIfNoMatchingFieldPresent() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("netweight");
     keyDataPairList.add(pair);
@@ -52,8 +51,6 @@ public class MinValueKeyDataPairValidatorTest {
 
   @Test
   public void testNumPackagesIsInvalidIfDataValueCannotBeParsedToInteger() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("number_package");
     pair.setData("X");
@@ -64,8 +61,6 @@ public class MinValueKeyDataPairValidatorTest {
 
   @Test
   public void testNumPackagesIsInvalidIfDataValueIsZero() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("number_package");
     pair.setData("0");
@@ -76,8 +71,6 @@ public class MinValueKeyDataPairValidatorTest {
 
   @Test
   public void testNumPackagesIsValidIfDataValueIsOne() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("number_package");
     pair.setData("1");

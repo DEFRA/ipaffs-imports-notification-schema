@@ -28,6 +28,7 @@ public class NotNullKeyDataPairValidatorTest {
     validator = new NotNullKeyDataPairValidator();
     when(mockKeyDataPair.field()).thenReturn("type_package");
     keyDataPairList = new ArrayList<>();
+    validator.initialize(mockKeyDataPair);
   }
 
   @Test
@@ -36,19 +37,7 @@ public class NotNullKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testKeyDataPairIsValidIfObjectPassedContainsOnlyPackageType() {
-    ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
-    pair.setKey("type_package");
-    pair.setData("bag");
-    keyDataPairList.add(pair);
-
-    assertFalse(validator.isValid(keyDataPairList, null));
-  }
-
-  @Test
   public void testTypePackageIsInvalidIfNoMatchingFieldPresent() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("netweight");
     keyDataPairList.add(pair);
@@ -62,8 +51,6 @@ public class NotNullKeyDataPairValidatorTest {
 
   @Test
   public void testTypePackageIsInValidIfDataValueIsEmpty() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("type_package");
     pair.setData("");
@@ -74,8 +61,6 @@ public class NotNullKeyDataPairValidatorTest {
 
   @Test
   public void testTypePackageIsValidIfDataValueIsNotEmpty() {
-    validator.initialize(mockKeyDataPair);
-
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("type_package");
     pair.setData("bag");
