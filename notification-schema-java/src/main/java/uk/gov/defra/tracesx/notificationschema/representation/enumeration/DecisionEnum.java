@@ -36,7 +36,11 @@ public enum DecisionEnum implements EntityProperty {
   @CHEDPP
   ACCEPTABLE_FOR_SPECIFIC_WAREHOUSE("Acceptable for Specific Warehouse"),
   @CVEDA
-  HORSE_REENTRY("Horse Re-entry");
+  HORSE_REENTRY("Horse Re-entry"),
+  @CHEDPP
+  ACCEPTABLE_FOR_PRIVATE_IMPORT("Acceptable for Private Import"),
+  @CHEDPP
+  ACCEPTABLE_FOR_TRANSFER("Acceptable for Transfer");
 
   private String value;
 

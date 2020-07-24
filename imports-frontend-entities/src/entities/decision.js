@@ -20,6 +20,13 @@ module.exports = class Decision {
     this.notAcceptableCountry = obj.notAcceptableCountry
     this.notAcceptableEstablishment = obj.notAcceptableEstablishment
     this.notAcceptableOtherReason = obj.notAcceptableOtherReason
+    this.notAcceptableActionDestructionReason = obj.notAcceptableActionDestructionReason
+    this.notAcceptableActionEntryRefusalReason = obj.notAcceptableActionEntryRefusalReason
+    this.notAcceptableActionQuarantineImposedReason = obj.notAcceptableActionQuarantineImposedReason
+    this.notAcceptableActionSpecialTreatmentReason = obj.notAcceptableActionSpecialTreatmentReason
+    this.notAcceptableActionIndustrialProcessingReason = obj.notAcceptableActionIndustrialProcessingReason
+    this.notAcceptableActionReDispatchReason = obj.notAcceptableActionReDispatchReason
+    this.notAcceptableActionUseForOtherPurposesReason = obj.notAcceptableActionUseForOtherPurposesReason
     this.detailsOfControlledDestinations = obj.detailsOfControlledDestinations
         ? new Party(obj.detailsOfControlledDestinations) : undefined
     this.specificWarehouseNonConformingConsignment = obj.specificWarehouseNonConformingConsignment
