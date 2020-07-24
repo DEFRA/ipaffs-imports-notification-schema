@@ -26,6 +26,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinV
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullVeterinaryDocument;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
@@ -54,6 +55,10 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
             + ".consignor.not.null}")
+@NotNullWoodPackagingCommodity(
+    groups = NotificationChedppFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contains.wood"
+        + ".packaging}")
 public class PartOne {
 
   @Valid
@@ -65,6 +70,10 @@ public class PartOne {
 
   private String customsReferenceNumber;
 
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+          + ".containsWoodPackaging.not.null}")
   private Boolean containsWoodPackaging;
 
   @NotNull(
