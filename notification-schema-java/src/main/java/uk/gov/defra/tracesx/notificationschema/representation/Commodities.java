@@ -41,17 +41,17 @@ import javax.validation.constraints.NotNull;
     groups = NotificationChedppFieldValidation.class,
     field = "units-quantity",
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".wood.packaging.number.units.not.null}")
+        + ".woodpackagingnumberunits.not.null}")
 @NotNullWoodPackagingKeyDataPair(
     groups = NotificationChedppFieldValidation.class,
     field = "units-type",
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".wood.packaging.unit.type.not.null}")
+        + ".woodpackagingunittype.not.null}")
 @NotNullWoodPackagingKeyDataPair(
     groups = NotificationChedppFieldValidation.class,
     field = "country-of-origin",
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".wood.packaging.country.of.origin.not.null}")
+        + ".woodpackagingcountryoforigin.not.null}")
 public class Commodities {
 
   @NotNull(

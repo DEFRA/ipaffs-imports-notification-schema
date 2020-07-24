@@ -57,8 +57,8 @@ import javax.validation.constraints.NotNull;
             + ".consignor.not.null}")
 @NotNullWoodPackagingCommodity(
     groups = NotificationChedppFieldValidation.class,
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contains.wood"
-        + ".packaging}")
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+        + ".containswoodpackaging}")
 public class PartOne {
 
   @Valid
