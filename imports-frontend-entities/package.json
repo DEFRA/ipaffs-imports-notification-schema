@@ -1,6 +1,6 @@
 {
   "name": "@ipaffs/imports-frontend-entities",
-  "version": "1.0.75",
+  "version": "1.0.79",
   "repository": {
     "type": "git"
   },
@@ -41,6 +41,6 @@
   },
   "dependencies": {
     "ajv": "6.5.3",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   }
 }
