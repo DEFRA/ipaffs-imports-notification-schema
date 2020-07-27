@@ -485,7 +485,9 @@
                 "For NON-Conforming Consignments",
                 "For Transhipment to",
                 "For Transit to 3rd Country",
-                "For Re-Import"
+                "For Re-Import",
+                "For Private Import",
+                "For Transfer To"
               ]
             }
           }

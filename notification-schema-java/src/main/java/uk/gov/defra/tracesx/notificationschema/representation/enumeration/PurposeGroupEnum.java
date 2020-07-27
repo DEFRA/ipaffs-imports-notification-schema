@@ -8,7 +8,9 @@ public enum PurposeGroupEnum {
   NON_CONFORMING_CONSIGNMENTS("For NON-Conforming Consignments"),
   TRANSHIPMENT_TO("For Transhipment to"),
   TRANSIT_TO_3RD_COUNTRY("For Transit to 3rd Country"),
-  RE_IMPORT("For Re-Import");
+  RE_IMPORT("For Re-Import"),
+  PRIVATE_IMPORT("For Private Import"),
+  TRANSFER_TO("For Transfer To");
 
   private String value;
 
