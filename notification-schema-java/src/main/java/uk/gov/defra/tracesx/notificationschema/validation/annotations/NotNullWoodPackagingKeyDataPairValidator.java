@@ -2,12 +2,10 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import org.apache.commons.lang3.StringUtils;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
-import uk.gov.defra.tracesx.notificationschema.representation.CommodityComplement;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -29,24 +27,32 @@ public class NotNullWoodPackagingKeyDataPairValidator implements
       return true;
     }
 
-    return commodities.getComplementParameterSet().stream()
-        .filter(parameterSet -> isWoodPackaging(parameterSet, commodities.getCommodityComplement()))
-        .allMatch(this::hasField);
-  }
+    return commodities.getCommodityComplement().stream()
+        .filter(commodityComplement -> commodityComplement.getIsWoodPackaging() != null
+            && commodityComplement.getIsWoodPackaging().equals(true))
+        .allMatch(commodityComplement -> {
+          boolean exists = commodities.getComplementParameterSet().stream()
+              .filter(complementParameterSet -> complementParameterSet.getComplementID() != null
+                  && complementParameterSet.getSpeciesID() != null)
+              .anyMatch(complementParameterSet ->
+                  complementParameterSet.getComplementID().equals(
+                      commodityComplement.getComplementID())
+                      && complementParameterSet.getSpeciesID()
+                      .equals(commodityComplement.getSpeciesID()));
 
-  private boolean isWoodPackaging(ComplementParameterSet parameterSet,
-      List<CommodityComplement> complements) {
-    int complementID = parameterSet.getComplementID();
-    String speciesID = parameterSet.getSpeciesID();
-
-    Boolean isWoodPackaging = complements.stream()
-        .filter(complement -> complement.getComplementID().equals(complementID)
-            && complement.getSpeciesID().equals(speciesID))
-        .findAny()
-        .orElseThrow(() -> new NoSuchElementException("No matching commodity complement"))
-        .getIsWoodPackaging();
-
-    return isWoodPackaging != null && isWoodPackaging;
+          if (exists) {
+            return commodities.getComplementParameterSet().stream()
+                .filter(complementParameterSet -> complementParameterSet.getComplementID() != null
+                    && complementParameterSet.getSpeciesID() != null)
+                .filter(complementParameterSet -> complementParameterSet.getComplementID()
+                    .equals(commodityComplement.getComplementID())
+                    && complementParameterSet.getSpeciesID()
+                    .equals(commodityComplement.getSpeciesID()))
+                .allMatch(this::hasField);
+          } else {
+            return false;
+          }
+        });
   }
 
   private boolean hasField(ComplementParameterSet parameterSet) {
