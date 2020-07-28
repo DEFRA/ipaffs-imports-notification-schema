@@ -14,6 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Defini
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.FreeCirculationPurposeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.IfChanneledOptionEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionEnum;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionReasonEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableReasonsEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.SpecificWarehouseNonConformingConsignmentEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
@@ -54,7 +55,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".chedppnotacceptablereason.not.null}")
-
 @NotAcceptableOtherReason(
     groups = NotificationHighRiskFieldValidation.class,
     message =
@@ -127,6 +127,14 @@ public class Decision {
   private String notAcceptableCountry;
 
   private String notAcceptableEstablishment;
+
+  private NotAcceptableActionReasonEnum notAcceptableActionDestructionReason;
+  private NotAcceptableActionReasonEnum notAcceptableActionEntryRefusalReason;
+  private NotAcceptableActionReasonEnum notAcceptableActionQuarantineImposedReason;
+  private NotAcceptableActionReasonEnum notAcceptableActionSpecialTreatmentReason;
+  private NotAcceptableActionReasonEnum notAcceptableActionIndustrialProcessingReason;
+  private NotAcceptableActionReasonEnum notAcceptableActionReDispatchReason;
+  private NotAcceptableActionReasonEnum notAcceptableActionUseForOtherPurposesReason;
 
   private String notAcceptableOtherReason;
 

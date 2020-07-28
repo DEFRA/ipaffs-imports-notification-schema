@@ -30,7 +30,19 @@ public enum NotAcceptableActionEnum implements EntityProperty {
   @CED
   @CVEDP
   @CHEDPP
-  OTHER("other");
+  OTHER("other"),
+  @CHEDPP
+  ENTRY_REFUSAL("entry-refusal"),
+  @CHEDPP
+  QUARANTINE_IMPOSED("quarantine-imposed"),
+  @CHEDPP
+  SPECIAL_TREATMENT("special-treatment"),
+  @CHEDPP
+  INDUSTRIAL_PROCESSING("industrial-processing"),
+  @CHEDPP
+  REDISPATCH("redispatch"),
+  @CHEDPP
+  USE_FOR_OTHER_PURPOSES("use-for-other-purposes");
 
   private String value;
 

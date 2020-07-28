@@ -1133,9 +1133,95 @@
             "redispatching",
             "destruction",
             "transformation",
-            "other"
+            "other",
+            "entry-refusal",
+            "quarantine-imposed",
+            "special-treatment",
+            "industrial-processing",
+            "re-dispatch",
+            "use-for-other-purposes"
           ],
           "description": "Filled if consignmentAcceptable is set to false"
+        },
+        "notAcceptableActionDestructionReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionDestructionReason",
+          "description": "Filled if not acceptable action is set to destruction",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "Other"
+          ]
+        },
+        "notAcceptableActionEntryRefusalReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionEntryRefusalReason",
+          "description": "Filled if not acceptable action is set to entry refusal",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "MeansOfTransport",
+            "Other"
+          ]
+        },
+        "notAcceptableActionQuarantineImposedReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionQuarantineImposedReason",
+          "description": "Filled if not acceptable action is set to quarantine imposed",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "Other"
+          ]
+        },
+        "notAcceptableActionSpecialTreatmentReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionSpecialTreatmentReason",
+          "description": "Filled if not acceptable action is set to special treatment",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "Other"
+          ]
+        },
+        "notAcceptableActionIndustrialProcessingReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionIndustrialProcessingReason",
+          "description": "Filled if not acceptable action is set to industrial processing",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "Other"
+          ]
+        },
+        "notAcceptableActionReDispatchReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionReDispatchReason",
+          "description": "Filled if not acceptable action is set to re-dispatch",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "MeansOfTransport",
+            "Other"
+          ]
+        },
+        "notAcceptableActionUseForOtherPurposesReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.NotAcceptableActionUseForOtherPurposesReason",
+          "description": "Filled if not acceptable action is set to use for other purposes",
+          "enum": [
+            "ContaminatedProducts",
+            "InterceptedPart",
+            "PackagingMaterial",
+            "MeansOfTransport",
+            "Other"
+          ]
         },
         "notAcceptableDestructionReason": {
           "type": "string",
@@ -1243,6 +1329,8 @@
             "Acceptable for Transit",
             "Acceptable for Temporary Import",
             "Acceptable for Specific Warehouse",
+            "Acceptable for Private Import",
+            "Acceptable for Transfer",
             "Horse Re-entry"
           ]
         },
