@@ -44,7 +44,8 @@ public class LaboratoryTestsPendingValidator
     return laboratoryTests.getTestReason() != null
         && (laboratoryTests.getTestReason() == TestReason.SUSPICIOUS
         || laboratoryTests.getTestReason() == TestReason.REENFORCED
-        || laboratoryTests.getTestReason() == TestReason.INTENSIFIED_CONTROLS);
+        || laboratoryTests.getTestReason() == TestReason.INTENSIFIED_CONTROLS
+        || laboratoryTests.getTestReason() == TestReason.LATENT_INFECTION_SAMPLING);
   }
 
   private boolean hasAtLeastOneLaboratoryTest(LaboratoryTests laboratoryTests) {

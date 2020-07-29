@@ -100,8 +100,8 @@ public class NotNullWoodPackagingKeyDataPairValidatorTest {
     assertTrue(validator.isValid(commodities, null));
   }
 
-  @Test(expected = NoSuchElementException.class)
-  public void validatorThrowsException_ifNoMatchingComplementID() {
+  @Test
+  public void validatorReturnsFalse_ifNoMatchingComplementID() {
     commodities.setCommodityComplement(new ArrayList<>() {{
       add(CommodityComplement.builder()
           .isWoodPackaging(true)
@@ -116,11 +116,11 @@ public class NotNullWoodPackagingKeyDataPairValidatorTest {
           .build());
     }});
 
-    validator.isValid(commodities, null);
+    assertFalse(validator.isValid(commodities, null));
   }
 
-  @Test(expected = NoSuchElementException.class)
-  public void validatorThrowsException_ifNoMatchingSpeciesID() {
+  @Test
+  public void validatorReturnsFalse_ifNoMatchingSpeciesID() {
     commodities.setCommodityComplement(new ArrayList<>() {{
       add(CommodityComplement.builder()
           .isWoodPackaging(true)
@@ -135,7 +135,121 @@ public class NotNullWoodPackagingKeyDataPairValidatorTest {
           .build());
     }});
 
-    validator.isValid(commodities, null);
+    assertFalse(validator.isValid(commodities, null));
+  }
+
+  @Test
+  public void validatorReturnsFalse_ifComplementComplementIDNull() {
+    commodities.setCommodityComplement(new ArrayList<>() {{
+      add(CommodityComplement.builder()
+          .isWoodPackaging(true)
+          .complementID(null)
+          .speciesID("2")
+          .build());
+    }});
+    commodities.setComplementParameterSet(new ArrayList<>() {{
+      add(ComplementParameterSet.builder()
+          .complementID(1)
+          .speciesID("1")
+          .build());
+    }});
+
+    assertFalse(validator.isValid(commodities, null));
+  }
+
+  @Test
+  public void validatorReturnsFalse_ifComplementSpeciesIDNull() {
+    commodities.setCommodityComplement(new ArrayList<>() {{
+      add(CommodityComplement.builder()
+          .isWoodPackaging(true)
+          .complementID(1)
+          .speciesID(null)
+          .build());
+    }});
+    commodities.setComplementParameterSet(new ArrayList<>() {{
+      add(ComplementParameterSet.builder()
+          .complementID(1)
+          .speciesID("1")
+          .build());
+    }});
+
+    assertFalse(validator.isValid(commodities, null));
+  }
+
+  @Test
+  public void validatorReturnsFalse_ifComplementComplementIDAndSpeciesIDNull() {
+    commodities.setCommodityComplement(new ArrayList<>() {{
+      add(CommodityComplement.builder()
+          .isWoodPackaging(true)
+          .complementID(null)
+          .speciesID(null)
+          .build());
+    }});
+    commodities.setComplementParameterSet(new ArrayList<>() {{
+      add(ComplementParameterSet.builder()
+          .complementID(1)
+          .speciesID("1")
+          .build());
+    }});
+
+    assertFalse(validator.isValid(commodities, null));
+  }
+
+  @Test
+  public void validatorReturnsFalse_ifParameterSetComplementIDNull() {
+    commodities.setCommodityComplement(new ArrayList<>() {{
+      add(CommodityComplement.builder()
+          .isWoodPackaging(true)
+          .complementID(1)
+          .speciesID("2")
+          .build());
+    }});
+    commodities.setComplementParameterSet(new ArrayList<>() {{
+      add(ComplementParameterSet.builder()
+          .complementID(null)
+          .speciesID("1")
+          .build());
+    }});
+
+    assertFalse(validator.isValid(commodities, null));
+  }
+
+  @Test
+  public void validatorReturnsFalse_ifParameterSetSpeciesIDNull() {
+    commodities.setCommodityComplement(new ArrayList<>() {{
+      add(CommodityComplement.builder()
+          .isWoodPackaging(true)
+          .complementID(1)
+          .speciesID("2")
+          .build());
+    }});
+    commodities.setComplementParameterSet(new ArrayList<>() {{
+      add(ComplementParameterSet.builder()
+          .complementID(1)
+          .speciesID(null)
+          .build());
+    }});
+
+    assertFalse(validator.isValid(commodities, null));
+  }
+
+  @Test
+  public void validatorReturnsFalse_ifParameterSetComplementIDAndSpeciesIDNull() {
+    commodities.setCommodityComplement(new ArrayList<>() {{
+      add(CommodityComplement.builder()
+          .isWoodPackaging(true)
+          .complementID(1)
+          .speciesID("2")
+          .build());
+    }});
+    commodities.setComplementParameterSet(new ArrayList<>() {{
+      add(ComplementParameterSet.builder()
+          .complementID(null)
+          .speciesID(null)
+          .build());
+    }});
+
+    assertFalse(validator.isValid(commodities, null));
   }
 
   @Test
