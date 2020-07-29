@@ -40,7 +40,7 @@ public enum NotAcceptableActionEnum implements EntityProperty {
   @CHEDPP
   INDUSTRIAL_PROCESSING("industrial-processing"),
   @CHEDPP
-  REDISPATCH("redispatch"),
+  REDISPATCH("re-dispatch"),
   @CHEDPP
   USE_FOR_OTHER_PURPOSES("use-for-other-purposes");
 
