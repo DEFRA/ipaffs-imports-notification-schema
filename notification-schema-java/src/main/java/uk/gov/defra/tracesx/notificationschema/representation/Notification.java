@@ -121,4 +121,9 @@ public class Notification {
   public boolean isCed() {
     return NotificationTypeEnum.CED.equals(type);
   }
+
+  @JsonIgnore
+  public boolean isChedpp() {
+    return NotificationTypeEnum.CHEDPP.equals(type);
+  }
 }
