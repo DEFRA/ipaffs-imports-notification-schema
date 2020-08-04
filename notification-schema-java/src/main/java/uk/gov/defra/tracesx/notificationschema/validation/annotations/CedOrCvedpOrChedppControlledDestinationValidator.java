@@ -15,7 +15,7 @@ public class CedOrCvedpOrChedppControlledDestinationValidator implements
     if (partTwo == null) {
       return true;
     }
-    //it doesn't matter which of CED/CVEDP certificate type we use.
+    //it doesn't matter which of CED/CVEDP/CHEDPP certificate type we use.
     return partTwo.getControlledDestination() != null || !ControlledDestinationRequirementHelper
         .isControlledDestinationRequired(partTwo.getDecision(), CED);
   }
