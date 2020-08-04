@@ -96,8 +96,7 @@ import javax.validation.constraints.NotNull;
             + "freecirculationpurpose.not.null}")
 @InternalMarket(
     groups = {
-        NotificationCvedpFieldValidation.class,
-        NotificationChedppFieldValidation.class
+        NotificationCvedpFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
