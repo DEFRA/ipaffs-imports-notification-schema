@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CountryOfDestinationEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
@@ -66,6 +67,9 @@ public class Notification {
 
   @ApiModelProperty(value = "Type of the notification that has been submitted")
   private NotificationTypeEnum type;
+
+  @ApiModelProperty(value = "The receiving UK border country for the notification")
+  private CountryOfDestinationEnum countryOfDestination;
 
   @NotNull(groups = BasicValidation.class, message = "may not be null or invalid")
   @ApiModelProperty(

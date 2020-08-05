@@ -51,6 +51,14 @@
         "IMP"
       ]
     },
+    "countryOfDestination" : {
+      "type": "string",
+      "description": "The receiving UK border country for the notification",
+      "enum": [
+        "GB",
+        "XI"
+      ]
+    },
     "replaces": {
       "$ref": "#/definitions/ReferenceNumber",
       "description": "Reference number of notification that was replaced by this one"
