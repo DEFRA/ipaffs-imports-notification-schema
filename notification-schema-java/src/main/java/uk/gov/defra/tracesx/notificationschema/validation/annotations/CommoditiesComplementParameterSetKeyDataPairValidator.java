@@ -25,26 +25,34 @@ public abstract class CommoditiesComplementParameterSetKeyDataPairValidator<A ex
   abstract ComplementParameterSetKeyDataPairValidator initializeValidator(A constraintAnnotation);
 
   @Override
-  public boolean isValid(
-      Commodities commodities, ConstraintValidatorContext context) {
+  public boolean isValid(Commodities commodities, ConstraintValidatorContext context) {
     if (commodities.getCommodityComplement() == null
         || commodities.getComplementParameterSet() == null) {
       return true;
     }
 
-    List<CommodityComplement> commodityComplements = commodities.getCommodityComplement().stream()
-        .filter(
-            commodityComplement -> !Boolean.TRUE.equals(commodityComplement.getIsWoodPackaging()))
-        .collect(Collectors.toList());
-    List<ComplementParameterSet> complementParameterSets = new ArrayList<>(
-        commodityComplements.size());
+    List<CommodityComplement> commodityComplements =
+        commodities.getCommodityComplement().stream()
+            .filter(
+                commodityComplement ->
+                    !Boolean.TRUE.equals(commodityComplement.getIsWoodPackaging()))
+            .collect(Collectors.toList());
+    List<ComplementParameterSet> complementParameterSets =
+        new ArrayList<>(commodityComplements.size());
     for (CommodityComplement complement : commodityComplements) {
-      Optional<ComplementParameterSet> complementParameterSetOptional = commodities
-          .getComplementParameterSet()
-          .stream().filter(complementParameterSet ->
-              complement.getComplementID().equals(complementParameterSet.getComplementID())
-                  && complement.getSpeciesID().equals(complementParameterSet.getSpeciesID()))
-          .findFirst();
+      Optional<ComplementParameterSet> complementParameterSetOptional =
+          commodities.getComplementParameterSet().stream()
+              .filter(
+                  complementParameterSet ->
+                      complement.getComplementID() != null
+                          && complement
+                              .getComplementID()
+                              .equals(complementParameterSet.getComplementID())
+                          && complement.getSpeciesID() != null
+                          && complement
+                              .getSpeciesID()
+                              .equals(complementParameterSet.getSpeciesID()))
+              .findFirst();
       if (complementParameterSetOptional.isPresent()) {
         complementParameterSets.add(complementParameterSetOptional.get());
       } else {

@@ -1,7 +1,7 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -73,18 +73,18 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   @Test
   public void testValidWhenNoCommodityComplement() {
     when(commodities.getCommodityComplement()).thenReturn(null);
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
   public void testValidWhenNoComplementParameterSet() {
     when(commodities.getComplementParameterSet()).thenReturn(null);
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
   public void testValidWhenEmptyCommoditiesData() {
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
@@ -96,7 +96,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
     commodityComplements.add(commodityComplement);
     complementParameterSets.add(complementParameterSet);
 
-    assertFalse(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isFalse();
   }
 
   @Test
@@ -107,7 +107,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
     commodityComplements.add(commodityComplement);
     complementParameterSets.add(complementParameterSet);
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
@@ -118,7 +118,33 @@ public class ChedppMinValueKeyDataPairValidatorTest {
     commodityComplements.add(commodityComplement);
     complementParameterSets.add(complementParameterSet);
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
+  }
+
+  @Test
+  public void testNullPointerExceptionNotThrownWhenSpeciesIdIsNull() {
+    CommodityComplement commodityComplement = createCommodityComplement(1, null, null);
+    ComplementParameterSet complementParameterSet = createComplementParameterSet(
+      commodityComplement,
+      ComplementParameterSetKeyDataPair.builder().key(FIELD_NAME).data("10").build(),
+      ComplementParameterSetKeyDataPair.builder().key("foo").data("bar").build());
+    commodityComplements.add(commodityComplement);
+    complementParameterSets.add(complementParameterSet);
+
+    assertThatCode(() -> validator.isValid(commodities, null)).doesNotThrowAnyException();
+  }
+
+  @Test
+  public void testNullPointerExceptionNotThrownWhenComplementIdIsNull() {
+    CommodityComplement commodityComplement = createCommodityComplement(null, "1", null);
+    ComplementParameterSet complementParameterSet = createComplementParameterSet(
+      commodityComplement,
+      ComplementParameterSetKeyDataPair.builder().key(FIELD_NAME).data("10").build(),
+      ComplementParameterSetKeyDataPair.builder().key("foo").data("bar").build());
+    commodityComplements.add(commodityComplement);
+    complementParameterSets.add(complementParameterSet);
+
+    assertThatCode(() -> validator.isValid(commodities, null)).doesNotThrowAnyException();
   }
 
   @Test
@@ -137,7 +163,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
     commodityComplements.add(commodityComplement);
     complementParameterSets.add(complementParameterSet);
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
@@ -166,7 +192,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
     commodityComplements.add(commodityComplement);
     complementParameterSets.add(complementParameterSet);
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
@@ -195,6 +221,6 @@ public class ChedppMinValueKeyDataPairValidatorTest {
     commodityComplements.add(commodityComplement);
     complementParameterSets.add(complementParameterSet);
 
-    assertFalse(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isFalse();
   }
 }
