@@ -100,6 +100,10 @@
           "type": "boolean",
           "description": "Does the consignment contain wood packaging?"
         },
+        "consignmentArrived": {
+          "type": "boolean",
+          "description": "Has the consignment arrived at the BCP?"
+        },
         "consignor": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that sends shipment"

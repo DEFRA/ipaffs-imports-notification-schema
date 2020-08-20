@@ -24,6 +24,7 @@ module.exports = class PartOne {
 
     this.customsReferenceNumber = obj.customsReferenceNumber
     this.containsWoodPackaging = obj.containsWoodPackaging
+    this.consignmentArrived = obj.consignmentArrived
 
     this.consignor = _.get(obj, 'consignor') ? new EconomicOperator(
         obj.consignor) : undefined
