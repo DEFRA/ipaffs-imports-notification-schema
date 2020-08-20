@@ -76,6 +76,8 @@ public class PartOne {
           + ".containsWoodPackaging.not.null}")
   private Boolean containsWoodPackaging;
 
+  private Boolean consignmentArrived;
+
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor"
@@ -83,6 +85,8 @@ public class PartOne {
   private EconomicOperator consignor;
 
   private EconomicOperator consignorTwo;
+
+  private EconomicOperator packer;
 
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,

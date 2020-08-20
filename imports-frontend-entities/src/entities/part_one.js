@@ -24,11 +24,13 @@ module.exports = class PartOne {
 
     this.customsReferenceNumber = obj.customsReferenceNumber
     this.containsWoodPackaging = obj.containsWoodPackaging
+    this.consignmentArrived = obj.consignmentArrived
 
     this.consignor = _.get(obj, 'consignor') ? new EconomicOperator(
         obj.consignor) : undefined
     this.consignorTwo = _.get(obj, 'consignorTwo') ? new EconomicOperator(
       obj.consignorTwo) : undefined
+    this.packer = _.get(obj, 'packer') ? new EconomicOperator(obj.packer) : undefined
     this.consignee = _.get(obj, 'consignee') ? new EconomicOperator(
         obj.consignee) : undefined
     this.importer = _.get(obj, 'importer') ? new EconomicOperator(obj.importer)

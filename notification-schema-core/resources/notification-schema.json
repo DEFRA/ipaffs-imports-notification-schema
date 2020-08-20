@@ -100,6 +100,10 @@
           "type": "boolean",
           "description": "Does the consignment contain wood packaging?"
         },
+        "consignmentArrived": {
+          "type": "boolean",
+          "description": "Has the consignment arrived at the BCP?"
+        },
         "consignor": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that sends shipment"
@@ -107,6 +111,10 @@
         "consignorTwo": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that sends shipment"
+        },
+        "packer": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Person or Company that packs the shipment"
         },
         "consignee": {
           "$ref": "#/definitions/EconomicOperator",
@@ -1990,7 +1998,8 @@
             "private transporter",
             "temporary address",
             "premises of origin",
-            "organisation branch address"
+            "organisation branch address",
+            "packer"
           ]
         },
         "status": {
