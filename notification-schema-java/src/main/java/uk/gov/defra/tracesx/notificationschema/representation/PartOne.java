@@ -84,6 +84,8 @@ public class PartOne {
 
   private EconomicOperator consignorTwo;
 
+  private EconomicOperator packer;
+
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"

@@ -108,6 +108,10 @@
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that sends shipment"
         },
+        "packer": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "Person or Company that packs the shipment"
+        },
         "consignee": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Person or Company that receives shipment"
@@ -1990,7 +1994,8 @@
             "private transporter",
             "temporary address",
             "premises of origin",
-            "organisation branch address"
+            "organisation branch address",
+            "packer"
           ]
         },
         "status": {

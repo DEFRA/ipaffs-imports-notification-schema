@@ -29,6 +29,7 @@ module.exports = class PartOne {
         obj.consignor) : undefined
     this.consignorTwo = _.get(obj, 'consignorTwo') ? new EconomicOperator(
       obj.consignorTwo) : undefined
+    this.packer = _.get(obj, 'packer') ? new EconomicOperator(obj.packer) : undefined
     this.consignee = _.get(obj, 'consignee') ? new EconomicOperator(
         obj.consignee) : undefined
     this.importer = _.get(obj, 'importer') ? new EconomicOperator(obj.importer)
