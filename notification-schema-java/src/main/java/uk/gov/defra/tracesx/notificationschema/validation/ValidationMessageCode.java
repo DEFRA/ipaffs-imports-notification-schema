@@ -14,6 +14,7 @@ public class ValidationMessageCode extends ValidationMessage {
     super(field, message);
   }
 
+  @Override
   @JsonProperty("message")
   public String getMessage() {
     return super.getMessage();

@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class PartyTypeTest {
+  private final static String COMMERCIAL_TRANSPORTER_STRING = "Commercial transporter";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = PartyType.COMMERCIAL_TRANSPORTER.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, COMMERCIAL_TRANSPORTER_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = PartyType.COMMERCIAL_TRANSPORTER.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, COMMERCIAL_TRANSPORTER_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    PartyType enumResult = PartyType.fromValue(COMMERCIAL_TRANSPORTER_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, PartyType.COMMERCIAL_TRANSPORTER);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    PartyType enumResult = PartyType.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

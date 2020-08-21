@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class EconomicOperatorStatusTest {
+  private final static String SUSPENDED_STRING = "suspended";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = EconomicOperatorStatus.SUSPENDED.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, SUSPENDED_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = EconomicOperatorStatus.SUSPENDED.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, SUSPENDED_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    EconomicOperatorStatus enumResult = EconomicOperatorStatus.fromValue(SUSPENDED_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, EconomicOperatorStatus.SUSPENDED);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    EconomicOperatorStatus enumResult = EconomicOperatorStatus.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

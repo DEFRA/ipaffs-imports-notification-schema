@@ -21,7 +21,7 @@ public class NotNullWoodPackagingCommodityValidator implements
         || partOne.getCommodities() == null
         || partOne.getCommodities().getCommodityComplement() == null
         || partOne.getContainsWoodPackaging() == null
-        || !partOne.getContainsWoodPackaging()) {
+        || Boolean.FALSE.equals(partOne.getContainsWoodPackaging())) {
       return true;
     }
 

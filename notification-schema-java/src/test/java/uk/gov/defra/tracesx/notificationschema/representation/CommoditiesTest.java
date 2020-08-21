@@ -16,7 +16,7 @@ public class CommoditiesTest {
         .addCommodityComplementItem(new CommodityComplement())
         .addCommodityComplementItem(new CommodityComplement());
 
-    assertEquals(commodities.getCommodityComplement().size(), 2);
+    assertEquals(2, commodities.getCommodityComplement().size());
   }
 
   @Test
@@ -29,6 +29,6 @@ public class CommoditiesTest {
         .addComplementParameterSetItem(new ComplementParameterSet())
         .addComplementParameterSetItem(new ComplementParameterSet());
 
-    assertEquals(commodities.getComplementParameterSet().size(), 2);
+    assertEquals(2, commodities.getComplementParameterSet().size());
   }
 }

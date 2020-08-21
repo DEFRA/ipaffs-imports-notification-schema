@@ -16,7 +16,7 @@ public enum ImpQuantityDataKeys {
   }
 
   @JsonCreator
-  public ImpQuantityDataKeys fromValue(String text) {
+  public static ImpQuantityDataKeys fromValue(String text) {
     for (ImpQuantityDataKeys u : ImpQuantityDataKeys.values()) {
       if (u.value.equalsIgnoreCase(text)) {
         return u;

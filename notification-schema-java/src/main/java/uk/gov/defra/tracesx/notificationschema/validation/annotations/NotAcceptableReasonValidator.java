@@ -20,7 +20,7 @@ public class NotAcceptableReasonValidator
     }
     if (Boolean.FALSE.equals(decision.getConsignmentAcceptable())) {
       return decision.getNotAcceptableReasons() != null
-          && decision.getNotAcceptableReasons().size() > 0;
+          && !decision.getNotAcceptableReasons().isEmpty();
     }
     return true;
   }

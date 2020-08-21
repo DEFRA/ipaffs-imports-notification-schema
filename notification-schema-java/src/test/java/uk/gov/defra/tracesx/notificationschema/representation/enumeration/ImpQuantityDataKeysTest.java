@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class ImpQuantityDataKeysTest {
+  private final static String QUANTITY_STRING = "quantity";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = ImpQuantityDataKeys.QUANTITY.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, QUANTITY_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = ImpQuantityDataKeys.QUANTITY.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, QUANTITY_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    ImpQuantityDataKeys enumResult = ImpQuantityDataKeys.fromValue(QUANTITY_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, ImpQuantityDataKeys.QUANTITY);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    ImpQuantityDataKeys enumResult = ImpQuantityDataKeys.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

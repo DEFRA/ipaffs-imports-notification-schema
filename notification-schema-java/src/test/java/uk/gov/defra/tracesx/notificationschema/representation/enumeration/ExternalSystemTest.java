@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class ExternalSystemTest {
+  private final static String TRACESNT_STRING = "TRACESNT";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = ExternalSystem.TRACESNT.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, TRACESNT_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = ExternalSystem.TRACESNT.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, TRACESNT_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    ExternalSystem enumResult = ExternalSystem.fromValue(TRACESNT_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, ExternalSystem.TRACESNT);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    ExternalSystem enumResult = ExternalSystem.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

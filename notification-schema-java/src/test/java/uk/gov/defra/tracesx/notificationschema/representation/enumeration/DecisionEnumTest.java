@@ -4,35 +4,36 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
+import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class DecisionEnumTest {
+  private final static String NON_ACCEPTABLE_STRING = "Non Acceptable";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = DecisionEnum.NON_ACCEPTABLE.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, NON_ACCEPTABLE_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = DecisionEnum.NON_ACCEPTABLE.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, NON_ACCEPTABLE_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    DecisionEnum enumResult = DecisionEnum.fromValue(NON_ACCEPTABLE_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, DecisionEnum.NON_ACCEPTABLE);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    DecisionEnum enumResult = DecisionEnum.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

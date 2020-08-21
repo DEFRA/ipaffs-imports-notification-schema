@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class AuthorityTypeTest {
+  private final static String EXIT_BIP_STRING = "exitbip";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = AuthorityType.EXITBIP.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, EXIT_BIP_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = AuthorityType.EXITBIP.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, EXIT_BIP_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    AuthorityType enumResult = AuthorityType.fromValue(EXIT_BIP_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, AuthorityType.EXITBIP);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    AuthorityType enumResult = AuthorityType.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

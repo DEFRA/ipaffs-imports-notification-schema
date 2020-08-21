@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class DefinitiveImportPurposeEnumTest {
+  private final static String SLAUGHTER_STRING = "slaughter";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = DefinitiveImportPurposeEnum.SLAUGHTER.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, SLAUGHTER_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = DefinitiveImportPurposeEnum.SLAUGHTER.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, SLAUGHTER_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    DefinitiveImportPurposeEnum enumResult = DefinitiveImportPurposeEnum.fromValue(SLAUGHTER_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, DefinitiveImportPurposeEnum.SLAUGHTER);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    DefinitiveImportPurposeEnum enumResult = DefinitiveImportPurposeEnum.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }
