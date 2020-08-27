@@ -675,6 +675,10 @@
           "minLength": 0,
           "maxLength": 255,
           "description": "Entry port for EU Import notification."
+        },
+        "contactDetails": {
+          "$ref": "#/definitions/ContactDetails",
+          "description": "Person to be contacted if there is an issue with the consignment"
         }
       }
     },
@@ -2282,6 +2286,33 @@
         "attachmentContentType": {
           "type": "string",
           "description": "The MIME type of the uploaded file"
+        }
+      }
+    },
+    "ContactDetails": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notification.api.ContactDetails",
+      "description": "Person to be contacted if there is an issue with the consignment",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "Name of designated contact"
+        },
+        "telephone": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Telephone number of designated contact"
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "Email address of designated contact"
+        },
+        "agent": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "Name of agent representing designated contact"
         }
       }
     }

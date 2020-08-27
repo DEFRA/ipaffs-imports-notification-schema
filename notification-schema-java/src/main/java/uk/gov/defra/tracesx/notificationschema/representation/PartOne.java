@@ -269,4 +269,6 @@ public class PartOne {
 
   private Boolean complexCommoditySelected;
   private String portOfEntry;
+
+  private ContactDetails contactDetails;
 }
