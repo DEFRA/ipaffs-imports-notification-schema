@@ -676,6 +676,14 @@
           "maxLength": 255,
           "description": "Entry port for EU Import notification."
         },
+        "centralCompetentAuthority": {
+          "type": "string",
+          "description": "The central competent authority responsible for the notification",
+          "enum": [
+            "DEFRA",
+            "DAERA"
+          ]
+        },
         "contactDetails": {
           "$ref": "#/definitions/ContactDetails",
           "description": "Person to be contacted if there is an issue with the consignment"
