@@ -10,7 +10,8 @@ public enum PurposeGroupEnum {
   TRANSIT_TO_3RD_COUNTRY("For Transit to 3rd Country"),
   RE_IMPORT("For Re-Import"),
   PRIVATE_IMPORT("For Private Import"),
-  TRANSFER_TO("For Transfer To");
+  TRANSFER_TO("For Transfer To"),
+  RE_CONFORMITY_CHECK("For Import Re-Conformity Check");
 
   private String value;
 
