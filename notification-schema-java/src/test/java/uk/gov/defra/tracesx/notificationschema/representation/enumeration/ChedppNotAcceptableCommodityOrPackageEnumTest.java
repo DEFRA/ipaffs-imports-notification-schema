@@ -32,4 +32,11 @@ public class ChedppNotAcceptableCommodityOrPackageEnumTest {
 
     assertEquals(COMMODITIES_STRING, enumResult);
   }
+
+  @Test
+  public void chedppNotAcceptableCommodityOrPackageEnumShouldReturnValue() {
+    String enumResult = ChedppNotAcceptableCommodityOrPackageEnum.COMMODITIES.getValue();
+
+    assertEquals(enumResult, COMMODITIES_STRING);
+  }
 }

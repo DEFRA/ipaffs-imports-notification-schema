@@ -18,7 +18,7 @@ public enum TestReason {
   }
 
   @JsonCreator
-  public TestReason fromValue(String text) {
+  public static TestReason fromValue(String text) {
     for (TestReason u : TestReason.values()) {
       if (u.value.equalsIgnoreCase(text)) {
         return u;

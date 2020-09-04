@@ -16,7 +16,7 @@ public enum Conclusion {
   }
 
   @JsonCreator
-  public Conclusion fromValue(String text) {
+  public static Conclusion fromValue(String text) {
     for (Conclusion u : Conclusion.values()) {
       if (u.value.equalsIgnoreCase(text)) {
         return u;

@@ -13,6 +13,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Notifi
 
 public class ControlledDestinationRequirementHelper {
 
+  private ControlledDestinationRequirementHelper() {}
+
   public static boolean isControlledDestinationRequired(Decision decision,
       NotificationTypeEnum type) {
     if (decision == null) {

@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class IfChanneledOptionEnumTest {
+  private final static String ARTICLE_8_STRING = "article8";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = IfChanneledOptionEnum.ARTICLE8.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, ARTICLE_8_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = IfChanneledOptionEnum.ARTICLE8.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, ARTICLE_8_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    IfChanneledOptionEnum enumResult = IfChanneledOptionEnum.fromValue(ARTICLE_8_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, IfChanneledOptionEnum.ARTICLE8);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    IfChanneledOptionEnum enumResult = IfChanneledOptionEnum.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

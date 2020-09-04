@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class CommodityTemperatureTest {
+  private final static String AMBIENT_STRING = "Ambient";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = CommodityTemperature.AMBIENT.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, AMBIENT_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = CommodityTemperature.AMBIENT.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, AMBIENT_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    CommodityTemperature enumResult = CommodityTemperature.fromValue(AMBIENT_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, CommodityTemperature.AMBIENT);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    CommodityTemperature enumResult = CommodityTemperature.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

@@ -19,7 +19,7 @@ public enum ControlStatus {
   }
 
   @JsonCreator
-  public ControlStatus fromValue(String text) {
+  public static ControlStatus fromValue(String text) {
     for (ControlStatus controlStatus : ControlStatus.values()) {
       if (controlStatus.value.equals(text)) {
         return controlStatus;

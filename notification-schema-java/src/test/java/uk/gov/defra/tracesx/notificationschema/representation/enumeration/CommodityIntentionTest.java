@@ -5,34 +5,34 @@ import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
 
-public class NotAcceptableActionReasonEnumTest {
-  private final static String OTHER_STRING = "Other";
+public class CommodityIntentionTest {
+  private final static String HUMAN_STRING = "human";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.toString();
+    String enumResult = CommodityIntention.HUMAN.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, HUMAN_STRING);
   }
 
   @Test
   public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
-    String enumResult = NotAcceptableActionReasonEnum.OTHER.getValue();
+    String enumResult = CommodityIntention.HUMAN.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertEquals(enumResult, HUMAN_STRING);
   }
 
   @Test
   public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(OTHER_STRING);
+    CommodityIntention enumResult = CommodityIntention.fromValue(HUMAN_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(enumResult, CommodityIntention.HUMAN);
   }
 
   @Test
   public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
-    NotAcceptableActionReasonEnum enumResult = NotAcceptableActionReasonEnum.fromValue(INVALID_STRING);
+    CommodityIntention enumResult = CommodityIntention.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
   }

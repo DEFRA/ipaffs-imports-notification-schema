@@ -20,7 +20,7 @@ public enum ConsignmentLeave {
   }
 
   @JsonCreator
-  public ConsignmentLeave fromValue(String text) {
+  public static ConsignmentLeave fromValue(String text) {
     for (ConsignmentLeave consignmentLeave : ConsignmentLeave.values()) {
       if (consignmentLeave.value.equals(text)) {
         return consignmentLeave;

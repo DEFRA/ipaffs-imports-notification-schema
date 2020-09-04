@@ -30,4 +30,11 @@ public class ChedppNotAcceptableReasonEnumTest {
 
     assertEquals(DOCPHMDM_STRING, enumResult);
   }
+
+  @Test
+  public void chedppNotAcceptableReasonEnumShouldReturnValue() {
+    String enumResult = ChedppNotAcceptableReasonEnum.DOCPHMDM.getValue();
+
+    assertEquals(DOCPHMDM_STRING, enumResult);
+  }
 }
