@@ -31,8 +31,8 @@ public class ChedppMinValueKeyDataPairValidatorTest {
 
   @Mock
   private Commodities commodities;
-  private List<CommodityComplement> commodityComplements = new ArrayList<>();
-  private List<ComplementParameterSet> complementParameterSets = new ArrayList<>();
+  private final List<CommodityComplement> commodityComplements = new ArrayList<>();
+  private final List<ComplementParameterSet> complementParameterSets = new ArrayList<>();
 
   @Before
   public void setup() {
@@ -78,7 +78,6 @@ public class ChedppMinValueKeyDataPairValidatorTest {
 
   @Test
   public void testValidWhenNoComplementParameterSet() {
-    when(commodities.getComplementParameterSet()).thenReturn(null);
     assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
