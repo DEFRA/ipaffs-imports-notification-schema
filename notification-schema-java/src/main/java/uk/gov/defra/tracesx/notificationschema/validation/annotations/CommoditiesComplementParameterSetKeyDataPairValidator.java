@@ -5,9 +5,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.CommodityComplemen
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -25,45 +24,35 @@ public abstract class CommoditiesComplementParameterSetKeyDataPairValidator<A ex
   abstract ComplementParameterSetKeyDataPairValidator initializeValidator(A constraintAnnotation);
 
   @Override
-  public boolean isValid(Commodities commodities, ConstraintValidatorContext context) {
-    if (commodities.getCommodityComplement() == null
-        || commodities.getComplementParameterSet() == null) {
+  public boolean isValid(
+      Commodities commodities, ConstraintValidatorContext context) {
+    if (isNullOrEmpty(commodities.getCommodityComplement())
+        || isNullOrEmpty(commodities.getComplementParameterSet())) {
       return true;
     }
 
-    List<CommodityComplement> commodityComplements =
-        commodities.getCommodityComplement().stream()
-            .filter(
-                commodityComplement ->
-                    !Boolean.TRUE.equals(commodityComplement.getIsWoodPackaging()))
-            .collect(Collectors.toList());
-    List<ComplementParameterSet> complementParameterSets =
-        new ArrayList<>(commodityComplements.size());
-    for (CommodityComplement complement : commodityComplements) {
-      Optional<ComplementParameterSet> complementParameterSetOptional =
-          commodities.getComplementParameterSet().stream()
-              .filter(
-                  complementParameterSet ->
-                      complement.getComplementID() != null
-                          && complement
-                              .getComplementID()
-                              .equals(complementParameterSet.getComplementID())
-                          && complement.getSpeciesID() != null
-                          && complement
-                              .getSpeciesID()
-                              .equals(complementParameterSet.getSpeciesID()))
-              .findFirst();
-      if (complementParameterSetOptional.isPresent()) {
-        complementParameterSets.add(complementParameterSetOptional.get());
-      } else {
-        return false;
-      }
+    List<Integer> commodityComplementIds = commodities.getCommodityComplement().stream()
+        .filter(commodityComplement ->
+            !Boolean.TRUE.equals(commodityComplement.getIsWoodPackaging()))
+        .map(CommodityComplement::getComplementID)
+        .collect(Collectors.toList());
+
+    if (commodityComplementIds.isEmpty()) {
+      return true;
     }
 
-    return complementParameterSets.stream().allMatch(this::isKeyDataPairValid);
+    return commodities.getComplementParameterSet().stream()
+        .filter(cp -> commodityComplementIds.contains(cp.getComplementID()))
+        .map(this::isKeyDataPairValid)
+        .reduce(Boolean::logicalAnd)
+        .orElse(false);
   }
 
   protected boolean isKeyDataPairValid(ComplementParameterSet complementParameterSet) {
     return validation.isValid(complementParameterSet.getKeyDataPair());
+  }
+
+  public static <T> boolean isNullOrEmpty(Collection<T> list) {
+    return list == null || list.isEmpty();
   }
 }

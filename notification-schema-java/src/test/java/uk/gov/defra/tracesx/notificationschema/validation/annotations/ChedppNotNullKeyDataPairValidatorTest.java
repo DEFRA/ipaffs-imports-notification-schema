@@ -69,7 +69,6 @@ public class ChedppNotNullKeyDataPairValidatorTest {
 
   @Test
   public void testValidWhenNoComplementParameterSet() {
-    when(commodities.getComplementParameterSet()).thenReturn(null);
     assertTrue(validator.isValid(commodities, null));
   }
 
