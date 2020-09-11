@@ -5,7 +5,7 @@
     <profile>
       <id>release</id>
       <properties>
-        <repo.releases.url>https://artifactory.azure.defra.cloud/artifactory/maven-releases-local</repo.releases.url>
+        <repo.releases.url>https://artifactoryv2.azure.defra.cloud/artifactory/maven-releases-local</repo.releases.url>
       </properties>
       <repositories>
         <repository>
@@ -21,7 +21,7 @@
         <repository>
           <id>releases-local</id>
           <name>artifactory.azure.defra.cloud-releases</name>
-          <url>https://artifactory.azure.defra.cloud/artifactory/maven-releases-local</url>
+          <url>https://artifactoryv2.azure.defra.cloud/artifactory/maven-releases-local</url>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
