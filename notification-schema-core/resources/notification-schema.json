@@ -503,7 +503,8 @@
                 "For Transit to 3rd Country",
                 "For Re-Import",
                 "For Private Import",
-                "For Transfer To"
+                "For Transfer To",
+                "For Import Re-Conformity Check"
               ]
             }
           }
