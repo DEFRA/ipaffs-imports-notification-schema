@@ -515,6 +515,12 @@
           "maxLength": 30,
           "description": "Either a Border-Inspection-Post or Designated-Point-Of-Entry, e.g. GBFXT1"
         },
+        "pointOfEntryControlPoint": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30,
+          "description": "A control point at the point of entry"
+        },
         "arrivalDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
