@@ -1,6 +1,7 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum AuthorityType {
   EXITBIP("exitbip"),
@@ -31,5 +32,10 @@ public enum AuthorityType {
   @Override
   public String toString() {
     return String.valueOf(value);
+  }
+
+  @JsonValue
+  public String toValue() {
+    return this.getValue();
   }
 }
