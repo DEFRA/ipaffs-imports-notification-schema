@@ -48,6 +48,7 @@ module.exports = class PartOne {
         obj.commodities) : undefined
     this.purpose = _.get(obj, 'purpose') ? new Purpose(obj.purpose) : undefined
     this.pointOfEntry = obj.pointOfEntry
+    this.pointOfEntryControlPoint = obj.pointOfEntryControlPoint
     this.arrivalDate = obj.arrivalDate
     this.arrivalTime = obj.arrivalTime
     this.meansOfTransport = _.get(obj, 'meansOfTransport')

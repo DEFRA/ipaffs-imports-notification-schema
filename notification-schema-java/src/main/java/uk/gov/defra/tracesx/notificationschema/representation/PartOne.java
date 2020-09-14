@@ -163,6 +163,8 @@ public class PartOne {
           + ".not.null}")
   private String pointOfEntry;
 
+  private String pointOfEntryControlPoint;
+
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
