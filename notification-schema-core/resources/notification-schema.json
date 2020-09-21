@@ -529,7 +529,6 @@
         },
         "arrivalTime": {
           "type": "string",
-          "format": "time",
           "javaType": "java.time.LocalTime",
           "description": "Time (HH:MM) when consignment arrives"
         },
@@ -558,7 +557,6 @@
         "departureTime": {
           "type": "string",
           "javaType": "java.time.LocalTime",
-          "format": "time",
           "description": "Time (HH:MM) of consignment departure"
         },
         "estimatedJourneyTimeInMinutes": {
@@ -1573,7 +1571,7 @@
         "testDate": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date",
+          "format": "date-time",
           "description": "Date of tests"
         },
         "testReason": {
@@ -1706,7 +1704,7 @@
         "signed": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date",
+          "format": "date-time",
           "description": "Date of sign"
         }
       }
@@ -1746,7 +1744,7 @@
         "signed": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date",
+          "format": "date-time",
           "description": "Date of sign"
         }
       }
