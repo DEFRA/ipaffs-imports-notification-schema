@@ -32,7 +32,6 @@
     "lastUpdated": {
       "type": "string",
       "javaType": "java.time.LocalDateTime",
-      "format": "date-time",
       "description": "Date when the notification was last updated."
     },
     "lastUpdatedBy": {
@@ -657,7 +656,6 @@
         "submissionDate": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date-time",
           "description": "Date and time when the notification was submitted"
         },
         "submittedBy": {
@@ -702,7 +700,6 @@
     "decisionDate": {
       "type": "string",
       "javaType": "java.time.LocalDateTime",
-      "format": "date-time",
       "description": "Date when the notification was validated or rejected"
     },
     "partTwo": {
@@ -1136,7 +1133,6 @@
         "checkDate": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date-time",
           "description": "User entered date when the checks were completed"
         },
         "accompanyingDocuments": {
@@ -1571,7 +1567,6 @@
         "testDate": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date-time",
           "description": "Date of tests"
         },
         "testReason": {
@@ -1704,7 +1699,6 @@
         "signed": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date-time",
           "description": "Date of sign"
         }
       }
@@ -1744,7 +1738,6 @@
         "signed": {
           "type": "string",
           "javaType": "java.time.LocalDateTime",
-          "format": "date-time",
           "description": "Date of sign"
         }
       }
