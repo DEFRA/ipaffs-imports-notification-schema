@@ -482,7 +482,6 @@
             "exitDate": {
               "type": "string",
               "javaType": "java.time.LocalDate",
-              "format": "date",
               "description": "Exit date when import or admission"
             },
             "finalBIP": {
@@ -523,7 +522,6 @@
         "arrivalDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Date when consignment arrives"
         },
         "arrivalTime": {
@@ -550,7 +548,6 @@
         "departureDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Date of consignment departure"
         },
         "departureTime": {
@@ -848,12 +845,10 @@
       "properties": {
         "sampleUseByDate": {
           "type": "string",
-          "format": "date",
           "description": "When sample was used"
         },
         "releasedDate": {
           "type": "string",
-          "format": "date",
           "description": "When it was released"
         },
         "laboratoryTestMethod": {
@@ -878,7 +873,6 @@
         "labTestCreatedDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Date of lab test created in IPAFFS"
         }
       }
@@ -1266,7 +1260,6 @@
         },
         "notAcceptableActionByDate": {
           "type": "string",
-          "format": "date",
           "description": "Filled when consignmentAcceptable is set to false"
         },
         "chedppNotAcceptableReasons": {
@@ -1343,7 +1336,6 @@
         "temporaryDeadline": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Deadline when consignment has to leave borders"
         },
         "decision": {
@@ -1456,7 +1448,6 @@
         "date": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Date of re-export"
         },
         "meansOfTransportNo": {
@@ -1529,7 +1520,6 @@
         "destructionDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Date of consignment destruction"
         }
       }
@@ -2278,7 +2268,6 @@
         "documentIssueDate": {
           "type": "string",
           "javaType": "java.time.LocalDate",
-          "format": "date",
           "description": "Additional document issue date"
         },
         "attachmentId": {
