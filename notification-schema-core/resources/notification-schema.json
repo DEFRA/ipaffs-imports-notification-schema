@@ -92,7 +92,8 @@
         },
         "customsReferenceNumber": {
           "type": "string",
-          "maxLength": 64,
+          "minLength": 1,
+          "maxLength": 32,
           "description": "Customs reference number"
         },
         "containsWoodPackaging": {

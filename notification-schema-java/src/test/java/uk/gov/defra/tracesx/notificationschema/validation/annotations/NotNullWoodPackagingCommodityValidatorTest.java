@@ -9,8 +9,6 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.CommodityComplement;
-import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
-import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
 import java.util.ArrayList;

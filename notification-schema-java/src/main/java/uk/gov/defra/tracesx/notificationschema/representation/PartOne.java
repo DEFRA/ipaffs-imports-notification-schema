@@ -70,6 +70,10 @@ public class PartOne {
           + ".not.null}")
   private Party personResponsible;
 
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+          + ".customsReferenceNumber.not.null}")
   private String customsReferenceNumber;
 
   @NotNull(
