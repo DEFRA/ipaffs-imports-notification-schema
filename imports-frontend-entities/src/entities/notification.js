@@ -27,7 +27,6 @@ module.exports = class Notification {
     this.lastUpdated = obj.lastUpdated
     this.type = obj.type
     this.status = obj.status
-    this.countryOfDestination = obj.countryOfDestination
     this.partOne = _.get(obj, 'partOne') ? new PartOne(obj.partOne) : undefined
     this.partTwo = _.get(obj, 'partTwo') ? new PartTwo(obj.partTwo) : undefined
     this.partThree = _.get(obj, 'partThree') ? new PartThree(obj.partThree)

@@ -50,14 +50,6 @@
         "IMP"
       ]
     },
-    "countryOfDestination" : {
-      "type": "string",
-      "description": "The receiving UK border country for the notification",
-      "enum": [
-        "GB",
-        "XI"
-      ]
-    },
     "replaces": {
       "$ref": "#/definitions/ReferenceNumber",
       "description": "Reference number of notification that was replaced by this one"
@@ -675,14 +667,6 @@
           "minLength": 0,
           "maxLength": 255,
           "description": "Entry port for EU Import notification."
-        },
-        "centralCompetentAuthority": {
-          "type": "string",
-          "description": "The central competent authority responsible for the notification",
-          "enum": [
-            "DEFRA",
-            "DAERA"
-          ]
         },
         "contactDetails": {
           "$ref": "#/definitions/ContactDetails",
