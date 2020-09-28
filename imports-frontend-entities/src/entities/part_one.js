@@ -75,6 +75,7 @@ module.exports = class PartOne {
     this.transporterDetailsRequired = obj.transporterDetailsRequired
     this.complexCommoditySelected = obj.complexCommoditySelected
     this.portOfEntry = obj.portOfEntry
+    this.centralCompetentAuthority = obj.centralCompetentAuthority
     this.contactDetails = obj.contactDetails
 
     return Object.seal(new Proxy(this, handler))
