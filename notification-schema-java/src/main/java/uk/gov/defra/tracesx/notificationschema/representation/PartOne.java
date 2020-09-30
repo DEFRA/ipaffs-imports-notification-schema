@@ -9,14 +9,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CentralCompetentAuthorityEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
@@ -277,9 +275,6 @@ public class PartOne {
 
   private Boolean complexCommoditySelected;
   private String portOfEntry;
-
-  @ApiModelProperty(value = "The central competent authority responsible for the notification")
-  private CentralCompetentAuthorityEnum centralCompetentAuthority;
 
   private ContactDetails contactDetails;
 }
