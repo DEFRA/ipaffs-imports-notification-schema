@@ -15,11 +15,11 @@ for example: 1.0.7 to 1.0.8
 Note: This is a manual step until we have pipeline changes in place for npm publishing
 
 1. Open a terminal window.
-2. Run 'npm login --registry https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/ --scope @ipaffs'
+2. Run 'npm login --registry https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/ --scope @ipaffs'
 3. When prompted for login use your artifactory username, password and defra email address.
 4. If the login was successful you will see a text 'Logged in as xxxxx.yyyyy to scope @ipaffs on https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/'
 5. cd into imports-notification-schema/imports-frontend-entities
-6. Run 'npm publish --registry https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/ --verbose'
+6. Run 'npm publish --registry https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/ --verbose'
 7. If the publish is successful you should see a status log like the below
 ```
    npm notice === Tarball Details === 
@@ -31,7 +31,7 @@ Note: This is a manual step until we have pipeline changes in place for npm publ
    npm notice integrity:     sha512-EnCCzK6KT2Cy9[...]DLfhLuL8O2A4w==
    npm notice total files:   52                                      
    npm notice 
-   npm http fetch PUT 201 https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/@ipaffs%2fimports-frontend-entities 6980ms
+   npm http fetch PUT 201 https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/@ipaffs%2fimports-frontend-entities 6980ms
    npm info lifecycle @ipaffs/imports-frontend-entities@1.0.1~publish: @ipaffs/imports-frontend-entities@1.0.1
    npm info lifecycle @ipaffs/imports-frontend-entities@1.0.1~postpublish: @ipaffs/imports-frontend-entities@1.0.1
    + @ipaffs/imports-frontend-entities@1.0.1
