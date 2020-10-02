@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Documented
 public @interface QuantityImp {
 
-  String message() default "A value must be entered";
+  String message() default "Quantity must be entered";
 
   Class<?>[] groups() default {};
 

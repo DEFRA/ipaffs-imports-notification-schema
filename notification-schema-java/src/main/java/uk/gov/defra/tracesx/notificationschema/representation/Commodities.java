@@ -101,7 +101,7 @@ public class Commodities {
   @QuantityImp(
       groups = NotificationLowRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
-          + ".commodities.complementParameterSet.has.value}")
+          + ".commodities.complementParameterSet.quantity.not.null}")
   private List<ComplementParameterSet> complementParameterSet = null;
 
   private Boolean includeNonAblactedAnimals = null;
