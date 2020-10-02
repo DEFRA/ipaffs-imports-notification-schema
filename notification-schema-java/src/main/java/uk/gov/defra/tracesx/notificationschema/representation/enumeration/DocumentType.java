@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DocumentType {
@@ -31,16 +30,6 @@ public enum DocumentType {
 
   DocumentType(String value) {
     this.value = value;
-  }
-
-  @JsonCreator
-  public static DocumentType fromValue(String text) {
-    for (DocumentType t : DocumentType.values()) {
-      if (t.value.equalsIgnoreCase(text)) {
-        return t;
-      }
-    }
-    return null;
   }
 
   @JsonValue
