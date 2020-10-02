@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CVEDA;
 import uk.gov.defra.tracesx.notificationschema.validation.EntityProperty;
@@ -17,16 +16,6 @@ public enum DefinitiveImportPurposeEnum implements EntityProperty {
 
   DefinitiveImportPurposeEnum(String value) {
     this.value = value;
-  }
-
-  @JsonCreator
-  public static DefinitiveImportPurposeEnum fromValue(String text) {
-    for (DefinitiveImportPurposeEnum b : DefinitiveImportPurposeEnum.values()) {
-      if (b.value.equals(text)) {
-        return b;
-      }
-    }
-    return null;
   }
 
   @JsonValue
