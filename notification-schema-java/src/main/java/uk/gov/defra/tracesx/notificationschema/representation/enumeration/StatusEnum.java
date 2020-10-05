@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum StatusEnum {
@@ -18,6 +19,16 @@ public enum StatusEnum {
 
   StatusEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static StatusEnum fromValue(String text) {
+    for (StatusEnum b : StatusEnum.values()) {
+      if (b.value.equals(text)) {
+        return b;
+      }
+    }
+    return null;
   }
 
   @JsonValue

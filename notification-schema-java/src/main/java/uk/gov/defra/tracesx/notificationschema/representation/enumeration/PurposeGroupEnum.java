@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum PurposeGroupEnum {
@@ -16,6 +17,16 @@ public enum PurposeGroupEnum {
 
   PurposeGroupEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static PurposeGroupEnum fromValue(String text) {
+    for (PurposeGroupEnum u : PurposeGroupEnum.values()) {
+      if (u.value.equalsIgnoreCase(text)) {
+        return u;
+      }
+    }
+    return null;
   }
 
   @JsonValue

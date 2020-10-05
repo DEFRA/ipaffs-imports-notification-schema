@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CED;
 import uk.gov.defra.tracesx.notificationschema.validation.CHEDPP;
@@ -47,6 +48,16 @@ public enum NotAcceptableActionEnum implements EntityProperty {
 
   NotAcceptableActionEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static NotAcceptableActionEnum fromValue(String text) {
+    for (NotAcceptableActionEnum b : NotAcceptableActionEnum.values()) {
+      if (b.value.equals(text)) {
+        return b;
+      }
+    }
+    return null;
   }
 
   @JsonValue

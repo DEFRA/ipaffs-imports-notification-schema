@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ExternalSystem {
@@ -9,6 +10,16 @@ public enum ExternalSystem {
 
   ExternalSystem(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static ExternalSystem fromValue(String text) {
+    for (ExternalSystem b : ExternalSystem.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
+    }
+    return null;
   }
 
   public String getValue() {

@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ConservationOfSample {
@@ -11,6 +12,16 @@ public enum ConservationOfSample {
 
   ConservationOfSample(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static ConservationOfSample fromValue(String text) {
+    for (ConservationOfSample u : ConservationOfSample.values()) {
+      if (u.value.equalsIgnoreCase(text)) {
+        return u;
+      }
+    }
+    return null;
   }
 
   @JsonValue

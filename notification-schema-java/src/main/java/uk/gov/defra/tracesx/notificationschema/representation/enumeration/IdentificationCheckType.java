@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum IdentificationCheckType {
@@ -10,6 +11,16 @@ public enum IdentificationCheckType {
 
   IdentificationCheckType(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static IdentificationCheckType fromValue(String text) {
+    for (IdentificationCheckType u : IdentificationCheckType.values()) {
+      if (u.value.equalsIgnoreCase(text)) {
+        return u;
+      }
+    }
+    return null;
   }
 
   @JsonValue

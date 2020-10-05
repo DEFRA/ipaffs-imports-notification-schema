@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum NotAcceptableReasonsEnum {
@@ -29,6 +30,16 @@ public enum NotAcceptableReasonsEnum {
 
   NotAcceptableReasonsEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static NotAcceptableReasonsEnum fromValue(String text) {
+    for (NotAcceptableReasonsEnum b : NotAcceptableReasonsEnum.values()) {
+      if (b.value.equals(text)) {
+        return b;
+      }
+    }
+    return null;
   }
 
   @JsonValue

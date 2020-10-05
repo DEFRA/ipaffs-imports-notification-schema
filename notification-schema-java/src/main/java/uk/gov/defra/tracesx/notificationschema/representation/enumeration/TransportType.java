@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TransportType {
@@ -15,6 +16,16 @@ public enum TransportType {
 
   TransportType(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static TransportType fromValue(String text) {
+    for (TransportType b : TransportType.values()) {
+      if (String.valueOf(b.value).equals(text)) {
+        return b;
+      }
+    }
+    return null;
   }
 
   public String getValue() {

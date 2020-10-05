@@ -1,6 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.Arrays;
 
 public enum NotAcceptableActionReasonEnum {
   CONTAMINATED_PRODUCTS("ContaminatedProducts"),
@@ -13,6 +16,14 @@ public enum NotAcceptableActionReasonEnum {
 
   NotAcceptableActionReasonEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static NotAcceptableActionReasonEnum fromValue(String text) {
+    return Arrays.stream(NotAcceptableActionReasonEnum.values())
+        .filter(label -> label.value.equals(text))
+        .findFirst()
+        .orElse(null);
   }
 
   @JsonValue
