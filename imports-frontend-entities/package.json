@@ -1,19 +1,19 @@
 {
   "name": "@ipaffs/imports-frontend-entities",
-  "version": "1.0.111",
+  "version": "1.0.113",
   "repository": {
     "type": "git"
   },
   "private": false,
   "description": "Baseline schema and entities to use across all frontends",
   "files": [
-    "etc/notification-schema.json",
+    "etc/*.json",
     "src/entities/base/*.js",
     "src/entities/*.js",
     "src/utils/*.js"
   ],
   "scripts": {
-    "prepare": "cp ../notification-schema-core/resources/notification-schema.json ./etc/",
+    "prepare": "cp ../notification-schema-core/resources/*.json ./etc/",
     "test": "nyc mocha --recursive",
     "test-jenkins": "NODE_ENV=test ENV_DOMAIN=test JUNIT_REPORT_PATH=./report.xml nyc --reporter=cobertura ./node_modules/.bin/mocha --reporter mocha-jenkins-reporter --recursive --colors",
     "posttest-jenkins": "NODE_ENV=test ENV_DOMAIN=test nyc --reporter=lcov ./node_modules/.bin/mocha --reporter mocha-sonarqube-reporter test --reporter-options output=coverage/unit.xml --recursive --colors",
