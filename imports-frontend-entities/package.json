@@ -1,6 +1,6 @@
 {
   "name": "@ipaffs/imports-frontend-entities",
-  "version": "1.0.108",
+  "version": "1.0.109",
   "repository": {
     "type": "git"
   },
@@ -37,7 +37,7 @@
     "mocha-standard": "1.0.0",
     "npm-cli-login": "0.1.1",
     "nyc": "14.1.1",
-    "release-it": "12.3.5"
+    "release-it": "14.0.3"
   },
   "dependencies": {
     "ajv": "6.5.3",
