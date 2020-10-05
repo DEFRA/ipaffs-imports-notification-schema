@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CHEDPP;
 import uk.gov.defra.tracesx.notificationschema.validation.CVEDP;
@@ -23,6 +24,17 @@ public enum SpecificWarehouseNonConformingConsignmentEnum implements EntityPrope
 
   SpecificWarehouseNonConformingConsignmentEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static SpecificWarehouseNonConformingConsignmentEnum fromValue(String text) {
+    for (SpecificWarehouseNonConformingConsignmentEnum b :
+        SpecificWarehouseNonConformingConsignmentEnum.values()) {
+      if (b.value.equals(text)) {
+        return b;
+      }
+    }
+    return null;
   }
 
   @JsonValue

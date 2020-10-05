@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum InternalMarketPurpose {
@@ -13,6 +14,16 @@ public enum InternalMarketPurpose {
 
   InternalMarketPurpose(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static InternalMarketPurpose fromValue(String text) {
+    for (InternalMarketPurpose u : InternalMarketPurpose.values()) {
+      if (u.value.equalsIgnoreCase(text)) {
+        return u;
+      }
+    }
+    return null;
   }
 
   @JsonValue

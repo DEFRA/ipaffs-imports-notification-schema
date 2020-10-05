@@ -1,6 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.Arrays;
 
 public enum ChedppNotAcceptableReasonEnum {
   DOCPHMDM("doc-phmdm"),
@@ -37,6 +40,14 @@ public enum ChedppNotAcceptableReasonEnum {
 
   ChedppNotAcceptableReasonEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static ChedppNotAcceptableReasonEnum fromValue(String text) {
+    return Arrays.stream(ChedppNotAcceptableReasonEnum.values())
+        .filter(label -> label.value.equals(text))
+        .findFirst()
+        .orElse(null);
   }
 
   @JsonValue

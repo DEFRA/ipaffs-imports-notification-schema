@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CHEDPP;
 import uk.gov.defra.tracesx.notificationschema.validation.CVEDP;
@@ -17,6 +18,16 @@ public enum IfChanneledOptionEnum implements EntityProperty {
 
   IfChanneledOptionEnum(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static IfChanneledOptionEnum fromValue(String text) {
+    for (IfChanneledOptionEnum u : IfChanneledOptionEnum.values()) {
+      if (u.value.equalsIgnoreCase(text)) {
+        return u;
+      }
+    }
+    return null;
   }
 
   @JsonValue

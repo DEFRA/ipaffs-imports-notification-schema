@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum EconomicOperatorType {
@@ -20,6 +21,16 @@ public enum EconomicOperatorType {
 
   EconomicOperatorType(String value) {
     this.value = value;
+  }
+
+  @JsonCreator
+  public static EconomicOperatorType fromValue(String text) {
+    for (EconomicOperatorType u : EconomicOperatorType.values()) {
+      if (u.value.equalsIgnoreCase(text)) {
+        return u;
+      }
+    }
+    return null;
   }
 
   @JsonValue
