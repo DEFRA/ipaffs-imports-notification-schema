@@ -1,6 +1,6 @@
 {
   "name": "@ipaffs/imports-frontend-entities",
-  "version": "1.0.107",
+  "version": "1.0.108",
   "repository": {
     "type": "git"
   },
@@ -18,10 +18,10 @@
     "test-jenkins": "NODE_ENV=test ENV_DOMAIN=test JUNIT_REPORT_PATH=./report.xml nyc --reporter=cobertura ./node_modules/.bin/mocha --reporter mocha-jenkins-reporter --recursive --colors",
     "posttest-jenkins": "NODE_ENV=test ENV_DOMAIN=test nyc --reporter=lcov ./node_modules/.bin/mocha --reporter mocha-sonarqube-reporter test --reporter-options output=coverage/unit.xml --recursive --colors",
     "release": "release-it --ci --no-git",
-    "login": "npm-cli-login -u $ARTIFACTORY_USERNAME -p $ARTIFACTORY_PASSWORD -e imports-jenkins@defra.onmicrosoft.com -r https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-releases-local -s @ipaffs"
+    "login": "npm-cli-login -u $ARTIFACTORY_USERNAME -p $ARTIFACTORY_PASSWORD -e imports-jenkins@defra.onmicrosoft.com -r https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-releases-local -s @ipaffs"
   },
   "publishConfig": {
-    "registry": "https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/"
+    "registry": "https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/"
   },
   "author": "",
   "license": "ISC",
