@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CED;
 import uk.gov.defra.tracesx.notificationschema.validation.CHEDPP;
@@ -35,7 +34,6 @@ public enum FreeCirculationPurposeEnum implements EntityProperty {
     this.value = value;
   }
 
-  @JsonCreator
   public static FreeCirculationPurposeEnum fromValue(String text) {
     for (FreeCirculationPurposeEnum b : FreeCirculationPurposeEnum.values()) {
       if (b.value.equals(text)) {

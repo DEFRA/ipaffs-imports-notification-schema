@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum AnimalCertification {
@@ -33,7 +32,6 @@ public enum AnimalCertification {
     this.value = value;
   }
 
-  @JsonCreator
   public static AnimalCertification fromValue(String text) {
     for (AnimalCertification b : AnimalCertification.values()) {
       if (b.value.equals(text)) {

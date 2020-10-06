@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ConsignmentLeave {
@@ -19,7 +18,6 @@ public enum ConsignmentLeave {
     return this.value;
   }
 
-  @JsonCreator
   public static ConsignmentLeave fromValue(String text) {
     for (ConsignmentLeave consignmentLeave : ConsignmentLeave.values()) {
       if (consignmentLeave.value.equals(text)) {

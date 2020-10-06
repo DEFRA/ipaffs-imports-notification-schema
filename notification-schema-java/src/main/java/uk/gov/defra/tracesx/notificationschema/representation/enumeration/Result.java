@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Result {
@@ -16,7 +15,6 @@ public enum Result {
     this.value = value;
   }
 
-  @JsonCreator
   public static Result fromValue(String text) {
     for (Result u : Result.values()) {
       if (u.value.equalsIgnoreCase(text)) {

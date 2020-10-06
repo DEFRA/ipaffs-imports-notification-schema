@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum AuthorityType {
@@ -15,7 +14,6 @@ public enum AuthorityType {
     this.value = value;
   }
 
-  @JsonCreator
   public static AuthorityType fromValue(String text) {
     for (AuthorityType b : AuthorityType.values()) {
       if (String.valueOf(b.value).equals(text)) {

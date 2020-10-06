@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ImpQuantityDataKeys {
@@ -15,7 +14,6 @@ public enum ImpQuantityDataKeys {
     this.value = value;
   }
 
-  @JsonCreator
   public static ImpQuantityDataKeys fromValue(String text) {
     for (ImpQuantityDataKeys u : ImpQuantityDataKeys.values()) {
       if (u.value.equalsIgnoreCase(text)) {

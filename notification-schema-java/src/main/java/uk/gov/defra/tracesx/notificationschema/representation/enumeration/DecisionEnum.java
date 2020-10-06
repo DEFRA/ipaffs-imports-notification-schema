@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import uk.gov.defra.tracesx.notificationschema.validation.CED;
 import uk.gov.defra.tracesx.notificationschema.validation.CHEDPP;
@@ -48,7 +47,6 @@ public enum DecisionEnum implements EntityProperty {
     this.value = value;
   }
 
-  @JsonCreator
   public static DecisionEnum fromValue(String text) {
     for (DecisionEnum b : DecisionEnum.values()) {
       if (b.value.equals(text)) {

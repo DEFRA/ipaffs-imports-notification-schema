@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum AnalysisType {
@@ -14,7 +13,6 @@ public enum AnalysisType {
     this.value = value;
   }
 
-  @JsonCreator
   public static AnalysisType fromValue(String text) {
     for (AnalysisType u : AnalysisType.values()) {
       if (u.value.equalsIgnoreCase(text)) {

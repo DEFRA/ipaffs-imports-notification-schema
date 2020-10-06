@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ControlStatus {
@@ -18,7 +17,6 @@ public enum ControlStatus {
     return this.value;
   }
 
-  @JsonCreator
   public static ControlStatus fromValue(String text) {
     for (ControlStatus controlStatus : ControlStatus.values()) {
       if (controlStatus.value.equals(text)) {
