@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum PhysicalCheckNotDoneReason {
@@ -13,7 +12,6 @@ public enum PhysicalCheckNotDoneReason {
     this.value = value;
   }
 
-  @JsonCreator
   public static PhysicalCheckNotDoneReason fromValue(String text) {
     for (PhysicalCheckNotDoneReason u : PhysicalCheckNotDoneReason.values()) {
       if (u.value.equalsIgnoreCase(text)) {

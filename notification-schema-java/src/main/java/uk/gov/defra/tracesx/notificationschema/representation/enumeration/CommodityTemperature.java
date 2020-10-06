@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CommodityTemperature {
@@ -14,7 +13,6 @@ public enum CommodityTemperature {
     this.value = value;
   }
 
-  @JsonCreator
   public static CommodityTemperature fromValue(String text) {
     for (CommodityTemperature u : CommodityTemperature.values()) {
       if (u.value.equalsIgnoreCase(text)) {
