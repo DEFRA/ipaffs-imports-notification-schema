@@ -189,6 +189,12 @@
                 "description": "Holder for additional parameters of a commodity",
                 "additionalProperties": false,
                 "properties": {
+                  "uniqueComplementID": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 36,
+                    "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only"
+                  },
                   "commodityDescription": {
                     "type": "string",
                     "description": "Description of the commodity"
@@ -287,6 +293,12 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
+                  "uniqueComplementID": {
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 36,
+                    "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only"
+                  },
                   "complementID": {
                     "type": "integer",
                     "minimum": 0

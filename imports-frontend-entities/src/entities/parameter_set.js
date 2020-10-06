@@ -13,6 +13,7 @@ module.exports = class ComplementParameterSet {
       obj = {}
     }
 
+    this.uniqueComplementID = obj.uniqueComplementID
     this.complementID = obj.complementID
     this.speciesID = obj.speciesID
     this.keyDataPair = getList(

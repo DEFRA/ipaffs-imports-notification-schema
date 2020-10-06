@@ -14,6 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.validation.Valid;
 
 @Builder
@@ -28,6 +29,8 @@ public class ComplementParameterSet {
   public static final String NUMBER_ANIMAL = "number_animal";
   public static final String TYPE_PACKAGE = "type_package";
   public static final String TYPE_PRODUCT = "type_product";
+
+  private UUID uniqueComplementID;
   private Integer complementID;
   private String speciesID;
 

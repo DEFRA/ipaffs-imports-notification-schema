@@ -7,6 +7,7 @@ module.exports = class CommodityComplement {
       obj = {}
     }
 
+    this.uniqueComplementID = obj.uniqueComplementID
     this.commodityDescription = obj.commodityDescription
     this.commodityID = obj.commodityID
     this.complementID = obj.complementID

@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Builder
 @Data
 @JsonInclude(Include.NON_EMPTY)
@@ -15,6 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class CommodityComplement {
 
+  private UUID uniqueComplementID;
   private String commodityID;
   private String commodityDescription;
   private Integer complementID;
