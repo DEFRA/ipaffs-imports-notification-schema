@@ -17,7 +17,7 @@ Note: This is a manual step until we have pipeline changes in place for npm publ
 1. Open a terminal window.
 2. Run 'npm login --registry https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/ --scope @ipaffs'
 3. When prompted for login use your artifactory username, password and defra email address.
-4. If the login was successful you will see a text 'Logged in as xxxxx.yyyyy to scope @ipaffs on https://artifactory.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/'
+4. If the login was successful you will see a text 'Logged in as xxxxx.yyyyy to scope @ipaffs on https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/'
 5. cd into imports-notification-schema/imports-frontend-entities
 6. Run 'npm publish --registry https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/ --verbose'
 7. If the publish is successful you should see a status log like the below

@@ -4,6 +4,7 @@ const Ajv = require('ajv')
 const { getList } = require('../utils/list')
 const handler = require('./base/handler')
 const notificationJsonSchema = require('../../etc/notification-schema.json')
+const schemaDef = require('../../etc/schema-definition.json')
 const PartOne = require('./part_one')
 const PartTwo = require('./part_two')
 const PartThree = require('./part_three')
@@ -47,7 +48,7 @@ module.exports = class Notification {
 
 const validate = obj => {
 
-  let validate = new Ajv().compile(notificationJsonSchema)
+  let validate = new Ajv().addMetaSchema(schemaDef).compile(notificationJsonSchema)
   if (!validate(obj)) {
     throw Error('Notification constructor: ' + JSON.stringify(validate.errors))
   }

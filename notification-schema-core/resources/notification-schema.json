@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "notification-schema",
   "description": "A notification of an import in IPAFFS system",
   "type": "object",
   "javaType": "uk.gov.defra.tracesx.notification.api.Notification",
