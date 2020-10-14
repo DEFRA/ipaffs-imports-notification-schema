@@ -75,6 +75,10 @@ public class Notification {
               + "status 'Validated'.")
   private StatusEnum status;
 
+  private SplitConsignment splitConsignment;
+
+  private boolean childNotification;
+
   @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private PartOne partOne;
 

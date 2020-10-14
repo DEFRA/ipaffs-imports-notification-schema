@@ -10,6 +10,7 @@ const PartTwo = require('./part_two')
 const PartThree = require('./part_three')
 const ConsignmentValidation = require('./consignment_validation')
 const ExternalReference = require('./external_reference')
+const SplitConsignment = require('./split_consignment')
 
 module.exports = class Notification {
   constructor(obj) {
@@ -28,6 +29,8 @@ module.exports = class Notification {
     this.lastUpdated = obj.lastUpdated
     this.type = obj.type
     this.status = obj.status
+    this.splitConsignment = obj.splitConsignment ? new SplitConsignment(obj.splitConsignment) : undefined
+    this.childNotification = obj.childNotification
     this.partOne = _.get(obj, 'partOne') ? new PartOne(obj.partOne) : undefined
     this.partTwo = _.get(obj, 'partTwo') ? new PartTwo(obj.partTwo) : undefined
     this.partThree = _.get(obj, 'partThree') ? new PartThree(obj.partThree)

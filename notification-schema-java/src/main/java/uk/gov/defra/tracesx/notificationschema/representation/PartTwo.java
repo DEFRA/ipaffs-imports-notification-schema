@@ -91,4 +91,6 @@ public class PartTwo {
   private LocalDateTime checkDate;
 
   private List<AccompanyingDocument> accompanyingDocuments;
+
+  private List<CommodityChecks> commodityChecks;
 }
