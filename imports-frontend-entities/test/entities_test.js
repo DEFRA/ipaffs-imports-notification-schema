@@ -1,9 +1,11 @@
 const chai = require('chai')
 
 const Address = require('../src/entities/address')
+const InspectionCheck = require('../src/entities/inspection_check')
 const Applicant = require('../src/entities/applicant')
 const ApprovedEstablishment = require('../src/entities/approved_establishment')
 const Commodities = require('../src/entities/commodities')
+const CommodityChecks = require('../src/entities/commodity_checks')
 const Complement = require('../src/entities/complement')
 const ComplementParameterSet = require('../src/entities/parameter_set')
 const ConsignmentCheck = require('../src/entities/consignment_check')
@@ -33,19 +35,22 @@ const PartTwo = require('../src/entities/part_two')
 const Party = require('../src/entities/party')
 const Purpose = require('../src/entities/purpose')
 const Route = require('../src/entities/route')
+const SingleLaboratoryTests = require('../src/entities/singlelaboratory_tests')
+const SplitConsignment = require('../src/entities/split_consignment')
 const User = require('../src/entities/user')
 const UserInfo = require('../src/entities/user_info')
-const VeterinaryInformation = require('../src/entities/veterinary_information')
 const Veterinarian = require('../src/entities/official_veterinarian')
-const SingleLaboratoryTests = require('../src/entities/singlelaboratory_tests')
+const VeterinaryInformation = require('../src/entities/veterinary_information')
 
 describe('Entities: ', () => {
 
   const entities = [
     Address,
+    InspectionCheck,
     Applicant,
     ApprovedEstablishment,
     Commodities,
+    CommodityChecks,
     Complement,
     ComplementParameterSet,
     ConsignmentCheck,
@@ -76,6 +81,7 @@ describe('Entities: ', () => {
     Purpose,
     Route,
     SingleLaboratoryTests,
+    SplitConsignment,
     User,
     UserInfo,
     Veterinarian,

@@ -75,6 +75,24 @@
         "DELETED"
       ]
     },
+    "splitConsignment": {
+      "type": "object",
+      "description": "Present if the consignment has been split",
+      "properties": {
+        "validReferenceNumber": {
+          "$ref": "#/definitions/ReferenceNumber",
+          "description": "Reference number of the valid split consignment"
+        },
+        "rejectedReferenceNumber": {
+          "$ref": "#/definitions/ReferenceNumber",
+          "description": "Reference number of the rejected split consignment"
+        }
+      }
+    },
+    "childNotification": {
+      "type": "boolean",
+      "description": "Is this notification a child of a split consignment?"
+    },
     "partOne": {
       "javaType": "uk.gov.defra.tracesx.notification.api.PartOne",
       "properties": {
@@ -1131,6 +1149,26 @@
           "description": "Accompanying documents",
           "items": {
             "$ref": "#/definitions/AccompanyingDocument"
+          }
+        },
+        "commodityChecks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uniqueComplementId": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 36,
+                "description": "UUID used to match the commodityChecks to the commodityComplement"
+              },
+              "checks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/InspectionCheck"
+                }
+              }
+            }
           }
         }
       }
@@ -2305,6 +2343,36 @@
           "type": "string",
           "maxLength": 255,
           "description": "Name of agent representing designated contact"
+        }
+      }
+    },
+    "InspectionCheck": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of check",
+          "enum": [
+            "PHSI_DOCUMENT",
+            "PHSI_IDENTITY",
+            "PHSI_PHYSICAL",
+            "HMI"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the check",
+          "enum": [
+            "To do",
+            "Compliant",
+            "Non compliant",
+            "Not inspected",
+            "Hold"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for the status if applicable"
         }
       }
     }
