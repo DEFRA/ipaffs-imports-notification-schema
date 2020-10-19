@@ -20,4 +20,5 @@ public class InspectionCheck {
   private CheckType type;
   private CheckStatus status;
   private String reason;
+  private String otherReason;
 }
