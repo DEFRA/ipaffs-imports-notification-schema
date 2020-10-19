@@ -2373,6 +2373,11 @@
         "reason": {
           "type": "string",
           "description": "Reason for the status if applicable"
+        },
+        "otherReason": {
+          "type": "string",
+          "description": "Other reason text when selected reason is 'Other'",
+          "maxLength": 32
         }
       }
     }

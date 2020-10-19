@@ -10,6 +10,7 @@ module.exports = class InspectionCheck {
     this.type = obj.type
     this.status = obj.status
     this.reason = obj.reason
+    this.otherReason = obj.otherReason
 
     return Object.seal(new Proxy(this, handler))
   }
