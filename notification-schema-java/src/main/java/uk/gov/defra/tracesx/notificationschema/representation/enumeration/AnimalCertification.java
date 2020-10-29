@@ -21,9 +21,11 @@ public enum AnimalCertification {
   TECHNICAL_PHARMACEUTICAL_USE("Technical/Pharmaceutical use"),
   PRODUCTION("Production"),
   RACING_COMPETITION("Racing/competition"),
+  REJECTED_OR_RETURNED_CONSIGNMENT("Rejected or Returned consignment"),
   REGISTERED_EQUIDAE("Registered equidae"),
   RESCUE("Rescue/Rehoming"),
   RESEARCH("Research"),
+  TRANSIT("Transit"),
   ZOO("Zoo/Collection");
 
   private String value;
