@@ -77,7 +77,7 @@ public class Notification {
 
   private SplitConsignment splitConsignment;
 
-  private boolean childNotification;
+  private Boolean childNotification;
 
   @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private PartOne partOne;
