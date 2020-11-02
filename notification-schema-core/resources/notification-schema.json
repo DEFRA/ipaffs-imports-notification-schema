@@ -72,7 +72,9 @@
         "MODIFY",
         "REPLACED",
         "CANCELLED",
-        "DELETED"
+        "DELETED",
+        "PARTIALLY_REJECTED",
+        "SPLIT_CONSIGNMENT"
       ]
     },
     "splitConsignment": {
