@@ -275,6 +275,11 @@ public class PartOne {
 
   private Boolean complexCommoditySelected;
   private String portOfEntry;
+  private String portOfExit;
+
+  @JsonSerialize(using = IsoDateSerializer.class)
+  @JsonDeserialize(using = IsoDateDeserializer.class)
+  private LocalDate portOfExitDate;
 
   private ContactDetails contactDetails;
 }

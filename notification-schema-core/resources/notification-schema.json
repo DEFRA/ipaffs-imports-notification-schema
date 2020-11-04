@@ -699,6 +699,18 @@
           "maxLength": 255,
           "description": "Entry port for EU Import notification."
         },
+        "portOfExit": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255,
+          "description": "Exit Port for EU Import Notification."
+        },
+        "portOfExitDate": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "format": "date",
+          "description": "Date of Port Exit for EU Import Notification."
+        },
         "contactDetails": {
           "$ref": "#/definitions/ContactDetails",
           "description": "Person to be contacted if there is an issue with the consignment"
@@ -2002,8 +2014,10 @@
         "Production",
         "Racing/competition",
         "Registered equidae",
+        "Rejected or Returned consignment",
         "Rescue/Rehoming",
         "Research",
+        "Transit",
         "Zoo/Collection"
       ]
     },
