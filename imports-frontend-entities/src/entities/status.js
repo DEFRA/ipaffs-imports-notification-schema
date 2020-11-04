@@ -9,7 +9,9 @@ module.exports = class Status {
       VALIDATED: 'Valid',
       REJECTED: 'Rejected',
       CANCELLED: 'Cancelled',
-      REPLACED: 'Replaced'
+      REPLACED: 'Replaced',
+      PARTIALLY_REJECTED: 'Partially Rejected',
+      SPLIT_CONSIGNMENT: 'Split Consignment'
     })
   }
 }
