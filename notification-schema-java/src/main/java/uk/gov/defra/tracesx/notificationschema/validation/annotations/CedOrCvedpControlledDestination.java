@@ -12,9 +12,9 @@ import javax.validation.Payload;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = CedOrCvedpOrChedppControlledDestinationValidator.class)
+@Constraint(validatedBy = CedOrCvedpControlledDestinationValidator.class)
 @Documented
-public @interface CedOrCvedpOrChedppControlledDestination {
+public @interface CedOrCvedpControlledDestination {
 
   String message() default "Controlled destination must be selected";
 
