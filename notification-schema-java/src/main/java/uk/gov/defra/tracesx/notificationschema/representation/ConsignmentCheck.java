@@ -17,8 +17,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCh
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhysicalCheckReasonNotDone;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhysicalCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 
@@ -30,14 +29,13 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @DocumentCheckResult(
-    groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+    groups = NotificationCedOrCvedpFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".documentarycheck.not.null}")
 @IdentityCheckType(
     groups = {
-        NotificationCvedpFieldValidation.class,
-        NotificationChedppFieldValidation.class
+        NotificationCvedpFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
@@ -54,8 +52,7 @@ import javax.validation.constraints.NotNull;
             + ".physicalcheckresult.not.null}")
 @PhysicalCheckReasonNotDone(
     groups = {
-        NotificationCvedpFieldValidation.class,
-        NotificationChedppFieldValidation.class
+        NotificationCvedpFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
@@ -75,7 +72,7 @@ public class ConsignmentCheck {
   private Result euStandard;
 
   @NotNull(
-      groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+      groups = NotificationCedOrCvedpFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
               + ".documentarycheck.not.null}")
@@ -93,8 +90,7 @@ public class ConsignmentCheck {
 
   @NotNull(
       groups = {
-          NotificationCvedpFieldValidation.class,
-          NotificationChedppFieldValidation.class
+          NotificationCvedpFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
@@ -104,8 +100,7 @@ public class ConsignmentCheck {
   @NotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
-          NotificationCvedpFieldValidation.class,
-          NotificationChedppFieldValidation.class
+          NotificationCvedpFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
@@ -122,8 +117,7 @@ public class ConsignmentCheck {
   @NotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
-          NotificationCvedpFieldValidation.class,
-          NotificationChedppFieldValidation.class
+          NotificationCvedpFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"

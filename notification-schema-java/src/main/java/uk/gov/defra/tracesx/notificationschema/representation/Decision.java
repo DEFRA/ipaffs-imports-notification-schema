@@ -19,7 +19,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcc
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.SpecificWarehouseNonConformingConsignmentEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotAcceptableReason;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.FreeCirculationPurpose;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IfChanneledOption;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.InternalMarket;
@@ -29,10 +28,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAccepta
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableReason;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.SpecificWarehouse;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNotAcceptableReasonsValidation;
 
 import java.time.LocalDate;
@@ -50,41 +48,33 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablereasoning.not.null}")
-@ChedppNotAcceptableReason(
-    groups = NotificationChedppFieldValidation.class,
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
-            + ".chedppnotacceptablereason.not.null}")
 @NotAcceptableOtherReason(
-    groups = NotificationHighRiskFieldValidation.class,
+    groups = NotificationHighRiskNonChedppFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableotherreason.not.null}")
 @NotAcceptableEstablishment(
     groups = {
-        NotificationCvedpFieldValidation.class,
-        NotificationChedppFieldValidation.class
+        NotificationCvedpFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableestablishment.not.null}")
 @NotAcceptableCountry(
-    groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+    groups = NotificationCedOrCvedpFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablecountry.not.null}")
 @SpecificWarehouse(
     groups = {
-        NotificationCvedpFieldValidation.class,
-        NotificationChedppFieldValidation.class
+        NotificationCvedpFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
             + "specificwarehousenonconformingconsignment.not.null}")
 @IfChanneledOption(
     groups = {
-        NotificationCvedpFieldValidation.class,
-        NotificationChedppFieldValidation.class
+        NotificationCvedpFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision."
@@ -104,7 +94,7 @@ import javax.validation.constraints.NotNull;
 public class Decision {
 
   @NotNull(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = NotificationHighRiskNonChedppFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
               + ".consignmentacceptable.not.null}")

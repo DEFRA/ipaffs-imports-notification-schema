@@ -120,24 +120,4 @@ public class ControlledDestinationRequirementHelperTest {
 
     assertFalse(result);
   }
-
-  @Test
-  public void isControlledDestinationRequiredForChedpp_decisionNonAcceptableNotAcceptableReDispatch_isFalse() {
-    decision.setDecision(NON_ACCEPTABLE);
-    decision.setNotAcceptableAction(REDISPATCH);
-
-    boolean result = ControlledDestinationRequirementHelper.isControlledDestinationRequired(decision, CHEDPP);
-
-    assertFalse(result);
-  }
-
-  @Test
-  public void isControlledDestinationRequiredForChedpp_decisionNonAcceptableNotAcceptableDestruction_isTrue() {
-    decision.setDecision(NON_ACCEPTABLE);
-    decision.setNotAcceptableAction(DESTRUCTION);
-
-    boolean result = ControlledDestinationRequirementHelper.isControlledDestinationRequired(decision, CHEDPP);
-
-    assertTrue(result);
-  }
 }

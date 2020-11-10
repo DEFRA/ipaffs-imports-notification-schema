@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.CedOrCvedpOrChedppControlledDestination;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.CedOrCvedpControlledDestination;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.CvedaControlledDestination;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsNotAdded;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LaboratoryTestsPending;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,12 +32,12 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @LaboratoryTestsNotAdded(
-    groups = NotificationHighRiskFieldValidation.class,
+    groups = NotificationHighRiskNonChedppFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
             + ".reasonlaboratorytestsnotadded.not.empty}")
 @LaboratoryTestsPending(
-    groups = NotificationHighRiskFieldValidation.class,
+    groups = NotificationHighRiskNonChedppFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.laboratorytestspending"
             + ".not.empty}")
@@ -46,8 +46,8 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")
-@CedOrCvedpOrChedppControlledDestination(
-    groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+@CedOrCvedpControlledDestination(
+    groups = NotificationCedOrCvedpFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")
@@ -62,7 +62,7 @@ public class PartTwo {
   private ImpactOfTransportOnAnimals impactOfTransportOnAnimals;
 
   @NotNull(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = NotificationHighRiskNonChedppFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
               + ".laboratorytestsrequired.not.null}")

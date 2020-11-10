@@ -25,14 +25,13 @@ public class ControlledDestinationRequirementHelper {
         return isControlledDestinationRequiredForCveda(decision);
       case CED:
       case CVEDP:
-      case CHEDPP:
-        return isControlledDestinationRequiredForCedCvedpChedpp(decision);
+        return isControlledDestinationRequiredForCedCvedp(decision);
       default:
         return false;
     }
   }
 
-  private static boolean isControlledDestinationRequiredForCedCvedpChedpp(Decision decision) {
+  private static boolean isControlledDestinationRequiredForCedCvedp(Decision decision) {
     return isControlledDestinationRequiredForEachType(decision);
   }
 
