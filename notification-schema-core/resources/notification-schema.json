@@ -95,6 +95,10 @@
       "type": "boolean",
       "description": "Is this notification a child of a split consignment?"
     },
+    "riskAssessment" :  {
+      "$ref": "#/definitions/RiskAssessmentResult",
+      "description": "Result of risk assessment by the risk scorer"
+    },
     "partOne": {
       "javaType": "uk.gov.defra.tracesx.notification.api.PartOne",
       "properties": {
@@ -2394,6 +2398,63 @@
           "type": "string",
           "description": "Other reason text when selected reason is 'Other'",
           "maxLength": 32
+        }
+      }
+    },
+    "RiskAssessmentResult": {
+      "type": "object",
+      "description": "Result of risk assessment by the risk scorer",
+      "properties": {
+        "commodityResults": {
+          "type": "array",
+          "description": "List of risk assessed commodities",
+          "items": {
+            "$ref": "#/definitions/CommodityRiskResult"
+          }
+        },
+        "assessmentDateTime": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "Date and time of assessment"
+        }
+      }
+    },
+    "CommodityRiskResult": {
+      "type": "object",
+      "description": "Result of the risk assessment of a commodity",
+      "properties": {
+        "hmiDecision": {
+          "type": "string",
+          "description": "HMI decision required",
+          "enum": [
+            "REQUIRED",
+            "NOTREQUIRED"
+          ]
+        },
+        "phsiDecision": {
+          "type": "string",
+          "description": "PHSI decision required",
+          "enum": [
+            "REQUIRED",
+            "NOTREQUIRED"
+          ]
+        },
+        "uniqueId": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 36,
+          "description": "UUID used to match to the complement parameter set"
+        },
+        "eppoCode": {
+          "type": "string",
+          "maxLength": 10,
+          "description": "EPPO Code for the species"
+        },
+        "variety": {
+          "type": "string",
+          "description": "Name or ID of the variety",
+          "minLength": 1,
+          "maxLength": 100
         }
       }
     }
