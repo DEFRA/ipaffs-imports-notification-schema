@@ -11,6 +11,7 @@ const PartThree = require('./part_three')
 const ConsignmentValidation = require('./consignment_validation')
 const ExternalReference = require('./external_reference')
 const SplitConsignment = require('./split_consignment')
+const RiskAssessment = require('./risk_assessment')
 
 module.exports = class Notification {
   constructor(obj) {
@@ -37,11 +38,12 @@ module.exports = class Notification {
         : undefined
     this.decisionBy = obj.decisionBy
     this.decisionDate = obj.decisionDate
-    this.consignmentValidation = getConsignmentValidation(
-        _.get(obj, 'consignmentValidation', []))
+    this.consignmentValidation = getConsignmentValidation(_.get(obj, 'consignmentValidation', []))
+    this.riskAssessment = obj.riskAssessment ? new RiskAssessment(obj.riskAssessment) : undefined
     this.replaces = obj.replaces
     this.replacedBy = obj.replacedBy
     this.lastUpdatedBy = obj.lastUpdatedBy
+
 
     validate(this)
 
