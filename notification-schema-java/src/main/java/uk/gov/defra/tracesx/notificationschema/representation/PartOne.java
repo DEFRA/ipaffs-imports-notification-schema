@@ -165,6 +165,11 @@ public class PartOne {
           + ".not.null}")
   private String pointOfEntry;
 
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone."
+          + "pointofentrycontrolpoint.not.null}"
+  )
   private String pointOfEntryControlPoint;
 
   @NotNull(
