@@ -2439,6 +2439,15 @@
             "NOTREQUIRED"
           ]
         },
+        "phsiClassification": {
+          "type": "string",
+          "description": "PHSI classification",
+          "enum": [
+            "Mandatory",
+            "Reduced",
+            "Controlled"
+          ]
+        },
         "uniqueId": {
           "type": "string",
           "minLength": 0,

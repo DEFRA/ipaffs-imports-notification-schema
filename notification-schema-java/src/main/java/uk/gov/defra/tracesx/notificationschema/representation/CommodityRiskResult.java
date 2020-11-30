@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.HmiDecision;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiClassification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiDecision;
 
 import java.util.UUID;
@@ -21,6 +22,7 @@ public class CommodityRiskResult {
 
   private HmiDecision hmiDecision;
   private PhsiDecision phsiDecision;
+  private PhsiClassification phsiClassification;
   private UUID uniqueId;
   private String eppoCode;
   private String variety;
