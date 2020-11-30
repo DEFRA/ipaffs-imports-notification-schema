@@ -26,7 +26,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEsti
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullVeterinaryDocument;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
@@ -34,7 +33,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
@@ -253,17 +251,11 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {
-          NotificationVeterinaryValidation.class,
           NotificationVeterinaryApprovedEstablishmentValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".not.null}")
-  @NotNullVeterinaryDocument(
-      groups = {NotificationVeterinaryValidation.class},
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
-              + ".properties.accompanyingDocuments.must.have.veterinary.document}")
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;
