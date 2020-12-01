@@ -17,10 +17,12 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.AccompanyingDocuments;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,6 +36,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ValidStatus(groups = BasicValidation.class)
+@AccompanyingDocuments(
+    groups = NotificationVeterinaryValidation.class
+)
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")
