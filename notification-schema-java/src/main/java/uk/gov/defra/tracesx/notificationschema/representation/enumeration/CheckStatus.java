@@ -7,6 +7,7 @@ import java.util.Arrays;
 public enum CheckStatus {
   TO_DO("To do"),
   COMPLIANT("Compliant"),
+  AUTO_CLEARED("Auto cleared"),
   NON_COMPLIANT("Non compliant"),
   NOT_INSPECTED("Not inspected"),
   HOLD("Hold");
