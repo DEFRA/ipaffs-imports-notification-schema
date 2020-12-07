@@ -26,6 +26,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEsti
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
@@ -62,6 +64,14 @@ import javax.validation.constraints.NotNull;
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
         + ".estimatedarrivalatbcp.must.be.in.future}")
+@NotNullPurposeExitDate(
+    groups = NotificationCvedaFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+        + ".exitdate.not.null}")
+@NotNullPurposeExitBip(
+    groups = NotificationCvedaFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+        + ".exitbip.not.null}")
 public class PartOne {
 
   @Valid
