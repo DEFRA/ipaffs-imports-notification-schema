@@ -58,7 +58,6 @@ public class Notification {
   @ApiModelProperty(value = "Notification version.")
   private int version;
 
-  @JsonIgnore
   private String rowVersion;
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
