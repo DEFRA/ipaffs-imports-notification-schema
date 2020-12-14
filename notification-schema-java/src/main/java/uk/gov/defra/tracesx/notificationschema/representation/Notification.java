@@ -58,6 +58,7 @@ public class Notification {
   @ApiModelProperty(value = "Notification version.")
   private int version;
 
+  @JsonIgnore
   private String rowVersion;
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
@@ -116,6 +117,8 @@ public class Notification {
   @ApiModelProperty(
       value = "If the status is REPLACED; the reference of the notification that replaces this one")
   private String replacedBy;
+
+  private String etag;
 
   @JsonIgnore
   public boolean isCveda() {
