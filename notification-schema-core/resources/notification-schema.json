@@ -1065,7 +1065,7 @@
         "newSealNumber": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 32,
+          "maxLength": 100,
           "description": "When the containers are resealed they need new seal numbers"
         },
         "iuuFishingReference": {
@@ -2265,7 +2265,7 @@
         "sealNumber": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 32
+          "maxLength": 100
         },
         "containerNumber": {
           "type": "string",
@@ -2278,7 +2278,7 @@
         "resealedSealNumber": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 32
+          "maxLength": 100
         }
       }
     },
