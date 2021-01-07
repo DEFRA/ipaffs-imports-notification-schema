@@ -10,6 +10,7 @@ public enum CheckStatus {
   AUTO_CLEARED("Auto cleared"),
   NON_COMPLIANT("Non compliant"),
   NOT_INSPECTED("Not inspected"),
+  TO_BE_INSPECTED("To be inspected"),
   HOLD("Hold");
 
   private String value;
