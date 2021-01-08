@@ -1185,6 +1185,10 @@
                 "items": {
                   "$ref": "#/definitions/InspectionCheck"
                 }
+              },
+              "validityPeriod": {
+                "type": "integer",
+                "description": "Manually entered validity period, allowed if risk decision is INSPECTION_REQUIRED and HMI check status 'Compliant' or 'Not inspected'"
               }
             }
           }

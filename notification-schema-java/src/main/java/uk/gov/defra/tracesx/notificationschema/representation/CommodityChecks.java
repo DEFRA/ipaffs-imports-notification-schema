@@ -20,4 +20,5 @@ public class CommodityChecks {
 
   private UUID uniqueComplementId;
   private List<InspectionCheck> checks;
+  private Integer validityPeriod;
 }

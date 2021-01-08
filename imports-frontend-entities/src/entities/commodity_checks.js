@@ -13,6 +13,7 @@ module.exports = class CommodityChecks {
 
     this.uniqueComplementId = obj.uniqueComplementId
     this.checks = getList(_.get(obj, 'checks', []), InspectionCheck)
+    this.validityPeriod = obj.validityPeriod
 
     return Object.seal(new Proxy(this, handler))
   }
