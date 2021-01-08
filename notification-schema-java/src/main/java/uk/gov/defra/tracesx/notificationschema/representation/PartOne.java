@@ -22,7 +22,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEstimatedArrivalAtBcp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
@@ -61,10 +60,6 @@ import javax.validation.constraints.NotNull;
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
         + ".containswoodpackaging}")
-@ChedppEstimatedArrivalAtBcp(
-    groups = NotificationChedppFieldValidation.class,
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
-        + ".estimatedarrivalatbcp.must.be.in.future}")
 @NotNullPurposeExitDate(
     groups = NotificationCvedaFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"

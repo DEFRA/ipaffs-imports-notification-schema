@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,22 +22,37 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   @Before
   public void setup() {
     notification.setPartOne(new PartOne());
+    notification.setStatus(StatusEnum.VALIDATED);
     validator = new ChedppEstimatedArrivalAtBcpValidator();
   }
 
   @Test
   public void givenNoPartOneWhenValidatorCalledThenValidatorReturnsFalse() {
-    Boolean result = validator.isValid(null, null);
+    notification.setPartOne(null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isFalse();
   }
 
-  @Test
-  public void givenANullArrivalDateWhenValidatorCalledThenValidatorReturnsTrue() {
-    notification.getPartOne().setArrivalDate(null);
-    notification.getPartOne().setArrivalTime(LocalTime.now());
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+  @Test
+  public void givenNotificationStatusInProgressWhenValidatorCalledThenValidatorReturnsTrue() {
+    notification.getPartOne().setArrivalDate(LocalDate.now().minusDays(1));
+    notification.getPartOne().setArrivalTime(LocalTime.now());
+    notification.setStatus(StatusEnum.IN_PROGRESS);
+
+    Boolean result = validator.isValid(notification, null);
+
+    assertThat(result).isTrue();
+  }
+
+  @Test
+  public void givenNotificationStatusSubmittedWhenValidatorCalledThenValidatorReturnsTrue() {
+    notification.getPartOne().setArrivalDate(LocalDate.now().minusDays(1));
+    notification.getPartOne().setArrivalTime(LocalTime.now());
+    notification.setStatus(StatusEnum.SUBMITTED);
+
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isTrue();
   }
@@ -46,7 +62,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
     notification.getPartOne().setArrivalDate(LocalDate.now());
     notification.getPartOne().setArrivalTime(null);
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isTrue();
   }
@@ -56,7 +72,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
     notification.getPartOne().setArrivalDate(null);
     notification.getPartOne().setArrivalTime(null);
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isTrue();
   }
@@ -66,7 +82,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
     notification.getPartOne().setArrivalDate(LocalDate.now().plusDays(1));
     notification.getPartOne().setArrivalTime(LocalTime.now());
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isTrue();
   }
@@ -76,7 +92,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
     notification.getPartOne().setArrivalDate(LocalDate.now());
     notification.getPartOne().setArrivalTime(LocalTime.now().plusHours(1));
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isTrue();
   }
@@ -86,7 +102,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
     notification.getPartOne().setArrivalDate(LocalDate.now().minusDays(1));
     notification.getPartOne().setArrivalTime(LocalTime.now());
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isFalse();
   }
@@ -96,7 +112,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
     notification.getPartOne().setArrivalDate(LocalDate.now());
     notification.getPartOne().setArrivalTime(LocalTime.now().minusHours(1));
 
-    Boolean result = validator.isValid(notification.getPartOne(), null);
+    Boolean result = validator.isValid(notification, null);
 
     assertThat(result).isFalse();
   }
