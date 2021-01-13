@@ -35,6 +35,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
@@ -178,6 +179,10 @@ public class PartOne {
           + ".not.null}")
   private String pointOfEntry;
 
+  @NotNull(
+      groups = PointOfEntryControlPointValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone."
+          + "pointofentrycontrolpoint.not.null}")
   private String pointOfEntryControlPoint;
 
   @NotNull(
