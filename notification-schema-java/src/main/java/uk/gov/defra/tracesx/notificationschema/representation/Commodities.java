@@ -131,11 +131,6 @@ public class Commodities {
 
   private CommodityIntention commodityIntendedFor = null;
 
-  @NotNull(
-      groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".totalgrossvolume.not.null}")
   private BigDecimal totalGrossVolume;
 
   private String totalGrossVolumeUnit;
