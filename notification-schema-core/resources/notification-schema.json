@@ -173,6 +173,10 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "gmsDeclarationAccepted": {
+              "type": "boolean",
+              "description": "Flag to record when the GMS declaration has been accepted"
+            },
             "totalGrossWeight": {
               "type": "number",
               "minimum": 0,

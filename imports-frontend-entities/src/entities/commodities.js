@@ -29,6 +29,7 @@ module.exports = class Commodities {
     this.commodityIntendedFor = obj.commodityIntendedFor
     this.totalGrossVolume = obj.totalGrossVolume
     this.totalGrossVolumeUnit = obj.totalGrossVolumeUnit
+    this.gmsDeclarationAccepted = obj.gmsDeclarationAccepted
 
     return Object.seal(new Proxy(this, handler))
   }
