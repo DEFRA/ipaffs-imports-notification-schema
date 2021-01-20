@@ -139,6 +139,7 @@ public class Commodities {
   private BigDecimal totalGrossVolume;
 
   private String totalGrossVolumeUnit;
+  private Boolean gmsDeclarationAccepted;
 
   public Commodities addCommodityComplementItem(CommodityComplement commodityComplementItem) {
     if (this.commodityComplement == null) {
