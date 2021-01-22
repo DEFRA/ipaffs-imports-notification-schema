@@ -3,9 +3,10 @@ package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ExternalSystem {
-  TRACESNT("TRACESNT");
+  TRACESNT("TRACESNT"),
+  ECERT("E-CERT");
 
-  private String value;
+  private final String value;
 
   ExternalSystem(String value) {
     this.value = value;
