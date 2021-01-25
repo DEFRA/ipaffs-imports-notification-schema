@@ -17,6 +17,7 @@ module.exports = class EconomicOperator {
     this.address = _.get(obj, 'address') ? new Address(obj.address) : undefined
     this.approvalNumber = obj.approvalNumber
     this.otherIdentifier = obj.otherIdentifier
+    this.tracesId = obj.tracesId
 
     return Object.seal(new Proxy(this, handler))
   }

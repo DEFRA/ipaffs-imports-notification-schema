@@ -56,4 +56,6 @@ public class EconomicOperator {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.address"
               + ".not.null}")
   private EconomicOperatorAddress address;
+
+  private Integer tracesId;
 }
