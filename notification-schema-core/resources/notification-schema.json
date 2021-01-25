@@ -771,7 +771,8 @@
           "type": "string",
           "description": "Identifier for the downstream system to which the reference relates to",
           "enum": [
-            "TRACESNT"
+            "TRACESNT",
+            "E-CERT"
           ]
         },
         "reference": {
