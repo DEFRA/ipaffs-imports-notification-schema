@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityIntention;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppGmsDeclaration;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
@@ -52,6 +53,11 @@ import javax.validation.constraints.NotNull;
     field = "country-of-origin",
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
         + ".woodpackagingcountryoforigin.not.null}")
+@ChedppGmsDeclaration(
+    groups = NotificationChedppFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+            + ".gmsdeclarationaccepted.message}")
 public class Commodities {
 
   @NotNull(
