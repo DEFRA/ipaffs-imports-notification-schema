@@ -113,6 +113,20 @@ public class ChedppGmsDeclarationValidatorTest {
     assertThat(result).isTrue();
   }
 
+  @Test
+  public void validatorShouldReturnTrueWhenAllKeyDataPairDataFieldsAreNull() {
+    // Given
+    List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
+    complementParameterSetList.add(createComplementParameterSet(null, null));
+    commodities.setComplementParameterSet(complementParameterSetList);
+
+    // When
+    boolean result = validator.isValid(commodities, null);
+
+    // Then
+    assertThat(result).isTrue();
+  }
+
   private ComplementParameterSet createComplementParameterSet(String regulatoryAuthority,
       String marketingStandard) {
     List<ComplementParameterSetKeyDataPair> keyDataPairList = new ArrayList<>();
