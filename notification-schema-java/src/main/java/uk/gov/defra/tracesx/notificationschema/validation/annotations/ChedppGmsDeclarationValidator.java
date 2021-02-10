@@ -42,7 +42,7 @@ public class ChedppGmsDeclarationValidator implements
 
   private boolean isHmiGms(List<ComplementParameterSetKeyDataPair> keyDataPairList) {
     Map<String, String> keyDataPairMap = keyDataPairList.stream()
-        .filter(kdp -> kdp.getKey() != null || kdp.getData() != null)
+        .filter(kdp -> kdp.getKey() != null && kdp.getData() != null)
         .collect(Collectors.toMap(ComplementParameterSetKeyDataPair::getKey,
             ComplementParameterSetKeyDataPair::getData));
 
