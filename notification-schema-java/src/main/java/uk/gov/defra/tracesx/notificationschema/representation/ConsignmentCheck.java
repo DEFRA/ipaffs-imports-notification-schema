@@ -88,19 +88,11 @@ public class ConsignmentCheck {
               + ".identitycheck.not.null}")
   private Boolean identityCheckDone;
 
-  @NotNull(
-      groups = {
-          NotificationCvedpFieldValidation.class
-      },
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
-              + ".identitychecktype.not.null}")
   private IdentificationCheckType identityCheckType;
 
   @NotNull(
       groups = {
-          NotificationCvedaFieldValidation.class,
-          NotificationCvedpFieldValidation.class
+          NotificationCvedaFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
@@ -116,8 +108,7 @@ public class ConsignmentCheck {
 
   @NotNull(
       groups = {
-          NotificationCvedaFieldValidation.class,
-          NotificationCvedpFieldValidation.class
+          NotificationCvedaFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
