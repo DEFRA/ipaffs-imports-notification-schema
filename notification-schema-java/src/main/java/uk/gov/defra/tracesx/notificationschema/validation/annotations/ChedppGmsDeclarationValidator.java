@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class ChedppGmsDeclarationValidator implements
-    ConstraintValidator<ChedppGmsDeclaration, Commodities> {
+public class ChedppGmsDeclarationValidator
+    implements ConstraintValidator<ChedppGmsDeclaration, Commodities> {
 
   private static final String REGULATORY_AUTHORITY = "regulatory_authority";
   private static final String MARKETING_STANDARD = "marketing_standard";
@@ -20,15 +20,15 @@ public class ChedppGmsDeclarationValidator implements
   private static final String GMS = "GMS";
 
   @Override
-  public boolean isValid(Commodities commodities,
-      ConstraintValidatorContext constraintValidatorContext) {
+  public boolean isValid(
+      Commodities commodities, ConstraintValidatorContext constraintValidatorContext) {
     if (commodities == null || commodities.getComplementParameterSet() == null) {
       return true;
     }
 
     if (hmiGmsCommodityPresent(commodities.getComplementParameterSet())) {
-      return commodities.getGmsDeclarationAccepted() != null && commodities
-          .getGmsDeclarationAccepted().equals(Boolean.TRUE);
+      return commodities.getGmsDeclarationAccepted() != null
+          && commodities.getGmsDeclarationAccepted().equals(Boolean.TRUE);
     }
 
     return true;
@@ -36,15 +36,19 @@ public class ChedppGmsDeclarationValidator implements
 
   private boolean hmiGmsCommodityPresent(List<ComplementParameterSet> complementParameterSets) {
     return complementParameterSets.stream()
+        .filter(complementParameterSet -> complementParameterSet.getKeyDataPair() != null)
         .map(ComplementParameterSet::getKeyDataPair)
         .anyMatch(this::isHmiGms);
   }
 
   private boolean isHmiGms(List<ComplementParameterSetKeyDataPair> keyDataPairList) {
-    Map<String, String> keyDataPairMap = keyDataPairList.stream()
-        .filter(kdp -> kdp.getKey() != null && kdp.getData() != null)
-        .collect(Collectors.toMap(ComplementParameterSetKeyDataPair::getKey,
-            ComplementParameterSetKeyDataPair::getData));
+    Map<String, String> keyDataPairMap =
+        keyDataPairList.stream()
+            .filter(kdp -> kdp.getKey() != null && kdp.getData() != null)
+            .collect(
+                Collectors.toMap(
+                    ComplementParameterSetKeyDataPair::getKey,
+                    ComplementParameterSetKeyDataPair::getData));
 
     return Objects.equals(keyDataPairMap.get(REGULATORY_AUTHORITY), HMI)
         && Objects.equals(keyDataPairMap.get(MARKETING_STANDARD), GMS);
