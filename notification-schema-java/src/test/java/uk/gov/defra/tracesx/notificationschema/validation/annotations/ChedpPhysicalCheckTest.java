@@ -2,7 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType.FULL_IDENTITY_CHECK;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,77 +24,99 @@ public class ChedpPhysicalCheckTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  public void isValid_returnsFalse_whenPartTwoNull() {
+    assertFalse(validator.isValid(null, null));
   }
 
   @Test
-  public void isValid_returnsFalse_whenDecisionNullAndConsignmentCheckNull() {
+  public void isValid_returnsFalse_whenConsignmentCheckNull() {
     assertFalse(validator.isValid(partTwo, null));
   }
 
+
   @Test
-  public void isValid_returnsFalse_whenDecisionNullAndPhysicalCheckResultNull() {
+  public void isValid_returnsFalse_whenDocumentCheckNullAndPhysicalCheckResultNull() {
     partTwo.setConsignmentCheck(new ConsignmentCheck());
 
     assertFalse(validator.isValid(partTwo, null));
   }
 
   @Test
-  public void isValid_returnsTrue_whenDecisionNullAndPhysicalCheckResultNotNull() {
-    partTwo.setConsignmentCheck(ConsignmentCheck.builder().physicalCheckResult(NOT_SATISFACTORY).build());
+  public void isValid_returnsTrue_whenDocumentCheckNullAndPhysicalCheckResultNotNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .physicalCheckResult(NOT_SATISFACTORY)
+        .build());
 
     assertTrue(validator.isValid(partTwo, null));
   }
 
+
   @Test
-  public void isValid_returnsFalse_whenConsignmentAcceptableNullAndConsignmentCheckNull() {
-    partTwo.setDecision(new Decision());
+  public void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndPhysicalCheckResultNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(SATISFACTORY)
+        .build());
 
     assertFalse(validator.isValid(partTwo, null));
   }
 
   @Test
-  public void isValid_returnsFalse_whenConsignmentAcceptableNullAndPhysicalCheckResultNull() {
-    partTwo.setDecision(new Decision());
-    partTwo.setConsignmentCheck(new ConsignmentCheck());
-
-    assertFalse(validator.isValid(partTwo, null));
-  }
-
-  @Test
-  public void isValid_returnsTrue_whenConsignmentAcceptableNullAndPhysicalCheckResultNotNull() {
-    partTwo.setDecision(new Decision());
-    partTwo.setConsignmentCheck(ConsignmentCheck.builder().physicalCheckResult(NOT_SATISFACTORY).build());
+  public void isValid_returnsTrue_whenDocumentCheckSatisfactoryAndIdentityCheckNotNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(SATISFACTORY)
+        .physicalCheckResult(NOT_SATISFACTORY)
+        .build());
 
     assertTrue(validator.isValid(partTwo, null));
   }
 
+
   @Test
-  public void isValid_returnsFalse_whenConsignmentAcceptableTrueAndConsignmentCheckNull() {
+  public void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndPhysicalCheckResultNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(NOT_SATISFACTORY)
+        .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
     assertFalse(validator.isValid(partTwo, null));
   }
 
   @Test
-  public void isValid_returnsFalse_whenConsignmentAcceptableTrueAndPhysicalCheckResultNull() {
+  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndPhysicalCheckResultNotNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(NOT_SATISFACTORY)
+        .physicalCheckResult(NOT_SATISFACTORY)
+        .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
-    partTwo.setConsignmentCheck(new ConsignmentCheck());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, null));
   }
 
+
   @Test
-  public void isValid_returnsTrue_whenConsignmentAcceptableTrueAndPhysicalCheckResultNotNull() {
-    partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
-    partTwo.setConsignmentCheck(ConsignmentCheck.builder().physicalCheckResult(NOT_SATISFACTORY).build());
+  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndDecisionNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(NOT_SATISFACTORY)
+        .build());
 
     assertTrue(validator.isValid(partTwo, null));
   }
 
   @Test
-  public void isValid_returnsTrue_whenConsignmentAcceptableFalse() {
+  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(NOT_SATISFACTORY)
+        .build());
+    partTwo.setDecision(Decision.builder().build());
+
+    assertTrue(validator.isValid(partTwo, null));
+  }
+
+  @Test
+  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableFalse() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(NOT_SATISFACTORY)
+        .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(false).build());
 
     assertTrue(validator.isValid(partTwo, null));
