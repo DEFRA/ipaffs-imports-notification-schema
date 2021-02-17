@@ -102,6 +102,16 @@
     "partOne": {
       "javaType": "uk.gov.defra.tracesx.notification.api.PartOne",
       "properties": {
+        "typeOfImp": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.TypeOfImp",
+          "description": "Used to indicate what type of EU Import the notification is - Live Animals, Product Of Animal Origin or High Risk Food Not Of Animal Origin",
+          "enum": [
+            "A",
+            "P",
+            "D"
+          ]
+        },
         "personResponsible": {
           "$ref": "#/definitions/Party",
           "description": "The individual who has submitted the notification"
@@ -2010,28 +2020,31 @@
       "javaType": "uk.gov.defra.tracesx.notification.api.AnimalCertification",
       "description": "Certification for animal",
       "enum": [
+        "Animal feeding stuff",
         "Approved",
-        "Quarantine",
-        "Fattening",
-        "Registered",
-        "Slaughter",
-        "Relaying",
-        "Pets",
-        "Other",
+        "Artificial reproduction",
         "Breeding",
         "Circus",
-        "Animal feeding stuff",
-        "Artificial reproduction",
         "Commercial sale",
+        "Fattening",
         "Game restocking",
         "Human consumption",
-        "Technical/Pharmaceutical use",
+        "Internal market",
+        "Other",
+        "Personally owned pets not for rehoming",
+        "Pets",
         "Production",
+        "Quarantine",
         "Racing/Competition",
         "Registered equidae",
+        "Registered",
         "Rejected or Returned consignment",
+        "Relaying",
         "Rescue/Rehoming",
         "Research",
+        "Slaughter",
+        "Technical/Pharmaceutical use",
+        "Transhipment",
         "Transit",
         "Zoo/Collection"
       ]
@@ -2310,6 +2323,7 @@
             "billOfLading",
             "cargoManifest",
             "catchCertificate",
+            "commercialDocument",
             "commercialInvoice",
             "conformityCertificate",
             "containerManifest",
@@ -2322,6 +2336,8 @@
             "itahc",
             "laboratorySamplingResultsForAflatoxin",
             "letterOfAuthority",
+            "licenseOrAuthorisation",
+            "mycotoxinCertification",
             "originCertificate",
             "other",
             "phytosanitaryCertificate",

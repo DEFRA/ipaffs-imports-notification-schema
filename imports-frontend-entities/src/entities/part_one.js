@@ -19,6 +19,8 @@ module.exports = class PartOne {
       obj = {}
     }
 
+    this.typeOfImp = obj.typeOfImp
+
     this.personResponsible = _.get(obj, 'personResponsible') ? new Party(
         obj.personResponsible) : undefined
 

@@ -15,6 +15,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TypeOfImp;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
@@ -69,6 +70,8 @@ import javax.validation.constraints.NotNull;
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
         + ".exitbip.not.null}")
 public class PartOne {
+
+  private TypeOfImp typeOfImp;
 
   @Valid
   @NotNull(
