@@ -27,7 +27,6 @@ public enum AnimalCertification {
   RESEARCH("Research"),
   SLAUGHTER("Slaughter"),
   TECHNICAL_PHARMACEUTICAL_USE("Technical/Pharmaceutical use"),
-  TRANSHIPMENT("Transhipment"),
   TRANSIT("Transit"),
   ZOO("Zoo/Collection");
 
