@@ -43,6 +43,7 @@ module.exports = class Notification {
     this.replaces = obj.replaces
     this.replacedBy = obj.replacedBy
     this.lastUpdatedBy = obj.lastUpdatedBy
+    this.agencyOrganisationId = obj.agencyOrganisationId
 
 
     validate(this)

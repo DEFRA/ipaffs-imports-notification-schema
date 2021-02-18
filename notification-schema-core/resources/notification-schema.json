@@ -764,6 +764,10 @@
       "items": {
         "$ref": "#/definitions/ValidationMessageCode"
       }
+    },
+    "agencyOrganisationId": {
+      "type": "string",
+      "description": "Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation"
     }
   },
   "definitions": {
