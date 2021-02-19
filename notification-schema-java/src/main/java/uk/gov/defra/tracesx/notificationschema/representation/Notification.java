@@ -55,6 +55,8 @@ public class Notification {
               + ".Year.GeneratedNumber ie. CVEDA.GB.2018.7654321")
   private String referenceNumber;
 
+  private String agencyOrganisationId;
+
   @ApiModelProperty(
       value =
           "List of external references, which relate to downstream services")
