@@ -1211,6 +1211,14 @@
               }
             }
           }
+        },
+        "phsiAutoCleared": {
+          "type": "boolean",
+          "description": "Have the PHSI regulated commodities been auto cleared?"
+        },
+        "hmiAutoCleared": {
+          "type": "boolean",
+          "description": "Have the HMI regulated commodities been auto cleared?"
         }
       }
     },

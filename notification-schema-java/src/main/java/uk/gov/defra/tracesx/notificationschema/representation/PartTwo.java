@@ -98,4 +98,8 @@ public class PartTwo {
   private List<AccompanyingDocument> accompanyingDocuments;
 
   private List<CommodityChecks> commodityChecks;
+
+  private Boolean phsiAutoCleared;
+
+  private Boolean hmiAutoCleared;
 }

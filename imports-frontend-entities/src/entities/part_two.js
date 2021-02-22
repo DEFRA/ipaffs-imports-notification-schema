@@ -44,6 +44,8 @@ module.exports = class PartTwo {
         ? new EconomicOperator(obj.controlledDestination) : undefined
     this.accompanyingDocuments = getList(_.get(obj, 'accompanyingDocuments', []), AccompanyingDocument)
     this.commodityChecks = getList(_.get(obj, 'commodityChecks', []), CommodityChecks)
+    this.phsiAutoCleared = obj.phsiAutoCleared
+    this.hmiAutoCleared = obj.hmiAutoCleared
 
     return Object.seal(new Proxy(this, handler))
   }
