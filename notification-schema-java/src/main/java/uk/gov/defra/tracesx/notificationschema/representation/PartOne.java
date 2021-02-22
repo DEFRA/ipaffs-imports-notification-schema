@@ -26,6 +26,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfEntry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
@@ -69,6 +70,10 @@ import javax.validation.constraints.NotNull;
     groups = NotificationCvedaFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
         + ".exitbip.not.null}")
+@ImpPortOfEntry(
+    groups = {NotificationLowRiskFieldValidation.class},
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofentry"
+        + ".not.null}")
 public class PartOne {
 
   private TypeOfImp typeOfImp;
