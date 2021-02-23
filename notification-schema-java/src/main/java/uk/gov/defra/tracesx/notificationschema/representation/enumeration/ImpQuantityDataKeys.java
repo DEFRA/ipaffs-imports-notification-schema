@@ -6,7 +6,8 @@ public enum ImpQuantityDataKeys {
   QUANTITY("quantity"),
   ANIMALS("imp_number_animal"),
   UNITS("number_of_units"),
-  KILOGRAMS("kilograms");
+  KILOGRAMS("kilograms"),
+  WEIGHT("imp_weight");
 
   private String value;
 
