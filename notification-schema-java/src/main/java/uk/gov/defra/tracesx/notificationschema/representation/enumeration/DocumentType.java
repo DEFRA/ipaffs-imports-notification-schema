@@ -18,6 +18,7 @@ public enum DocumentType {
   IMPORT_PERMIT("importPermit"),
   INSPECTION_CERTIFICATE("inspectionCertificate"),
   ITAHC("itahc"),
+  JOURNEY_LOG("journeyLog"),
   LABORATORY_SAMPLING_RESULTS_FOR_AFLATOXIN("laboratorySamplingResultsForAflatoxin"),
   LETTER_OF_AUTHORITY("letterOfAuthority"),
   LICENCE_OR_AUTHORISATION("licenseOrAuthorisation"),
