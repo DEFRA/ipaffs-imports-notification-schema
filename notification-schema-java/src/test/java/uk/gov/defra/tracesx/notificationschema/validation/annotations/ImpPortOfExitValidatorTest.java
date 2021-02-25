@@ -56,16 +56,16 @@ public class ImpPortOfExitValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseIfAnimalCertificationIsNull() {
+  public void validatorShouldReturnTrueIfAnimalCertificationIsNull() {
     partOne.setCommodities(Commodities.builder().build());
 
     boolean result = validator.isValid(partOne, null);
 
-    assertThat(result).isFalse();
+    assertThat(result).isTrue();
   }
 
   @Theory
-  public void validatorShouldReturnTrueIfAnimalCertificationIsNotTransit(
+  public void validatorShouldReturnTrueIfAnimalCertificationIsSetAndNotTransit(
       @FromDataPoints("Non Transit AnimalCertifications") AnimalCertification animalCertification) {
     partOne.setCommodities(Commodities.builder().animalsCertifiedAs(animalCertification).build());
 
@@ -86,7 +86,8 @@ public class ImpPortOfExitValidatorTest {
 
   @Test
   public void validatorShouldReturnFalseIfAnimalCertificationIsTransitAndThePortOfExitIsBlank() {
-    partOne.setCommodities(Commodities.builder().build());
+    partOne.setCommodities(
+        Commodities.builder().animalsCertifiedAs(AnimalCertification.TRANSIT).build());
     partOne.setPortOfExit("");
 
     boolean result = validator.isValid(partOne, null);
@@ -97,7 +98,8 @@ public class ImpPortOfExitValidatorTest {
   @Test
   public void
       validatorShouldReturnFalseIfAnimalCertificationIsTransitAndThePortOfExitIsWhitespace() {
-    partOne.setCommodities(Commodities.builder().build());
+    partOne.setCommodities(
+        Commodities.builder().animalsCertifiedAs(AnimalCertification.TRANSIT).build());
     partOne.setPortOfExit("  \t\t\t");
 
     boolean result = validator.isValid(partOne, null);

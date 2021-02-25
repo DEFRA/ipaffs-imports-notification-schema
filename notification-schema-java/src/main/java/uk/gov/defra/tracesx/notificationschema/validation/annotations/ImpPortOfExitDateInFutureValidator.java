@@ -17,10 +17,8 @@ public class ImpPortOfExitDateInFutureValidator
     return Optional.ofNullable(partOne)
         .map(PartOne::getCommodities)
         .map(Commodities::getAnimalsCertifiedAs)
-        .map(
-            certifiedAs ->
-                certifiedAs != AnimalCertification.TRANSIT
-                    || isValidExitDate(Optional.ofNullable(partOne.getPortOfExitDate())))
+        .filter(AnimalCertification.TRANSIT::equals)
+        .map(certifiedAs -> isValidExitDate(Optional.ofNullable(partOne.getPortOfExitDate())))
         .orElse(true);
   }
 
