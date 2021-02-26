@@ -57,16 +57,16 @@ public class ImpPortOfExitDateNotNullValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseIfAnimalCertificationIsNull() {
+  public void validatorShouldReturnTrueIfAnimalCertificationIsNull() {
     partOne.setCommodities(Commodities.builder().build());
 
     boolean result = validator.isValid(partOne, null);
 
-    assertThat(result).isFalse();
+    assertThat(result).isTrue();
   }
 
   @Theory
-  public void validatorShouldReturnTrueIfAnimalCertificationIsNotTransit(
+  public void validatorShouldReturnTrueIfAnimalCertificationIsSetAndNotTransit(
       @FromDataPoints("Non Transit AnimalCertifications") AnimalCertification animalCertification) {
     partOne.setCommodities(Commodities.builder().animalsCertifiedAs(animalCertification).build());
 

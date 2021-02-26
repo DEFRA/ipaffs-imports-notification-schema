@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 
@@ -15,10 +14,10 @@ public class ImpPortOfExitDateNotNullValidator
   public boolean isValid(PartOne partOne, ConstraintValidatorContext constraintValidatorContext) {
     return Optional.ofNullable(partOne)
         .map(PartOne::getCommodities)
-        .map(Commodities::getAnimalsCertifiedAs)
         .map(
-            certifiedAs ->
-                certifiedAs != AnimalCertification.TRANSIT || partOne.getPortOfExitDate() != null)
+            commodities ->
+                commodities.getAnimalsCertifiedAs() != AnimalCertification.TRANSIT
+                    || partOne.getPortOfExitDate() != null)
         .orElse(false);
   }
 }
