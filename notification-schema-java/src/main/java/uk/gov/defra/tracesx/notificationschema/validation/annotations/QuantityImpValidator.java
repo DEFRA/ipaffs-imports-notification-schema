@@ -55,7 +55,8 @@ public class QuantityImpValidator
 
     if (!nonEmptyQuantities.isEmpty()) {
       return true;
-    } else if (keyDataPair.getKey().equals(ImpQuantityDataKeys.WEIGHT.getValue())) {
+    } else if (keyDataPair.getKey() != null && keyDataPair.getKey()
+        .equals(ImpQuantityDataKeys.WEIGHT.getValue())) {
       changeValidationMessageForImpWeight();
     }
     return false;

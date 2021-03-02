@@ -103,6 +103,13 @@ public class QuantityImpValidatorTest {
     assertFalse(validator.isValid(complementParameterSets, constraintValidatorContextMock));
   }
 
+  @Test
+  public void testThatValidatorReturnsFalse_IfKetDataPair_ContainsNullValue() {
+    addKeyDataPairValues(null, "");
+    addKeyDataPairValues(ImpQuantityDataKeys.WEIGHT.getValue(), null);
+    assertFalse(validator.isValid(complementParameterSets, constraintValidatorContextMock));
+  }
+
   private void addKeyDataPairValues(String key, String value) {
     ComplementParameterSetKeyDataPair keyDataPair =
         new ComplementParameterSetKeyDataPair(key, value);
