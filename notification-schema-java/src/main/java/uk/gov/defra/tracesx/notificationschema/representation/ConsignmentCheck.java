@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DocumentCheckResult;
@@ -98,6 +99,7 @@ public class ConsignmentCheck {
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
               + ".identitycheckresult.not.null}")
   private Result identityCheckResult;
+  private IdentityCheckNotDoneReason identityCheckNotDoneReason;
 
   @NotNull(
       groups = NotificationCedFieldValidation.class,
