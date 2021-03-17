@@ -2,19 +2,18 @@ package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum IdentificationCheckType {
-  SEAL_CHECK("Seal Check"),
-  FULL_IDENTITY_CHECK("Full Identity Check"),
-  NOT_DONE("Not Done");
+public enum IdentityCheckNotDoneReason {
+  REDUCED_CHECKS_REGIME("Reduced checks regime"),
+  OTHER("Other");
 
   private String value;
 
-  IdentificationCheckType(String value) {
+  IdentityCheckNotDoneReason(String value) {
     this.value = value;
   }
 
-  public static IdentificationCheckType fromValue(String text) {
-    for (IdentificationCheckType u : IdentificationCheckType.values()) {
+  public static IdentityCheckNotDoneReason fromValue(String text) {
+    for (IdentityCheckNotDoneReason u : IdentityCheckNotDoneReason.values()) {
       if (u.value.equalsIgnoreCase(text)) {
         return u;
       }

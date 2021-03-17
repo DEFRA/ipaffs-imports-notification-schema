@@ -960,12 +960,22 @@
           "description": "Type of identity check performed",
           "enum": [
             "Seal Check",
-            "Full Identity Check"
+            "Full Identity Check",
+            "Not Done"
           ]
         },
         "identityCheckResult": {
           "$ref": "#/definitions/Result",
           "description": "Result of identity check"
+        },
+        "identityCheckNotDoneReason": {
+          "type": "string",
+          "javaType": "uk.gov.defra.tracesx.notification.api.IdentityCheckNotDoneReason",
+          "description": "What was the reason for skipping identity check",
+          "enum": [
+            "Reduced checks regime",
+            "Other"
+          ]
         },
         "physicalCheckDone": {
           "type": "boolean",

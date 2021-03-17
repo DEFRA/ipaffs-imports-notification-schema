@@ -8,6 +8,7 @@ import org.junit.Test;
 public class IdentificationCheckTypeTest {
   private final static String SEAL_CHECK_STRING = "Seal Check";
   private final static String INVALID_STRING = "Invalid";
+  private final static String NOT_DONE_STRING = "Not Done";
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
@@ -35,5 +36,12 @@ public class IdentificationCheckTypeTest {
     IdentificationCheckType enumResult = IdentificationCheckType.fromValue(INVALID_STRING);
 
     assertNull(enumResult);
+  }
+
+  @Test
+  public void shouldReturnNotDoneIdentityCheckType() {
+    String enumResult = IdentificationCheckType.NOT_DONE.getValue();
+
+    assertEquals(enumResult, NOT_DONE_STRING);
   }
 }
