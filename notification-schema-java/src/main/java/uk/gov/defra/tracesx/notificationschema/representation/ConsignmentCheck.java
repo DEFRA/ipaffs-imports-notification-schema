@@ -13,6 +13,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Physic
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DocumentCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.EuStandardValidator;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckReasonNotDone;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckType;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhysicalCheckReasonNotDone;
@@ -58,6 +59,13 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".reasonphysicalchecknotdone.not.null}")
+@IdentityCheckReasonNotDone(
+    groups = {
+        NotificationCvedpFieldValidation.class
+    },
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
+            + ".reasonidentitychecknotdone.not.null}")
 @EuStandardValidator(
     groups = NotificationCvedaFieldValidation.class,
     message =
