@@ -1,7 +1,7 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason.OTHER;
-import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason.REDUCED_CHECKS_REGIME;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason.NOT_REQUIRED;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason.REDUCED_CHECKS_REGIME;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_DONE;
 
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
@@ -24,7 +24,7 @@ public class IdentityCheckReasonNotDoneValidator
     }
     if (consignmentCheck.getIdentityCheckResult() == NOT_DONE) {
       return REDUCED_CHECKS_REGIME.equals(consignmentCheck.getIdentityCheckNotDoneReason())
-          || OTHER.equals(consignmentCheck.getIdentityCheckNotDoneReason());
+          || NOT_REQUIRED.equals(consignmentCheck.getIdentityCheckNotDoneReason());
     }
     return true;
   }
