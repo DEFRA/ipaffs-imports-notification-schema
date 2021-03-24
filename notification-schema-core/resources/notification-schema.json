@@ -974,7 +974,7 @@
           "description": "What was the reason for skipping identity check",
           "enum": [
             "Reduced checks regime",
-            "Other"
+            "Not required"
           ]
         },
         "physicalCheckDone": {
