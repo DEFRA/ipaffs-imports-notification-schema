@@ -10,6 +10,7 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 
 public class IdentityCheckReasonNotDoneValidatorTest {
 
@@ -44,6 +45,7 @@ public class IdentityCheckReasonNotDoneValidatorTest {
   public void testThatValidatorReturnsTrueIfIdentityCheckIsNotDoneAndIdentityCheckNotDoneReasonIsReducedChecksRegime() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setIdentityCheckDone(FALSE);
+    check.setIdentityCheckResult(NOT_DONE);
     check.setIdentityCheckNotDoneReason(REDUCED_CHECKS_REGIME);
 
     assertTrue(validator.isValid(check, null));
@@ -53,6 +55,7 @@ public class IdentityCheckReasonNotDoneValidatorTest {
   public void testThatValidatorReturnsTrueIfIdentityCheckIsNotDoneAndIdentityCheckNotDoneReasonIsNotRequired() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setIdentityCheckDone(FALSE);
+    check.setIdentityCheckResult(NOT_DONE);
     check.setIdentityCheckNotDoneReason(NOT_REQUIRED);
 
     assertTrue(validator.isValid(check, null));
