@@ -49,6 +49,7 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Builder
@@ -191,7 +192,7 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   private Purpose purpose;
 
-  @NotNull(
+  @NotBlank(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
