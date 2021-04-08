@@ -101,4 +101,12 @@ describe('Entities: ', () => {
       }
     }
   })
+
+  it('throws an exception if an invalid notification is used', () => {
+    const invalidNotificationJson = {
+      key: 'text'
+    }
+
+    chai.expect(() => new Notification(invalidNotificationJson)).to.throw()
+  })
 })

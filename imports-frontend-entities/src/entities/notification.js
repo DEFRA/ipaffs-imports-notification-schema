@@ -1,10 +1,8 @@
 const _ = require('lodash')
-const Ajv = require('ajv')
 
 const { getList } = require('../utils/list')
 const handler = require('./base/handler')
-const notificationJsonSchema = require('../../etc/notification-schema.json')
-const schemaDef = require('../../etc/schema-definition.json')
+const { notificationValidator } = require('../utils/notification_validator')
 const PartOne = require('./part_one')
 const PartTwo = require('./part_two')
 const PartThree = require('./part_three')
@@ -45,7 +43,6 @@ module.exports = class Notification {
     this.lastUpdatedBy = obj.lastUpdatedBy
     this.agencyOrganisationId = obj.agencyOrganisationId
 
-
     validate(this)
 
     return Object.seal(new Proxy(this, handler))
@@ -54,9 +51,9 @@ module.exports = class Notification {
 
 const validate = obj => {
 
-  let validate = new Ajv().addMetaSchema(schemaDef).compile(notificationJsonSchema)
-  if (!validate(obj)) {
-    throw Error('Notification constructor: ' + JSON.stringify(validate.errors))
+  const errors = notificationValidator.validate(obj)
+  if (errors.length > 0) {
+    throw new Error('Notification constructor: ' + JSON.stringify(errors))
   }
 }
 
