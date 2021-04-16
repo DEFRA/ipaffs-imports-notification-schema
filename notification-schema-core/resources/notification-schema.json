@@ -187,6 +187,10 @@
               "type": "boolean",
               "description": "Flag to record when the GMS declaration has been accepted"
             },
+            "consignedCountryInChargeGroup": {
+              "type": "boolean",
+              "description": "Flag to record whether the consigned country is in an ipaffs charge group"
+            },
             "totalGrossWeight": {
               "type": "number",
               "minimum": 0,

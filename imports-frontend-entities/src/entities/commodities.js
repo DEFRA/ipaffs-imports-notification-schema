@@ -25,6 +25,7 @@ module.exports = class Commodities {
     this.countryOfOrigin = obj.countryOfOrigin
     this.regionOfOrigin = obj.regionOfOrigin
     this.consignedCountry = obj.consignedCountry
+    this.consignedCountryInChargeGroup = obj.consignedCountryInChargeGroup
     this.animalsCertifiedAs = obj.animalsCertifiedAs
     this.commodityIntendedFor = obj.commodityIntendedFor
     this.totalGrossVolume = obj.totalGrossVolume
