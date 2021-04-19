@@ -3,7 +3,6 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NET_WEIGHT;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NUMBER_PACKAGE;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PACKAGE;
-import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PRODUCT;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -178,12 +177,6 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.type_package.message}")
-  @ChedppNotNullKeyDataPair(
-      groups = NotificationChedppFieldValidation.class,
-      field = TYPE_PRODUCT,
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.type_product.message}")
   private Commodities commodities;
 
   @Valid
