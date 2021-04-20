@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateAttachmentRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -21,6 +23,7 @@ import java.util.UUID;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@PhytosanitaryCertificateAttachmentRequired(groups = NotificationChedppFieldValidation.class)
 public class AccompanyingDocument {
 
   private DocumentType documentType = null;
