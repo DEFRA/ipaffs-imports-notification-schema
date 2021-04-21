@@ -30,6 +30,7 @@ public class ComplementParameterSet {
   public static final String NUMBER_ANIMAL = "number_animal";
   public static final String TYPE_PACKAGE = "type_package";
   public static final String TYPE_PRODUCT = "type_product";
+  public static final String COMMODITY_GROUP = "commodity_group";
 
   private UUID uniqueComplementID;
   private Integer complementID;

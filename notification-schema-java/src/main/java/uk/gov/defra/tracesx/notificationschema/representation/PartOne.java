@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.COMMODITY_GROUP;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NET_WEIGHT;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NUMBER_PACKAGE;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PACKAGE;
@@ -177,6 +178,12 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.type_package.message}")
+  @ChedppNotNullKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = COMMODITY_GROUP,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.commodity_group.message}")
   private Commodities commodities;
 
   @Valid
