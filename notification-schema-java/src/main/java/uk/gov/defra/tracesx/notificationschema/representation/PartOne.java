@@ -3,7 +3,9 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.COMMODITY_GROUP;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NET_WEIGHT;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NUMBER_PACKAGE;
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.QUANTITY;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PACKAGE;
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_QUANTITY;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -23,6 +25,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPositiveDoubleKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
@@ -178,6 +181,24 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.type_package.message}")
+  @ChedppNotNullKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = TYPE_QUANTITY,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.type_quantity.message}")
+  @ChedppNotNullKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = QUANTITY,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.quantity.message}")
+  @ChedppIsPositiveDoubleKeyDataPair(
+      groups = NotificationChedppFieldValidation.class,
+      field = QUANTITY,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.quantity.message}")
   @ChedppNotNullKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = COMMODITY_GROUP,
