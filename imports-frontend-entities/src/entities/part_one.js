@@ -39,6 +39,7 @@ module.exports = class PartOne {
         : undefined
     this.placeOfDestination = _.get(obj, 'placeOfDestination')
         ? new EconomicOperator(obj.placeOfDestination) : undefined
+    this.pod = _.get(obj, 'pod') ? new EconomicOperator(obj.pod) : undefined
     this.placeOfOriginHarvest = _.get(obj, 'placeOfOriginHarvest')
       ? new EconomicOperator(obj.placeOfOriginHarvest) : undefined
     this.additionalPermanentAddresses = getList(_.get(obj, 'additionalPermanentAddresses', []), EconomicOperator)

@@ -154,6 +154,10 @@
           "$ref": "#/definitions/EconomicOperator",
           "description": "Where the shipment is to be sent? For IMP minimum 48 hour accommodation/holding location."
         },
+        "pod": {
+          "$ref": "#/definitions/EconomicOperator",
+          "description": "A temporary place of destination for plants"
+        },
         "placeOfOriginHarvest": {
           "$ref": "#/definitions/EconomicOperator",
           "description": "Place in which the animals or products originate"
@@ -419,6 +423,10 @@
             "countryOfOrigin": {
               "$ref": "#/definitions/Country",
               "description": "Consignments country of origin"
+            },
+            "countryOfOriginIsPodCountry": {
+              "type": "boolean",
+              "description": "Flag to record whether country of origin is a temporary PoD country"
             },
             "regionOfOrigin": {
               "type": "string",
@@ -2102,7 +2110,8 @@
             "temporary address",
             "premises of origin",
             "organisation branch address",
-            "packer"
+            "packer",
+            "pod"
           ]
         },
         "status": {

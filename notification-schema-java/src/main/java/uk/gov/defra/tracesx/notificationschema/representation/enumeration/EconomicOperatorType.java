@@ -15,7 +15,8 @@ public enum EconomicOperatorType {
   TEMPORARY_ADDRESS("temporary address"),
   PREMISES_OF_ORIGIN("premises of origin"),
   ORGANISATION_BRANCH_ADDRESS("organisation branch address"),
-  PACKER("packer");
+  PACKER("packer"),
+  POD("pod");
 
   private String value;
 
