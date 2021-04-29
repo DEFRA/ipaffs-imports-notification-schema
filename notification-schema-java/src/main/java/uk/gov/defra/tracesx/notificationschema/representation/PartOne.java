@@ -36,6 +36,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
@@ -93,6 +94,7 @@ import javax.validation.constraints.NotNull;
     groups = NotificationLowRiskFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexitdate"
         + ".must.be.in.future}")
+@PhytosanitaryCertificateRequired(groups = NotificationChedppFieldValidation.class)
 public class PartOne {
 
   private TypeOfImp typeOfImp;

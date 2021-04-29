@@ -15,6 +15,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 @Builder
@@ -34,6 +35,7 @@ public class VeterinaryInformation {
   private String veterinaryDocumentIssueDate;
   private List<String> accompanyingDocumentNumbers;
 
+  @Valid
   private List<AccompanyingDocument> accompanyingDocuments;
 
   private List<NotificationIdentificationDetails> identificationDetails;
