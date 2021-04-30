@@ -23,6 +23,7 @@ module.exports = class Commodities {
       _.get(obj, 'complementParameterSet', []), ComplementParameterSet)
     this.includeNonAblactedAnimals = obj.includeNonAblactedAnimals
     this.countryOfOrigin = obj.countryOfOrigin
+    this.countryOfOriginIsPodCountry = obj.countryOfOriginIsPodCountry
     this.regionOfOrigin = obj.regionOfOrigin
     this.consignedCountry = obj.consignedCountry
     this.consignedCountryInChargeGroup = obj.consignedCountryInChargeGroup

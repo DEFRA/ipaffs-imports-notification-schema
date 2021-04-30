@@ -153,6 +153,7 @@ public class PartOne {
               + ".null}")
   private EconomicOperator placeOfDestination;
 
+  private EconomicOperator pod;
   private EconomicOperator placeOfOriginHarvest;
   private List<EconomicOperator> additionalPermanentAddresses;
 

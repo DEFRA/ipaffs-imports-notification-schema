@@ -125,6 +125,8 @@ public class Commodities {
               + ".countryoforigin.not.null}")
   private String countryOfOrigin = null;
 
+  private Boolean countryOfOriginIsPodCountry = null;
+
   private String regionOfOrigin = null;
 
   @NotNull(
