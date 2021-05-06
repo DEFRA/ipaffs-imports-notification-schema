@@ -44,7 +44,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDorChedppValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 import java.time.LocalDate;
@@ -260,7 +260,7 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class},
+          TransporterDetailsRequiredCEDorChedppValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
               + ".null}")
@@ -276,7 +276,7 @@ public class PartOne {
 
   @NotNull(
       groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class},
+          TransporterDetailsRequiredCEDorChedppValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
@@ -285,7 +285,7 @@ public class PartOne {
 
   @NotNull(
       groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class},
+          TransporterDetailsRequiredCEDorChedppValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
           + ".not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
