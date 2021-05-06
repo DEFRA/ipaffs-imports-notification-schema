@@ -9,6 +9,9 @@ public class IsPositiveDoubleKeyDataPairValidation extends
 
   @Override
   protected boolean isValid(String data) {
+    if (data == null) {
+      return false;
+    }
     try {
       return Double.parseDouble(data) > 0;
     } catch (NumberFormatException exception) {
