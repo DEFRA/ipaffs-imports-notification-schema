@@ -25,9 +25,11 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppInvalidPodCheck;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPositiveDoubleKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppPodRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfEntry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExit;
@@ -95,6 +97,13 @@ import javax.validation.constraints.NotNull;
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexitdate"
         + ".must.be.in.future}")
 @PhytosanitaryCertificateRequired(groups = NotificationChedppFieldValidation.class)
+@ChedppInvalidPodCheck(
+    groups = NotificationChedppFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod"
+            + ".invalid.due.to.country}")
+@ChedppPodRequired(
+    groups = NotificationChedppFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod.required}")
 public class PartOne {
 
   private TypeOfImp typeOfImp;
