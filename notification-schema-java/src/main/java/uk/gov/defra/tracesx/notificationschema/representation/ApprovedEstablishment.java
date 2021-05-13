@@ -31,4 +31,5 @@ public class ApprovedEstablishment {
 
   private List<String> types;
   private String approvalNumber;
+  private String section;
 }
