@@ -2304,6 +2304,10 @@
           "minLength": 1,
           "maxLength": 100,
           "description": "Approval number"
+        },
+        "section": {
+          "type": "string",
+          "description": "Section of approved establishment"
         }
       },
       "required": [

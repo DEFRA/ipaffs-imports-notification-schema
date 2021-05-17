@@ -11,6 +11,7 @@ module.exports = class ApprovedEstablishment {
     this.country = obj.country
     this.approvalNumber = obj.approvalNumber
     this.types = _.get(obj, 'types', [])
+    this.section = obj.section
     return Object.seal(new Proxy(this, handler))
   }
 }
