@@ -36,4 +36,7 @@ public class AccompanyingDocument {
   private UUID attachmentId = null;
   private String attachmentFilename = null;
   private String attachmentContentType = null;
+  private UUID uploadUserId = null;
+  private String uploadUserRole = null;
+  private UUID uploadOrganisationId = null;
 }
