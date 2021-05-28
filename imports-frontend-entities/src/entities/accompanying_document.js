@@ -15,7 +15,6 @@ module.exports = class AccompanyingDocument {
     this.attachmentFilename = obj.attachmentFilename
     this.attachmentContentType = obj.attachmentContentType
     this.uploadUserId = obj.uploadUserId
-    this.uploadUserRole = obj.uploadUserRole
     this.uploadOrganisationId = obj.uploadOrganisationId
 
     return Object.seal(new Proxy(this, handler))

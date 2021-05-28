@@ -2410,10 +2410,6 @@
           "type": "string",
           "description": "The UUID for the user that uploaded the file"
         },
-        "uploadUserRole": {
-          "type": "string",
-          "description": "The role for the user that uploaded the file"
-        },
         "uploadOrganisationId": {
           "type": "string",
           "description": "The UUID for the organisation that the upload user is associated with"
