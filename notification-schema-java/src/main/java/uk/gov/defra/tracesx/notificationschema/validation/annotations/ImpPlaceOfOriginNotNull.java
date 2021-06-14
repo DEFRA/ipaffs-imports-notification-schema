@@ -12,9 +12,9 @@ import javax.validation.Payload;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = DogPlaceOfOriginImpValidator.class)
+@Constraint(validatedBy = ImpPlaceOfOriginNotNullValidator.class)
 @Documented
-public @interface DogPlaceOfOriginImp {
+public @interface ImpPlaceOfOriginNotNull {
 
   String message() default "Place of origin must be entered";
 
