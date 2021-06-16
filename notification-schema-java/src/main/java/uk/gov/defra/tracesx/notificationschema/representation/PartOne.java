@@ -30,7 +30,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPo
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppPodRequired;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.DogPlaceOfOriginImp;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPlaceOfOriginNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfEntry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExit;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateInFuture;
@@ -63,7 +63,7 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@DogPlaceOfOriginImp(
+@ImpPlaceOfOriginNotNull(
     groups = NotificationLowRiskFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
@@ -152,7 +152,10 @@ public class PartOne {
   private EconomicOperator importer;
 
   @NotNull(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationLowRiskFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.not"
               + ".null}")
