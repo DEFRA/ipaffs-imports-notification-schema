@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTestResult;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
@@ -21,10 +22,26 @@ public class LaboratoryTestsPendingValidator
 
   @Override
   public boolean isValid(PartTwo partTwo, ConstraintValidatorContext context) {
+    boolean isValid;
     if (isLabTestRequired(partTwo)) {
-      return true;
+      isValid = true;
+    } else {
+      isValid = !atLeastOneLabTestIsPendingAndSuspicious(partTwo);
     }
-    return !atLeastOneLabTestIsPendingAndSuspicious(partTwo);
+
+    if (!isValid) {
+      HibernateConstraintValidatorContext hibernateContext =
+          context.unwrap(HibernateConstraintValidatorContext.class);
+      hibernateContext.disableDefaultConstraintViolation();
+      hibernateContext
+          .buildConstraintViolationWithTemplate(
+              "{uk.gov.defra.tracesx.notificationschema.representation.parttwo."
+                  + "laboratorytestspending.not.empty}")
+          .addPropertyNode("laboratorytestsrequired")
+          .addConstraintViolation();
+    }
+
+    return isValid;
   }
 
   private boolean isLabTestRequired(PartTwo partTwo) {
