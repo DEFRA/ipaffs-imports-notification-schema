@@ -2,35 +2,65 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType.FULL_IDENTITY_CHECK;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
+import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
+import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext;
+
+@RunWith(MockitoJUnitRunner.class)
 public class ChedpIdentityCheckTest {
 
   private ChedpIdentityCheckValidator validator;
   private PartTwo partTwo;
 
+  @Mock
+  HibernateConstraintValidatorContext hibernateConstraintValidatorContextMock;
+  @Mock
+  ConstraintValidatorContext constraintValidatorContextMock;
+  @Mock
+  ConstraintViolationBuilder constraintViolationBuilderMock;
+  @Mock
+  NodeBuilderCustomizableContext nodeBuilderContextMock;
+
   @Before
   public void setUp() {
     validator = new ChedpIdentityCheckValidator();
     partTwo = new PartTwo();
+    when(constraintValidatorContextMock
+            .unwrap(HibernateConstraintValidatorContext.class))
+            .thenReturn(hibernateConstraintValidatorContextMock);
+
+    when(hibernateConstraintValidatorContextMock
+            .buildConstraintViolationWithTemplate(anyString()))
+            .thenReturn(constraintViolationBuilderMock);
+
+    when(constraintViolationBuilderMock.addPropertyNode(anyString()))
+            .thenReturn(nodeBuilderContextMock);
   }
 
   @Test
   public void isValid_returnsFalse_whenPartTwoNull() {
-    assertFalse(validator.isValid(null, null));
+    assertFalse(validator.isValid(null, constraintValidatorContextMock));
   }
 
   @Test
   public void isValid_returnsFalse_whenConsignmentCheckNull() {
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
 
@@ -38,7 +68,7 @@ public class ChedpIdentityCheckTest {
   public void isValid_returnsFalse_whenDocumentCheckNullAndIdentityCheckTypeNull() {
     partTwo.setConsignmentCheck(new ConsignmentCheck());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -47,7 +77,7 @@ public class ChedpIdentityCheckTest {
         .identityCheckType(FULL_IDENTITY_CHECK)
         .build());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -57,7 +87,7 @@ public class ChedpIdentityCheckTest {
         .identityCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
 
@@ -67,7 +97,7 @@ public class ChedpIdentityCheckTest {
         .documentCheckResult(SATISFACTORY)
         .build());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -77,7 +107,7 @@ public class ChedpIdentityCheckTest {
         .identityCheckType(FULL_IDENTITY_CHECK)
         .build());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -88,7 +118,7 @@ public class ChedpIdentityCheckTest {
         .identityCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
 
@@ -99,7 +129,7 @@ public class ChedpIdentityCheckTest {
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -110,7 +140,7 @@ public class ChedpIdentityCheckTest {
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -122,7 +152,7 @@ public class ChedpIdentityCheckTest {
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
 
@@ -132,7 +162,7 @@ public class ChedpIdentityCheckTest {
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -142,7 +172,7 @@ public class ChedpIdentityCheckTest {
         .build());
     partTwo.setDecision(Decision.builder().build());
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 
   @Test
@@ -152,6 +182,6 @@ public class ChedpIdentityCheckTest {
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(false).build());
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
   }
 }
