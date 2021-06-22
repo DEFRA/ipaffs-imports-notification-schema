@@ -25,11 +25,8 @@ public class ImpPlaceOfDestinationNotNullValidatorTest {
 
   @Test
   public void validatorShouldReturnFalseIfPartOneIsNull() {
-    // Given
-    partOne = null;
-
     // When
-    boolean result = validator.isValid(partOne, null);
+    boolean result = validator.isValid(null, null);
 
     // Then
     assertFalse(result);
@@ -48,7 +45,7 @@ public class ImpPlaceOfDestinationNotNullValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTruePlaceOfDestinationIsNotNull() {
+  public void validatorShouldReturnTrueIfPlaceOfDestinationIsNotNull() {
     // Given
     EconomicOperator placeOfDestination = new EconomicOperator();
     partOne.setPlaceOfDestination(placeOfDestination);

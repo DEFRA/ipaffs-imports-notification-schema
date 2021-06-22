@@ -25,6 +25,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppCustomsReferenceRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppInvalidPodCheck;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPositiveDoubleKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
@@ -68,6 +69,10 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
             + ".consignor.not.null}")
+@ChedppCustomsReferenceRequired(
+    groups = NotificationChedppFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+        + ".customsreferencenumber.required}")
 @NotNullWoodPackagingCommodity(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -325,6 +330,7 @@ public class PartOne {
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;
+
   private Route route;
 
   private List<NotificationSealsContainers> sealsContainers;
