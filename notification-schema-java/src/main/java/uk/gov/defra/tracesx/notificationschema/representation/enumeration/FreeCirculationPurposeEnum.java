@@ -18,9 +18,14 @@ public enum FreeCirculationPurposeEnum implements EntityProperty {
   @CVEDP
   @CHEDPP
   PHARMACEUTICAL_USE("Pharmaceutical Use"),
+  @CED
   @CVEDP
   @CHEDPP
   TECHNICAL_USE("Technical Use"),
+  @CED
+  TRANSFORMATION("Transformation"),
+  @CED
+  TRADE_USE("Trade Use"),
   @CED
   FURTHER_PROCESS("Further Process"),
   @CED

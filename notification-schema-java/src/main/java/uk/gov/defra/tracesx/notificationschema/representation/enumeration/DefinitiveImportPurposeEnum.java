@@ -10,7 +10,9 @@ public enum DefinitiveImportPurposeEnum implements EntityProperty {
   @CVEDA
   APPROVEDBODIES("approvedbodies"),
   @CVEDA
-  QUARANTINE("quarantine");
+  QUARANTINE("quarantine"),
+  @CVEDA
+  LOCAL_USE("localuse");
 
   private String value;
 

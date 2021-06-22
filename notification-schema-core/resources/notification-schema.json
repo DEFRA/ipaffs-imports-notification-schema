@@ -1470,6 +1470,8 @@
             "Human Consumption",
             "Pharmaceutical Use",
             "Technical Use",
+            "Transformation",
+            "Trade Use",
             "Further Process",
             "Other"
           ]
@@ -1481,7 +1483,8 @@
           "enum": [
             "slaughter",
             "approvedbodies",
-            "quarantine"
+            "quarantine",
+            "localuse"
           ]
         },
         "ifChanneledOption": {
