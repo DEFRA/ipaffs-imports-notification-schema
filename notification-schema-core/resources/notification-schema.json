@@ -2318,9 +2318,9 @@
     "Country": {
       "type": "string",
       "minLength": 2,
-      "maxLength": 3,
-      "pattern": "^[A-Z]{2,3}$",
-      "description": "2-3 digits ISO code of country"
+      "maxLength": 6,
+      "pattern": "^([A-Z]{2}||[A-Z]{2}-[A-Z]{2,3})$",
+      "description": "ISO code of country"
     },
     "SealContainer": {
       "type": "object",
