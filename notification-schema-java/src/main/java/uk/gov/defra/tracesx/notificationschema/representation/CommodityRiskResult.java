@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.HmiDecision;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiClassification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiDecision;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RiskDecision;
 
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class CommodityRiskResult {
 
+  private RiskDecision decision;
   private HmiDecision hmiDecision;
   private PhsiDecision phsiDecision;
   private PhsiClassification phsiClassification;

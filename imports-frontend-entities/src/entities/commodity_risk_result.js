@@ -7,6 +7,7 @@ module.exports = class CommodityRiskResult {
       obj = {}
     }
 
+    this.riskDecision = obj.riskDecision
     this.hmiDecision = obj.hmiDecision
     this.phsiDecision = obj.phsiDecision
     this.phsiClassification = obj.phsiClassification

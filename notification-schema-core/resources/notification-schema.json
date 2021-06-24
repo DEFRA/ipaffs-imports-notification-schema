@@ -1241,6 +1241,15 @@
         "hmiAutoCleared": {
           "type": "boolean",
           "description": "Have the HMI regulated commodities been auto cleared?"
+        },
+        "inspectionRequired": {
+          "type": "string",
+          "description": "Inspection required",
+          "enum": [
+            "Required",
+            "Inconclusive",
+            "Not required"
+          ]
         }
       }
     },
@@ -2502,6 +2511,15 @@
       "type": "object",
       "description": "Result of the risk assessment of a commodity",
       "properties": {
+        "riskDecision": {
+          "type": "string",
+          "description": "CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision",
+          "enum": [
+            "REQUIRED",
+            "NOTREQUIRED",
+            "INCONCLUSIVE"
+          ]
+        },
         "hmiDecision": {
           "type": "string",
           "description": "HMI decision required",
