@@ -46,6 +46,7 @@ module.exports = class PartTwo {
     this.commodityChecks = getList(_.get(obj, 'commodityChecks', []), CommodityChecks)
     this.phsiAutoCleared = obj.phsiAutoCleared
     this.hmiAutoCleared = obj.hmiAutoCleared
+    this.inspectionRequired = obj.inspectionRequired
 
     return Object.seal(new Proxy(this, handler))
   }

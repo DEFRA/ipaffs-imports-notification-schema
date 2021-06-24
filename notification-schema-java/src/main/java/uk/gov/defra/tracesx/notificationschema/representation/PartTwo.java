@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InspectionRequired;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
@@ -102,4 +103,6 @@ public class PartTwo {
   private Boolean phsiAutoCleared;
 
   private Boolean hmiAutoCleared;
+
+  private InspectionRequired inspectionRequired;
 }
