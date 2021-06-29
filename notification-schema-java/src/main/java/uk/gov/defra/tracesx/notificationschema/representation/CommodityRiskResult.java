@@ -21,7 +21,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class CommodityRiskResult {
 
-  private RiskDecision decision;
+  private RiskDecision riskDecision;
   private HmiDecision hmiDecision;
   private PhsiDecision phsiDecision;
   private PhsiClassification phsiClassification;
