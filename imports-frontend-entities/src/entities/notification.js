@@ -30,6 +30,7 @@ module.exports = class Notification {
     this.status = obj.status
     this.splitConsignment = obj.splitConsignment ? new SplitConsignment(obj.splitConsignment) : undefined
     this.childNotification = obj.childNotification
+    this.isHighRiskEuImport = obj.isHighRiskEuImport
     this.partOne = _.get(obj, 'partOne') ? new PartOne(obj.partOne) : undefined
     this.partTwo = _.get(obj, 'partTwo') ? new PartTwo(obj.partTwo) : undefined
     this.partThree = _.get(obj, 'partThree') ? new PartThree(obj.partThree)
