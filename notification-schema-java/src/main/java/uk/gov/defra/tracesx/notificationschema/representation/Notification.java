@@ -93,6 +93,8 @@ public class Notification {
 
   private Boolean childNotification;
 
+  private Boolean isHighRiskEuImport;
+
   @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
   private PartOne partOne;
 

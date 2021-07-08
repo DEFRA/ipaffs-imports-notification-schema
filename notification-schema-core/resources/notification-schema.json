@@ -99,6 +99,10 @@
       "$ref": "#/definitions/RiskAssessmentResult",
       "description": "Result of risk assessment by the risk scorer"
     },
+    "isHighRiskEuImport": {
+      "type": "boolean",
+      "description": "Is this notification a high risk notification from the EU/EEA?"
+    },
     "partOne": {
       "javaType": "uk.gov.defra.tracesx.notification.api.PartOne",
       "properties": {
