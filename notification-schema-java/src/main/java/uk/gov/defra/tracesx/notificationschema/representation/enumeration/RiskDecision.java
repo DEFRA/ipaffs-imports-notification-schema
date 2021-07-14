@@ -7,7 +7,8 @@ import java.util.Arrays;
 public enum RiskDecision {
   REQUIRED("REQUIRED"),
   NOT_REQUIRED("NOTREQUIRED"),
-  INCONCLUSIVE("INCONCLUSIVE");
+  INCONCLUSIVE("INCONCLUSIVE"),
+  REENFORCED_CHECK("REENFORCED_CHECK");
 
   private String value;
 
