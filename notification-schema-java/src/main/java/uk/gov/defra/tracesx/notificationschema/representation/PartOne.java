@@ -30,6 +30,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPo
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppNotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppPodRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ContainerNumberNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPlaceOfOriginNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfEntry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExit;
@@ -39,6 +40,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPur
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.SealNumberNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
@@ -327,6 +329,16 @@ public class PartOne {
   private String importerLocalReferenceNumber;
   private Route route;
 
+  @SealNumberNotEmpty(
+      groups = NotificationHighRiskFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.sealsContainers"
+              + ".sealNumber.not.null}")
+  @ContainerNumberNotEmpty(
+      groups = NotificationHighRiskFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.sealsContainers"
+              + ".containerNumber.not.null}")
   private List<NotificationSealsContainers> sealsContainers;
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
