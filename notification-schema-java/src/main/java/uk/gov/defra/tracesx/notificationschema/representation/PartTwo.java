@@ -105,4 +105,6 @@ public class PartTwo {
   private Boolean hmiAutoCleared;
 
   private InspectionRequired inspectionRequired;
+
+  private InspectionOverride inspectionOverride;
 }

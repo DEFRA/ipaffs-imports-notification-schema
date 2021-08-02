@@ -10,6 +10,7 @@ const ConsignmentValidation = require('./consignment_validation')
 const EconomicOperator = require('./economic_operator')
 const AccompanyingDocument = require('./accompanying_document')
 const CommodityChecks = require('./commodity_checks')
+const InspectionOverride = require('./inspection_override')
 const { getList } = require('../utils/list')
 
 module.exports = class PartTwo {
@@ -47,6 +48,8 @@ module.exports = class PartTwo {
     this.phsiAutoCleared = obj.phsiAutoCleared
     this.hmiAutoCleared = obj.hmiAutoCleared
     this.inspectionRequired = obj.inspectionRequired
+    this.inspectionOverride = _.get(obj, 'inspectionOverride')
+        ? new InspectionOverride(obj.inspectionOverride) : undefined
 
     return Object.seal(new Proxy(this, handler))
   }
