@@ -787,6 +787,15 @@
     }
   },
   "definitions": {
+    "InspectionRequired": {
+      "type": "string",
+      "description": "Inspection required",
+      "enum": [
+        "Required",
+        "Inconclusive",
+        "Not required"
+      ]
+    },
     "ReferenceNumber": {
       "type": "string",
       "minLength": 1,
@@ -1247,13 +1256,27 @@
           "description": "Have the HMI regulated commodities been auto cleared?"
         },
         "inspectionRequired": {
-          "type": "string",
-          "description": "Inspection required",
-          "enum": [
-            "Required",
-            "Inconclusive",
-            "Not required"
-          ]
+          "$ref": "#/definitions/InspectionRequired",
+          "description": "Inspection required"
+        },
+        "inspectionOverride": {
+          "type": "object",
+          "description": "Details about the manual inspection override",
+          "properties": {
+            "originalDecision": {
+              "$ref": "#/definitions/InspectionRequired",
+              "description": "Original inspection decision"
+            },
+            "overriddenOn": {
+              "type": "string",
+              "javaType": "java.time.LocalDateTime",
+              "description": "The time the risk decision is overridden"
+            },
+            "overriddenBy": {
+              "$ref": "#/definitions/UserInformation",
+              "description": "User entity who has manually overridden the inspection"
+            }
+          }
         }
       }
     },
