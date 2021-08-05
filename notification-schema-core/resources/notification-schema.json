@@ -784,6 +784,15 @@
     "agencyOrganisationId": {
       "type": "string",
       "description": "Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation"
+    },
+    "riskDecisionLockingTime": {
+      "type": "string",
+      "javaType": "java.time.LocalDateTime",
+      "description": "Date and Time when risk decision was locked"
+    },
+    "isRiskDecisionLocked": {
+      "type": "boolean",
+      "description": "is the risk decision locked?"
     }
   },
   "definitions": {

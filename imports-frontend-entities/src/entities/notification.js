@@ -43,6 +43,8 @@ module.exports = class Notification {
     this.replacedBy = obj.replacedBy
     this.lastUpdatedBy = obj.lastUpdatedBy
     this.agencyOrganisationId = obj.agencyOrganisationId
+    this.riskDecisionLockingTime = obj.riskDecisionLockingTime;
+    this.isRiskDecisionLocked = obj.isRiskDecisionLocked;
 
     validate(this)
 

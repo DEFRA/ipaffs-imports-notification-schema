@@ -148,4 +148,10 @@ public class Notification {
   public boolean isChedpp() {
     return NotificationTypeEnum.CHEDPP.equals(type);
   }
+
+  @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
+  @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  private LocalDateTime riskDecisionLockingTime;
+
+  private Boolean isRiskDecisionLocked;
 }
