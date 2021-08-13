@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+
+import javax.validation.constraints.NotBlank;
 
 @Builder
 @Data
@@ -15,8 +18,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class NotificationSealsContainers {
 
-  private String sealNumber = null;
-  private String containerNumber = null;
+  @NotBlank(
+      groups = NotificationHighRiskFieldValidation.class,
+      message = "Seal number cannot be empty")
+  private String sealNumber;
+
+  @NotBlank(
+      groups = NotificationHighRiskFieldValidation.class,
+      message = "Container number cannot be empty")
+  private String containerNumber;
+
   private boolean officialSeal;
   private String resealedSealNumber = null;
 }
