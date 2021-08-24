@@ -13,6 +13,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Physic
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.DocumentCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.EuStandardValidator;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.HighRiskEUDocumentCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckReasonNotDone;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckType;
@@ -22,6 +23,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentCheckValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEUDocumentCheckValidation;
 
 import javax.validation.constraints.NotNull;
 
@@ -31,10 +34,15 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @DocumentCheckResult(
-    groups = NotificationCedOrCvedpFieldValidation.class,
+    groups = NotificationDocumentCheckValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
-            + ".documentarycheck.not.null}")
+            + ".documentarycheck.invalid.nonhighriskeu}")
+@HighRiskEUDocumentCheckResult(
+    groups = NotificationHighRiskEUDocumentCheckValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
+            + ".documentarycheck.invalid.highriskeu}")
 @IdentityCheckType(
     groups = {
         NotificationCvedpFieldValidation.class

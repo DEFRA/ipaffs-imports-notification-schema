@@ -2088,6 +2088,7 @@
       "description": "Result of various checks",
       "enum": [
         "Satisfactory",
+        "Satisfactory following official intervention",
         "Not Satisfactory",
         "Not Done",
         "Derogation",
