@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Result {
   SATISFACTORY("Satisfactory"),
+  SATISFACTORY_FOLLOWING_OFFICIAL_INTERVENTION("Satisfactory following official intervention"),
   NOT_SATISFACTORY("Not Satisfactory"),
   NOT_DONE("Not Done"),
   DEROGATION("Derogation"),
