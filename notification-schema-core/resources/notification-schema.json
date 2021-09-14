@@ -2219,7 +2219,7 @@
             },
             "countryISOCode": {
               "type": "string",
-              "pattern": "^([A-Z]{2}||[A-Z]{2}-[A-Z]{2,3})$",
+              "pattern": "^([A-Z]{2,3}||[A-Z]{2}-[A-Z]{2,3})$",
               "description": "country ISO code"
             },
             "email": {
@@ -2365,7 +2365,7 @@
       "type": "string",
       "minLength": 2,
       "maxLength": 6,
-      "pattern": "^([A-Z]{2}||[A-Z]{2}-[A-Z]{2,3})$",
+      "pattern": "^([A-Z]{2,3}||[A-Z]{2}-[A-Z]{2,3})$",
       "description": "ISO code of country"
     },
     "SealContainer": {
