@@ -2219,8 +2219,8 @@
             },
             "countryISOCode": {
               "type": "string",
-              "pattern": "^[A-Z]{2}$",
-              "description": "country 2-digits ISO code"
+              "pattern": "^([A-Z]{2}||[A-Z]{2}-[A-Z]{2,3})$",
+              "description": "country ISO code"
             },
             "email": {
               "type": "string",
