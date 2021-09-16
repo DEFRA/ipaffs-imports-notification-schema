@@ -820,7 +820,8 @@
           "description": "Identifier for the downstream system to which the reference relates to",
           "enum": [
             "TRACESNT",
-            "E-CERT"
+            "E-CERT",
+            "E-PHYTO"
           ]
         },
         "reference": {
