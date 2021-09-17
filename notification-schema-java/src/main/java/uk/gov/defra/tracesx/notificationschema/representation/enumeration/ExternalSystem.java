@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ExternalSystem {
   TRACESNT("TRACESNT"),
-  ECERT("E-CERT");
+  ECERT("E-CERT"),
+  EPHYTO("E-PHYTO");
 
   private final String value;
 
