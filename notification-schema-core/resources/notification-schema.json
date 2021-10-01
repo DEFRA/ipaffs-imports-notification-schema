@@ -2220,7 +2220,7 @@
             },
             "countryISOCode": {
               "type": "string",
-              "pattern": "^[A-Z]{2}$",
+              "pattern": "^([A-Z]{2}||[A-Z]{2}-[A-Z]{2,3})$",
               "description": "country 2-digits ISO code"
             },
             "email": {
