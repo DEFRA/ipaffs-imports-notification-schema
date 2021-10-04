@@ -41,6 +41,7 @@ const User = require('../src/entities/user')
 const UserInfo = require('../src/entities/user_info')
 const Veterinarian = require('../src/entities/official_veterinarian')
 const VeterinaryInformation = require('../src/entities/veterinary_information')
+const NominatedContact = require('../src/entities/nominated_contact')
 
 describe('Entities: ', () => {
 
@@ -73,6 +74,7 @@ describe('Entities: ', () => {
     LaboratoryTests,
     MeansOfTransport,
     Notification,
+    NominatedContact,
     NotificationSealsContainers,
     PartOne,
     PartThree,

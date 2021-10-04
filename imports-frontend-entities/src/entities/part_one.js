@@ -10,6 +10,7 @@ const VeterinaryInformation = require('./veterinary_information')
 const Route = require('./route')
 const NotificationSealsContainers = require('./notification_seals_containers')
 const ConsignmentValidation = require('./consignment_validation')
+const NominatedContact = require('./nominated_contact')
 
 module.exports = class PartOne {
 
@@ -81,6 +82,7 @@ module.exports = class PartOne {
     this.portOfExit = obj.portOfExit
     this.portOfExitDate = obj.portOfExitDate
     this.contactDetails = obj.contactDetails
+    this.nominatedContacts = getList(_.get(obj, 'nominatedContacts', []), NominatedContact)
 
     return Object.seal(new Proxy(this, handler))
   }

@@ -95,7 +95,7 @@
       "type": "boolean",
       "description": "Is this notification a child of a split consignment?"
     },
-    "riskAssessment" :  {
+    "riskAssessment": {
       "$ref": "#/definitions/RiskAssessmentResult",
       "description": "Result of risk assessment by the risk scorer"
     },
@@ -750,6 +750,13 @@
         "contactDetails": {
           "$ref": "#/definitions/ContactDetails",
           "description": "Person to be contacted if there is an issue with the consignment"
+        },
+        "nominatedContacts": {
+          "type": "array",
+          "description": "List of nominated contacts to receive text and email notifications",
+          "items": {
+            "$ref": "#/definitions/NominatedContact"
+          }
         }
       }
     },
@@ -1663,7 +1670,7 @@
           "type": "boolean",
           "description": "Does the consignment conform"
         },
-        "consignmentNoArrivalReason":{
+        "consignmentNoArrivalReason": {
           "type": "string",
           "minLength": 1,
           "maxLength": 255,
@@ -2487,6 +2494,28 @@
           "type": "string",
           "maxLength": 255,
           "description": "Name of agent representing designated contact"
+        }
+      }
+    },
+    "NominatedContact": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notification.api.NominatedContact",
+      "description": "Person to be nominated for text and email contact for the consignment",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "Name of nominated contact"
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "Email address of nominated contact"
+        },
+        "telephone": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Telephone number of nominated contact"
         }
       }
     },
