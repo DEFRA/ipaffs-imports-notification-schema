@@ -1756,7 +1756,9 @@
             "Other",
             "Road vehicle Aeroplane",
             "Ship Railway wagon",
-            "Ship Road vehicle"
+            "Ship Road vehicle",
+            "Not Specified",
+            "Mail"
           ]
         },
         "document": {
