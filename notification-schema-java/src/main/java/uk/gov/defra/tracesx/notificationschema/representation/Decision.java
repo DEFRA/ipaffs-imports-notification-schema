@@ -26,9 +26,16 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAccepta
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableEstablishment;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableOtherReason;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotAcceptableReason;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullTemporaryExitBip;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullTranshipmentBip;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullTranshipmentThirdCountry;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullTransitDestinationThirdCountry;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullTransitExitBip;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullTransitThirdCountry;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.SpecificWarehouse;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNotAcceptableReasonsValidation;
@@ -65,6 +72,36 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablecountry.not.null}")
+@NotNullTemporaryExitBip(
+    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".temporaryexitbip.not.null}")
+@NotNullTranshipmentBip(
+    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".transhipmentbip.not.null}")
+@NotNullTranshipmentThirdCountry(
+    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".transhipmentthirdcountry.not.null}")
+@NotNullTransitDestinationThirdCountry(
+    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".transitdestinationthirdcountry.not.null}")
+@NotNullTransitExitBip(
+    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".transitexitbip.not.null}")
+@NotNullTransitThirdCountry(
+    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
+            + ".transitthirdcountry.not.null}")
 @SpecificWarehouse(
     groups = {
         NotificationCvedpFieldValidation.class
