@@ -820,13 +820,12 @@
     },
     "ExternalReference": {
       "type": "object",
-      "description": "External Reference number that relates to a downstream system subscribed to IPAFFS",
+      "description": "Reference number from an external system which is related to this notification",
       "properties": {
         "system": {
           "type": "string",
-          "description": "Identifier for the downstream system to which the reference relates to",
+          "description": "Identifier of the external system to which the reference relates",
           "enum": [
-            "TRACESNT",
             "E-CERT",
             "E-PHYTO"
           ]

@@ -3,7 +3,6 @@ package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ExternalSystem {
-  TRACESNT("TRACESNT"),
   ECERT("E-CERT"),
   EPHYTO("E-PHYTO");
 
