@@ -432,6 +432,10 @@
               "type": "boolean",
               "description": "Flag to record whether country of origin is a temporary PoD country"
             },
+            "isLowRiskArticle72Country": {
+              "type": "boolean",
+              "description": "Flag to record whether country of origin is a low risk article 72 country"
+            },
             "regionOfOrigin": {
               "type": "string",
               "minLength": 1,
