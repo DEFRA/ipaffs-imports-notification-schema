@@ -127,6 +127,8 @@ public class Commodities {
 
   private Boolean countryOfOriginIsPodCountry = null;
 
+  private Boolean isLowRiskArticle72Country;
+
   private String regionOfOrigin = null;
 
   @NotNull(

@@ -24,6 +24,7 @@ module.exports = class Commodities {
     this.includeNonAblactedAnimals = obj.includeNonAblactedAnimals
     this.countryOfOrigin = obj.countryOfOrigin
     this.countryOfOriginIsPodCountry = obj.countryOfOriginIsPodCountry
+    this.isLowRiskArticle72Country = obj.isLowRiskArticle72Country
     this.regionOfOrigin = obj.regionOfOrigin
     this.consignedCountry = obj.consignedCountry
     this.consignedCountryInChargeGroup = obj.consignedCountryInChargeGroup
