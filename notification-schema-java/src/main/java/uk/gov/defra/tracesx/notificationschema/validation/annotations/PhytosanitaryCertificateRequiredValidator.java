@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.LOW_RISK_ARTICLE_72_COMMODITY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.PHYTOSANITARY_CERTIFICATE;
 
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
@@ -10,6 +11,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.validation.ConstraintValidator;
@@ -46,6 +48,25 @@ public class PhytosanitaryCertificateRequiredValidator implements
         .anyMatch(PhytosanitaryCertificateRequiredValidator::isPhsiOrJoint);
   }
 
+  private boolean isArticle72Consignment(PartOne partOne) {
+    return isArticle72Country(partOne.getCommodities())
+        && partOne.getCommodities().getComplementParameterSet().stream()
+            .map(ComplementParameterSet::getKeyDataPair)
+            .allMatch(this::isArticle72Commodity);
+  }
+
+  private boolean isArticle72Commodity(List<ComplementParameterSetKeyDataPair> keyDataPairs) {
+    return keyDataPairs.stream()
+        .anyMatch(
+            keyDataPair ->
+                Objects.equals(keyDataPair.getKey(), LOW_RISK_ARTICLE_72_COMMODITY)
+                    && Objects.equals(keyDataPair.getData(), Boolean.TRUE.toString()));
+  }
+
+  private boolean isArticle72Country(Commodities commodities) {
+    return Optional.ofNullable(commodities.getIsLowRiskArticle72Country()).orElse(false);
+  }
+
   private static boolean hasPhytosanitaryCertificate(PartOne partOne) {
     return Optional.of(partOne)
         .map(PartOne::getVeterinaryInformation)
@@ -63,7 +84,7 @@ public class PhytosanitaryCertificateRequiredValidator implements
 
   @Override
   public boolean isValid(PartOne partOne, ConstraintValidatorContext constraintValidatorContext) {
-    if (hasPhsiOrJoint(partOne)) {
+    if (!isArticle72Consignment(partOne) && hasPhsiOrJoint(partOne)) {
       return hasPhytosanitaryCertificate(partOne);
     } else {
       return true;

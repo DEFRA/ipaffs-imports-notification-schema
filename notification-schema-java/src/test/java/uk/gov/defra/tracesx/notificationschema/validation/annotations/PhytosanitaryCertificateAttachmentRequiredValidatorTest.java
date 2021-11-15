@@ -20,7 +20,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentTypeNull() {
+  public void isValid_ReturnsTrue_WhenDocumentTypeNull() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder().build();
 
@@ -32,7 +32,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenNotPhytosanitaryCertificate() {
+  public void isValid_ReturnsTrue_WhenNotPhytosanitaryCertificate() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder()
         .documentType(VETERINARY_HEALTH_CERTIFICATE)
@@ -46,7 +46,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsFalse_whenAttachmentNotPresent() {
+  public void isValid_ReturnsFalse_WhenAttachmentNotPresent() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder()
         .documentType(PHYTOSANITARY_CERTIFICATE)
@@ -60,7 +60,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenAttachmentPresent() {
+  public void isValid_ReturnsTrue_WhenAttachmentPresent() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder()
         .documentType(PHYTOSANITARY_CERTIFICATE)
