@@ -23,7 +23,6 @@ import java.util.UUID;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@PhytosanitaryCertificateAttachmentRequired(groups = NotificationChedppFieldValidation.class)
 public class AccompanyingDocument {
 
   private DocumentType documentType = null;

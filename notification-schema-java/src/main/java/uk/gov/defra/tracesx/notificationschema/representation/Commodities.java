@@ -14,6 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppGmsD
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullFinishedOrPropagatedKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingKeyDataPair;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateAttachmentRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;

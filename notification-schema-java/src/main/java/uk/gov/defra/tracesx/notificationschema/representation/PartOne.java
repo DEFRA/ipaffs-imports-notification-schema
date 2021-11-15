@@ -37,6 +37,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateAttachmentRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
@@ -104,6 +105,7 @@ import javax.validation.constraints.NotNull;
 @ChedppPodRequired(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod.required}")
+@PhytosanitaryCertificateAttachmentRequired(groups = NotificationChedppFieldValidation.class)
 public class PartOne {
 
   private TypeOfImp typeOfImp;
