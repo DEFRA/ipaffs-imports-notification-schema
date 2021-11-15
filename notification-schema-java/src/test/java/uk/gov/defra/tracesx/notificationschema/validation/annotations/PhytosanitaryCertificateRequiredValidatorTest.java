@@ -18,6 +18,7 @@ import java.util.List;
 public class PhytosanitaryCertificateRequiredValidatorTest {
 
   private static final String REGULATORY_AUTHORITY = "regulatory_authority";
+  private static final String LOW_RISK_ARTICLE_72_COMMODITY = "low_risk_article72_commodity";
   private static final String JOINT = "JOINT";
   private static final String PHSI = "PHSI";
   private static final String HMI = "HMI";
@@ -30,7 +31,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenComplementParameterSetNull() {
+  public void isValid_ReturnsTrue_WhenComplementParameterSetNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder().build())
@@ -44,7 +45,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenKeyDataPairNull() {
+  public void isValid_ReturnsTrue_WhenKeyDataPairNull() {
     // Given
     List<ComplementParameterSetKeyDataPair> keyDataPairs = new ArrayList<>();
     keyDataPairs.add(ComplementParameterSetKeyDataPair.builder().build());
@@ -66,7 +67,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenKeyNull() {
+  public void isValid_ReturnsTrue_WhenKeyNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -86,7 +87,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenDataNull() {
+  public void isValid_ReturnsTrue_WhenDataNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -108,7 +109,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenNoPhsiOrJointCommodities() {
+  public void isValid_ReturnsTrue_WhenNoPhsiOrJointCommodities() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -134,7 +135,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsFalse_whenVeterinaryInformationNull() {
+  public void isValid_ReturnsFalse_WhenVeterinaryInformationNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -157,7 +158,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsFalse_whenAccompanyingDocumentsNull() {
+  public void isValid_ReturnsFalse_WhenAccompanyingDocumentsNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -181,7 +182,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsFalse_whenPhsiAndNoPhytosanitaryCertificate() {
+  public void isValid_ReturnsFalse_WhenPhsiAndNoPhytosanitaryCertificate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -207,7 +208,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsFalse_whenJointAndNoPhytosanitaryCertificate() {
+  public void isValid_ReturnsFalse_WhenJointAndNoPhytosanitaryCertificate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -233,7 +234,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenPhsiAndPhytosanitaryCertificate() {
+  public void isValid_ReturnsTrue_WhenPhsiAndPhytosanitaryCertificate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -260,7 +261,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_returnsTrue_whenJointAndPhytosanitaryCertifiate() {
+  public void isValid_ReturnsTrue_WhenJointAndPhytosanitaryCertifiate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -284,5 +285,122 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
 
     // Then
     assertThat(result).isTrue();
+  }
+
+  @Test
+  public void isValid_ReturnsTrue_WhenConsignmentIsArticle72() {
+    // Given
+    PartOne partOne = PartOne.builder()
+        .commodities(Commodities.builder()
+            .isLowRiskArticle72Country(Boolean.TRUE)
+            .complementParameterSet(List.of(
+                ComplementParameterSet.builder()
+                    .keyDataPair(List.of(
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(REGULATORY_AUTHORITY)
+                            .data(JOINT)
+                            .build(),
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(LOW_RISK_ARTICLE_72_COMMODITY)
+                            .data(Boolean.TRUE.toString())
+                            .build()))
+                    .build(),
+                ComplementParameterSet.builder()
+                    .keyDataPair(List.of(
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(REGULATORY_AUTHORITY)
+                            .data(JOINT)
+                            .build(),
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(LOW_RISK_ARTICLE_72_COMMODITY)
+                            .data(Boolean.TRUE.toString())
+                            .build()))
+                    .build()))
+            .build())
+        .build();
+
+    // When
+    boolean result = validator.isValid(partOne, null);
+
+    // Then
+    assertThat(result).isTrue();
+  }
+
+  @Test
+  public void isValid_ReturnsFalse_WhenConsignmentCountryIsNotAnArticle72Country() {
+    // Given
+    PartOne partOne = PartOne.builder()
+        .commodities(Commodities.builder()
+            .isLowRiskArticle72Country(Boolean.FALSE)
+            .complementParameterSet(List.of(
+                ComplementParameterSet.builder()
+                    .keyDataPair(List.of(
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(REGULATORY_AUTHORITY)
+                            .data(JOINT)
+                            .build(),
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(LOW_RISK_ARTICLE_72_COMMODITY)
+                            .data(Boolean.TRUE.toString())
+                            .build()))
+                    .build(),
+                ComplementParameterSet.builder()
+                    .keyDataPair(List.of(
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(REGULATORY_AUTHORITY)
+                            .data(JOINT)
+                            .build(),
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(LOW_RISK_ARTICLE_72_COMMODITY)
+                            .data(Boolean.TRUE.toString())
+                            .build()))
+                    .build()))
+            .build())
+        .build();
+
+    // When
+    boolean result = validator.isValid(partOne, null);
+
+    // Then
+    assertThat(result).isFalse();
+  }
+
+  @Test
+  public void isValid_ReturnsFalse_WhenConsignmentCommoditiesAreNotArticle72() {
+    // Given
+    PartOne partOne = PartOne.builder()
+        .commodities(Commodities.builder()
+            .isLowRiskArticle72Country(Boolean.TRUE)
+            .complementParameterSet(List.of(
+                ComplementParameterSet.builder()
+                    .keyDataPair(List.of(
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(REGULATORY_AUTHORITY)
+                            .data(JOINT)
+                            .build(),
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(LOW_RISK_ARTICLE_72_COMMODITY)
+                            .data(Boolean.TRUE.toString())
+                            .build()))
+                    .build(),
+                ComplementParameterSet.builder()
+                    .keyDataPair(List.of(
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(REGULATORY_AUTHORITY)
+                            .data(JOINT)
+                            .build(),
+                        ComplementParameterSetKeyDataPair.builder()
+                            .key(LOW_RISK_ARTICLE_72_COMMODITY)
+                            .data(Boolean.FALSE.toString())
+                            .build()))
+                    .build()))
+            .build())
+        .build();
+
+    // When
+    boolean result = validator.isValid(partOne, null);
+
+    // Then
+    assertThat(result).isFalse();
   }
 }
