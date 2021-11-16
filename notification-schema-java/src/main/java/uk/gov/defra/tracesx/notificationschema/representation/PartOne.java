@@ -41,6 +41,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Phytosanit
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -344,6 +345,10 @@ public class PartOne {
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate portOfExitDate;
 
+  @Valid
+  @NotNull(groups = NotificationHighRiskEuChedValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
+          + ".not.null}")
   private ContactDetails contactDetails;
 
   private List<NominatedContact> nominatedContacts;
