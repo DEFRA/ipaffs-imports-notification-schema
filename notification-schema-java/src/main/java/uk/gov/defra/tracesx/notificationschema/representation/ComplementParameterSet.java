@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
@@ -15,6 +16,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import javax.validation.Valid;
 
@@ -84,5 +86,13 @@ public class ComplementParameterSet {
     }
     this.keyDataPair.add(keyDataPairItem);
     return this;
+  }
+
+  @JsonIgnore
+  public boolean isArticle72() {
+    return this.keyDataPair.stream().filter(Objects::nonNull)
+        .anyMatch(keyDataPair ->
+            LOW_RISK_ARTICLE_72_COMMODITY.equals(keyDataPair.getKey())
+            && Boolean.parseBoolean(keyDataPair.getData()));
   }
 }
