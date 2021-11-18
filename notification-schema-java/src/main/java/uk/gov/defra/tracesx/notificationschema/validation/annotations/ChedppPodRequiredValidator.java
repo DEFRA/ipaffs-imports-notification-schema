@@ -1,7 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
+import java.util.Optional;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -11,6 +13,11 @@ public class ChedppPodRequiredValidator implements ConstraintValidator<ChedppPod
 
   @Override
   public boolean isValid(PartOne partOne, ConstraintValidatorContext constraintValidatorContext) {
+    if (partOne != null && Optional.ofNullable(partOne.getCommodities())
+        .map(Commodities::isArticle72Consignment).orElse(false)) {
+      return true;
+    }
+
     if (partOne == null || partOne.getPointOfEntryControlPoint() == null) {
       return true;
     }

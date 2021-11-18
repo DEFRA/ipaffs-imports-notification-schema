@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
@@ -24,7 +25,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -42,18 +46,21 @@ import javax.validation.constraints.NotNull;
 @NotNullWoodPackagingKeyDataPair(
     groups = NotificationChedppFieldValidation.class,
     field = "units-quantity",
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".woodpackagingnumberunits.not.null}")
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+            + ".woodpackagingnumberunits.not.null}")
 @NotNullWoodPackagingKeyDataPair(
     groups = NotificationChedppFieldValidation.class,
     field = "units-type",
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".woodpackagingunittype.not.null}")
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+            + ".woodpackagingunittype.not.null}")
 @NotNullWoodPackagingKeyDataPair(
     groups = NotificationChedppFieldValidation.class,
     field = "country-of-origin",
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".woodpackagingcountryoforigin.not.null}")
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+            + ".woodpackagingcountryoforigin.not.null}")
 @ChedppGmsDeclaration(
     groups = NotificationChedppFieldValidation.class,
     message =
@@ -112,8 +119,9 @@ public class Commodities {
   @Valid
   @QuantityImp(
       groups = NotificationLowRiskFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
-          + ".commodities.complementParameterSet.quantity.not.null}")
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
+              + ".commodities.complementParameterSet.quantity.not.null}")
   private List<ComplementParameterSet> complementParameterSet = null;
 
   private Boolean includeNonAblactedAnimals = null;
@@ -168,5 +176,12 @@ public class Commodities {
     }
     this.complementParameterSet.add(complementParameterSetItem);
     return this;
+  }
+
+  @JsonIgnore
+  public boolean isArticle72Consignment() {
+    return Optional.ofNullable(this.isLowRiskArticle72Country).orElse(false)
+        && this.complementParameterSet != null
+        && this.complementParameterSet.stream().allMatch(ComplementParameterSet::isArticle72);
   }
 }
