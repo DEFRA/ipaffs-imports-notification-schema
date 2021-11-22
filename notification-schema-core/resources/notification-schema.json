@@ -831,7 +831,8 @@
           "description": "Identifier of the external system to which the reference relates",
           "enum": [
             "E-CERT",
-            "E-PHYTO"
+            "E-PHYTO",
+            "E-NOTIFICATION"
           ]
         },
         "reference": {
