@@ -36,6 +36,7 @@ public class ComplementParameterSet {
   public static final String TYPE_QUANTITY = "type_quantity";
   public static final String COMMODITY_GROUP = "commodity_group";
   public static final String LOW_RISK_ARTICLE_72_COMMODITY = "low_risk_article72_commodity";
+  public static final String FINISHED_OR_PROPAGATED = "finished_or_propagated";
 
   private UUID uniqueComplementID;
   private Integer complementID;
