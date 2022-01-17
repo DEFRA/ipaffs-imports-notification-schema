@@ -39,6 +39,10 @@ public class ComplementParameterSet {
   public static final String FINISHED_OR_PROPAGATED = "finished_or_propagated";
   public static final String VARIETY = "variety";
   public static final String CLASS = "class";
+  public static final String INTENDED_USE = "intended_use";
+  public static final String MARKETING_STANDARD = "marketing_standard";
+  public static final String REGULATORY_AUTHORITY = "regulatory_authority";
+  public static final String VALIDITY_PERIOD = "validity_period";
 
   private UUID uniqueComplementID;
   private Integer complementID;
