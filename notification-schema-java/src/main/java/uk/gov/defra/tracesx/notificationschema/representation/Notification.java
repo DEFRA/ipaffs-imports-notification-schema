@@ -139,4 +139,10 @@ public class Notification {
   public boolean isChedpp() {
     return NotificationTypeEnum.CHEDPP.equals(type);
   }
+
+  //IMTA-9847 test for schema hotfix
+  @JsonIgnore
+  public boolean isImp() {
+    return NotificationTypeEnum.IMP.equals(type);
+  }
 }
