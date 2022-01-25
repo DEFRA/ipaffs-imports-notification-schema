@@ -1,4 +1,4 @@
-@Library('pipeline-library') _
+@Library('pipeline-library@feature/IMTA-9847-hotfix-process-for-libraries') _
 
 schemaPipeline {
     SERVICE_NAME = "import-notification-schema"
