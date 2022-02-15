@@ -302,14 +302,14 @@ public class PartOne {
   private LocalTime departureTime;
 
   @NotNull(
-      groups = {NotificationCvedaFieldValidation.class},
+      groups = {TransporterDetailsRequiredValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".estimatedjourneytimeinminutes.not.null}")
   private Integer estimatedJourneyTimeInMinutes;
 
   @NotEmpty(
-      groups = NotificationCvedaFieldValidation.class,
+      groups = TransporterDetailsRequiredValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".responsiblefortransport.not.empty}")
