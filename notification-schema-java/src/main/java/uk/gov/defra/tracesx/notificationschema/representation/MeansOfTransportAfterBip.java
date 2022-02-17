@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TransportMethod;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDorChedppValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 import javax.validation.constraints.NotEmpty;
@@ -25,7 +26,8 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".not.empty}",
-      groups = {TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class})
   private String id = null;
 
@@ -33,7 +35,8 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.type"
               + ".not.null}",
-      groups = {TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class})
   private TransportMethod type = null;
 
@@ -41,7 +44,8 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
               + ".document.not.empty}",
-      groups = {TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class})
   private String document = null;
 }

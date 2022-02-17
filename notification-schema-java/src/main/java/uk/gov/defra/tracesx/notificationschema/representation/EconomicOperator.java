@@ -24,7 +24,7 @@ public class EconomicOperator {
   private String id;
 
   @NotNull(
-      groups = TransporterDetailsRequiredValidation.class,
+      groups = {NotificationCvedaFieldValidation.class, TransporterDetailsRequiredValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.type.not"
               + ".null}")
@@ -38,7 +38,7 @@ public class EconomicOperator {
   private EconomicOperatorStatus status;
 
   @NotNull(
-      groups = TransporterDetailsRequiredValidation.class,
+      groups = {NotificationCvedaFieldValidation.class, TransporterDetailsRequiredValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
               + ".companyname.not.null}")
@@ -51,7 +51,7 @@ public class EconomicOperator {
   private String otherIdentifier;
 
   @NotNull(
-      groups = TransporterDetailsRequiredValidation.class,
+      groups = {NotificationCvedaFieldValidation.class, TransporterDetailsRequiredValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.address"
               + ".not.null}")
