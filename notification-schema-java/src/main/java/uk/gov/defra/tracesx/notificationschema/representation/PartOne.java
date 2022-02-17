@@ -47,6 +47,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDorChedppValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 import java.time.LocalDate;
@@ -259,7 +260,8 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
   private EconomicOperator transporter;
@@ -268,7 +270,8 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
@@ -284,8 +287,9 @@ public class PartOne {
   private MeansOfTransportBeforeBip meansOfTransportFromEntryPoint;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDorChedppValidation.class},
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredCEDorChedppValidation.class,},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
@@ -293,7 +297,8 @@ public class PartOne {
   private LocalDate departureDate;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
           + ".not.null}")
@@ -302,14 +307,14 @@ public class PartOne {
   private LocalTime departureTime;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class},
+      groups = {TransporterDetailsRequiredCvedaValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".estimatedjourneytimeinminutes.not.null}")
   private Integer estimatedJourneyTimeInMinutes;
 
   @NotEmpty(
-      groups = TransporterDetailsRequiredValidation.class,
+      groups = TransporterDetailsRequiredCvedaValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".responsiblefortransport.not.empty}")
