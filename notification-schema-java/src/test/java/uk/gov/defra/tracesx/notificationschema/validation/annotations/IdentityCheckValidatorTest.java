@@ -4,12 +4,13 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_DONE;
 
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
-public class IdentityCheckEuStandardValidatorTest {
+public class IdentityCheckValidatorTest {
 
   private ConsignmentCheck check;
   private IdentityCheckResultValidator validator;
@@ -52,5 +53,21 @@ public class IdentityCheckEuStandardValidatorTest {
     check.setIdentityCheckDone(true);
 
     assertFalse(validator.isValid(check, null));
+  }
+
+  @Test
+  public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsFalseAndResultIsNotDone() {
+    check.setIdentityCheckDone(false);
+    check.setIdentityCheckResult(NOT_DONE);
+
+    assertTrue(validator.isValid(check, null));
+  }
+
+  @Test
+  public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsNotDone() {
+    check.setIdentityCheckDone(true);
+    check.setIdentityCheckResult(NOT_DONE);
+
+    assertTrue(validator.isValid(check, null));
   }
 }

@@ -21,7 +21,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhysicalCh
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhysicalCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEUFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaNonEUFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentCheckValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEUDocumentCheckValidation;
@@ -39,7 +41,7 @@ import javax.validation.constraints.NotNull;
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".documentarycheck.invalid.nonhighriskeu}")
 @HighRiskEUDocumentCheckResult(
-    groups = NotificationHighRiskEUDocumentCheckValidation.class,
+    groups = {NotificationHighRiskEUDocumentCheckValidation.class, NotificationCvedaEUFieldValidation.class},
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".documentarycheck.invalid.highriskeu}")
@@ -75,21 +77,21 @@ import javax.validation.constraints.NotNull;
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".reasonidentitychecknotdone.not.null}")
 @EuStandardValidator(
-    groups = NotificationCvedaFieldValidation.class,
+    groups = NotificationCvedaNonEUFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".eustandard.not.null}")
+
 public class ConsignmentCheck {
 
   @NotNull(
-      groups = NotificationCvedaFieldValidation.class,
+      groups = NotificationCvedaNonEUFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
               + ".eustandard.not.null}")
   private Result euStandard;
-
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {NotificationCedOrCvedpFieldValidation.class, NotificationCvedaEUFieldValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
               + ".documentarycheck.not.null}")

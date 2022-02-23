@@ -23,7 +23,8 @@ public class IdentityCheckResultValidator
     }
     if (TRUE.equals(consignmentCheck.getIdentityCheckDone())) {
       return consignmentCheck.getIdentityCheckResult() == Result.SATISFACTORY
-          || consignmentCheck.getIdentityCheckResult() == Result.NOT_SATISFACTORY;
+          || consignmentCheck.getIdentityCheckResult() == Result.NOT_SATISFACTORY
+          || consignmentCheck.getIdentityCheckResult() == Result.NOT_DONE;
     }
     return true;
   }
