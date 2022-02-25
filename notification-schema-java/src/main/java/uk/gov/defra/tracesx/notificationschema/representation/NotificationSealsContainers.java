@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
@@ -20,7 +21,10 @@ import javax.validation.constraints.NotBlank;
 public class NotificationSealsContainers {
 
   @NotBlank(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
       message = "Seal number cannot be empty")
   private String sealNumber;
 

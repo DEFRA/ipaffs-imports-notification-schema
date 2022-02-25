@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnalysisType;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ConservationOfSample;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import javax.validation.constraints.NotNull;
@@ -23,7 +24,12 @@ public class Applicant {
 
   private AnalysisType analysisType;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private String laboratory;
 
   private String laboratoryAddress;
@@ -31,16 +37,36 @@ public class Applicant {
   private String laboratoryEmail;
   private String laboratoryPhoneNumber;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+              NotificationHighRiskFieldValidation.class,
+              NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private String sampleBatchNumber;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+              NotificationHighRiskFieldValidation.class,
+              NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private Integer numberOfSamples;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+              NotificationHighRiskFieldValidation.class,
+              NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private String sampleType;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+              NotificationHighRiskFieldValidation.class,
+              NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private ConservationOfSample conservationOfSample;
 
   private Inspector inspector;
