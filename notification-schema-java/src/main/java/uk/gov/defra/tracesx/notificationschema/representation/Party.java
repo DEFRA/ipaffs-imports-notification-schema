@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PartyType;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
@@ -33,7 +34,8 @@ public class Party {
 
   private String companyName;
 
-  @NotEmpty(groups = NotificationHighRiskNonChedppFieldValidation.class,
+  @NotEmpty(
+      groups = NotificationHighRiskNonChedppFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
       + ".address.not.empty}")
   private List<String> address;
@@ -41,7 +43,12 @@ public class Party {
   private String county;
   private String postCode;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+              NotificationHighRiskFieldValidation.class,
+              NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private String country;
 
   private String city;

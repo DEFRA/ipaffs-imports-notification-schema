@@ -11,6 +11,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImp
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForNonConformingEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InternalMarketPurpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 import java.util.List;
@@ -38,7 +39,10 @@ public class Purpose {
   private String finalBIP;
 
   @NotNull(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.purposeGroup"
               + ".not.null}")

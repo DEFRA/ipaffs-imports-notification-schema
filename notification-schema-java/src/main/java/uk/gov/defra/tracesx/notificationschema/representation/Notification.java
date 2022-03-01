@@ -22,9 +22,11 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEsti
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -95,7 +97,12 @@ public class Notification {
 
   private Boolean isHighRiskEuImport;
 
-  @NotNull(groups = NotificationHighRiskFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @NotNull(
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
+      message = ErrorCodes.NOT_NULL)
   private PartOne partOne;
 
   @ApiModelProperty(value = "Identification of the user checking the consignment")
