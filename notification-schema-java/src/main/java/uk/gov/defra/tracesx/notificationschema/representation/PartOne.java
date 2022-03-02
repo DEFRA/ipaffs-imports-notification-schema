@@ -146,8 +146,8 @@ public class PartOne {
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
           + ".not.null}")
@@ -188,8 +188,8 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
           + ".not.null}")
@@ -265,7 +265,7 @@ public class PartOne {
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
-              + ".not.null}")
+          + ".not.null}")
   @NotNull(
       groups = NotificationCvedaEuFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
@@ -341,16 +341,20 @@ public class PartOne {
   private LocalTime departureTime;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredEuCvedaValidation.class},
+      groups = {
+        NotificationCvedaFieldValidation.class,
+        TransporterDetailsRequiredEuCvedaValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".estimatedjourneytimeinminutes.not.null}")
   private Integer estimatedJourneyTimeInMinutes;
 
   @NotEmpty(
-      groups = { TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class},
+      groups = {
+        NotificationCvedaFieldValidation.class,
+        TransporterDetailsRequiredEuCvedaValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".responsiblefortransport.not.empty}")
