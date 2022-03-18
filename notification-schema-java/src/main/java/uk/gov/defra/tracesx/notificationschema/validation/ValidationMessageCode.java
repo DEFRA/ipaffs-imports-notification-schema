@@ -1,9 +1,7 @@
 package uk.gov.defra.tracesx.notificationschema.validation;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.ToString;
 
-@ToString
 public class ValidationMessageCode extends ValidationMessage {
 
   public ValidationMessageCode() {
@@ -18,5 +16,9 @@ public class ValidationMessageCode extends ValidationMessage {
   @JsonProperty("message")
   public String getMessage() {
     return super.getMessage();
+  }
+
+  public String toString() {
+    return String.format("ValidationMessageCode(field=%s, message=%s)", getField(), getMessage());
   }
 }

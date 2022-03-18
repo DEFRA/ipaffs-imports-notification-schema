@@ -396,5 +396,8 @@ public class PartOne {
           + ".not.null}")
   private ContactDetails contactDetails;
 
+  @NotEmpty(groups = NotificationCvedaEuFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+          + ".transportercontactdetails.not.empty}")
   private List<NominatedContact> nominatedContacts;
 }
