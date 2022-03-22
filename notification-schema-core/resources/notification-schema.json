@@ -481,7 +481,19 @@
                 "Human Consumption",
                 "Pharmaceutical Use",
                 "Technical Use",
-                "Other"
+                "Other",
+                "Commercial Sale",
+                "Rescue",
+                "Breeding",
+                "Research",
+                "Racing or Competition",
+                "Approved Premises or Body",
+                "Companion Animal not for Resale or Rehoming",
+                "Production",
+                "Slaughter",
+                "Fattening",
+                "Game Restocking",
+                "Registered Horses"
               ]
             },
             "thirdCountryTranshipment": {
