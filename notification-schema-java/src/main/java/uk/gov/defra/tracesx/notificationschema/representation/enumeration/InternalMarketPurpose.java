@@ -7,7 +7,19 @@ public enum InternalMarketPurpose {
   HUMAN_CONSUMPTION("Human Consumption"),
   PHARMACEUTICAL_USE("Pharmaceutical Use"),
   TECHNICAL_USE("Technical Use"),
-  OTHER("Other");
+  OTHER("Other"),
+  COMMERCIAL_SALE("Commercial Sale"),
+  RESCUE("Rescue"),
+  BREEDING("Breeding"),
+  RESEARCH("Research"),
+  RACING("Racing or Competition"),
+  APPROVED_PREMISES("Approved Premises or Body"),
+  COMPANION_ANIMAL("Companion Animal not for Resale or Rehoming"),
+  PRODUCTION("Production"),
+  SLAUGHTER("Slaughter"),
+  FATTENING("Fattening"),
+  GAME_RESTOCKING("Game Restocking"),
+  REGISTERED_HORSES("Registered Horses");
 
   private String value;
 
