@@ -97,6 +97,8 @@ public class Notification {
 
   private Boolean isHighRiskEuImport;
 
+  private Boolean chedaIncludesEuImpData;
+
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
