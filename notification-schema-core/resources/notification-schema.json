@@ -103,6 +103,10 @@
       "type": "boolean",
       "description": "Is this notification a high risk notification from the EU/EEA?"
     },
+    "chedaIncludesEuImpData": {
+      "type": "boolean",
+      "description": "Flag to record whether CHEDA notification should include EU IMP data"
+    },
     "partOne": {
       "javaType": "uk.gov.defra.tracesx.notification.api.PartOne",
       "properties": {
