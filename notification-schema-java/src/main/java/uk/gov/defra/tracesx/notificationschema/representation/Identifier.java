@@ -19,4 +19,6 @@ public class Identifier {
 
   private Integer speciesNumber;
   private Map<String, String> data;
+  private EconomicOperator permanentAddress;
+  private Boolean isPlaceOfDestinationThePermanentAddress;
 }

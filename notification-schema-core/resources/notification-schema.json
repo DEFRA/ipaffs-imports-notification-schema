@@ -413,6 +413,14 @@
                           "additionalProperties": {
                             "type": "string"
                           }
+                        },
+                        "isPlaceOfDestinationThePermanentAddress": {
+                          "type": "boolean",
+                          "description": "Is the place of destination the permanent address?"
+                        },
+                        "permanentAddress": {
+                          "description": "Permanent address of the species",
+                          "$ref": "#/definitions/EconomicOperator"
                         }
                       }
                     }
