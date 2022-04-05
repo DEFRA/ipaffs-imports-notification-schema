@@ -60,8 +60,7 @@ public class PhytosanitaryCertificateRequiredValidator
 
   @Override
   public boolean isValid(PartOne partOne, ConstraintValidatorContext constraintValidatorContext) {
-    if (!Optional.ofNullable(partOne.getCommodities())
-        .map(Commodities::isArticle72Consignment).orElse(false) && hasPhsiOrJoint(partOne)) {
+    if (hasPhsiOrJoint(partOne)) {
       return hasPhytosanitaryCertificate(partOne);
     } else {
       return true;
