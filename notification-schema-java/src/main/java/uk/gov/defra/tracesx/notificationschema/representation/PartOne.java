@@ -46,6 +46,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDorChedppValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
@@ -99,7 +100,7 @@ import javax.validation.constraints.NotNull;
     groups = NotificationLowRiskFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexitdate"
         + ".must.be.in.future}")
-@PhytosanitaryCertificateRequired(groups = NotificationChedppFieldValidation.class)
+@PhytosanitaryCertificateRequired(groups = PhytosanitaryCertificateRequiredValidation.class)
 @ChedppInvalidPodCheck(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod"
