@@ -392,7 +392,11 @@ public class PartOne {
   private LocalDate portOfExitDate;
 
   @Valid
-  @NotNull(groups = NotificationHighRiskEuChedValidation.class,
+  @NotNull(
+      groups = {
+        NotificationHighRiskEuChedValidation.class,
+        NotificationChedppFieldValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
           + ".not.null}")
   private ContactDetails contactDetails;

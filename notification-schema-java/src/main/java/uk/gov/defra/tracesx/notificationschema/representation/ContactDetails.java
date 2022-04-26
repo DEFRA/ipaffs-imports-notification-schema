@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ContactDetailsEmailOrTelephoneRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 
 import javax.validation.constraints.NotNull;
@@ -17,7 +18,11 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@ContactDetailsEmailOrTelephoneRequired(groups = NotificationHighRiskEuChedValidation.class)
+@ContactDetailsEmailOrTelephoneRequired(
+    groups = {
+        NotificationHighRiskEuChedValidation.class,
+        NotificationChedppFieldValidation.class
+    })
 public class ContactDetails {
 
   @NotNull(groups = NotificationHighRiskEuChedValidation.class,
