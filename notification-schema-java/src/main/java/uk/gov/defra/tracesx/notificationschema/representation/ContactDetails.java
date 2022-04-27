@@ -25,7 +25,11 @@ import javax.validation.constraints.NotNull;
     })
 public class ContactDetails {
 
-  @NotNull(groups = NotificationHighRiskEuChedValidation.class,
+  @NotNull(
+      groups = {
+          NotificationHighRiskEuChedValidation.class,
+          NotificationChedppFieldValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
           + ".contactdetails.name"
           + ".not.null}")
