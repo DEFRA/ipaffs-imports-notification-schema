@@ -36,7 +36,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingCommodity;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
@@ -72,10 +71,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
             + ".consignor.not.null}")
-@NotNullWoodPackagingCommodity(
-    groups = NotificationChedppFieldValidation.class,
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-        + ".containswoodpackaging}")
 @NotNullPurposeExitDate(
     groups = NotificationCvedaFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
@@ -124,10 +119,6 @@ public class PartOne {
 
   private String customsReferenceNumber;
 
-  @NotNull(
-      groups = NotificationChedppFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
-          + ".containsWoodPackaging.not.null}")
   private Boolean containsWoodPackaging;
 
   private Boolean consignmentArrived;
