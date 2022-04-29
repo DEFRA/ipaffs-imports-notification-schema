@@ -43,6 +43,7 @@ public class ComplementParameterSet {
   public static final String MARKETING_STANDARD = "marketing_standard";
   public static final String REGULATORY_AUTHORITY = "regulatory_authority";
   public static final String VALIDITY_PERIOD = "validity_period";
+  public static final String CONTAINER = "container";
 
   private UUID uniqueComplementID;
   private Integer complementID;
