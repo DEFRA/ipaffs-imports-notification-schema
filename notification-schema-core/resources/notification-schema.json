@@ -128,7 +128,7 @@
         },
         "containsWoodPackaging": {
           "type": "boolean",
-          "description": "Does the consignment contain wood packaging?"
+          "description": "(Deprecated in IMTA-11832) Does the consignment contain wood packaging?"
         },
         "consignmentArrived": {
           "type": "boolean",
@@ -273,7 +273,7 @@
                   },
                   "isWoodPackaging": {
                     "type": "boolean",
-                    "description": "Is this commodity wood packaging?"
+                    "description": "(Deprecated in IMTA-11832) Is this commodity wood packaging?"
                   },
                   "speciesID": {
                     "type": "string",

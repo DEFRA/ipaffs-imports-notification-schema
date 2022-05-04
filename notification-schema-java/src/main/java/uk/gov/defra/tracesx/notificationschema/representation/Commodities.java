@@ -14,7 +14,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Commod
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppGmsDeclaration;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullFinishedOrPropagatedKeyDataPair;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullWoodPackagingKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
@@ -42,24 +41,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".totalgrossweight.min.message}")
-@NotNullWoodPackagingKeyDataPair(
-    groups = NotificationChedppFieldValidation.class,
-    field = "units-quantity",
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-            + ".woodpackagingnumberunits.not.null}")
-@NotNullWoodPackagingKeyDataPair(
-    groups = NotificationChedppFieldValidation.class,
-    field = "units-type",
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-            + ".woodpackagingunittype.not.null}")
-@NotNullWoodPackagingKeyDataPair(
-    groups = NotificationChedppFieldValidation.class,
-    field = "country-of-origin",
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-            + ".woodpackagingcountryoforigin.not.null}")
 @ChedppGmsDeclaration(
     groups = NotificationChedppFieldValidation.class,
     message =
