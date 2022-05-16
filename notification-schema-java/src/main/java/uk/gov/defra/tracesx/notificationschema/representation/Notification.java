@@ -97,6 +97,8 @@ public class Notification {
 
   private Boolean isHighRiskEuImport;
 
+  private Boolean isBulkUpload;
+
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
