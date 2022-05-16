@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InspectionRequired;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.OverrideReason;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 
@@ -29,5 +30,7 @@ public class InspectionOverride {
   private LocalDateTime overriddenOn;
 
   private UserInformation overriddenBy;
+  private OverrideReason overrideReason;
+  private String overrideReasonOther;
 
 }
