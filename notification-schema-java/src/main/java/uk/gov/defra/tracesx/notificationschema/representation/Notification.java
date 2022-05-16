@@ -19,10 +19,14 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.AccompanyingDocuments;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEstimatedArrivalAtBcp;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.DocumentCheckResult;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.DocumentEuStandardAndNationalRequirementsCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentAndEuStandardCheckValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentCheckValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
@@ -46,6 +50,16 @@ import javax.validation.constraints.NotNull;
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
         + ".estimatedarrivalatbcp.must.be.in.future}")
+@DocumentEuStandardAndNationalRequirementsCheckResult(
+    groups = NotificationDocumentAndEuStandardCheckValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.notification"
+            + ".documentary.eustandard.nationalrequirment}")
+@DocumentCheckResult(
+    groups = NotificationDocumentCheckValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.notification"
+            + ".documentarycheck.invalid.nonhighriskeu}")
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")
