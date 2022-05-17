@@ -824,6 +824,13 @@
     "isRiskDecisionLocked": {
       "type": "boolean",
       "description": "is the risk decision locked?"
+    },
+    "notificationEvents": {
+      "type": "array",
+      "description": "Notification event containing the progress of the bulk upload process",
+      "items": {
+        "$ref": "#/definitions/NotificationEvent"
+      }
     }
   },
   "definitions": {
@@ -2657,6 +2664,62 @@
           "maxLength": 100
         }
       }
+    },
+    "NotificationEvent": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notification.api.NotificationEvent",
+      "description": "Event type of file upload progress notification",
+      "properties": {
+        "eventType": {
+          "type": "string",
+          "$ref": "#/definitions/NotificationEventType",
+          "description": "Event type of file upload progress notification"
+        },
+        "createdAt": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "Date and time of notification created"
+        },
+        "data": {
+          "type": "array",
+          "description": "List of data related to file upload notification event",
+          "items": {
+            "$ref": "#/definitions/NotificationEventData"
+          }
+        }
+      }
+    },
+    "NotificationEventType": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.NotificationEvent",
+      "description": "The event type of notification",
+      "enum": [
+        "BULK_UPLOAD_STARTED",
+        "BULK_UPLOAD_COMPLETED"
+      ]
+    },
+    "NotificationEventData": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "$ref": "#/definitions/NotificationEventDataKey",
+          "description": "Event type of file upload progress notification"
+        },
+        "data": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      }
+    },
+    "NotificationEventDataKey": {
+      "type": "string",
+      "javaType": "uk.gov.defra.tracesx.notification.api.NotificationEventDataKey",
+      "description": "Data key for the event type of notification",
+      "enum": [
+        "NOTIFICATION_ID"
+      ]
     }
   }
 }

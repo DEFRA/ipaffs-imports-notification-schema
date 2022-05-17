@@ -161,4 +161,5 @@ public class Notification {
   private LocalDateTime riskDecisionLockingTime;
 
   private Boolean isRiskDecisionLocked;
+  private List<NotificationEvent> notificationEvents;
 }

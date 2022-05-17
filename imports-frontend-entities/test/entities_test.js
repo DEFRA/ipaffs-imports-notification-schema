@@ -42,6 +42,7 @@ const UserInfo = require('../src/entities/user_info')
 const Veterinarian = require('../src/entities/official_veterinarian')
 const VeterinaryInformation = require('../src/entities/veterinary_information')
 const NominatedContact = require('../src/entities/nominated_contact')
+const NotificationEvent = require('../src/entities/notification_event')
 
 describe('Entities: ', () => {
 
@@ -84,6 +85,7 @@ describe('Entities: ', () => {
     Route,
     SingleLaboratoryTests,
     SplitConsignment,
+    NotificationEvent,
     User,
     UserInfo,
     Veterinarian,

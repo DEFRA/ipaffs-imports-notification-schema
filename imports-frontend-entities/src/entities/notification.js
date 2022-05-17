@@ -10,6 +10,7 @@ const ConsignmentValidation = require('./consignment_validation')
 const ExternalReference = require('./external_reference')
 const SplitConsignment = require('./split_consignment')
 const RiskAssessment = require('./risk_assessment')
+const NotificationEvent = require('./notification_event')
 
 module.exports = class Notification {
   constructor(obj) {
@@ -45,6 +46,7 @@ module.exports = class Notification {
     this.agencyOrganisationId = obj.agencyOrganisationId
     this.riskDecisionLockingTime = obj.riskDecisionLockingTime;
     this.isRiskDecisionLocked = obj.isRiskDecisionLocked;
+    this.notificationEvents = getList(_.get(obj, 'notificationEvents', []), NotificationEvent)
 
     validate(this)
 
