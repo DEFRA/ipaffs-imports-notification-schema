@@ -1,7 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SET;
+
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
+import uk.gov.defra.tracesx.notificationschema.validation.utils.ConsignmentCheckUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -11,7 +13,11 @@ public class EuStandardValidatorImpl
 
   @Override
   public boolean isValid(ConsignmentCheck consignmentCheck, ConstraintValidatorContext context) {
-    return consignmentCheck.getEuStandard() != Result.NOT_SET;
+    if (consignmentCheck != null
+        && ConsignmentCheckUtil.isExistingCHEDANotification(consignmentCheck)) {
+      return consignmentCheck.getEuStandard() != NOT_SET;
+    }
+    return true;
   }
 
   @Override
