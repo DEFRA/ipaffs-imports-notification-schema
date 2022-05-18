@@ -11,6 +11,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Identi
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.DocumentCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.HighRiskEUDocumentCheckResult;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckReasonNotDone;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IdentityCheckResult;
@@ -23,6 +24,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaNonEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentCheckValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEUDocumentCheckValidation;
 
 import javax.validation.constraints.NotNull;
@@ -32,6 +34,11 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@DocumentCheckResult(
+    groups = NotificationDocumentCheckValidation.class,
+    message =
+        "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
+            + ".documentarycheck.invalid.nonhighriskeu}")
 @HighRiskEUDocumentCheckResult(
     groups = {NotificationHighRiskEUDocumentCheckValidation.class,
         NotificationCvedaEuFieldValidation.class},

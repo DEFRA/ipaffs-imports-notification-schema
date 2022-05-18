@@ -55,11 +55,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.notification"
             + ".documentary.eustandard.nationalrequirment}")
-@DocumentCheckResult(
-    groups = NotificationDocumentCheckValidation.class,
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.notification"
-            + ".documentarycheck.invalid.nonhighriskeu}")
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")

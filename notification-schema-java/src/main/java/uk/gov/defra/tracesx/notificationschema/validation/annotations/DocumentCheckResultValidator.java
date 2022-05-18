@@ -4,13 +4,12 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY_FOLLOWING_OFFICIAL_INTERVENTION;
 
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class DocumentCheckResultValidator
-    implements ConstraintValidator<DocumentCheckResult, Notification> {
+    implements ConstraintValidator<DocumentCheckResult, ConsignmentCheck> {
 
   @Override
   public void initialize(DocumentCheckResult constraintAnnotation) {
@@ -18,15 +17,10 @@ public class DocumentCheckResultValidator
   }
 
   @Override
-  public boolean isValid(Notification notification, ConstraintValidatorContext context) {
-    if (notification == null
-        || notification.getPartTwo() == null
-        || notification.getPartTwo().getConsignmentCheck() == null
-    ) {
+  public boolean isValid(ConsignmentCheck consignmentCheck, ConstraintValidatorContext context) {
+    if (consignmentCheck == null) {
       return true;
     }
-
-    ConsignmentCheck consignmentCheck = notification.getPartTwo().getConsignmentCheck();
 
     return consignmentCheck.getDocumentCheckResult() != NOT_SET
         && consignmentCheck.getDocumentCheckResult()
