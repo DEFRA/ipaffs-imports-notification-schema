@@ -11,6 +11,8 @@ module.exports = class InspectionOverride {
     this.originalDecision = obj.originalDecision
     this.overriddenOn = obj.overriddenOn
     this.overriddenBy = obj.overriddenBy
+    this.overrideReason = obj.overrideReason
+    this.overrideReasonOther = obj.overrideReasonOther()
 
     return Object.seal(new Proxy(this, handler))
   }
