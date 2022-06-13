@@ -342,14 +342,6 @@ public class PartOne {
               + ".estimatedjourneytimeinminutes.not.null}")
   private Integer estimatedJourneyTimeInMinutes;
 
-  @NotEmpty(
-      groups = {
-        NotificationCvedaFieldValidation.class,
-        TransporterDetailsRequiredEuCvedaValidation.class
-      },
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
-              + ".responsiblefortransport.not.empty}")
   private String responsibleForTransport;
 
   @Valid

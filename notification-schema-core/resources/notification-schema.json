@@ -645,7 +645,7 @@
         },
         "responsibleForTransport": {
           "type": "string",
-          "description": "Person who is responsible for transport"
+          "description": "(Deprecated in IMTA-12139) Person who is responsible for transport"
         },
         "veterinaryInformation": {
           "type": "object",
