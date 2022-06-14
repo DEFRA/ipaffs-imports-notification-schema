@@ -13,7 +13,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Commod
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppGmsDeclaration;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullFinishedOrPropagatedKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpOrChedppFieldValidation;
@@ -46,11 +45,6 @@ import javax.validation.constraints.NotNull;
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".gmsdeclarationaccepted.message}")
-@NotNullFinishedOrPropagatedKeyDataPair(
-    groups = NotificationChedppFieldValidation.class,
-    message =
-        "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-            + ".finishedorpropagated.message}")
 public class Commodities {
 
   @NotNull(
