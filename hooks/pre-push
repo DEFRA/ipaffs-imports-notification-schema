@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+RED='\033[0;31m'
+NO_COLOUR='\033[0m'
+LOG_PREFIX="Pre-push hook:"
+FAILED_MESSAGE="${LOG_PREFIX} ${RED}[FAILED]${NO_COLOUR}"
+REPO_NAME="imports-notification-schema"
+
+trufflehog --help > /dev/null 2>&1 || { echo -e "${FAILED_MESSAGE} truffleHog is not installed. Please install via https://github.com/trufflesecurity/truffleHog" ; exit 1; }
+[ -z "$DEFRA_WORKSPACE" ] && echo -e "${FAILED_MESSAGE} Please set DEFRA_WORKSPACE env var to your Defra workspace" && exit 1;
+
+echo "${LOG_PREFIX} RUNNING truffleHog to test for leaked secrets."
+trufflehog git --fail --regex --since_commit "$(git rev-parse origin/HEAD)" --branch "$(git rev-parse --abbrev-ref HEAD)" file://"${DEFRA_WORKSPACE}"/${REPO_NAME}
+exit_code=$?
+
+if [[ $exit_code -ne 0 ]]; then
+  echo -e "${FAILED_MESSAGE} truffleHog found some suspicious commits containing possible secrets"
+  echo -e "${FAILED_MESSAGE} git push failed, Please remove the secrets caught by truffleHog"
+  exit 1
+else
+  echo "${LOG_PREFIX} OK proceeding with push"
+  exit 0
+fi
