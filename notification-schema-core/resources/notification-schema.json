@@ -824,6 +824,10 @@
     "isRiskDecisionLocked": {
       "type": "boolean",
       "description": "is the risk decision locked?"
+    },
+    "isBulkUploadInProgress": {
+      "type": "boolean",
+      "description": "Boolean flag that indicates whether a bulk upload is in progress"
     }
   },
   "definitions": {
