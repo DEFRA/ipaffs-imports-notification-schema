@@ -160,4 +160,5 @@ public class Notification {
   private LocalDateTime riskDecisionLockingTime;
 
   private Boolean isRiskDecisionLocked;
+  private Boolean isBulkUploadInProgress;
 }

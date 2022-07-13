@@ -45,6 +45,7 @@ module.exports = class Notification {
     this.agencyOrganisationId = obj.agencyOrganisationId
     this.riskDecisionLockingTime = obj.riskDecisionLockingTime;
     this.isRiskDecisionLocked = obj.isRiskDecisionLocked;
+    this.isBulkUploadInProgress = obj.isBulkUploadInProgress;
 
     validate(this)
 
