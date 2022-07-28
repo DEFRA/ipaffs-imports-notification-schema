@@ -8,8 +8,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppSealsAndContainers;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
 import javax.validation.constraints.NotBlank;
@@ -25,7 +27,8 @@ public class NotificationSealsContainers {
 
   @NotBlank(
       groups = {
-          NotificationHighRiskNonChedppFieldValidation.class,
+          NotificationCedFieldValidation.class,
+          NotificationCvedaFieldValidation.class,
           NotificationCvedaEuFieldValidation.class
       },
       message = "Seal number cannot be empty")
