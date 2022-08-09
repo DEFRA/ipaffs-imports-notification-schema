@@ -48,7 +48,8 @@ public enum PackageType {
   TANK("Tank"),
   TOTE("Tote"),
   WOOD_BARREL_WITH_REMOVABLE_HEAD("Wooden barrel with removable head"),
-  WOOD_PACKAGE_DISPLAY("Wood package display");
+  WOOD_PACKAGE_DISPLAY("Wood package display"),
+  LEGACY_BULK("Bulk");
 
   private String value;
 
