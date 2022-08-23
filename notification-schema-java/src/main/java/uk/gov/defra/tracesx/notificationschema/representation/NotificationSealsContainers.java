@@ -36,7 +36,7 @@ public class NotificationSealsContainers {
 
   @NotBlank(
       groups = NotificationHighRiskNonChedppFieldValidation.class,
-      message = "Container number cannot be empty")
+      message = "Enter container or road trailer number")
   private String containerNumber;
 
   private boolean officialSeal;
