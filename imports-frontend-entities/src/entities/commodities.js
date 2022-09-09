@@ -6,14 +6,10 @@ const ComplementParameterSet = require('./parameter_set')
 const {getList} = require('../utils/list')
 
 module.exports = class Commodities {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.totalGrossWeight = obj.totalGrossWeight
-    this.totalNetWeight = obj.totalNetWeight
+    this.totalNetWeight = obj.totalGrossWeight
     this.numberOfPackages = obj.numberOfPackages
     this.temperature = obj.temperature
     this.numberOfAnimals = obj.numberOfAnimals
