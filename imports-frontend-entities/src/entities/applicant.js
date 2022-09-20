@@ -2,11 +2,8 @@ const _ = require('lodash')
 const handler = require('./base/handler')
 
 class Inspector {
-  constructor(obj) {
+  constructor(obj = {}) {
 
-    if (!obj) {
-      obj = {}
-    }
     this.name = obj.name
     this.phone = obj.phone
     this.email = obj.email
@@ -15,11 +12,7 @@ class Inspector {
 
 module.exports = class Applicant {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.laboratory = obj.laboratory
     this.analysisType = obj.analysisType

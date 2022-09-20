@@ -3,11 +3,7 @@ const handler = require('./base/handler')
 const Address = require('./economic_operator_address')
 
 module.exports = class EconomicOperator {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.id = obj.id
     this.type = obj.type

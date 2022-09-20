@@ -6,11 +6,7 @@ const OfficialInspector = require('./official_inspector')
 
 module.exports = class Control {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.consignmentLeave = _.get(obj, 'consignmentLeave')
     this.detailsOnReExport = _.get(obj, 'detailsOnReExport')

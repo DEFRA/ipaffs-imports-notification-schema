@@ -4,11 +4,7 @@ const SingleLaboratoryTests = require('./singlelaboratory_tests')
 
 module.exports = class LaboratoryTests {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.testDate = obj.testDate
     this.testReason = obj.testReason

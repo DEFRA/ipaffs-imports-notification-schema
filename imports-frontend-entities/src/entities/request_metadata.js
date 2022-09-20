@@ -3,11 +3,7 @@ const handler = require('./base/handler')
 const User = require('./user')
 
 module.exports = class RequestMetadata {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.loggedInUser = _.get(obj, 'loggedInUser') ? new User(obj.loggedInUser)
         : undefined

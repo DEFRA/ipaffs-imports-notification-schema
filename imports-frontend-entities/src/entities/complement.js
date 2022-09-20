@@ -1,11 +1,7 @@
 const handler = require('./base/handler')
 
 module.exports = class CommodityComplement {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.uniqueComplementID = obj.uniqueComplementID
     this.commodityDescription = obj.commodityDescription

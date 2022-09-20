@@ -6,11 +6,7 @@ const IdentificationDetail = require('./identification_detail')
 const { getList } = require('../utils/list')
 
 module.exports = class VeterinaryInformation {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.establishmentsOfOrigin = _.get(obj, 'establishmentsOfOrigin', []).map(
         x => new ApprovedEstablishment(x))

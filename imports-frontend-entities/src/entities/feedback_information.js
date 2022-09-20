@@ -2,10 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class FeedBackInformation {
 
-  constructor(obj) {
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.authorityType = obj.authorityType
     this.consignmentArrival = obj.consignmentArrival

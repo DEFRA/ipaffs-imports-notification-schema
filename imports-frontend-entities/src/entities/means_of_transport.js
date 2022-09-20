@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class MeansOfTransport {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.type = obj.type
     this.document = obj.document

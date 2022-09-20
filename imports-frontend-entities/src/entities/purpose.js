@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class Purpose {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.conformsToEU = obj.conformsToEU
     this.internalMarketPurpose = obj.internalMarketPurpose

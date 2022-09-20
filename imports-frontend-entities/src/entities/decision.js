@@ -4,11 +4,7 @@ const Party = require('./party')
 
 module.exports = class Decision {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.consignmentAcceptable = obj.consignmentAcceptable
     this.notAcceptableAction = obj.notAcceptableAction

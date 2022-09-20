@@ -4,11 +4,7 @@ const handler = require('./base/handler')
 const EconomicOperator = require('./economic_operator')
 
 module.exports = class Identifiers {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.speciesNumber = obj.speciesNumber
     this.data = _.get(obj, 'data', {})

@@ -3,11 +3,7 @@ const InternationalTelephone = require('./international_telephone')
 const _ = require('lodash')
 
 module.exports = class EconomicOperatorAddress {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.addressLine1 = obj.addressLine1
     this.addressLine2 = obj.addressLine2

@@ -2,11 +2,8 @@ const handler = require('./base/handler')
 
 module.exports = class OfficialVeterinarian {
 
-  constructor(obj) {
+  constructor(obj = {}) {
 
-    if (!obj) {
-      obj = {}
-    }
     this.firstName = obj.firstName
     this.lastName = obj.lastName
     this.email = obj.email

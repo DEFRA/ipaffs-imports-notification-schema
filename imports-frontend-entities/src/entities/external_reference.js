@@ -3,11 +3,7 @@ const _ = require('lodash')
 const handler = require('./base/handler')
 
 module.exports = class ExternalReference {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.system = obj.system
     this.reference = obj.reference

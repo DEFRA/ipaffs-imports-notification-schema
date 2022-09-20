@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class InternationalTelephone {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.countryCode = obj.countryCode
     this.subscriberNumber = obj.subscriberNumber
