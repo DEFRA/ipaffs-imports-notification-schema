@@ -1,4 +1,4 @@
-@Library('pipeline-library') _
+@Library('pipeline-library@feature/IMTA-12772-SonarQube-Library-Pipeline') _
 
 schemaPipeline {
     SERVICE_NAME = "imports-notification-schema"
