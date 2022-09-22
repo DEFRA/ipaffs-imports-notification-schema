@@ -14,4 +14,12 @@ public class ValidationMessageCodeTest {
     assertThat(validationMessageCode)
         .hasToString("ValidationMessageCode(field=fieldValue, message=messageValue)");
   }
+
+  @Test
+  public void defaultConstructor_InitialisesWithNullValues() {
+    ValidationMessageCode validationMessageCode = new ValidationMessageCode();
+
+    assertThat(validationMessageCode)
+        .hasToString("ValidationMessageCode(field=null, message=null)");
+  }
 }
