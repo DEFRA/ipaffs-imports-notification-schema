@@ -14,11 +14,7 @@ const NominatedContact = require('./nominated_contact')
 
 module.exports = class PartOne {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.typeOfImp = obj.typeOfImp
 

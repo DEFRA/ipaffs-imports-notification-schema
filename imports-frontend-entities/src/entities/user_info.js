@@ -1,11 +1,7 @@
 const handler = require('./base/handler')
 
 module.exports = class UserInfo {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.displayName = obj.displayName
     this.firstName = obj.firstName

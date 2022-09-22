@@ -5,11 +5,7 @@ const ConsignmentValidation = require('./consignment_validation')
 
 module.exports = class PartThree {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.control = _.get(obj, 'control') ? new Control(obj.control) : undefined
     this.consignmentValidation = getConsignmentValidation(

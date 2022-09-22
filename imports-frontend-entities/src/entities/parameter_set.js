@@ -7,11 +7,7 @@ const CatchCertificate = require('./catch_certificate')
 const {getList} = require('../utils/list')
 
 module.exports = class ComplementParameterSet {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.uniqueComplementID = obj.uniqueComplementID
     this.complementID = obj.complementID

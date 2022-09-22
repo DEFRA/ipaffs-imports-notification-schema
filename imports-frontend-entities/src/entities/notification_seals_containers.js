@@ -1,11 +1,7 @@
 const handler = require('./base/handler')
 
 module.exports = class NotificationSealsContainers {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.sealNumber = obj.sealNumber
     this.containerNumber = obj.containerNumber

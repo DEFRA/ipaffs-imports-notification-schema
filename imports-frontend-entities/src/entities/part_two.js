@@ -15,11 +15,8 @@ const { getList } = require('../utils/list')
 
 module.exports = class PartTwo {
 
-  constructor(obj) {
+  constructor(obj = {}) {
 
-    if (!obj) {
-      obj = {}
-    }
     this.decision = _.get(obj, 'decision') ? new Decision(obj.decision)
         : undefined
     this.consignmentCheck = _.get(obj, 'consignmentCheck')

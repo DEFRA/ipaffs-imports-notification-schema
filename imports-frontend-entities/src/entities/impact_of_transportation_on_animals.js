@@ -3,11 +3,7 @@ const handler = require('./base/handler')
 
 module.exports = class ImpactOfTransportOnAnimals {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.commodityID = obj.commodityID
 

@@ -2,10 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class SplitConsignment {
 
-  constructor(obj) {
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.validReferenceNumber = obj.validReferenceNumber
     this.rejectedReferenceNumber = obj.rejectedReferenceNumber

@@ -4,11 +4,7 @@ const OfficialVeterinarian = require('./official_veterinarian')
 
 module.exports = class ControlAuthority {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.controlAuthority = obj.controlAuthority
     this.officialVeterinarian = _.get(obj, 'officialVeterinarian')

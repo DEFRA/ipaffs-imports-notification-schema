@@ -3,11 +3,7 @@ const handler = require('./base/handler')
 const UserInfo = require('./user_info')
 
 module.exports = class User {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.accessToken = obj.accessToken
     this.roles = _.get(obj, 'roles', [])

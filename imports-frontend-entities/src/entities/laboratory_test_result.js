@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class LaboratoryTestResult {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.sampleUseByDate = obj.sampleUseByDate
     this.releasedDate = obj.releasedDate

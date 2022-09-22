@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class ConsignmentCheck {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.euStandard = obj.euStandard
     this.documentCheckResult = obj.documentCheckResult

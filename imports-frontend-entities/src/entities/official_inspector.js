@@ -4,11 +4,8 @@ const Address = require('./address')
 
 module.exports = class OfficialInspector {
 
-  constructor(obj) {
+  constructor(obj = {}) {
 
-    if (!obj) {
-      obj = {}
-    }
     this.firstName = obj.firstName
     this.lastName = obj.lastName
     this.email = obj.email

@@ -1,10 +1,7 @@
 const handler = require('./base/handler')
 
 module.exports = class ContactDetails {
-  constructor(obj) {
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.name = obj.name
     this.telephone = obj.telephone

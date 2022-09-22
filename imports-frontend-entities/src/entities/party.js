@@ -2,11 +2,8 @@ const _ = require('lodash')
 const handler = require('./base/handler')
 
 module.exports = class Party {
-  constructor(obj) {
+  constructor(obj = {}) {
 
-    if (!obj) {
-      obj = {}
-    }
     this.id = obj.id
     this.contactId = obj.contactId
     this.companyId = obj.companyId

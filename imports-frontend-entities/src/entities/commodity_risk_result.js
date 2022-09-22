@@ -1,11 +1,7 @@
 const handler = require('./base/handler')
 
 module.exports = class CommodityRiskResult {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.riskDecision = obj.riskDecision
     this.hmiDecision = obj.hmiDecision

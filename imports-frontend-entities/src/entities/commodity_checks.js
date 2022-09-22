@@ -6,10 +6,7 @@ const { getList } = require('../utils/list')
 
 module.exports = class CommodityChecks {
 
-  constructor(obj) {
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.uniqueComplementId = obj.uniqueComplementId
     this.checks = getList(_.get(obj, 'checks', []), InspectionCheck)

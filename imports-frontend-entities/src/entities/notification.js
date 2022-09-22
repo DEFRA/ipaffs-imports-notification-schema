@@ -12,11 +12,7 @@ const SplitConsignment = require('./split_consignment')
 const RiskAssessment = require('./risk_assessment')
 
 module.exports = class Notification {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     validate(obj)
 

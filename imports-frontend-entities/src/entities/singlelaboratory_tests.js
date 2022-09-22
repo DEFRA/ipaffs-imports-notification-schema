@@ -5,11 +5,8 @@ const LaboratoryTestResult = require('./laboratory_test_result')
 
 module.exports = class SingleLaboratoryTests {
 
-  constructor(obj) {
+  constructor(obj = {}) {
 
-    if (!obj) {
-      obj = {}
-    }
     this.commodityCode = obj.commodityCode
     this.speciesID = obj.speciesID
     this.tracesID = obj.tracesID

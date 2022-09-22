@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class IdentificationDetails {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.identificationDetail = obj.identificationDetail
     this.identificationDescription = obj.identificationDescription

@@ -2,11 +2,7 @@ const handler = require('./base/handler')
 
 module.exports = class Address {
 
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.street = obj.street
     this.city = obj.city

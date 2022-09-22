@@ -1,11 +1,7 @@
 const handler = require('./base/handler')
 
 module.exports = class Document {
-  constructor(obj) {
-
-    if (!obj) {
-      obj = {}
-    }
+  constructor(obj = {}) {
 
     this.dateOfIssue = obj.dateOfIssue
     this.documentNumber = obj.documentNumber
