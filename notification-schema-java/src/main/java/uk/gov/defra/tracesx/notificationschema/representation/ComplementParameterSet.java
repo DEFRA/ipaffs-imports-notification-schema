@@ -12,6 +12,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.IsNonNegat
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 
 import java.util.ArrayList;
@@ -58,7 +59,10 @@ public class ComplementParameterSet {
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
                   + ".complementparameterset.keydatapair.net_weight.message}"),
       @MinValueKeyDataPair(
-          groups = NotificationCvedaFieldValidation.class,
+          groups = {
+              NotificationCvedaFieldValidation.class,
+              NotificationCvedaEuFieldValidation.class
+          },
           field = NUMBER_ANIMAL,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
