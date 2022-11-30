@@ -77,7 +77,10 @@ public class Commodities {
               + ".numberofanimals.not.null}")
   @Min(
       value = 1,
-      groups = NotificationCvedaFieldValidation.class,
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".numberofanimals.min.message}")
