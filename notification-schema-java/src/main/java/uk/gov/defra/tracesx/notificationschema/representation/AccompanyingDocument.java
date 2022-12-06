@@ -38,4 +38,5 @@ public class AccompanyingDocument {
   private String attachmentContentType = null;
   private UUID uploadUserId = null;
   private UUID uploadOrganisationId = null;
+  private ExternalReference externalReference = null;
 }

@@ -2497,6 +2497,10 @@
         "uploadOrganisationId": {
           "type": "string",
           "description": "The UUID for the organisation that the upload user is associated with"
+        },
+        "externalReference": {
+          "description": "External reference of accompanying document, which relates to a downstream service",
+          "$ref": "#/definitions/ExternalReference"
         }
       }
     },
