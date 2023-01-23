@@ -127,7 +127,7 @@ public class Commodities {
   private String consignedCountry = null;
 
   @NotNull(
-      groups = NotificationCvedaFieldValidation.class,
+      groups = {NotificationCvedaFieldValidation.class, NotificationLowRiskFieldValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".animalscertifiedas.not.null}")
