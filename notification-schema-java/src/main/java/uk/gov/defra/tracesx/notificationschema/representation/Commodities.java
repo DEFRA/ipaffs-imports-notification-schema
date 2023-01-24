@@ -84,7 +84,7 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".numberofanimals.min.message}")
-  private Long numberOfAnimals = null;
+  private Integer numberOfAnimals = null;
 
   @NotNull(
       groups = NotificationLowRiskFieldValidation.class,
