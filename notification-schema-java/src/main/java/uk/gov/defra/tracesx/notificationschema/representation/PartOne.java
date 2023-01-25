@@ -76,7 +76,10 @@ import javax.validation.constraints.NotNull;
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
         + ".exitdate.not.null}")
 @NotNullPurposeExitBip(
-    groups = NotificationCvedaFieldValidation.class,
+    groups = {
+        NotificationCvedaFieldValidation.class,
+        NotificationHighRiskEuChedValidation.class,
+    },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
         + ".exitbip.not.null}")
 @ImpPortOfEntry(
