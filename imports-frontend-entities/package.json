@@ -1,0 +1,42 @@
+{
+  "name": "@ipaffs/imports-frontend-entities",
+  "version": "1.0.248",
+  "repository": {
+    "type": "git"
+  },
+  "private": false,
+  "description": "Baseline schema and entities to use across all frontends",
+  "files": [
+    "etc/*.json",
+    "src/entities/base/*.js",
+    "src/entities/*.js",
+    "src/utils/*.js"
+  ],
+  "scripts": {
+    "prepare": "cp ../notification-schema-core/resources/*.json ./etc/",
+    "test": "nyc mocha --recursive",
+    "test-jenkins": "NODE_ENV=test ENV_DOMAIN=test JUNIT_REPORT_PATH=./report.xml nyc --reporter=cobertura ./node_modules/.bin/mocha --reporter mocha-jenkins-reporter --recursive --colors",
+    "posttest-jenkins": "NODE_ENV=test ENV_DOMAIN=test nyc --reporter=lcov ./node_modules/.bin/mocha --reporter mocha-sonarqube-reporter test --reporter-options output=coverage/unit.xml --recursive --colors",
+    "release": "release-it --ci --no-git",
+    "login": "npm-cli-login -u $ARTIFACTORY_USERNAME -p $ARTIFACTORY_PASSWORD -e imports-jenkins@defra.onmicrosoft.com -r https://REMOVED/artifactory/api/npm/npm-releases-local -s @ipaffs"
+  },
+  "publishConfig": {
+    "registry": "https://REMOVED/artifactory/api/npm/npm-snapshots-local/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "4.1.2",
+    "eslint": "4.16.0",
+    "mocha": "5.2.0",
+    "mocha-jenkins-reporter": "0.4.3",
+    "mocha-sonarqube-reporter": "^1.0.2",
+    "npm-cli-login": "0.1.1",
+    "nyc": "14.1.1",
+    "release-it": "14.0.3"
+  },
+  "dependencies": {
+    "ajv": "6.5.3",
+    "lodash": "4.17.21"
+  }
+}

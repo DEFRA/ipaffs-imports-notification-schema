@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>IPAFFS-Common-Schema</artifactId>
+  <version>1.0.251</version>
+  <name>imports-notification-schema</name>
+  <description>Shared Common Schema library for IPAFFS services</description>
+  <packaging>pom</packaging>
+  <groupId>uk.gov.defra.tracesx</groupId>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-dependencies</artifactId>
+    <version>2.1.9.RELEASE</version>
+  </parent>
+
+  <properties>
+    <project.scm.id>gitlab</project.scm.id>
+
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <equalsverifier.version>2.4.8</equalsverifier.version>
+    <maven.checkstyle.version>3.0.0</maven.checkstyle.version>
+    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+    <swagger.annotations.version>1.5.17</swagger.annotations.version>
+  </properties>
+
+
+  <modules>
+    <module>imports-frontend-entities</module>
+    <module>notification-schema-core</module>
+    <module>notification-schema-java</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:https://giteux.azure.defra.cloud/imports/imports-notification-schema.git
+    </connection>
+    <tag>1.0.251</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Releases</name>
+      <url>${repo.releases.url}</url>
+    </repository>
+  </distributionManagement>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger.annotations.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>nl.jqno.equalsverifier</groupId>
+        <artifactId>equalsverifier</artifactId>
+        <version>${equalsverifier.version}</version>
+      </dependency>
+    </dependencies>
+
+  </dependencyManagement>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven.release.plugin.version}</version>
+          <configuration>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <tagNameFormat>@{project.version}</tagNameFormat>
+            <releaseProfiles>release</releaseProfiles>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

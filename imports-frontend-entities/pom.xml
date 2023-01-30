@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>uk.gov.defra.tracesx</groupId>
+    <artifactId>IPAFFS-Common-Schema</artifactId>
+    <version>1.0.251</version>
+  </parent>
+
+  <properties>
+    <node.version>v16.15.1</node.version>
+    <frontend-maven-plugin.version>1.4</frontend-maven-plugin.version>
+  </properties>
+
+  <artifactId>node-common-notification-schema</artifactId>
+  <version>1.0.251</version>
+  <name>notification-frontend-entities</name>
+  <url>http://maven.apache.org</url>
+</project>
