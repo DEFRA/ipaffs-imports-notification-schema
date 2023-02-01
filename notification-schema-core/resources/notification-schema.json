@@ -828,6 +828,10 @@
     "isBulkUploadInProgress": {
       "type": "boolean",
       "description": "Boolean flag that indicates whether a bulk upload is in progress"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "Request UUID to trace bulk upload"
     }
   },
   "definitions": {
