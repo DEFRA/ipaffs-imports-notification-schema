@@ -13,6 +13,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Intern
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.PurposeForInternalMarket;
 
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -25,6 +26,12 @@ import javax.validation.constraints.NotNull;
 public class Purpose {
 
   private Boolean conformsToEU;
+
+  @NotNull(
+      groups = PurposeForInternalMarket.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+              + ".internalmarketpurpose.not.null}")
   private InternalMarketPurpose internalMarketPurpose;
   private String thirdCountryTranshipment;
   private ForNonConformingEnum forNonConforming;
