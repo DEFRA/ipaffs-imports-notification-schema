@@ -955,6 +955,16 @@
               "description": "Email address of inspector"
             }
           }
+        },
+        "sampleDate": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "description": "Date the sample is taken"
+        },
+        "sampleTime": {
+          "type": "string",
+          "javaType": "java.time.LocalTime",
+          "description": "Time the sample is taken"
         }
       },
       "required": [
