@@ -26,6 +26,8 @@ module.exports = class Applicant {
     this.conservationOfSample = obj.conservationOfSample
     this.inspector = _.get(obj, 'inspector') ? new Inspector(obj.inspector)
         : undefined
+    this.sampleDate = obj.sampleDate
+    this.sampleTime = obj.sampleTime
     return Object.seal(new Proxy(this, handler))
   }
 }
