@@ -19,7 +19,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import javax.validation.constraints.NotNull;
 
@@ -81,7 +81,7 @@ public class Applicant {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
-  private LocalDateTime sampleDate;
+  private LocalDate sampleDate;
 
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
