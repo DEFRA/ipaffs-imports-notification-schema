@@ -10,9 +10,7 @@ public enum TransportMethod {
   OTHER("Other"),
   ROAD_VEHICLE_AEROPLANE("Road vehicle Aeroplane"),
   SHIP_RAILWAY_WAGON("Ship Railway wagon"),
-  SHIP_ROAD_VEHICLE("Ship Road vehicle"),
-  NOT_SPECIFIED("Not Specified"),
-  MAIL("Mail");
+  SHIP_ROAD_VEHICLE("Ship Road vehicle");
 
   private String value;
 
