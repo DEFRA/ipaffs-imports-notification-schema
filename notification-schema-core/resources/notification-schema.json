@@ -2662,6 +2662,24 @@
             "Controlled"
           ]
         },
+        "phsi": {
+          "type": "object",
+          "description": "PHSI Decision Breakdown",
+          "properties": {
+            "documentCheck": {
+              "type": "boolean",
+              "description": "Whether or not a documentary check is required for PHSI"
+            },
+            "identityCheck": {
+              "type": "boolean",
+              "description": "Whether or not an identity check is required for PHSI"
+            },
+            "physicalCheck": {
+              "type": "boolean",
+              "description": "Whether or not a physical check is required for PHSI"
+            }
+          }
+        },
         "uniqueId": {
           "type": "string",
           "minLength": 0,
