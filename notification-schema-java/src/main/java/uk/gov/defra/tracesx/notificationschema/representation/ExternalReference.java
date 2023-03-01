@@ -18,4 +18,12 @@ public class ExternalReference {
 
   private ExternalSystem system;
   private String reference;
+  private Boolean exactMatch;
+  private Boolean verifiedByImporter;
+  private Boolean verifiedByInspector;
+
+  public ExternalReference(ExternalSystem system, String reference) {
+    this.system = system;
+    this.reference = reference;
+  }
 }

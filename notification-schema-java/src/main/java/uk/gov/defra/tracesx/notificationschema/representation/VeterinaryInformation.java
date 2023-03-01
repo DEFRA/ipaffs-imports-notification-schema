@@ -34,6 +34,7 @@ public class VeterinaryInformation {
   private String veterinaryDocument;
   private String veterinaryDocumentIssueDate;
   private List<String> accompanyingDocumentNumbers;
+  private ExternalReference establishmentsOfOriginExternalReference;
 
   @Valid
   private List<AccompanyingDocument> accompanyingDocuments;
