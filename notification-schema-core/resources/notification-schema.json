@@ -652,6 +652,10 @@
           "additionalProperties": false,
           "description": "Part 1 - Holds the information related to veterinary checks and details",
           "properties": {
+            "establishmentsOfOriginExternalReference": {
+              "description": "External reference of approved establishments, which relates to a downstream service",
+              "$ref": "#/definitions/ExternalReference"
+            },
             "establishmentsOfOrigin": {
               "type": "array",
               "description": "List of establishments which were approved by UK to issue veterinary documents",
@@ -868,6 +872,18 @@
           "description": "Reference which is added to the notification when either sent to the downstream system or received from it",
           "minLength": 1,
           "maxLength": 90
+        },
+        "exactMatch": {
+          "type": "boolean",
+          "description": "Details whether there's an exact match between the external source and IPAFFS data"
+        },
+        "verifiedByImporter": {
+          "type": "boolean",
+          "description": "Details whether an importer has verified the data from an external source"
+        },
+        "verifiedByInspector": {
+          "type": "boolean",
+          "description": "Details whether an inspector has verified the data from an external source"
         }
       }
     },
