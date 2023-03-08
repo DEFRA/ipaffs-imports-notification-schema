@@ -29,4 +29,7 @@ public class CommodityRiskResult {
   private UUID uniqueId;
   private String eppoCode;
   private String variety;
+  private boolean isWoody;
+  private String indoorOutdoor;
+  private String commodityType;
 }
