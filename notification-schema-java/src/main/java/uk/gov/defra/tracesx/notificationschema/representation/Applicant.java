@@ -2,6 +2,8 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +11,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnalysisType;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ConservationOfSample;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.validation.constraints.NotNull;
 
 @Builder
@@ -70,4 +78,12 @@ public class Applicant {
   private ConservationOfSample conservationOfSample;
 
   private Inspector inspector;
+
+  @JsonSerialize(using = IsoDateSerializer.class)
+  @JsonDeserialize(using = IsoDateDeserializer.class)
+  private LocalDate sampleDate;
+
+  @JsonSerialize(using = IsoTimeSerializer.class)
+  @JsonDeserialize(using = IsoTimeDeserializer.class)
+  private LocalTime sampleTime;
 }

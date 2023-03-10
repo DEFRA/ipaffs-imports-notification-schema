@@ -1,8 +1,10 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum.TRANSIT_TO_3RD_COUNTRY;
+
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -19,9 +21,8 @@ public class NotNullPurposeExitBipValidator implements
 
     Purpose purpose = partOne.getPurpose();
 
-    if (purpose.getForImportOrAdmission() != null
-        && purpose.getForImportOrAdmission()
-        .equals(ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES)) {
+    if (TEMPORARY_ADMISSION_HORSES.equals(purpose.getForImportOrAdmission())
+        || TRANSIT_TO_3RD_COUNTRY.equals(purpose.getPurposeGroup())) {
       return purpose.getExitBIP() != null;
     }
 

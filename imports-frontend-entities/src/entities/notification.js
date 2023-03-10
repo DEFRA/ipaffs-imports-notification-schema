@@ -42,6 +42,7 @@ module.exports = class Notification {
     this.riskDecisionLockingTime = obj.riskDecisionLockingTime;
     this.isRiskDecisionLocked = obj.isRiskDecisionLocked;
     this.isBulkUploadInProgress = obj.isBulkUploadInProgress;
+    this.requestId = obj.requestId;
 
     validate(this)
 

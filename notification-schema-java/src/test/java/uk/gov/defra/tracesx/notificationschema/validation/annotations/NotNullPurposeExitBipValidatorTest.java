@@ -2,11 +2,13 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum.DEFINITIVE_IMPORT;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum.RE_IMPORT;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum.TRANSIT_TO_3RD_COUNTRY;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
@@ -76,9 +78,47 @@ public class NotNullPurposeExitBipValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueIfForImportOrAdmissionIsDefinitiveImport() {
+  public void isValid_ReturnsTrue_WhenForImportOrAdmissionIsDefinitiveImport() {
     // Given
-    partOne.getPurpose().setForImportOrAdmission(ForImportOrAdmissionEnum.DEFINITIVE_IMPORT);
+    partOne.getPurpose().setForImportOrAdmission(DEFINITIVE_IMPORT);
+
+    // When
+    boolean result = validator.isValid(partOne, null);
+
+    // Then
+    assertTrue(result);
+  }
+
+  @Test
+  public void isValid_ReturnsFalse_WhenPurposeGroupTransitToThirdCountryAndPurposeExitBipIsNull() {
+    // Given
+    partOne.getPurpose().setPurposeGroup(TRANSIT_TO_3RD_COUNTRY);
+    partOne.getPurpose().setExitBIP(null);
+
+    // When
+    boolean result = validator.isValid(partOne, null);
+
+    // Then
+    assertFalse(result);
+  }
+
+  @Test
+  public void isValid_ReturnsTrue_WhenPurposeGroupTransitToThirdCountryAndPurposeExitBipNotNull() {
+    // Given
+    partOne.getPurpose().setPurposeGroup(TRANSIT_TO_3RD_COUNTRY);
+    partOne.getPurpose().setExitBIP("Exit Bip");
+
+    // When
+    boolean result = validator.isValid(partOne, null);
+
+    // Then
+    assertTrue(result);
+  }
+
+  @Test
+  public void isValid_ReturnsTrue_WhenPurposeGroupNotTransitToThirdCountry() {
+    // Given
+    partOne.getPurpose().setPurposeGroup(RE_IMPORT);
 
     // When
     boolean result = validator.isValid(partOne, null);

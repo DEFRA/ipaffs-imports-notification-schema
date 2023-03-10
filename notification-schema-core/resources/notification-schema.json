@@ -828,6 +828,10 @@
     "isBulkUploadInProgress": {
       "type": "boolean",
       "description": "Boolean flag that indicates whether a bulk upload is in progress"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "Request UUID to trace bulk upload"
     }
   },
   "definitions": {
@@ -951,6 +955,16 @@
               "description": "Email address of inspector"
             }
           }
+        },
+        "sampleDate": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "description": "Date the sample is taken"
+        },
+        "sampleTime": {
+          "type": "string",
+          "javaType": "java.time.LocalTime",
+          "description": "Time the sample is taken"
         }
       },
       "required": [
@@ -1784,9 +1798,7 @@
             "Other",
             "Road vehicle Aeroplane",
             "Ship Railway wagon",
-            "Ship Road vehicle",
-            "Not Specified",
-            "Mail"
+            "Ship Road vehicle"
           ]
         },
         "document": {
