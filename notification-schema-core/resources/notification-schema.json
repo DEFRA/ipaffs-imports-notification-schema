@@ -2712,6 +2712,20 @@
           "description": "Name or ID of the variety",
           "minLength": 1,
           "maxLength": 100
+        },
+        "isWoody": {
+          "type": "boolean",
+          "description": "Whether or not a plant is woody"
+        },
+        "indoorOutdoor": {
+          "type": "string",
+          "description": "Indoor or Outdoor for a plant",
+          "maxLength": 100
+        },
+        "commodityType": {
+          "type": "string",
+          "description": "Whether a plant commodity is considered a plant or bulb",
+          "maxLength": 100
         }
       }
     }

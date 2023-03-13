@@ -11,6 +11,9 @@ module.exports = class CommodityRiskResult {
     this.uniqueId = obj.uniqueId
     this.eppoCode = obj.eppoCode
     this.variety = obj.variety
+    this.isWoody = obj.isWoody
+    this.indoorOutdoor = obj.indoorOutdoor
+    this.commodityType = obj.commodityType
 
     return Object.seal(new Proxy(this, handler))
   }
