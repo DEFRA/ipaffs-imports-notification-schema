@@ -1,6 +1,6 @@
 const chai = require('chai')
 
-const handler = require.main.require('src/entities/base/handler')
+const handler = require('../src/entities/base/handler')
 
 describe('Entities handler tests', () => {
   let encapsulatedObject
