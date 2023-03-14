@@ -1,6 +1,6 @@
 const chai = require('chai')
 
-const {notificationValidator} = require.main.require('src/utils/notification_validator')
+const {notificationValidator} = require('../../src/utils/notification_validator')
 
 describe('notification validator', () => {
   it('should validate an empty object correctly', () => {
