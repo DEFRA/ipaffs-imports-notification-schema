@@ -11,6 +11,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Set;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,16 +59,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryCon
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDorChedppValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.List;
-import java.util.Set;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Data
@@ -102,7 +101,7 @@ import javax.validation.constraints.NotNull;
 @ChedppInvalidPodCheck(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod"
-            + ".invalid.due.to.country}")
+        + ".invalid.due.to.country}")
 @ChedppPodRequired(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod.required}")
@@ -150,8 +149,8 @@ public class PartOne {
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.importer"
           + ".not.null}")
@@ -235,8 +234,8 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   private Purpose purpose;
@@ -244,7 +243,7 @@ public class PartOne {
   @NotBlank(
       groups = NotificationCvedaEuFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
-              + ".eucveda.not.null}")
+          + ".eucveda.not.null}")
   @NotBlank(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
@@ -318,7 +317,8 @@ public class PartOne {
   @NotNull(
       groups = {TransporterDetailsRequiredEuCvedaValidation.class,
           TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDorChedppValidation.class,},
+          TransporterDetailsRequiredCEDorChedppValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
@@ -337,8 +337,8 @@ public class PartOne {
 
   @NotNull(
       groups = {
-        NotificationCvedaFieldValidation.class,
-        TransporterDetailsRequiredEuCvedaValidation.class
+          NotificationCvedaFieldValidation.class,
+          TransporterDetailsRequiredEuCvedaValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
@@ -380,8 +380,8 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {
-        NotificationHighRiskEuChedValidation.class,
-        NotificationChedppFieldValidation.class
+          NotificationHighRiskEuChedValidation.class,
+          NotificationChedppFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
           + ".not.null}")

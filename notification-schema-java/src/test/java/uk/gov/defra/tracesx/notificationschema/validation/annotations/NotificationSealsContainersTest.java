@@ -2,15 +2,14 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.NotificationSealsContainers;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import java.util.Set;
 
 public class NotificationSealsContainersTest {
 

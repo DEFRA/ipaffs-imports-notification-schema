@@ -1,7 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
 import java.util.Arrays;
 
 public enum HmiDecision {

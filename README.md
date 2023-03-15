@@ -8,15 +8,17 @@ To integrate this library you should ensure you have access to the defra artifac
 Secret scanning is setup using [truffleHog](https://github.com/trufflesecurity/truffleHog).
 It is used as a pre-push hook and will scan any local commits being pushed
 
-### Pre-push hook setup
+### Git hook setup
+
 1. Install [truffleHog](https://github.com/trufflesecurity/truffleHog)
-    - `brew install go`
-    - `git clone https://github.com/trufflesecurity/trufflehog.git`
-    - `cd trufflehog; go install`
+   - `brew install go`
+   - `git clone https://github.com/trufflesecurity/trufflehog.git`
+   - `cd trufflehog; go install`
 2. Set DEFRA_WORKSPACE env var (`export DEFRA_WORKSPACE=/path/to/workspace`)
-3. Potentially there's an older version of Trufflehog located at: `/usr/local/bin/trufflehog`. If so, remove this
+3. Potentially there's an older version of Trufflehog located at: `/usr/local/bin/trufflehog`. If
+   so, remove this
 4. Create a symlink: `ln -s ~/go/bin/truffleHog /usr/local/bin/trufflehog`
-5. From this project root directory copy the pre-push hook: `cp hooks/pre-push .git/hooks/pre-push`
+5. Run `mvn install` to configure hooks
 
 ## Usage
 To start using notification schema for backend services, you need to include the following dependencies in your .pom file:

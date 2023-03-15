@@ -2,12 +2,11 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.TRUE;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class ChedpIdentityCheckValidator
     implements ConstraintValidator<ChedpIdentityCheck, PartTwo> {

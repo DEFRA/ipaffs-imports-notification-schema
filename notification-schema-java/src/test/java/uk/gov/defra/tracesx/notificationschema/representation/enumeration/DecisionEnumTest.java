@@ -4,7 +4,6 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNull;
 
 import org.junit.Test;
-import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 
 public class DecisionEnumTest {
   private final static String NON_ACCEPTABLE_STRING = "Non Acceptable";

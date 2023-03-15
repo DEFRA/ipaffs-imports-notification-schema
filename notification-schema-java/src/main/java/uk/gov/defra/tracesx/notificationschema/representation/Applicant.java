@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,10 +21,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoT
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Data
@@ -47,32 +46,32 @@ public class Applicant {
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String sampleBatchNumber;
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private Integer numberOfSamples;
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String sampleType;
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private ConservationOfSample conservationOfSample;

@@ -1,9 +1,8 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
 public class ImpPortOfEntryValidator implements
     ConstraintValidator<ImpPortOfEntry, PartOne> {

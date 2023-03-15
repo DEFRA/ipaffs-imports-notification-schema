@@ -1,9 +1,8 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 
 public class LaboratoryTestsNotAddedValidator
     implements ConstraintValidator<LaboratoryTestsNotAdded, PartTwo> {

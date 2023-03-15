@@ -8,6 +8,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion.PENDING;
 
+import java.util.Collections;
+import javax.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,9 +21,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TestReason;
-
-import javax.validation.ConstraintValidatorContext;
-import java.util.Collections;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LaboratoryTestsPendingValidatorTest {

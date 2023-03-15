@@ -1,11 +1,11 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
-
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 public class NotNullCustomsReferenceNumberValidatorTest {
 

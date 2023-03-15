@@ -7,10 +7,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.LOW_RISK_ARTICLE_72_COMMODITY;
 
-import org.junit.Test;
-
 import java.util.List;
 import java.util.UUID;
+import org.junit.Test;
 
 public class CommoditiesTest {
 

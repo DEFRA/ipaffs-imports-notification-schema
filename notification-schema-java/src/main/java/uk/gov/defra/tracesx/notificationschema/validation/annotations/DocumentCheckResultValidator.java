@@ -3,10 +3,9 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SET;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY_FOLLOWING_OFFICIAL_INTERVENTION;
 
-import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
 public class DocumentCheckResultValidator
     implements ConstraintValidator<DocumentCheckResult, ConsignmentCheck> {

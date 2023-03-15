@@ -1,12 +1,11 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
 import uk.gov.defra.tracesx.notificationschema.validation.utils.HibernateContextUtils;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class NotNullTranshipmentThirdCountryValidator implements
     ConstraintValidator<NotNullTranshipmentThirdCountry, Decision> {

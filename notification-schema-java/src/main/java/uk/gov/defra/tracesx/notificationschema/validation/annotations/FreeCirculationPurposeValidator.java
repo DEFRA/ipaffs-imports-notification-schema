@@ -1,10 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.Decision;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.Decision;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
 
 public class FreeCirculationPurposeValidator implements
     ConstraintValidator<FreeCirculationPurpose, Decision> {

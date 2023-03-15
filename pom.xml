@@ -21,9 +21,13 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <checkstyle.version>10.8.1</checkstyle.version>
     <equalsverifier.version>2.4.8</equalsverifier.version>
-    <maven.checkstyle.version>3.0.0</maven.checkstyle.version>
+    <git-build-hook-maven-plugin.version>3.3.0</git-build-hook-maven-plugin.version>
+    <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
     <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+    <maven-remote-resources-plugin.version>3.0.0</maven-remote-resources-plugin.version>
+    <shared-resources.version>1.0.0</shared-resources.version>
     <swagger.annotations.version>1.5.17</swagger.annotations.version>
   </properties>
 
@@ -61,8 +65,8 @@
         <version>${equalsverifier.version}</version>
       </dependency>
     </dependencies>
-
   </dependencyManagement>
+
   <build>
     <pluginManagement>
       <plugins>
@@ -75,7 +79,52 @@
             <releaseProfiles>release</releaseProfiles>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>com.rudikershaw.gitbuildhook</groupId>
+          <artifactId>git-build-hook-maven-plugin</artifactId>
+          <version>${git-build-hook-maven-plugin.version}</version>
+          <configuration>
+            <gitConfig>
+              <core.hooksPath>hooks</core.hooksPath>
+            </gitConfig>
+          </configuration>
+          <executions>
+            <execution>
+              <id>configure-git-hooks</id>
+              <goals>
+                <goal>configure</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>com.rudikershaw.gitbuildhook</groupId>
+        <artifactId>git-build-hook-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>jenkins</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.rudikershaw.gitbuildhook</groupId>
+            <artifactId>git-build-hook-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>configure-git-hooks</id>
+                <phase>none</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
