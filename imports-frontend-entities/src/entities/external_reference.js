@@ -7,6 +7,9 @@ module.exports = class ExternalReference {
 
     this.system = obj.system
     this.reference = obj.reference
+    this.exactMatch = obj.exactMatch
+    this.verifiedByImporter = obj.verifiedByImporter
+    this.verifiedByInspector = obj.verifiedByInspector
 
     return Object.seal(new Proxy(this, handler))
   }

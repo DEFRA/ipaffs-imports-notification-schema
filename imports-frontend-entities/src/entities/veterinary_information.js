@@ -8,6 +8,7 @@ const { getList } = require('../utils/list')
 module.exports = class VeterinaryInformation {
   constructor(obj = {}) {
 
+    this.establishmentsOfOriginExternalReference = obj.establishmentsOfOriginExternalReference
     this.establishmentsOfOrigin = _.get(obj, 'establishmentsOfOrigin', []).map(
         x => new ApprovedEstablishment(x))
     this.veterinaryDocument = obj.veterinaryDocument
