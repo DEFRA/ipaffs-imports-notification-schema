@@ -3,6 +3,8 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.PHYTOSANITARY_CERTIFICATE;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
@@ -11,9 +13,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.ComplementParamete
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PhytosanitaryCertificateRequiredValidatorTest {
 

@@ -2,10 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum.CVEDA;
 
-import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 
 public class CvedaControlledDestinationValidator implements
     ConstraintValidator<CvedaControlledDestination, PartTwo> {

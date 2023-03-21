@@ -4,6 +4,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +17,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.CommodityComplemen
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.ComplementParameterSetBuilder;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ChedppNotNullKeyDataPairValidatorTest {

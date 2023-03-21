@@ -2,10 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.validation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.lang.reflect.Field;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
-
-import java.lang.reflect.Field;
 
 public class EntityPropertyTest {
 

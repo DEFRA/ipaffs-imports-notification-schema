@@ -1,5 +1,8 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import java.util.List;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTestResult;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
@@ -7,10 +10,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TestReason;
-
-import java.util.List;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class LaboratoryTestsPendingValidator
     implements ConstraintValidator<LaboratoryTestsPending, PartTwo> {

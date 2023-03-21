@@ -3,11 +3,10 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static java.lang.Boolean.FALSE;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-import uk.gov.defra.tracesx.notificationschema.representation.Decision;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableReasonsEnum;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.Decision;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableReasonsEnum;
 
 public class NotAcceptableOtherReasonValidator
     implements ConstraintValidator<NotAcceptableOtherReason, Decision> {

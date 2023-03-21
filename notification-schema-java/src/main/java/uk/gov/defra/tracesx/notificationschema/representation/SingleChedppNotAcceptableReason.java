@@ -2,14 +2,13 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ChedppNotAcceptableCommodityOrPackageEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ChedppNotAcceptableReasonEnum;
-
-import javax.validation.constraints.NotNull;
 
 @Getter
 @JsonInclude(Include.NON_EMPTY)

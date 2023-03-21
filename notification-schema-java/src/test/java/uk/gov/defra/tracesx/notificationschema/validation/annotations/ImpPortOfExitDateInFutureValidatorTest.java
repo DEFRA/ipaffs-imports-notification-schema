@@ -2,6 +2,10 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
@@ -12,11 +16,6 @@ import org.junit.runner.RunWith;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
-
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 @RunWith(Theories.class)
 public class ImpPortOfExitDateInFutureValidatorTest {

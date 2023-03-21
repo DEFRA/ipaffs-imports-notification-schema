@@ -1,17 +1,15 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ImpQuantityDataKeys;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class QuantityImpValidator
     implements ConstraintValidator<QuantityImp, List<ComplementParameterSet>> {

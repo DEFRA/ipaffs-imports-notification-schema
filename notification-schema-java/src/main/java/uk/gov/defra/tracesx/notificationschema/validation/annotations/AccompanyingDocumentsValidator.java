@@ -1,12 +1,11 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
-import uk.gov.defra.tracesx.notificationschema.representation.Notification;
-import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
-
 import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
+import uk.gov.defra.tracesx.notificationschema.representation.Notification;
+import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 
 public class AccompanyingDocumentsValidator implements
     ConstraintValidator<AccompanyingDocuments, Notification> {

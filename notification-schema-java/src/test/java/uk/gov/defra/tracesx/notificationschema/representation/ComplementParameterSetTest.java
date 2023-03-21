@@ -6,9 +6,8 @@ import static uk.gov.defra.tracesx.notificationschema.representation.ComplementP
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.LOW_RISK_ARTICLE_72_COMMODITY;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.QUANTITY;
 
-import org.junit.Test;
-
 import java.util.List;
+import org.junit.Test;
 
 public class ComplementParameterSetTest {
 

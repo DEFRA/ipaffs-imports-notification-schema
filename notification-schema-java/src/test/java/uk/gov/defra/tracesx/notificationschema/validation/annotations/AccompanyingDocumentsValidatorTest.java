@@ -2,6 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
@@ -10,10 +13,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class AccompanyingDocumentsValidatorTest {
 

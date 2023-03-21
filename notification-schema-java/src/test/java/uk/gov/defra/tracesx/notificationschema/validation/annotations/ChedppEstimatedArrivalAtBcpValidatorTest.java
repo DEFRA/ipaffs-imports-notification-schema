@@ -2,6 +2,8 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +11,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ChedppEstimatedArrivalAtBcpValidatorTest {

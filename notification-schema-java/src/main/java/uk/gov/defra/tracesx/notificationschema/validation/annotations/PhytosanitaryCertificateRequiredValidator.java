@@ -2,18 +2,17 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.PHYTOSANITARY_CERTIFICATE;
 
+import java.util.Collection;
+import java.util.Objects;
+import java.util.Optional;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
-
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class PhytosanitaryCertificateRequiredValidator
     implements ConstraintValidator<PhytosanitaryCertificateRequired, PartOne> {

@@ -1,10 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
-
 import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
 public class IsNonNegativeIntegerKeyDataPairValidator
     implements

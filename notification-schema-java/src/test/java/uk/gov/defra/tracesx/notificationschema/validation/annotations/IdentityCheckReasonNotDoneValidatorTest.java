@@ -10,7 +10,6 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 
 public class IdentityCheckReasonNotDoneValidatorTest {
 

@@ -1,11 +1,10 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
-
 import java.util.Optional;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 
 public class ImpPortOfExitDateNotNullValidator
     implements ConstraintValidator<ImpPortOfExitDateNotNull, PartOne> {

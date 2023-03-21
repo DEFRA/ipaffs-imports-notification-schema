@@ -2,6 +2,7 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +12,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.HmiDec
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiClassification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiDecision;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RiskDecision;
-
-import java.util.UUID;
 
 @Builder
 @Data

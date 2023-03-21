@@ -2,11 +2,10 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
-
-import java.util.List;
 
 @Getter
 @RequiredArgsConstructor

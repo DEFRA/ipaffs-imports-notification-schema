@@ -1,10 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import org.apache.commons.lang3.StringUtils;
-import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import org.apache.commons.lang3.StringUtils;
+import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
 public class NotNullCustomsReferenceNumberValidator implements
     ConstraintValidator<NotNullCustomsReferenceNumber, PartOne> {

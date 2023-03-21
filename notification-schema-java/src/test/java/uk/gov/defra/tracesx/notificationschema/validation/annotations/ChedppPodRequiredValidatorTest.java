@@ -4,6 +4,7 @@ import static java.lang.Boolean.TRUE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.LOW_RISK_ARTICLE_72_COMMODITY;
 
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +14,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.ComplementParamete
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.representation.EconomicOperator;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
-
-import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ChedppPodRequiredValidatorTest {
