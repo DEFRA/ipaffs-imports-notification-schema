@@ -30,5 +30,5 @@ public class CommodityRiskResult {
   private String variety;
   private boolean isWoody;
   private String indoorOutdoor;
-  private String propagationSource;
+  private String propagation;
 }
