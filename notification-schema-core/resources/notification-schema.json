@@ -2722,9 +2722,9 @@
           "description": "Indoor or Outdoor for a plant",
           "maxLength": 100
         },
-        "commodityType": {
+        "propagationSource": {
           "type": "string",
-          "description": "Whether a plant commodity is considered a plant or bulb",
+          "description": "Whether the propagation source is considered a Plant, Bulb, Seed or None",
           "maxLength": 100
         }
       }
