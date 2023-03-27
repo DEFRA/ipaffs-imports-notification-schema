@@ -2726,6 +2726,15 @@
           "type": "string",
           "description": "Whether the propagation is considered a Plant, Bulb, Seed or None",
           "maxLength": 100
+        },
+        "phsiRuleType": {
+          "type": "string",
+          "description": "Rule type for PHSI checks",
+          "enum": [
+            "Commodity",
+            "Consignment",
+            "MixedConsignment"
+          ]
         }
       }
     }
