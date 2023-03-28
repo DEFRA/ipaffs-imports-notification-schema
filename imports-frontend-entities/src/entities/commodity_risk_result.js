@@ -13,7 +13,7 @@ module.exports = class CommodityRiskResult {
     this.variety = obj.variety
     this.isWoody = obj.isWoody
     this.indoorOutdoor = obj.indoorOutdoor
-    this.propagationSource = obj.propagationSource
+    this.propagation = obj.propagation
 
     return Object.seal(new Proxy(this, handler))
   }

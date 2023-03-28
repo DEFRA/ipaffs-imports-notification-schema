@@ -2722,9 +2722,9 @@
           "description": "Indoor or Outdoor for a plant",
           "maxLength": 100
         },
-        "propagationSource": {
+        "propagation": {
           "type": "string",
-          "description": "Whether the propagation source is considered a Plant, Bulb, Seed or None",
+          "description": "Whether the propagation is considered a Plant, Bulb, Seed or None",
           "maxLength": 100
         }
       }
