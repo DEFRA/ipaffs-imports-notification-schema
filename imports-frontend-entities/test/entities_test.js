@@ -53,6 +53,7 @@ const Transporter = require('../src/entities/transporter')
 const AccompanyingDocument = require('../src/entities/accompanying_document')
 const CatchCertificate = require('../src/entities/catch_certificate')
 const CommodityRiskResult = require('../src/entities/commodity_risk_result')
+const Phsi = require('../src/entities/phsi')
 const InspectionOverride = require('../src/entities/inspection_override')
 const ExternalReference = require('../src/entities/external_reference')
 const RiskAssessment = require('../src/entities/risk_assessment')
@@ -110,6 +111,7 @@ describe('Entities: ', () => {
     AccompanyingDocument,
     CatchCertificate,
     CommodityRiskResult,
+    Phsi,
     InspectionOverride,
     ExternalReference,
     RiskAssessment

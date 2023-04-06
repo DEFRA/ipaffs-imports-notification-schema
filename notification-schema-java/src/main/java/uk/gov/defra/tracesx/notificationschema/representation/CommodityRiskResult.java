@@ -25,6 +25,7 @@ public class CommodityRiskResult {
   private HmiDecision hmiDecision;
   private PhsiDecision phsiDecision;
   private PhsiClassification phsiClassification;
+  private Phsi phsi;
   private UUID uniqueId;
   private String eppoCode;
   private String variety;
