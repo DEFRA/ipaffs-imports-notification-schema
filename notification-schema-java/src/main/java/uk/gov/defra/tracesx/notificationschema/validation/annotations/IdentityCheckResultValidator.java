@@ -2,11 +2,10 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.TRUE;
 
-import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 
 public class IdentityCheckResultValidator
     implements ConstraintValidator<IdentityCheckResult, ConsignmentCheck> {

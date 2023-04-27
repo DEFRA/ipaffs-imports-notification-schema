@@ -5,13 +5,12 @@ import static java.lang.Boolean.TRUE;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
+import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
-
-import java.util.Collections;
 
 public class LaboratoryTestsNotAddedValidatorTest {
 

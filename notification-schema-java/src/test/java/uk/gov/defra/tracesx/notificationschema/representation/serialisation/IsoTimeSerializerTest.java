@@ -4,14 +4,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.fasterxml.jackson.core.JsonGenerator;
+import java.io.IOException;
+import java.time.LocalTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @RunWith(MockitoJUnitRunner.class)
 public class IsoTimeSerializerTest {

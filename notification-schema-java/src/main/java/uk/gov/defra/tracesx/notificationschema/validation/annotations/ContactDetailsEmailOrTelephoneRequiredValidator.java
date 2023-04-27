@@ -1,10 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.ContactDetails;
-import uk.gov.defra.tracesx.notificationschema.validation.utils.HibernateContextUtils;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.ContactDetails;
+import uk.gov.defra.tracesx.notificationschema.validation.utils.HibernateContextUtils;
 
 public class ContactDetailsEmailOrTelephoneRequiredValidator implements
     ConstraintValidator<ContactDetailsEmailOrTelephoneRequired, ContactDetails> {

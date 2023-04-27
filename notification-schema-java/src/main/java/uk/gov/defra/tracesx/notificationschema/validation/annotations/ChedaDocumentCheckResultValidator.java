@@ -5,10 +5,9 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.validation.utils.ConsignmentCheckUtil.isExistingCHEDANotification;
 
-import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
 public class ChedaDocumentCheckResultValidator implements
     ConstraintValidator<ChedaDocumentCheckResult, ConsignmentCheck> {

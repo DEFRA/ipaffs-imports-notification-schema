@@ -1,8 +1,7 @@
 package uk.gov.defra.tracesx.notificationschema.validation.utils;
 
-import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
-
 import javax.validation.ConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 
 public class HibernateContextUtils {
 

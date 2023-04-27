@@ -4,6 +4,11 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,13 +18,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ImpQuantityDataKeys;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class QuantityImpValidatorTest {

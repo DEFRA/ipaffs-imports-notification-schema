@@ -5,7 +5,5 @@
   "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 
 <suppressions>
-  <suppress checks="JavadocPackage" files=".*[\\/]src[\\/]"/>
-  <suppress checks="JavadocMethod" files=".*[\\/]src[\\/]"/>
   <suppress checks="AbbreviationAsWordInName" files=".*[\\/]src[\\/]"/>
 </suppressions>

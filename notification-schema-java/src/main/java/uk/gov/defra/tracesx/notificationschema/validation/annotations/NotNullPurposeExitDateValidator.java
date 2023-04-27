@@ -1,11 +1,10 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class NotNullPurposeExitDateValidator implements
     ConstraintValidator<NotNullPurposeExitDate, PartOne> {

@@ -2,6 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,10 +16,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
-
-import java.util.List;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Data
@@ -37,7 +36,7 @@ public class Party {
   @NotEmpty(
       groups = NotificationHighRiskNonChedppFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
-      + ".address.not.empty}")
+          + ".address.not.empty}")
   private List<String> address;
 
   private String county;
@@ -45,8 +44,8 @@ public class Party {
 
   @NotNull(
       groups = {
-              NotificationHighRiskFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String country;

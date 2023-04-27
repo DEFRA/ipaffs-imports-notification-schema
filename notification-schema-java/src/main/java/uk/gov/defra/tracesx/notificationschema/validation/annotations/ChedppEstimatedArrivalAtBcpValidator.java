@@ -1,14 +1,13 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import uk.gov.defra.tracesx.notificationschema.representation.Notification;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.Notification;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 
 public class ChedppEstimatedArrivalAtBcpValidator implements
     ConstraintValidator<ChedppEstimatedArrivalAtBcp, Notification> {

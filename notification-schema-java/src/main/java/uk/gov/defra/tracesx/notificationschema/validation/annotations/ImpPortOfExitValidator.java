@@ -1,12 +1,11 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import org.apache.commons.lang3.StringUtils;
-import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
-
 import java.util.Optional;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import org.apache.commons.lang3.StringUtils;
+import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 
 public class ImpPortOfExitValidator implements ConstraintValidator<ImpPortOfExit, PartOne> {
 

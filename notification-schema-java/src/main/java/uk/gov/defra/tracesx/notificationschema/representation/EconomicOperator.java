@@ -2,6 +2,7 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +12,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Econom
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorType;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
-
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Data

@@ -4,11 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.PHYTOSANITARY_CERTIFICATE;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.VETERINARY_HEALTH_CERTIFICATE;
 
+import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
-
-import java.util.UUID;
 
 public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
 

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+RED='\033[0;31m'
+NO_COLOUR='\033[0m'
+LOG_PREFIX="Pre-commit hook:"
+FAILED_MESSAGE="${LOG_PREFIX} ${RED}[FAILED]${NO_COLOUR}"
+
+echo "${LOG_PREFIX} Running Checkstyle"
+
+if mvn -f pom.xml checkstyle:check; then
+  echo "${LOG_PREFIX} OK proceeding with commit"
+  exit 0
+else
+  echo -e "${FAILED_MESSAGE} git commit failed, address Checkstyle violations"
+  exit 1
+fi

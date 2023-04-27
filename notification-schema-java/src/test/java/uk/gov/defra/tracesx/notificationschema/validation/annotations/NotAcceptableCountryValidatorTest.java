@@ -3,13 +3,12 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableReasonsEnum;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NotAcceptableCountryValidatorTest {
 

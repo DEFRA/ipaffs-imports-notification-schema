@@ -4,12 +4,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
+import javax.validation.ConstraintValidatorContext;
 import org.junit.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
-
-import javax.validation.ConstraintValidatorContext;
 
 public class ValidStatusValidatorTest {
 

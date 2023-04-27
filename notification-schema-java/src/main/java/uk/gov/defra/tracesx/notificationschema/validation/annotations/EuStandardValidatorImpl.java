@@ -2,11 +2,10 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SET;
 
-import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
-import uk.gov.defra.tracesx.notificationschema.validation.utils.ConsignmentCheckUtil;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
+import uk.gov.defra.tracesx.notificationschema.validation.utils.ConsignmentCheckUtil;
 
 public class EuStandardValidatorImpl
     implements ConstraintValidator<EuStandardValidator, ConsignmentCheck> {

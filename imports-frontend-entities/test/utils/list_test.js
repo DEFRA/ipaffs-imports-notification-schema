@@ -1,7 +1,7 @@
 const chai = require('chai')
 
-const KeyDataPair = require.main.require('src/entities/key_data_pair')
-const {getList} = require.main.require('src/utils/list')
+const KeyDataPair = require('../../src/entities/key_data_pair')
+const {getList} = require('../../src/utils/list')
 
 describe('list util - getList', () => {
   it('should add items to the list of the supplied type', () => {

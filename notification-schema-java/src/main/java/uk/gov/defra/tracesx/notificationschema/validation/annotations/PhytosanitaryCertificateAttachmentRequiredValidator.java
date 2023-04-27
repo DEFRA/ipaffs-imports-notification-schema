@@ -2,10 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.PHYTOSANITARY_CERTIFICATE;
 
-import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
 
 public class PhytosanitaryCertificateAttachmentRequiredValidator implements
     ConstraintValidator<PhytosanitaryCertificateAttachmentRequired, AccompanyingDocument> {
