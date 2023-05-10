@@ -2722,10 +2722,19 @@
           "description": "Indoor or Outdoor for a plant",
           "maxLength": 100
         },
-        "commodityType": {
+        "propagation": {
           "type": "string",
-          "description": "Whether a plant commodity is considered a plant or bulb",
+          "description": "Whether the propagation is considered a Plant, Bulb, Seed or None",
           "maxLength": 100
+        },
+        "phsiRuleType": {
+          "type": "string",
+          "description": "Rule type for PHSI checks",
+          "enum": [
+            "Commodity",
+            "Consignment",
+            "MixedConsignment"
+          ]
         }
       }
     }

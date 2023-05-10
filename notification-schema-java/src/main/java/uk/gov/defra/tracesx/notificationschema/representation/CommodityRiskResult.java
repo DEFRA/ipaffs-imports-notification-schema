@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.HmiDecision;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiClassification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiDecision;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhsiRuleType;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RiskDecision;
 
 @Builder
@@ -30,5 +31,6 @@ public class CommodityRiskResult {
   private String variety;
   private boolean isWoody;
   private String indoorOutdoor;
-  private String commodityType;
+  private String propagation;
+  private PhsiRuleType phsiRuleType;
 }
