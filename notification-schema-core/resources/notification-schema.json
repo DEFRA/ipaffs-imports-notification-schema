@@ -2618,6 +2618,10 @@
           "type": "string",
           "description": "Other reason text when selected reason is 'Other'",
           "maxLength": 32
+        },
+        "isSelectedForChecks" : {
+          "type": "boolean",
+          "description": "Has commodity been selected for checks?"
         }
       }
     },

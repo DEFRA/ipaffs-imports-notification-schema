@@ -8,6 +8,7 @@ module.exports = class InspectionCheck {
     this.status = obj.status
     this.reason = obj.reason
     this.otherReason = obj.otherReason
+    this.isSelectedForChecks = obj.isSelectedForChecks
 
     return Object.seal(new Proxy(this, handler))
   }
