@@ -46,6 +46,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfEntryAndPointOfEntryNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
@@ -105,6 +106,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
 @ChedppPodRequired(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod.required}")
+@PortOfEntryAndPointOfEntryNotEmpty(
+    groups = {NotificationCvedaEuFieldValidation.class},
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofentry"
+        + ".pointofentry.eucveda.not.null}")
 public class PartOne {
 
   private TypeOfImp typeOfImp;
@@ -240,10 +245,6 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   private Purpose purpose;
 
-  @NotBlank(
-      groups = NotificationCvedaEuFieldValidation.class,
-      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
-          + ".eucveda.not.null}")
   @NotBlank(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
