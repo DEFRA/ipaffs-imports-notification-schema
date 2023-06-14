@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ExternalSystem;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
@@ -152,6 +154,13 @@ public class Notification {
   @JsonIgnore
   public boolean isChedpp() {
     return NotificationTypeEnum.CHEDPP.equals(type);
+  }
+
+  @JsonIgnore
+  public boolean isClonedChedP() {
+    return NotificationTypeEnum.CVEDP.equals(type) && Objects.nonNull(externalReferences)
+        && externalReferences.stream().anyMatch(externalRef ->
+        externalRef.getSystem() == ExternalSystem.ECERT);
   }
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
