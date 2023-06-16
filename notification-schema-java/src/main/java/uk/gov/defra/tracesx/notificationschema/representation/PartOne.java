@@ -49,11 +49,13 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Phytosanit
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfEntryAndPointOfEntryNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
@@ -381,14 +383,14 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {
-          NotificationHighRiskEuChedValidation.class,
+          NotificationContactDetailsEuFieldValidation.class,
           NotificationChedppFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
           + ".not.null}")
   private ContactDetails contactDetails;
 
-  @NotEmpty(groups = NotificationCvedaEuFieldValidation.class,
+  @NotEmpty(groups = NotificationTransporterContactDetailsEuFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
           + ".transportercontactdetails.not.empty}")
   private List<NominatedContact> nominatedContacts;
