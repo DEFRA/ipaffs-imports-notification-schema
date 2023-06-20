@@ -2622,6 +2622,10 @@
         "isSelectedForChecks" : {
           "type": "boolean",
           "description": "Has commodity been selected for checks?"
+        },
+        "hasChecksComplete" : {
+          "type": "boolean",
+          "description": "Has commodity completed this type of check"
         }
       }
     },

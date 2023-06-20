@@ -9,6 +9,7 @@ module.exports = class InspectionCheck {
     this.reason = obj.reason
     this.otherReason = obj.otherReason
     this.isSelectedForChecks = obj.isSelectedForChecks
+    this.hasChecksComplete = obj.hasChecksComplete
 
     return Object.seal(new Proxy(this, handler))
   }
