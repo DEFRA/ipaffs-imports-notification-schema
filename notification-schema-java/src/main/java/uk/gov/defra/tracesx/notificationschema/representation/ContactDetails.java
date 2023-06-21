@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ContactDetailsEmailOrTelephoneRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationContactDetailsEuFieldValidation;
 
 @Builder
 @Data
@@ -19,14 +19,14 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ContactDetailsEmailOrTelephoneRequired(
     groups = {
-        NotificationHighRiskEuChedValidation.class,
+        NotificationContactDetailsEuFieldValidation.class,
         NotificationChedppFieldValidation.class
     })
 public class ContactDetails {
 
   @NotNull(
       groups = {
-          NotificationHighRiskEuChedValidation.class,
+          NotificationContactDetailsEuFieldValidation.class,
           NotificationChedppFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
