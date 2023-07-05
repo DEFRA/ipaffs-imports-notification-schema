@@ -28,6 +28,8 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TypeOfImp;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
@@ -394,4 +396,8 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
           + ".transportercontactdetails.not.empty}")
   private List<NominatedContact> nominatedContacts;
+
+  @JsonSerialize(using = IsoDateTimeSerializer.class)
+  @JsonDeserialize(using = IsoDateTimeDeserializer.class)
+  private LocalDateTime originalEstimatedDateTime;
 }

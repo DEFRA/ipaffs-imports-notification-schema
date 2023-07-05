@@ -79,7 +79,7 @@ module.exports = class PartOne {
     this.portOfExitDate = obj.portOfExitDate
     this.contactDetails = obj.contactDetails
     this.nominatedContacts = getList(_.get(obj, 'nominatedContacts', []), NominatedContact)
-
+    this.originalEstimatedDateTime = obj.originalEstimatedDateTime
     return Object.seal(new Proxy(this, handler))
   }
 }
