@@ -407,4 +407,8 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
           + ".transportercontactdetails.not.empty}")
   private List<NominatedContact> nominatedContacts;
+
+  @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
+  @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  private LocalDateTime originalEstimatedDateTime;
 }
