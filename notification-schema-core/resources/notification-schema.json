@@ -785,6 +785,11 @@
           "items": {
             "$ref": "#/definitions/NominatedContact"
           }
+        },
+        "originalEstimatedDateTime": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "Original estimated date time of arrival"
         }
       }
     },
