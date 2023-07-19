@@ -22,4 +22,5 @@ public class InspectionCheck {
   private String reason;
   private String otherReason;
   private Boolean isSelectedForChecks;
+  private Boolean hasChecksComplete;
 }
