@@ -6,6 +6,7 @@ public enum AnimalCertification {
   APPROVED("Approved"),
   BREEDING("Breeding"),
   CIRCUS("Circus"),
+  COMMERCIAL_SALE("Commercial sale"),
   COMMERCIAL_SALE_OR_CHANGE_OF_OWNERSHIP("Commercial sale or change of ownership"),
   FATTENING("Fattening"),
   FEEDING("Animal feeding stuff"),
