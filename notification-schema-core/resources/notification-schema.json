@@ -2744,12 +2744,7 @@
         },
         "phsiRuleType": {
           "type": "string",
-          "description": "Rule type for PHSI checks",
-          "enum": [
-            "Commodity",
-            "Consignment",
-            "MixedConsignment"
-          ]
+          "description": "Rule type for PHSI checks"
         }
       }
     }
