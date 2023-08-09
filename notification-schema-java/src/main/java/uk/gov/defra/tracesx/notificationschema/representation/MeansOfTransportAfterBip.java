@@ -25,9 +25,13 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".not.empty}",
-      groups = {TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class})
+  @NotEmpty(
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
+              + ".eucveda.not.empty}",
+      groups = {TransporterDetailsRequiredEuCvedaValidation.class})
   private String id = null;
 
   @NotNull(
@@ -48,9 +52,13 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
               + ".document.not.empty}",
       groups = {
-          TransporterDetailsRequiredEuCvedaValidation.class,
           TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDorChedppValidation.class
-      })
+          TransporterDetailsRequiredCEDorChedppValidation.class})
+  @NotEmpty(
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
+              + ".document.eucveda.not.empty}",
+      groups = {
+          TransporterDetailsRequiredEuCvedaValidation.class})
   private String document = null;
 }

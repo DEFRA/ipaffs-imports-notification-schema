@@ -318,34 +318,47 @@ public class PartOne {
   private MeansOfTransportBeforeBip meansOfTransportFromEntryPoint;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
+  @NotNull(
+      groups = {TransporterDetailsRequiredEuCvedaValidation.class
+      },
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
+          + ".eucveda.not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate departureDate;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class,
+      groups = {TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDorChedppValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
           + ".not.null}")
+  @NotNull(
+      groups = {TransporterDetailsRequiredEuCvedaValidation.class},
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
+          + ".eucveda.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
   private LocalTime departureTime;
 
   @NotNull(
       groups = {
-          NotificationCvedaFieldValidation.class,
-          TransporterDetailsRequiredEuCvedaValidation.class
+          NotificationCvedaFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".estimatedjourneytimeinminutes.not.null}")
+  @NotNull(
+      groups = {
+          TransporterDetailsRequiredEuCvedaValidation.class
+      },
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".estimatedjourneytimeinminutes.eucveda.not.null}")
   private Integer estimatedJourneyTimeInMinutes;
 
   private String responsibleForTransport;
@@ -394,4 +407,8 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
           + ".transportercontactdetails.not.empty}")
   private List<NominatedContact> nominatedContacts;
+
+  @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
+  @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  private LocalDateTime originalEstimatedDateTime;
 }

@@ -21,13 +21,15 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 public class MeansOfTransportBeforeBip implements MeansOfTransport {
 
   @NotEmpty(
-      groups = {
-          NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
-      },
+      groups = NotificationHighRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.not.empty}")
+  @NotEmpty(
+      groups = NotificationCvedaEuFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.id.eucveda.not.empty}")
   private String id = null;
 
   @NotNull(
@@ -43,12 +45,14 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
   private TransportMethod type = null;
 
   @NotEmpty(
-      groups = {
-          NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
-      },
+      groups = NotificationHighRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.document.not.empty}")
+  @NotEmpty(
+      groups = NotificationCvedaEuFieldValidation.class,
+      message =
+           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.document.eucveda.not.empty}")
   private String document = null;
 }

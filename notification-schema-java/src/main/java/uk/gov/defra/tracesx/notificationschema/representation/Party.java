@@ -37,6 +37,10 @@ public class Party {
       groups = NotificationHighRiskNonChedppFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
           + ".address.not.empty}")
+  @NotEmpty(
+      groups = NotificationCvedaEuFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
+          + ".address.eucveda.not.empty}")
   private List<String> address;
 
   private String county;

@@ -29,8 +29,9 @@ public class InternalMarketPurposeTest {
   }
 
   @Test
-  public void givenCommercialSale_whenToStringCalled_shouldReturnStringValue() {
-    assertThat(InternalMarketPurpose.COMMERCIAL_SALE.toString()).hasToString("Commercial Sale");
+  public void givenCommercialSaleOrChangeOfOwnership_whenToStringCalled_shouldReturnStringValue() {
+    assertThat(InternalMarketPurpose.COMMERCIAL_SALE_OR_CHANGE_OF_OWNERSHIP.toString()).hasToString(
+            "Commercial sale or change of ownership");
   }
 
   @Test
