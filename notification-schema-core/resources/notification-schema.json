@@ -490,6 +490,7 @@
                 "Pharmaceutical Use",
                 "Technical Use",
                 "Other",
+                "Commercial Sale",
                 "Commercial sale or change of ownership",
                 "Rescue",
                 "Breeding",
@@ -2176,6 +2177,7 @@
         "Artificial reproduction",
         "Breeding",
         "Circus",
+        "Commercial sale",
         "Commercial sale or change of ownership",
         "Fattening",
         "Game restocking",
@@ -2742,12 +2744,7 @@
         },
         "phsiRuleType": {
           "type": "string",
-          "description": "Rule type for PHSI checks",
-          "enum": [
-            "Commodity",
-            "Consignment",
-            "MixedConsignment"
-          ]
+          "description": "Rule type for PHSI checks"
         }
       }
     }

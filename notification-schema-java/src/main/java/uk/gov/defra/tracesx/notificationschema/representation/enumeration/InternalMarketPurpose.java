@@ -8,6 +8,7 @@ public enum InternalMarketPurpose {
   PHARMACEUTICAL_USE("Pharmaceutical Use"),
   TECHNICAL_USE("Technical Use"),
   OTHER("Other"),
+  COMMERCIAL_SALE("Commercial Sale"),
   COMMERCIAL_SALE_OR_CHANGE_OF_OWNERSHIP("Commercial sale or change of ownership"),
   RESCUE("Rescue"),
   BREEDING("Breeding"),

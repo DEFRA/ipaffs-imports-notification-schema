@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>IPAFFS-Common-Schema</artifactId>
-  <version>1.0.281</version>
+  <version>1.0.286</version>
   <name>imports-notification-schema</name>
   <description>Shared Common Schema library for IPAFFS services</description>
   <packaging>pom</packaging>
@@ -25,8 +25,12 @@
     <equalsverifier.version>2.4.8</equalsverifier.version>
     <git-build-hook-maven-plugin.version>3.3.0</git-build-hook-maven-plugin.version>
     <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
+    <maven.deploy.plugin.version>3.1.1</maven.deploy.plugin.version>
+    <maven.help.plugin.version>3.4.0</maven.help.plugin.version>
+    <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
     <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
     <maven-remote-resources-plugin.version>3.0.0</maven-remote-resources-plugin.version>
+    <maven.versions.plugin.version>2.16.0</maven.versions.plugin.version>
     <shared-resources.version>1.0.0</shared-resources.version>
     <swagger.annotations.version>1.5.17</swagger.annotations.version>
   </properties>
@@ -41,10 +45,15 @@
   <scm>
     <connection>scm:git:https://giteux.azure.defra.cloud/imports/imports-notification-schema.git
     </connection>
-    <tag>1.0.281</tag>
+    <tag>1.0.286</tag>
   </scm>
 
   <distributionManagement>
+    <snapshotRepository>
+      <id>release</id>
+      <name>Snapshots</name>
+      <url>https://REMOVED/artifactory/maven-snapshots-local</url>
+    </snapshotRepository>
     <repository>
       <id>release</id>
       <name>Releases</name>
@@ -71,6 +80,21 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${maven.deploy.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven.jar.plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-help-plugin</artifactId>
+          <version>${maven.help.plugin.version}</version>
+        </plugin>
+        <plugin>
           <artifactId>maven-release-plugin</artifactId>
           <version>${maven.release.plugin.version}</version>
           <configuration>
@@ -78,6 +102,11 @@
             <tagNameFormat>@{project.version}</tagNameFormat>
             <releaseProfiles>release</releaseProfiles>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${maven.versions.plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>com.rudikershaw.gitbuildhook</groupId>
