@@ -29,6 +29,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentCheckValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEUDocumentCheckValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 
 @Builder
 @Data
@@ -97,8 +98,11 @@ public class ConsignmentCheck {
   private Result euStandard;
 
   @NotNull(
-      groups = {NotificationCedOrCvedpFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class},
+      groups = {
+          NotificationCedOrCvedpFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
               + ".documentarycheck.not.null}")

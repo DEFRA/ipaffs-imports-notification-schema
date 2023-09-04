@@ -26,6 +26,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 
@@ -35,7 +36,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @MinCommoditiesGrossWeight(
-    groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+    groups = {
+        NotificationCedOrCvedpOrChedppFieldValidation.class,
+        NotificationHighRiskEuCedFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".totalgrossweight.min.message}")
@@ -47,14 +51,20 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
 public class Commodities {
 
   @NotNull(
-      groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+      groups = {
+          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossweight.not.null}")
   private BigDecimal totalGrossWeight;
 
   @NotNull(
-      groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+      groups = {
+          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalnetweight.not.null}")
@@ -63,7 +73,10 @@ public class Commodities {
   private Integer numberOfPackages;
 
   @NotNull(
-      groups = NotificationCedOrCvedpFieldValidation.class,
+      groups = {
+          NotificationCedOrCvedpFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".temperature.not.null}")
@@ -105,7 +118,8 @@ public class Commodities {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -119,7 +133,10 @@ public class Commodities {
   private String regionOfOrigin = null;
 
   @NotNull(
-      groups = NotificationCedOrCvedpOrChedppFieldValidation.class,
+      groups = {
+          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".consignedcountry.not.null}")
@@ -137,6 +154,11 @@ public class Commodities {
               + ".animalscertifiedas.not.null}")
   private AnimalCertification animalsCertifiedAs = null;
 
+  @NotNull(
+      groups = NotificationHighRiskEuCedFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".commodityintendedfor.not.null}")
   private CommodityIntention commodityIntendedFor = null;
 
   private BigDecimal totalGrossVolume;

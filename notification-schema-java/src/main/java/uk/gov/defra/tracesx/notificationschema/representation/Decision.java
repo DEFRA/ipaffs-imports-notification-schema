@@ -41,6 +41,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNotAcceptableReasonsValidation;
 
@@ -55,7 +56,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNot
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablereasoning.not.null}")
 @NotAcceptableOtherReason(
-    groups = NotificationHighRiskNonChedppFieldValidation.class,
+    groups = {
+        NotificationHighRiskNonChedppFieldValidation.class,
+        NotificationHighRiskEuCedFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableotherreason.not.null}")
@@ -67,7 +71,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNot
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptableestablishment.not.null}")
 @NotAcceptableCountry(
-    groups = NotificationCedOrCvedpFieldValidation.class,
+    groups = {
+        NotificationCedOrCvedpFieldValidation.class,
+        NotificationHighRiskEuCedFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".notacceptablecountry.not.null}")
@@ -130,7 +137,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNot
 public class Decision {
 
   @NotNull(
-      groups = NotificationHighRiskNonChedppFieldValidation.class,
+      groups = {
+          NotificationHighRiskNonChedppFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
               + ".consignmentacceptable.not.null}")

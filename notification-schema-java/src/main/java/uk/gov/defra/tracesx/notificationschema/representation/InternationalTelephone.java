@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 @Builder
@@ -22,7 +23,8 @@ public class InternationalTelephone {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String countryCode;
@@ -30,7 +32,8 @@ public class InternationalTelephone {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String subscriberNumber;
