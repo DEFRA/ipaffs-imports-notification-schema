@@ -99,6 +99,10 @@
       "$ref": "#/definitions/RiskAssessmentResult",
       "description": "Result of risk assessment by the risk scorer"
     },
+    "journeyRiskCategorisation": {
+      "$ref": "#/definitions/JourneyRiskCategorisationResult",
+      "description": "Details of the risk categorisation level for a notification"
+    },
     "isHighRiskEuImport": {
       "type": "boolean",
       "description": "Is this notification a high risk notification from the EU/EEA?"
@@ -2745,6 +2749,34 @@
         "phsiRuleType": {
           "type": "string",
           "description": "Rule type for PHSI checks"
+        }
+      }
+    },
+    "JourneyRiskCategorisationResult": {
+      "type": "object",
+      "description": "Details of the risk categorisation level for a notification",
+      "properties": {
+        "riskLevel": {
+          "type": "string",
+          "description": "Risk Level is defined using enum values High,Medium,Low",
+          "enum": [
+            "High",
+            "Medium",
+            "Low"
+          ]
+        },
+        "riskLevelMethod": {
+          "type": "string",
+          "description": "Indicator of whether the risk level was determined by the system or by the user",
+          "enum": [
+            "System",
+            "User"
+          ]
+        },
+        "riskLevelDateTime": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "The date and time the risk level has been set for a notification"
         }
       }
     }

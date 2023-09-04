@@ -93,6 +93,8 @@ public class Notification {
 
   private RiskAssessment riskAssessment;
 
+  private JourneyRiskCategorisation journeyRiskCategorisation;
+
   private Boolean childNotification;
 
   private Boolean isHighRiskEuImport;
