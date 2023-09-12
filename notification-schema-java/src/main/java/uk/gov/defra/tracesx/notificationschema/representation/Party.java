@@ -14,6 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PartyT
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
@@ -34,11 +35,16 @@ public class Party {
   private String companyName;
 
   @NotEmpty(
-      groups = NotificationHighRiskNonChedppFieldValidation.class,
+      groups = {
+          NotificationHighRiskNonChedppFieldValidation.class,
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
           + ".address.not.empty}")
   @NotEmpty(
-      groups = NotificationCvedaEuFieldValidation.class,
+      groups = {
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
           + ".address.eucveda.not.empty}")
   private List<String> address;
@@ -49,7 +55,8 @@ public class Party {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String country;

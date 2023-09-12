@@ -20,6 +20,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoT
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
 @Builder
@@ -34,7 +35,8 @@ public class Applicant {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String laboratory;
@@ -47,7 +49,8 @@ public class Applicant {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String sampleBatchNumber;
@@ -55,7 +58,8 @@ public class Applicant {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private Integer numberOfSamples;
@@ -63,7 +67,8 @@ public class Applicant {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String sampleType;
@@ -71,7 +76,8 @@ public class Applicant {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private ConservationOfSample conservationOfSample;

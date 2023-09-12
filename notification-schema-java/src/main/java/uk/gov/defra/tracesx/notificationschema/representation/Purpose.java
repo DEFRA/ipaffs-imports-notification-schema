@@ -14,6 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForNon
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InternalMarketPurpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PurposeForInternalMarket;
 
@@ -47,7 +48,8 @@ public class Purpose {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.purposeGroup"

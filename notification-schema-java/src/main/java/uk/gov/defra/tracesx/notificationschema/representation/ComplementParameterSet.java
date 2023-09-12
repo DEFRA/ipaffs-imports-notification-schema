@@ -19,6 +19,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKey
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 
 @Builder
 @Data
@@ -52,7 +53,10 @@ public class ComplementParameterSet {
   @Valid
   @MinValueKeyDataPair.List({
       @MinValueKeyDataPair(
-          groups = NotificationCedOrCvedpFieldValidation.class,
+          groups = {
+              NotificationCedOrCvedpFieldValidation.class,
+              NotificationHighRiskEuCedFieldValidation.class
+          },
           field = NET_WEIGHT,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -70,6 +74,7 @@ public class ComplementParameterSet {
   @IsNonNegativeIntegerKeyDataPair(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class,
           NotificationCvedaFieldValidation.class
       },
       field = NUMBER_PACKAGE,
@@ -78,7 +83,10 @@ public class ComplementParameterSet {
               + ".complementparameterset.keydatapair.number_package.message}")
   @NotNullKeyDataPair.List({
       @NotNullKeyDataPair(
-          groups = NotificationCedOrCvedpFieldValidation.class,
+          groups = {
+              NotificationCedOrCvedpFieldValidation.class,
+              NotificationHighRiskEuCedFieldValidation.class
+          },
           field = TYPE_PACKAGE,
           message =
               "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
