@@ -32,6 +32,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedaPurposeExitDateNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppInvalidPodCheck;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPositiveDoubleKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppMinValueKeyDataPair;
@@ -43,7 +44,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateInFuture;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfEntryAndPointOfEntryNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfExitAndExitBipNotEmpty;
@@ -75,10 +75,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
             + ".consignor.not.null}")
-@NotNullPurposeExitDate(
-    groups = NotificationCvedaFieldValidation.class,
-    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
-        + ".exitdate.not.null}")
 @NotNullPurposeExitBip(
     groups = {
         NotificationCvedaFieldValidation.class,
@@ -266,6 +262,14 @@ public class PartOne {
           NotificationHighRiskEuCedFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
+  @ChedaPurposeExitDateNotNull(
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+          + ".exitdate.not.null}"
+  )
   private Purpose purpose;
 
   @NotBlank(
