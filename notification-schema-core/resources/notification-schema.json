@@ -2508,7 +2508,10 @@
             "proofOfStorage",
             "railwayBill",
             "seaWaybill",
-            "veterinaryHealthCertificate"
+            "veterinaryHealthCertificate",
+            "listOfIngredients",
+            "packingList",
+            "roadConsignmentNote"
           ]
         },
         "documentReference": {

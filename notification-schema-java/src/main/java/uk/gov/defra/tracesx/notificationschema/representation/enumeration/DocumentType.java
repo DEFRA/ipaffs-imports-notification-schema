@@ -31,7 +31,10 @@ public enum DocumentType {
   PROOF_OF_STORAGE("proofOfStorage"),
   RAILWAY_BILL("railwayBill"),
   SEA_WAYBILL("seaWaybill"),
-  VETERINARY_HEALTH_CERTIFICATE("veterinaryHealthCertificate");
+  VETERINARY_HEALTH_CERTIFICATE("veterinaryHealthCertificate"),
+  INGREDIENTS_LIST("listOfIngredients"),
+  PACKING_LIST("packingList"),
+  ROAD_CONSIGNMENT_CMR_NOTE("roadConsignmentNote");
 
   private String value;
 
