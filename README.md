@@ -11,14 +11,11 @@ It is used as a pre-push hook and will scan any local commits being pushed
 ### Git hook setup
 
 1. Install [truffleHog](https://github.com/trufflesecurity/truffleHog)
-   - `brew install go`
-   - `git clone https://github.com/trufflesecurity/trufflehog.git`
-   - `cd trufflehog; go install`
+   - `brew install trufflesecurity/trufflehog/trufflehog`
 2. Set DEFRA_WORKSPACE env var (`export DEFRA_WORKSPACE=/path/to/workspace`)
 3. Potentially there's an older version of Trufflehog located at: `/usr/local/bin/trufflehog`. If
    so, remove this
-4. Create a symlink: `ln -s ~/go/bin/truffleHog /usr/local/bin/trufflehog`
-5. Run `mvn install` to configure hooks
+4. Run `mvn install` to configure hooks
 
 ## Usage
 To start using notification schema for backend services, you need to include the following dependencies in your .pom file:
