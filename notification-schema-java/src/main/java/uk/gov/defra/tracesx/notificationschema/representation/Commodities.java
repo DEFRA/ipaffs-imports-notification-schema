@@ -52,24 +52,39 @@ public class Commodities {
 
   @NotNull(
       groups = {
-          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationCedOrCvedpFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossweight.not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
+              + ".totalgrossweight.not.null}")
   private BigDecimal totalGrossWeight;
 
   @NotNull(
       groups = {
-          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationCedOrCvedpFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalnetweight.not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
+              + ".totalnetweight.not.null}")
   private BigDecimal totalNetWeight;
 
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
+              + ".numberofpackages.not.empty}")
   private Integer numberOfPackages;
 
   @NotNull(
@@ -118,6 +133,7 @@ public class Commodities {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -158,6 +174,11 @@ public class Commodities {
       groups = NotificationHighRiskEuCedFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".commodityintendedfor.not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
               + ".commodityintendedfor.not.null}")
   private CommodityIntention commodityIntendedFor = null;
 
