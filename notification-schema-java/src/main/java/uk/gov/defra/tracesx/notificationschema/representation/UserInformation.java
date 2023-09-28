@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
@@ -23,6 +24,7 @@ public class UserInformation {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -32,6 +34,7 @@ public class UserInformation {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },

@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
-import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.COMMODITY_GROUP;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NET_WEIGHT;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NUMBER_PACKAGE;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.QUANTITY;
@@ -61,7 +60,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTra
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDorChedppValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCHEDPPValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
@@ -126,6 +126,7 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -147,6 +148,10 @@ public class PartOne {
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor"
           + ".not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor.chedpp"
+          + ".not.null}")
   private EconomicOperator consignor;
 
   private EconomicOperator consignorTwo;
@@ -156,6 +161,7 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -166,6 +172,7 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -187,6 +194,11 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.not"
               + ".null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.chedpp"
+              + ".not.null}")
   private EconomicOperator placeOfDestination;
 
   private EconomicOperator pod;
@@ -201,6 +213,7 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -211,49 +224,44 @@ public class PartOne {
       field = NUMBER_PACKAGE,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.number_package.message}")
+              + ".complementparameterset.keydatapair.chedpp.number_package.message}")
   @ChedppMinValueKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = NET_WEIGHT,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.net_weight.message}")
+              + ".complementparameterset.keydatapair.chedpp.net_weight.message}")
   @ChedppNotNullKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = TYPE_PACKAGE,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.type_package.message}")
+              + ".complementparameterset.keydatapair.chedpp.type_package.message}")
   @ChedppNotNullKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = TYPE_QUANTITY,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.type_quantity.message}")
+              + ".complementparameterset.keydatapair.chedpp.type_quantity.message}")
   @ChedppNotNullKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = QUANTITY,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.quantity.message}")
+              + ".complementparameterset.keydatapair.chedpp.quantity.message}")
   @ChedppIsPositiveDoubleKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = QUANTITY,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.quantity.message}")
-  @ChedppNotNullKeyDataPair(
-      groups = NotificationChedppFieldValidation.class,
-      field = COMMODITY_GROUP,
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.commodity_group.message}")
+              + ".complementparameterset.keydatapair.chedpp.quantity.message}")
   private Commodities commodities;
 
   @Valid
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -264,6 +272,10 @@ public class PartOne {
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
+  @NotBlank(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
+          + ".chedpp.not.null}")
   @NotBlank(
       groups = NotificationHighRiskEuCedFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
@@ -279,6 +291,10 @@ public class PartOne {
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
+          + ".not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate.chedpp"
           + ".not.null}")
   @NotNull(
       groups = NotificationCvedaEuFieldValidation.class,
@@ -299,6 +315,10 @@ public class PartOne {
   @NotNull(
       groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
+          + ".not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime.chedpp"
           + ".not.null}")
   @NotNull(
       groups = NotificationCvedaEuFieldValidation.class,
@@ -326,7 +346,12 @@ public class PartOne {
   @NotNull(
       groups = {TransporterDetailsRequiredEuCvedaValidation.class,
           TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDorChedppValidation.class},
+          TransporterDetailsRequiredCEDValidation.class},
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
+              + ".null}")
+  @NotNull(
+      groups = TransporterDetailsRequiredCHEDPPValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
               + ".null}")
@@ -343,6 +368,11 @@ public class PartOne {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansOfTransportFromEntryPoint.not.null}")
   @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.chedpp.type.not.null}")
+  @NotNull(
       groups = NotificationHighRiskEuCedFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
@@ -351,7 +381,7 @@ public class PartOne {
 
   @NotNull(
       groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDorChedppValidation.class
+          TransporterDetailsRequiredCEDValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
@@ -366,7 +396,7 @@ public class PartOne {
 
   @NotNull(
       groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDorChedppValidation.class},
+          TransporterDetailsRequiredCEDValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
           + ".not.null}")
   @NotNull(
@@ -429,10 +459,15 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationContactDetailsEuFieldValidation.class,
-          NotificationChedppFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
           + ".not.null}")
+  @NotNull(
+      groups = {
+          NotificationChedppFieldValidation.class
+      },
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
+          + ".chedpp.not.null}")
   private ContactDetails contactDetails;
 
   @NotEmpty(groups = NotificationTransporterContactDetailsEuFieldValidation.class,
