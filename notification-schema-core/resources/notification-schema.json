@@ -592,6 +592,11 @@
                 "For Transfer To",
                 "For Import Re-Conformity Check"
               ]
+            },
+            "estimatedArrivalDateTimeAtPortOfExit": {
+              "type": "string",
+              "javaType": "java.time.LocalDateTime",
+              "description": "Estimated date time at port of exit"
             }
           }
         },
@@ -874,7 +879,8 @@
           "enum": [
             "E-CERT",
             "E-PHYTO",
-            "E-NOTIFICATION"
+            "E-NOTIFICATION",
+            "NCTS"
           ]
         },
         "reference": {
