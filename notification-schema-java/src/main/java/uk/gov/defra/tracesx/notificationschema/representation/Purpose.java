@@ -2,6 +2,9 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -13,6 +16,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImp
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForNonConformingEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InternalMarketPurpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
@@ -55,4 +60,8 @@ public class Purpose {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.purposeGroup"
               + ".not.null}")
   private PurposeGroupEnum purposeGroup;
+
+  @JsonSerialize(using = IsoDateTimeSerializer.class)
+  @JsonDeserialize(using = IsoDateTimeDeserializer.class)
+  private LocalDateTime estimatedArrivalDateTimeAtPortOfExit;
 }
