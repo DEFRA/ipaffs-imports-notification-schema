@@ -36,4 +36,10 @@ public class StatusEnumTest {
 
     assertNull(enumResult);
   }
+
+  @Test
+  public void givenValidValuesUnderToProcessStatus_whenFromValueCalled_shouldReturnEnumValue() {
+    StatusEnum enumResult = StatusEnum.fromValue("SUBMITTED,IN_PROGRESS,MODIFY");
+    assertEquals(enumResult, StatusEnum.TO_PROCESS);
+  }
 }
