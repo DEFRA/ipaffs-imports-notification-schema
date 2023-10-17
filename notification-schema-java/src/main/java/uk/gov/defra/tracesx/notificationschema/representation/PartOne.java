@@ -209,6 +209,8 @@ public class PartOne {
   private Boolean importingFromCharity;
   private Boolean isPlaceOfDestinationThePermanentAddress;
 
+  private Boolean isExemptFromCatchCertificate;
+
   @Valid
   @NotNull(
       groups = {

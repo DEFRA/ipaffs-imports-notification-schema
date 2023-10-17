@@ -80,6 +80,7 @@ module.exports = class PartOne {
     this.contactDetails = obj.contactDetails
     this.nominatedContacts = getList(_.get(obj, 'nominatedContacts', []), NominatedContact)
     this.originalEstimatedDateTime = obj.originalEstimatedDateTime
+    this.isExemptFromCatchCertificate = obj.isExemptFromCatchCertificate
 
     return Object.seal(new Proxy(this, handler))
   }

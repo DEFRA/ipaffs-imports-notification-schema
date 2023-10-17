@@ -191,6 +191,10 @@
           "type": "boolean",
           "description": "Is the place of destination the permanent address?"
         },
+        "isExemptFromCatchCertificate": {
+          "type": "boolean",
+          "description": "Has the user said that this Notification is except from requiring catch certificates?"
+        },
         "commodities": {
           "type": "object",
           "additionalProperties": false,
