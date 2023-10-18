@@ -340,6 +340,10 @@
                     "minLength": 1,
                     "maxLength": 255,
                     "description": "Species common name of commodity for IMP notification simple commodity selection"
+                  },
+                  "isCommodityExemptFromCatchCertificate ": {
+                    "type": "boolean",
+                    "description": "Is this commodity exempt from requiring a catch certificate?"
                   }
                 }
               }

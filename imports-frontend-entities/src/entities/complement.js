@@ -20,6 +20,7 @@ module.exports = class CommodityComplement {
     this.speciesFamily = obj.speciesFamily
     this.speciesNomination = obj.speciesNomination
     this.speciesCommonName = obj.speciesCommonName
+    this.isCommodityExemptFromCatchCertificate = obj.isCommodityExemptFromCatchCertificate
 
     return Object.seal(new Proxy(this, handler))
   }
