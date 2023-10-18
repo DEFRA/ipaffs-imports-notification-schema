@@ -5,20 +5,18 @@
   <parent>
     <groupId>uk.gov.defra.tracesx</groupId>
     <artifactId>IPAFFS-Common-Schema</artifactId>
-    <version>1.0.296</version>
+    <version>1.0.297-SNAPSHOT</version>
   </parent>
 
   <artifactId>notification-schema-java</artifactId>
   <version>1.0.298-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
   <properties>
     <jacoco.maven.plugin.version>0.8.4</jacoco.maven.plugin.version>
   </properties>
 
   <scm>
     <connection>${parent.scm.connection}</connection>
-    <tag>1.0.296</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
