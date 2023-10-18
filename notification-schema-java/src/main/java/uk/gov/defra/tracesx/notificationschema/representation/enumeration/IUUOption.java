@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum IUUOption {
   IUUOK("IUUOK"),
-  IUUNA("IUUNA");
+  IUUNA("IUUNA"),
+  IUUNOTCOMPLIANT("IUUNotCompliant");
 
   private String value;
 
