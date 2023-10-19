@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>notification-schema-java</artifactId>
-  <version>1.0.296-SNAPSHOT</version>
+  <version>1.0.298-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>

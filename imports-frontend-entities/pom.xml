@@ -14,7 +14,7 @@
   </properties>
 
   <artifactId>node-common-notification-schema</artifactId>
-  <version>1.0.296-SNAPSHOT</version>
+  <version>1.0.298-SNAPSHOT</version>
   <name>notification-frontend-entities</name>
   <url>http://maven.apache.org</url>
 </project>
