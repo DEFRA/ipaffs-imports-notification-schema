@@ -21,6 +21,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RiskDe
 public class CommodityRiskResult {
 
   private RiskDecision riskDecision;
+  private RiskDecision exitRiskDecision;
   private HmiDecision hmiDecision;
   private PhsiDecision phsiDecision;
   private PhsiClassification phsiClassification;

@@ -2686,6 +2686,15 @@
             "REENFORCED_CHECK"
           ]
         },
+        "exitRiskDecision": {
+          "type": "string",
+          "description": "Transit CHED - what is the commodity complement exit risk decision",
+          "enum": [
+            "REQUIRED",
+            "NOTREQUIRED",
+            "INCONCLUSIVE"
+          ]
+        },
         "hmiDecision": {
           "type": "string",
           "description": "HMI decision required",
