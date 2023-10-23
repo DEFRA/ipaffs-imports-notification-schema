@@ -4,6 +4,7 @@ module.exports = class CommodityRiskResult {
   constructor(obj = {}) {
 
     this.riskDecision = obj.riskDecision
+    this.exitRiskDecision = obj.exitRiskDecision
     this.hmiDecision = obj.hmiDecision
     this.phsiDecision = obj.phsiDecision
     this.phsiClassification = obj.phsiClassification
