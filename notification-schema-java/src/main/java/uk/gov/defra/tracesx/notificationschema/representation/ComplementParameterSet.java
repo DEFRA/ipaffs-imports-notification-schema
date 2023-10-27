@@ -51,26 +51,24 @@ public class ComplementParameterSet {
   private String speciesID;
 
   @Valid
-  @MinValueKeyDataPair.List({
-      @MinValueKeyDataPair(
-          groups = {
-              NotificationCedOrCvedpFieldValidation.class,
-              NotificationHighRiskEuCedFieldValidation.class
-          },
-          field = NET_WEIGHT,
-          message =
-              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-                  + ".complementparameterset.keydatapair.net_weight.message}"),
-      @MinValueKeyDataPair(
-          groups = {
-              NotificationCvedaFieldValidation.class,
-              NotificationCvedaEuFieldValidation.class
-          },
-          field = NUMBER_ANIMAL,
-          message =
-              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-                  + ".complementparameterset.keydatapair.number_animal.message}")
-      })
+  @MinValueKeyDataPair(
+      groups = {
+          NotificationCedOrCvedpFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
+      field = NET_WEIGHT,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.net_weight.message}")
+  @MinValueKeyDataPair(
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class
+      },
+      field = NUMBER_ANIMAL,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.number_animal.message}")
   @IsNonNegativeIntegerKeyDataPair(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
@@ -81,17 +79,15 @@ public class ComplementParameterSet {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.number_package.message}")
-  @NotNullKeyDataPair.List({
-      @NotNullKeyDataPair(
-          groups = {
-              NotificationCedOrCvedpFieldValidation.class,
-              NotificationHighRiskEuCedFieldValidation.class
-          },
-          field = TYPE_PACKAGE,
-          message =
-              "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-                  + ".complementparameterset.keydatapair.type_package.message}")
-      })
+  @NotNullKeyDataPair(
+      groups = {
+          NotificationCedOrCvedpFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
+      field = TYPE_PACKAGE,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.type_package.message}")
   private List<ComplementParameterSetKeyDataPair> keyDataPair;
 
   private List<Identifier> identifiers;

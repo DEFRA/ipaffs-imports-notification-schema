@@ -152,7 +152,8 @@ describe('Entities: ', () => {
       CANCELLED: 'Cancelled',
       REPLACED: 'Replaced',
       PARTIALLY_REJECTED: 'Partially Rejected',
-      SPLIT_CONSIGNMENT: 'Split Consignment'
+      SPLIT_CONSIGNMENT: 'Split Consignment',
+      TO_PROCESS: 'To Process'
     });
     chai.assert.deepEqual(status, expected)
   })
