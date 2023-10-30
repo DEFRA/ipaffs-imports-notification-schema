@@ -593,10 +593,15 @@
                 "For Import Re-Conformity Check"
               ]
             },
-            "estimatedArrivalDateTimeAtPortOfExit": {
+            "estimatedArrivalDateAtPortOfExit": {
               "type": "string",
-              "javaType": "java.time.LocalDateTime",
-              "description": "Estimated date time at port of exit"
+              "javaType": "java.time.LocalDate",
+              "description": "Estimated date at port of exit"
+            },
+            "estimatedArrivalTimeAtPortOfExit": {
+              "type": "string",
+              "javaType": "java.time.LocalTime",
+              "description": "Estimated time at port of exit"
             }
           }
         },
