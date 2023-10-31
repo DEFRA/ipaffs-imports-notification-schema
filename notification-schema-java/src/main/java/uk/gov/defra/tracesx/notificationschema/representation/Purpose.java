@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -16,8 +17,10 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImp
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForNonConformingEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InternalMarketPurpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum;
-import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeDeserializer;
-import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
@@ -63,7 +66,11 @@ public class Purpose {
               + ".not.null}")
   private PurposeGroupEnum purposeGroup;
 
-  @JsonSerialize(using = IsoDateTimeSerializer.class)
-  @JsonDeserialize(using = IsoDateTimeDeserializer.class)
-  private LocalDateTime estimatedArrivalDateTimeAtPortOfExit;
+  @JsonSerialize(using = IsoDateSerializer.class)
+  @JsonDeserialize(using = IsoDateDeserializer.class)
+  private LocalDate estimatedArrivalDateAtPortOfExit;
+
+  @JsonSerialize(using = IsoTimeSerializer.class)
+  @JsonDeserialize(using = IsoTimeDeserializer.class)
+  private LocalTime estimatedArrivalTimeAtPortOfExit;
 }
