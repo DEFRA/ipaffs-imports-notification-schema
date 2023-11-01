@@ -74,7 +74,8 @@
         "CANCELLED",
         "DELETED",
         "PARTIALLY_REJECTED",
-        "SPLIT_CONSIGNMENT"
+        "SPLIT_CONSIGNMENT",
+        "SUBMITTED,IN_PROGRESS,MODIFY"
       ]
     },
     "splitConsignment": {

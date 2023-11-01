@@ -10,7 +10,7 @@ public class InternalMarketPurposeTest {
 
   @Test
   public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
-    assertThat(InternalMarketPurpose.OTHER.toString()).isEqualTo(OTHER_STRING);
+    assertThat(InternalMarketPurpose.OTHER.toString()).hasToString(OTHER_STRING);
   }
 
   @Test
