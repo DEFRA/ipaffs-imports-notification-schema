@@ -26,10 +26,13 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.AccompanyingDocuments;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEstimatedArrivalAtBcp;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.LatestVeterinaryHealthCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.LatestVeterinaryHealthCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryValidation;
@@ -46,6 +49,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
         + ".estimatedarrivalatbcp.must.be.in.future}")
+@LatestVeterinaryHealthCertificateRequired(
+    groups = LatestVeterinaryHealthCertificateRequiredValidation.class)
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")
@@ -102,7 +107,8 @@ public class Notification {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
-          NotificationCvedaEuFieldValidation.class
+          NotificationCvedaEuFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private PartOne partOne;

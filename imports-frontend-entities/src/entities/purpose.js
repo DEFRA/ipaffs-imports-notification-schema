@@ -18,6 +18,7 @@ module.exports = class Purpose {
     this.exitDate = obj.exitDate
     this.finalBIP = obj.finalBIP
     this.purposeGroup = obj.purposeGroup
+    this.estimatedArrivalDateTimeAtPortOfExit = obj.estimatedArrivalDateTimeAtPortOfExit
 
     return Object.seal(new Proxy(this, handler))
   }

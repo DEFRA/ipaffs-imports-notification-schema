@@ -27,6 +27,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Laboratory
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
 @Builder
@@ -35,12 +36,18 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @LaboratoryTestsNotAdded(
-    groups = NotificationHighRiskNonChedppFieldValidation.class,
+    groups = {
+        NotificationHighRiskNonChedppFieldValidation.class,
+        NotificationHighRiskEuCedFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
             + ".reasonlaboratorytestsnotadded.not.empty}")
 @LaboratoryTestsPending(
-    groups = NotificationHighRiskNonChedppFieldValidation.class,
+    groups = {
+        NotificationHighRiskNonChedppFieldValidation.class,
+        NotificationHighRiskEuCedFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.laboratorytestspending"
             + ".not.empty}")
@@ -50,7 +57,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")
 @CedOrCvedpControlledDestination(
-    groups = NotificationCedOrCvedpFieldValidation.class,
+    groups = {
+        NotificationCedOrCvedpFieldValidation.class,
+        NotificationHighRiskEuCedFieldValidation.class
+    },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.controlleddestination"
             + ".not.empty}")
@@ -67,7 +77,10 @@ public class PartTwo {
   private ImpactOfTransportOnAnimals impactOfTransportOnAnimals;
 
   @NotNull(
-      groups = NotificationHighRiskNonChedppFieldValidation.class,
+      groups = {
+          NotificationHighRiskNonChedppFieldValidation.class,
+          NotificationHighRiskEuCedFieldValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo"
               + ".laboratorytestsrequired.not.null}")
