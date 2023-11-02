@@ -1227,7 +1227,8 @@
           "description": "Result of Illegal, Unreported and Unregulated (IUU) check",
           "enum": [
             "IUUOK",
-            "IUUNA"
+            "IUUNA",
+            "IUUNotCompliant"
           ]
         }
       }

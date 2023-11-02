@@ -37,7 +37,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @MinCommoditiesGrossWeight(
     groups = {
-        NotificationCedOrCvedpOrChedppFieldValidation.class,
+        NotificationCedOrCvedpFieldValidation.class,
+        NotificationChedppFieldValidation.class,
         NotificationHighRiskEuCedFieldValidation.class
     },
     message =
@@ -52,21 +53,31 @@ public class Commodities {
 
   @NotNull(
       groups = {
-          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationCedOrCvedpFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossweight.not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
+              + ".totalgrossweight.not.null}")
   private BigDecimal totalGrossWeight;
 
   @NotNull(
       groups = {
-          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationCedOrCvedpFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".totalnetweight.not.null}")
+  @NotNull(
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
               + ".totalnetweight.not.null}")
   private BigDecimal totalNetWeight;
 
@@ -118,6 +129,7 @@ public class Commodities {
   @NotNull(
       groups = {
           NotificationHighRiskFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
@@ -132,9 +144,11 @@ public class Commodities {
 
   private String regionOfOrigin = null;
 
+  @Valid
   @NotNull(
       groups = {
-          NotificationCedOrCvedpOrChedppFieldValidation.class,
+          NotificationCedOrCvedpFieldValidation.class,
+          NotificationChedppFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class
       },
       message =
