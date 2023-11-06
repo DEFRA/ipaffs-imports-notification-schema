@@ -57,6 +57,7 @@ const Phsi = require('../src/entities/phsi')
 const InspectionOverride = require('../src/entities/inspection_override')
 const ExternalReference = require('../src/entities/external_reference')
 const RiskAssessment = require('../src/entities/risk_assessment')
+const SealCheck = require('../src/entities/seal_check')
 
 describe('Entities: ', () => {
 
@@ -114,7 +115,8 @@ describe('Entities: ', () => {
     Phsi,
     InspectionOverride,
     ExternalReference,
-    RiskAssessment
+    RiskAssessment,
+    SealCheck
   ]
 
   it('are capable of storing data', () => {
