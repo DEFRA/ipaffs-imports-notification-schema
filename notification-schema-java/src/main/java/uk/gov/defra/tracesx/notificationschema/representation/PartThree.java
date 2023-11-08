@@ -21,4 +21,7 @@ public class PartThree {
   private Control control;
   private Set<ValidationMessageCode> consignmentValidation;
   private ControlStatus controlStatus;
+  private Boolean sealCheckRequired;
+  private SealCheck sealCheck;
+  private InspectionOverride sealCheckOverride;
 }

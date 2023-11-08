@@ -1164,6 +1164,18 @@
           "items": {
             "$ref": "#/definitions/ValidationMessageCode"
           }
+        },
+        "sealCheckRequired": {
+          "type": "boolean",
+          "description": "Is the seal check required"
+        },
+        "sealCheck": {
+          "$ref": "#/definitions/SealCheck",
+          "description": "Seal check details"
+        },
+        "sealCheckOverride": {
+          "$ref": "#/definitions/InspectionOverride",
+          "description": "Seal check override details"
         }
       }
     },
@@ -1358,23 +1370,8 @@
           "description": "Inspection required"
         },
         "inspectionOverride": {
-          "type": "object",
-          "description": "Details about the manual inspection override",
-          "properties": {
-            "originalDecision": {
-              "$ref": "#/definitions/InspectionRequired",
-              "description": "Original inspection decision"
-            },
-            "overriddenOn": {
-              "type": "string",
-              "javaType": "java.time.LocalDateTime",
-              "description": "The time the risk decision is overridden"
-            },
-            "overriddenBy": {
-              "$ref": "#/definitions/UserInformation",
-              "description": "User entity who has manually overridden the inspection"
-            }
-          }
+          "$ref": "#/definitions/InspectionOverride",
+          "description": "Details about the manual inspection override"
         }
       }
     },
@@ -2802,6 +2799,48 @@
           "type": "string",
           "javaType": "java.time.LocalDateTime",
           "description": "The date and time the risk level has been set for a notification"
+        }
+      }
+    },
+    "InspectionOverride": {
+      "type": "object",
+      "description": "Details about the manual inspection override",
+      "properties": {
+        "originalDecision": {
+          "$ref": "#/definitions/InspectionRequired",
+          "description": "Original inspection decision"
+        },
+        "overriddenOn": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "The time the risk decision is overridden"
+        },
+        "overriddenBy": {
+          "$ref": "#/definitions/UserInformation",
+          "description": "User entity who has manually overridden the inspection"
+        }
+      }
+    },
+    "SealCheck": {
+      "type": "object",
+      "description": "Details of the seal check",
+      "properties": {
+        "satisfactory": {
+          "type": "boolean",
+          "description": "Is seal check satisfactory"
+        },
+        "reason": {
+          "type": "string",
+          "description": "reason for not satisfactory"
+        },
+        "officialInspector": {
+          "$ref": "#/definitions/OfficialInspector",
+          "description": "Official inspector"
+        },
+        "dateTimeOfCheck": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "date and time of seal check"
         }
       }
     }
