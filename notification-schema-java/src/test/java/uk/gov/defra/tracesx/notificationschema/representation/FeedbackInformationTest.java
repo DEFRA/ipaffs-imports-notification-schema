@@ -11,7 +11,6 @@ public class FeedbackInformationTest {
     EqualsVerifier.forClass(FeedbackInformation.class)
         .usingGetClass()
         .suppress(Warning.NONFINAL_FIELDS)
-        .suppress(Warning.ANNOTATION)
         .verify();
   }
 }

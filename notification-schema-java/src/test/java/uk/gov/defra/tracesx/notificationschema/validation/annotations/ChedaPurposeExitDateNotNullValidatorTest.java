@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,7 @@ public class ChedaPurposeExitDateNotNullValidatorTest {
   @Mock
   ConstraintValidatorContext constraintValidatorContextMock;
   @Mock
-  ConstraintValidatorContext.ConstraintViolationBuilder constraintViolationBuilderMock;
+  HibernateConstraintViolationBuilder hibernateConstraintViolationBuilder;
   @Mock
   ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext nodeBuilderContextMock;
 
@@ -41,9 +42,9 @@ public class ChedaPurposeExitDateNotNullValidatorTest {
 
     when(hibernateConstraintValidatorContextMock
         .buildConstraintViolationWithTemplate(anyString()))
-        .thenReturn(constraintViolationBuilderMock);
+        .thenReturn(hibernateConstraintViolationBuilder);
 
-    when(constraintViolationBuilderMock.addPropertyNode(anyString()))
+    when(hibernateConstraintViolationBuilder.addPropertyNode(anyString()))
         .thenReturn(nodeBuilderContextMock);
   }
 
