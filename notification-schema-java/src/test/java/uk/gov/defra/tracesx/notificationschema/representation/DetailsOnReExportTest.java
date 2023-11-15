@@ -10,7 +10,6 @@ public class DetailsOnReExportTest {
   public void equals() {
     EqualsVerifier.forClass(DetailsOnReExport.class)
         .suppress(Warning.NONFINAL_FIELDS)
-        .suppress(Warning.ANNOTATION)
         .verify();
   }
 }

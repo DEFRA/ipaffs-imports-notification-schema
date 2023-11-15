@@ -8,6 +8,7 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 
 import javax.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
@@ -30,7 +31,7 @@ public class NotNullTransitExitBipValidatorTest {
   @Mock
   ConstraintValidatorContext constraintValidatorContextMock;
   @Mock
-  ConstraintValidatorContext.ConstraintViolationBuilder constraintViolationBuilderMock;
+  HibernateConstraintViolationBuilder hibernateConstraintViolationBuilder;
   @Mock
   ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext nodeBuilderContextMock;
   private NotNullTransitExitBipValidator validator;
@@ -47,9 +48,9 @@ public class NotNullTransitExitBipValidatorTest {
 
     when(hibernateConstraintValidatorContextMock
         .buildConstraintViolationWithTemplate(anyString()))
-        .thenReturn(constraintViolationBuilderMock);
+        .thenReturn(hibernateConstraintViolationBuilder);
 
-    when(constraintViolationBuilderMock.addPropertyNode(anyString()))
+    when(hibernateConstraintViolationBuilder.addPropertyNode(anyString()))
         .thenReturn(nodeBuilderContextMock);
   }
 

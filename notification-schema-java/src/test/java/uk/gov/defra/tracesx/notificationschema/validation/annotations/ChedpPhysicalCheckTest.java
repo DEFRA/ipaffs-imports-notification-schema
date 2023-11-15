@@ -11,6 +11,7 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ public class ChedpPhysicalCheckTest {
   @Mock
   ConstraintValidatorContext constraintValidatorContextMock;
   @Mock
-  ConstraintViolationBuilder constraintViolationBuilderMock;
+  HibernateConstraintViolationBuilder hibernateConstraintViolationBuilder;
   @Mock
   NodeBuilderCustomizableContext nodeBuilderContextMock;
 
@@ -45,9 +46,9 @@ public class ChedpPhysicalCheckTest {
 
     when(hibernateConstraintValidatorContextMock
         .buildConstraintViolationWithTemplate(anyString()))
-        .thenReturn(constraintViolationBuilderMock);
+        .thenReturn(hibernateConstraintViolationBuilder);
 
-    when(constraintViolationBuilderMock.addPropertyNode(anyString()))
+    when(hibernateConstraintViolationBuilder.addPropertyNode(anyString()))
         .thenReturn(nodeBuilderContextMock);
   }
 

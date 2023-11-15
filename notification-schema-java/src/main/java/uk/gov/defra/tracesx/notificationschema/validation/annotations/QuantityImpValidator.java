@@ -49,7 +49,7 @@ public class QuantityImpValidator
          .map(ImpQuantityDataKeys::getValue)
          .filter(value -> value.equals(keyDataPair.getKey())
             && StringUtils.isNotEmpty(keyDataPair.getData()))
-         .collect(Collectors.toList());
+         .toList();
 
     if (!nonEmptyQuantities.isEmpty()) {
       return true;
