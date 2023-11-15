@@ -58,6 +58,8 @@ const InspectionOverride = require('../src/entities/inspection_override')
 const ExternalReference = require('../src/entities/external_reference')
 const RiskAssessment = require('../src/entities/risk_assessment')
 const SealCheck = require('../src/entities/seal_check')
+const CatchCertificateAttachment = require('../src/entities/catch_certificate_attachment')
+const CatchCertificateDetails = require('../src/entities/catch_certificate_details')
 
 describe('Entities: ', () => {
 
@@ -116,7 +118,9 @@ describe('Entities: ', () => {
     InspectionOverride,
     ExternalReference,
     RiskAssessment,
-    SealCheck
+    SealCheck,
+    CatchCertificateAttachment,
+    CatchCertificateDetails
   ]
 
   it('are capable of storing data', () => {
