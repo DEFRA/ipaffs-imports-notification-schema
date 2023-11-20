@@ -192,6 +192,10 @@
           "type": "boolean",
           "description": "Is the place of destination the permanent address?"
         },
+        "isCatchCertificateRequired": {
+          "type": "boolean",
+          "description": "Is this catch certificate required?"
+        },
         "commodities": {
           "type": "object",
           "additionalProperties": false,
@@ -2556,6 +2560,10 @@
         "externalReference": {
           "description": "External reference of accompanying document, which relates to a downstream service",
           "$ref": "#/definitions/ExternalReference"
+        },
+        "flagState": {
+          "type": "string",
+          "description": "The flag state of catching vessel(s)"
         }
       }
     },

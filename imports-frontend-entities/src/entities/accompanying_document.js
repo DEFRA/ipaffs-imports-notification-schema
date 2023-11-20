@@ -13,6 +13,7 @@ module.exports = class AccompanyingDocument {
     this.uploadUserId = obj.uploadUserId
     this.uploadOrganisationId = obj.uploadOrganisationId
     this.externalReference = obj.externalReference
+    this.flagState = obj.flagState
 
     return Object.seal(new Proxy(this, handler))
   }

@@ -41,6 +41,7 @@ public class AccompanyingDocument {
   private UUID uploadUserId = null;
   private UUID uploadOrganisationId = null;
   private ExternalReference externalReference = null;
+  private String flagState;
 
   @JsonIgnore
   public boolean isClonedDocument() {
