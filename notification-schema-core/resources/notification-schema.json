@@ -593,10 +593,15 @@
                 "For Import Re-Conformity Check"
               ]
             },
-            "estimatedArrivalDateTimeAtPortOfExit": {
+            "estimatedArrivalDateAtPortOfExit": {
               "type": "string",
-              "javaType": "java.time.LocalDateTime",
-              "description": "Estimated date time at port of exit"
+              "javaType": "java.time.LocalDate",
+              "description": "Estimated date at port of exit"
+            },
+            "estimatedArrivalTimeAtPortOfExit": {
+              "type": "string",
+              "javaType": "java.time.LocalTime",
+              "description": "Estimated time at port of exit"
             }
           }
         },
@@ -2680,6 +2685,15 @@
             "NOTREQUIRED",
             "INCONCLUSIVE",
             "REENFORCED_CHECK"
+          ]
+        },
+        "exitRiskDecision": {
+          "type": "string",
+          "description": "Transit CHED - what is the commodity complement exit risk decision",
+          "enum": [
+            "REQUIRED",
+            "NOTREQUIRED",
+            "INCONCLUSIVE"
           ]
         },
         "hmiDecision": {
