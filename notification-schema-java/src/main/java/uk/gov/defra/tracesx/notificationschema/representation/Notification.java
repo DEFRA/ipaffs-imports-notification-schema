@@ -32,6 +32,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation
 import uk.gov.defra.tracesx.notificationschema.validation.groups.LatestVeterinaryHealthCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
@@ -44,7 +45,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ValidStatus(groups = BasicValidation.class)
 @AccompanyingDocuments(
-    groups = NotificationVeterinaryValidation.class)
+    groups = {NotificationVeterinaryValidation.class, NotificationCvedaFieldValidation.class})
 @ChedppEstimatedArrivalAtBcp(
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
