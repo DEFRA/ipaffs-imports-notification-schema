@@ -482,4 +482,5 @@ public class PartOne {
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
   private LocalDateTime originalEstimatedDateTime;
+  private Boolean isCatchCertificateRequired;
 }
