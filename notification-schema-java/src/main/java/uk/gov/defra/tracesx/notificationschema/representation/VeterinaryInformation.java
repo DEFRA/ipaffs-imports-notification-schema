@@ -38,6 +38,8 @@ public class VeterinaryInformation {
   @Valid
   private List<AccompanyingDocument> accompanyingDocuments;
 
+  private List<CatchCertificateAttachment> catchCertificateAttachments;
+
   private List<NotificationIdentificationDetails> identificationDetails;
 
   @JsonSerialize(using = IsoDateSerializer.class)
