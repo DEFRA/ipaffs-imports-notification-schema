@@ -15,6 +15,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
@@ -41,6 +42,12 @@ public class Party {
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
           + ".address.not.empty}")
+  @NotEmpty(
+      groups = {
+          NotificationCvedpEuFieldValidation.class,
+      },
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
+          + ".address.eucvedp.not.empty}")
   @NotEmpty(
       groups = {
           NotificationCvedaEuFieldValidation.class,
