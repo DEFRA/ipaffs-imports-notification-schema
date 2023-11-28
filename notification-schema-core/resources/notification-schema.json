@@ -2603,7 +2603,7 @@
           "description": "Catch certificate date of issue"
         },
         "flagState": {
-          "type": "string",
+          "$ref": "#/definitions/Country",
           "description": "Catch certificate flag state of catching vessel(s)"
         },
         "species": {
