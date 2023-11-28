@@ -36,10 +36,7 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.chedpp.not.empty}")
   @NotEmpty(
-      groups = {
-          NotificationCvedaEuFieldValidation.class,
-          NotificationChedppFieldValidation.class
-      },
+      groups = NotificationCvedaEuFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.eucveda.not.empty}")
@@ -78,10 +75,12 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.document.not.empty}")
   @NotEmpty(
-      groups = {
-          NotificationCvedaEuFieldValidation.class,
-          NotificationChedppFieldValidation.class
-      },
+      groups = NotificationChedppFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.document.chedpp.not.empty}")
+  @NotEmpty(
+      groups = NotificationCvedaEuFieldValidation.class,
       message =
            "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.document.eucveda.not.empty}")
