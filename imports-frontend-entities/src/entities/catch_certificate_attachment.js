@@ -7,6 +7,7 @@ module.exports = class CatchCertificateAttachment {
 
         this.attachmentId = obj.attachmentId
         this.catchCertificateDetails = getList(obj.catchCertificateDetails ?? [], CatchCertificateDetails)
+        this.numberOfCatchCertificates = obj.numberOfCatchCertificates
 
         return Object.seal(new Proxy(this, handler))
     }

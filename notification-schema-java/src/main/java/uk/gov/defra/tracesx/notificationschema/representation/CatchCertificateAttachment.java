@@ -14,4 +14,5 @@ public class CatchCertificateAttachment {
 
   private String attachmentId;
   private List<CatchCertificateDetails> catchCertificateDetails;
+  private Integer numberOfCatchCertificates;
 }
