@@ -192,6 +192,10 @@
           "type": "boolean",
           "description": "Is the place of destination the permanent address?"
         },
+        "isCatchCertificateRequired": {
+          "type": "boolean",
+          "description": "Is this catch certificate required?"
+        },
         "commodities": {
           "type": "object",
           "additionalProperties": false,
