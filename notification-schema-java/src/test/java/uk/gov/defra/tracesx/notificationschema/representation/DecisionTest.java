@@ -1,5 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 import org.junit.Test;
@@ -21,19 +22,19 @@ public class DecisionTest {
         .notAcceptableActionUseForOtherPurposesReason(NotAcceptableActionReasonEnum.OTHER)
         .build();
 
-    assertTrue(decision.getNotAcceptableActionDestructionReason()
-        .equals(NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS));
-    assertTrue(decision.getNotAcceptableActionEntryRefusalReason()
-        .equals(NotAcceptableActionReasonEnum.PACKAGING_MATERIAL));
-    assertTrue(decision.getNotAcceptableActionQuarantineImposedReason()
-        .equals(NotAcceptableActionReasonEnum.THE_INTERCEPTED_PART_OF_THE_CONSIGNMENT));
-    assertTrue(decision.getNotAcceptableActionSpecialTreatmentReason()
-        .equals(NotAcceptableActionReasonEnum.OTHER));
-    assertTrue(decision.getNotAcceptableActionIndustrialProcessingReason()
-        .equals(NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS));
-    assertTrue(decision.getNotAcceptableActionReDispatchReason()
-        .equals(NotAcceptableActionReasonEnum.MEANS_OF_TRANSPORT));
-    assertTrue(decision.getNotAcceptableActionUseForOtherPurposesReason()
-        .equals(NotAcceptableActionReasonEnum.OTHER));
+    assertEquals(decision.getNotAcceptableActionDestructionReason(),
+            NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS);
+    assertEquals(decision.getNotAcceptableActionEntryRefusalReason(),
+            NotAcceptableActionReasonEnum.PACKAGING_MATERIAL);
+    assertEquals(decision.getNotAcceptableActionQuarantineImposedReason(),
+            NotAcceptableActionReasonEnum.THE_INTERCEPTED_PART_OF_THE_CONSIGNMENT);
+    assertEquals(decision.getNotAcceptableActionSpecialTreatmentReason(),
+            NotAcceptableActionReasonEnum.OTHER);
+    assertEquals(decision.getNotAcceptableActionIndustrialProcessingReason(),
+            NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS);
+    assertEquals(decision.getNotAcceptableActionReDispatchReason(),
+            NotAcceptableActionReasonEnum.MEANS_OF_TRANSPORT);
+    assertEquals(decision.getNotAcceptableActionUseForOtherPurposesReason(),
+            NotAcceptableActionReasonEnum.OTHER);
   }
 }
