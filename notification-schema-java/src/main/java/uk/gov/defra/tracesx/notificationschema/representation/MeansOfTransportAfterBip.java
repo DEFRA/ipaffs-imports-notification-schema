@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TransportMethod;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 @Builder
@@ -32,6 +33,11 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".eucveda.not.empty}",
       groups = {TransporterDetailsRequiredEuCvedaValidation.class})
+  @NotEmpty(
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
+              + ".eucvedp.not.empty}",
+      groups = {TransporterDetailsRequiredEuCvedpValidation.class})
   private String id = null;
 
   @NotNull(
@@ -39,6 +45,11 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.type"
           + ".eucveda.not.null}",
       groups = {TransporterDetailsRequiredEuCvedaValidation.class})
+  @NotNull(
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.type"
+              + ".eucvedp.not.null}",
+      groups = {TransporterDetailsRequiredEuCvedpValidation.class})
   @NotNull(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.type"
@@ -60,5 +71,11 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
               + ".document.eucveda.not.empty}",
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class})
+  @NotEmpty(
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
+              + ".document.eucvedp.not.empty}",
+      groups = {
+          TransporterDetailsRequiredEuCvedpValidation.class})
   private String document = null;
 }
