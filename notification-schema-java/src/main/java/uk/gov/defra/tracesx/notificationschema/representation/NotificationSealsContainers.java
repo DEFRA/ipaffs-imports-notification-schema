@@ -13,6 +13,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
@@ -37,7 +38,8 @@ public class NotificationSealsContainers {
   @NotBlank(
       groups = {
           NotificationHighRiskNonChedppFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "Enter container or road trailer number")
   private String containerNumber;

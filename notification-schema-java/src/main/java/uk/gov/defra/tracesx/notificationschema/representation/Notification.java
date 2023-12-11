@@ -32,6 +32,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation
 import uk.gov.defra.tracesx.notificationschema.validation.groups.LatestVeterinaryHealthCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationPart3FieldValidation;
@@ -109,7 +110,8 @@ public class Notification {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private PartOne partOne;

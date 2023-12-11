@@ -25,6 +25,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
@@ -38,7 +39,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
     groups = {
         NotificationCedOrCvedpFieldValidation.class,
         NotificationChedppFieldValidation.class,
-        NotificationHighRiskEuCedFieldValidation.class
+        NotificationHighRiskEuCedFieldValidation.class,
+        NotificationCvedpEuFieldValidation.class
     },
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -53,7 +55,8 @@ public class Commodities {
   @NotNull(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -68,7 +71,8 @@ public class Commodities {
   @NotNull(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -85,7 +89,8 @@ public class Commodities {
   @NotNull(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -130,7 +135,8 @@ public class Commodities {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
@@ -148,7 +154,8 @@ public class Commodities {
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
           NotificationChedppFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorStatus;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.EconomicOperatorType;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 @Builder
@@ -23,7 +24,11 @@ public class EconomicOperator {
   private String id;
 
   @NotNull(
-      groups = {NotificationCvedaFieldValidation.class, TransporterDetailsRequiredValidation.class},
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredEuCvedpValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.type.not"
               + ".null}")
@@ -37,7 +42,11 @@ public class EconomicOperator {
   private EconomicOperatorStatus status;
 
   @NotNull(
-      groups = {NotificationCvedaFieldValidation.class, TransporterDetailsRequiredValidation.class},
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredEuCvedpValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
               + ".companyname.not.null}")
@@ -50,7 +59,11 @@ public class EconomicOperator {
   private String otherIdentifier;
 
   @NotNull(
-      groups = {NotificationCvedaFieldValidation.class, TransporterDetailsRequiredValidation.class},
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredEuCvedpValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter.address"
               + ".not.null}")

@@ -53,7 +53,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCon
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
@@ -131,7 +130,8 @@ public class PartOne {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
           + ".not.null}")
@@ -147,7 +147,8 @@ public class PartOne {
       groups = {
           NotificationHighRiskFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor"
           + ".not.null}")
@@ -166,7 +167,8 @@ public class PartOne {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
           + ".not.null}")
@@ -177,7 +179,8 @@ public class PartOne {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.importer"
           + ".not.null}")
@@ -192,7 +195,8 @@ public class PartOne {
           NotificationHighRiskFieldValidation.class,
           NotificationLowRiskFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.not"
@@ -218,7 +222,8 @@ public class PartOne {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
           + ".not.null}")
@@ -266,7 +271,8 @@ public class PartOne {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   @ChedaPurposeExitDateNotNull(
@@ -280,7 +286,10 @@ public class PartOne {
   private Purpose purpose;
 
   @NotBlank(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
   @NotBlank(
@@ -353,8 +362,11 @@ public class PartOne {
 
   @Valid
   @NotNull(
-      groups = {TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class},
+      groups = {
+          TransporterDetailsRequiredEuCvedaValidation.class,
+          TransporterDetailsRequiredValidation.class,
+          TransporterDetailsRequiredEuCvedpValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
   private EconomicOperator transporter;
