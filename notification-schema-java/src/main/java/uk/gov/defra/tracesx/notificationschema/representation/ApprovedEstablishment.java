@@ -13,6 +13,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 
@@ -33,7 +34,8 @@ public class ApprovedEstablishment {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String country;

@@ -65,7 +65,8 @@ public class Party {
           NotificationHighRiskFieldValidation.class,
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationCvedpEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
   private String country;
