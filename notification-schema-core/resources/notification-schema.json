@@ -196,6 +196,10 @@
           "type": "boolean",
           "description": "Is this catch certificate required?"
         },
+        "isGVMSRoute": {
+          "type": "boolean",
+          "description": "Is GVMS route?"
+        },
         "commodities": {
           "type": "object",
           "additionalProperties": false,

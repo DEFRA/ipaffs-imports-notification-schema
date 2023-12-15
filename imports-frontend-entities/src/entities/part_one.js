@@ -81,6 +81,7 @@ module.exports = class PartOne {
     this.nominatedContacts = getList(_.get(obj, 'nominatedContacts', []), NominatedContact)
     this.originalEstimatedDateTime = obj.originalEstimatedDateTime
     this.isCatchCertificateRequired = obj.isCatchCertificateRequired
+    this.isGVMSRoute = obj.isGVMSRoute
 
     return Object.seal(new Proxy(this, handler))
   }

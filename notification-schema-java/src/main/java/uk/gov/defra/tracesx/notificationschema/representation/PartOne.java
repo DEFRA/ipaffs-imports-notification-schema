@@ -529,4 +529,5 @@ public class PartOne {
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
   private LocalDateTime originalEstimatedDateTime;
   private Boolean isCatchCertificateRequired;
+  private Boolean isGVMSRoute;
 }
