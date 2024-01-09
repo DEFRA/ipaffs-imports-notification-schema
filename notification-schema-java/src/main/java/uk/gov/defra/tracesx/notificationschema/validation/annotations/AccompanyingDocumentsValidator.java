@@ -24,9 +24,9 @@ public class AccompanyingDocumentsValidator implements
     List<AccompanyingDocument> partTwoDocuments =
         notification.getPartTwo().getAccompanyingDocuments();
 
-    return (veterinaryInformation != null
+    return notification.isCvedp() == true || ((veterinaryInformation != null
         && veterinaryInformation.getAccompanyingDocuments() != null
         && !veterinaryInformation.getAccompanyingDocuments().isEmpty())
-        || (partTwoDocuments != null && !partTwoDocuments.isEmpty());
+        || (partTwoDocuments != null && !partTwoDocuments.isEmpty()));
   }
 }
