@@ -63,6 +63,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCe
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCHEDPPValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
@@ -365,7 +366,8 @@ public class PartOne {
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class,
           TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredEuCvedpValidation.class
+          TransporterDetailsRequiredEuCvedpValidation.class,
+          TransporterDetailsRequiredCvedaValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
