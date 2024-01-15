@@ -1,9 +1,9 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 import java.util.Optional;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;

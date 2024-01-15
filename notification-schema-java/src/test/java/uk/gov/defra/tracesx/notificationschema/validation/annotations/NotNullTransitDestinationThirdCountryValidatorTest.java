@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum.ACCEPTABLE_FOR_TRANSHIPMENT;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum.ACCEPTABLE_FOR_TRANSIT;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Before;

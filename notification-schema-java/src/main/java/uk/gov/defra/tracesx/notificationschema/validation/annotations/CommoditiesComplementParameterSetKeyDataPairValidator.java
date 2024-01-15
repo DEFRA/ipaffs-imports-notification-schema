@@ -1,11 +1,11 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.CommodityComplement;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
