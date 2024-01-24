@@ -9,9 +9,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -52,12 +52,11 @@ public class ContactDetailsEmailOrTelephoneRequiredValidatorTest {
     HibernateConstraintValidatorContext validatorContext = mock(
         HibernateConstraintValidatorContext.class);
     when(context.unwrap(HibernateConstraintValidatorContext.class)).thenReturn(validatorContext);
-    ConstraintViolationBuilder constraintViolationBuilder = mock(
-        ConstraintViolationBuilder.class);
+    HibernateConstraintViolationBuilder hibernateConstraintViolationBuilder = mock(HibernateConstraintViolationBuilder.class);
     when(validatorContext.buildConstraintViolationWithTemplate(any())).thenReturn(
-        constraintViolationBuilder);
+        hibernateConstraintViolationBuilder);
     NodeBuilderCustomizableContext propertyNode = mock(NodeBuilderCustomizableContext.class);
-    when(constraintViolationBuilder.addPropertyNode(anyString())).thenReturn(propertyNode);
+    when(hibernateConstraintViolationBuilder.addPropertyNode(anyString())).thenReturn(propertyNode);
     ConstraintValidatorContext constraintViolation = mock(ConstraintValidatorContext.class);
     when(propertyNode.addConstraintViolation()).thenReturn(constraintViolation);
 

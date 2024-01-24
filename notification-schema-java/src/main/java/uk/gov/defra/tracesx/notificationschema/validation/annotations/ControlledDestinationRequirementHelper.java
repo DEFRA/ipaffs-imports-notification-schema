@@ -23,8 +23,7 @@ public class ControlledDestinationRequirementHelper {
     switch (type) {
       case CVEDA:
         return isControlledDestinationRequiredForCveda(decision);
-      case CED:
-      case CVEDP:
+      case CED, CVEDP:
         return isControlledDestinationRequiredForCedCvedp(decision);
       default:
         return false;

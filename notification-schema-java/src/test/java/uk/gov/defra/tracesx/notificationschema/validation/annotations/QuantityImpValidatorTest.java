@@ -10,6 +10,7 @@ import java.util.List;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ public class QuantityImpValidatorTest {
   @Mock
   ConstraintValidatorContext constraintValidatorContextMock;
   @Mock
-  ConstraintViolationBuilder constraintViolationBuilderMock;
+  HibernateConstraintViolationBuilder hibernateConstraintViolationBuilder;
 
   @Before
   public void setUp() {
@@ -41,7 +42,7 @@ public class QuantityImpValidatorTest {
 
     when(hibernateConstraintValidatorContextMock
         .buildConstraintViolationWithTemplate("Weight must be entered"))
-        .thenReturn(constraintViolationBuilderMock);
+        .thenReturn(hibernateConstraintViolationBuilder);
 
   }
 

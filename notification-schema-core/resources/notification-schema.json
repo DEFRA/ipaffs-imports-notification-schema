@@ -192,6 +192,14 @@
           "type": "boolean",
           "description": "Is the place of destination the permanent address?"
         },
+        "isCatchCertificateRequired": {
+          "type": "boolean",
+          "description": "Is this catch certificate required?"
+        },
+        "isGVMSRoute": {
+          "type": "boolean",
+          "description": "Is GVMS route?"
+        },
         "commodities": {
           "type": "object",
           "additionalProperties": false,
@@ -701,6 +709,13 @@
               "description": "Accompanying documents",
               "items": {
                 "$ref": "#/definitions/AccompanyingDocument"
+              }
+            },
+            "catchCertificateAttachments": {
+              "type": "array",
+              "description": "Catch certificate attachments",
+              "items": {
+                "$ref": "#/definitions/CatchCertificateAttachment"
               }
             },
             "identificationDetails": {
@@ -2556,6 +2571,61 @@
         "externalReference": {
           "description": "External reference of accompanying document, which relates to a downstream service",
           "$ref": "#/definitions/ExternalReference"
+        }
+      }
+    },
+    "CatchCertificateAttachment": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notificationschema.representation.CatchCertificateAttachment",
+      "description": "Catch certificate attachment",
+      "properties": {
+        "attachmentId": {
+          "type": "string",
+          "description": "The UUID of the uploaded catch certificate file in blob storage"
+        },
+        "numberOfCatchCertificates": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "description": "The total number of catch certificates on the attachment"
+        },
+        "CatchCertificateDetails": {
+          "type": "array",
+          "description": "List of catch certificate details",
+          "items": {
+            "$ref": "#/definitions/CatchCertificateDetails"
+          }
+        }
+      }
+    },
+    "CatchCertificateDetails": {
+      "type": "object",
+      "javaType": "uk.gov.defra.tracesx.notificationschema.representation.CatchCertificateDetails",
+      "description": "Catch certificate details for uploaded attachment",
+      "properties": {
+        "catchCertificateId": {
+          "type": "string",
+          "description": "The UUID of the catch certificate"
+        },
+        "catchCertificateReference": {
+          "type": "string",
+          "description": "Catch certificate reference"
+        },
+        "dateOfIssue": {
+          "type": "string",
+          "javaType": "java.time.LocalDate",
+          "description": "Catch certificate date of issue"
+        },
+        "flagState": {
+          "$ref": "#/definitions/Country",
+          "description": "Catch certificate flag state of catching vessel(s)"
+        },
+        "species": {
+          "type": "array",
+          "description": "List of species imported under this catch certificate",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
