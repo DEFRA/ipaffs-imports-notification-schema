@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ChedaPurposeExitDateNotNullValidatorTest {
