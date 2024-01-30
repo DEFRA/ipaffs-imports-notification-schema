@@ -345,6 +345,10 @@
                     "minLength": 1,
                     "maxLength": 255,
                     "description": "Species common name of commodity for IMP notification simple commodity selection"
+                  },
+                  "isCdsMatched" : {
+                    "type": "boolean",
+                    "description": "Has commodity been matched with corresponding CDS declaration"
                   }
                 }
               }
@@ -872,6 +876,10 @@
     "requestId": {
       "type": "string",
       "description": "Request UUID to trace bulk upload"
+    },
+    "isCdsFullMatched": {
+      "type": "boolean",
+      "description": "Have all commodities been matched with corresponding CDS declaration(s)"
     }
   },
   "definitions": {
