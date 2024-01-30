@@ -53,7 +53,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCon
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationGvmsRouteValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
@@ -532,12 +531,5 @@ public class PartOne {
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
   private LocalDateTime originalEstimatedDateTime;
   private Boolean isCatchCertificateRequired;
-  @NotNull(
-      groups = {
-          NotificationGvmsRouteValidation.class
-      },
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.isGVMSRoute"
-              + ".not.null}")
   private Boolean isGVMSRoute;
 }
