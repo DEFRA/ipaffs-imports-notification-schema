@@ -181,4 +181,5 @@ public class Notification {
   private Boolean isRiskDecisionLocked;
   private Boolean isBulkUploadInProgress;
   private String requestId;
+  private Boolean isCdsFullMatched;
 }

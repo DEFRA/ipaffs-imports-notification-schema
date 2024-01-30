@@ -33,4 +33,5 @@ public class CommodityComplement {
   private String speciesFamily;
   private String speciesNomination;
   private String speciesCommonName;
+  private Boolean isCdsMatched;
 }
