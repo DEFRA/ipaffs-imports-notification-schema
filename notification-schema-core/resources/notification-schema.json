@@ -825,6 +825,74 @@
           "type": "string",
           "javaType": "java.time.LocalDateTime",
           "description": "Original estimated date time of arrival"
+        },
+        "billingInformation" : {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "emailAddress": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255,
+              "description": "Billing email address"
+            },
+            "phoneNumber": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30,
+              "description": "Billing phone number"
+            },
+            "postalAddress": {
+              "description": "Billing postal address",
+              "type": "object",
+              "properties": {
+                "addressLine1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255,
+                  "description": "1st line of address"
+                },
+                "addressLine2": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 255,
+                  "description": "2nd line of address"
+                },
+                "addressLine3": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 255,
+                  "description": "3rd line of address"
+                },
+                "cityOrTown": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255,
+                  "description": "City or town name"
+                },
+                "postalCode": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32,
+                  "description": "Post code"
+                }
+              }
+            }
+          }
+        },
+        "isChargeable": {
+          "type": "boolean",
+          "description": "Indicates whether CUC applies to the notification"
+        },
+        "commonUserCharge": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "wasSentToTradeCharge": {
+              "type": "boolean",
+              "description": "Indicates whether the last applicable change was successfully send over the interface to Trade Charge"
+            }
+          }
         }
       }
     },

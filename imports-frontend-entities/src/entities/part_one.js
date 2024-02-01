@@ -11,6 +11,8 @@ const Route = require('./route')
 const NotificationSealsContainers = require('./notification_seals_containers')
 const ConsignmentValidation = require('./consignment_validation')
 const NominatedContact = require('./nominated_contact')
+const BillingInformation = require('./billing_information')
+const CommonUserCharge = require('./common_user_charge')
 
 module.exports = class PartOne {
 
@@ -82,6 +84,9 @@ module.exports = class PartOne {
     this.originalEstimatedDateTime = obj.originalEstimatedDateTime
     this.isCatchCertificateRequired = obj.isCatchCertificateRequired
     this.isGVMSRoute = obj.isGVMSRoute
+    this.billingInformation = obj.billingInformation ? new BillingInformation(obj.billingInformation) : undefined
+    this.commonUserCharge = obj.commonUserCharge ? new CommonUserCharge(obj.commonUserCharge) : undefined
+    this.isChargeable = obj.isChargeable
 
     return Object.seal(new Proxy(this, handler))
   }
