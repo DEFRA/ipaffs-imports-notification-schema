@@ -540,4 +540,5 @@ public class PartOne {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.isGVMSRoute"
               + ".not.null}")
   private Boolean isGVMSRoute;
+  private Boolean isChargeable;
 }
