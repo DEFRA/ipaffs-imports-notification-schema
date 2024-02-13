@@ -23,6 +23,7 @@
   "publishConfig": {
     "registry": "https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/"
   },
+
   "author": "",
   "license": "ISC",
   "devDependencies": {
