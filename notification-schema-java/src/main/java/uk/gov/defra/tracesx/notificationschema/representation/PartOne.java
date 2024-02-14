@@ -366,8 +366,6 @@ public class PartOne {
   @NotNull(
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredEuCvedpValidation.class,
           TransporterDetailsRequiredCvedaValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
