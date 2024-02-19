@@ -55,7 +55,7 @@ module.exports = class PartOne {
     this.route = getIfDefined(obj, 'route', Route)
     this.sealsContainers = getSealsContainers(_.get(obj, 'sealsContainers', []))
     this.submissionDate = obj.submissionDate
-    this.consignmentValidation = this.consignmentValidation = getConsignmentValidation(
+    this.consignmentValidation = getConsignmentValidation(
       _.get(obj, 'consignmentValidation', []))
     this.submittedBy = obj.submittedBy
     this.transporterDetailsRequired = obj.transporterDetailsRequired
