@@ -7,6 +7,7 @@ module.exports = class BillingInformation {
 
     this.emailAddress = obj.emailAddress
     this.phoneNumber = obj.phoneNumber
+    this.contactName = obj.contactName
     this.postalAddress = obj.postalAddress ? new PostalAddress(obj.postalAddress) : undefined
 
     return Object.seal(new Proxy(this, handler))

@@ -6,6 +6,8 @@ module.exports = class PostalAddress {
 
     this.addressLine1 = obj.addressLine1
     this.addressLine2 = obj.addressLine2
+    this.addressLine3 = obj.addressLine3
+    this.addressLine4 = obj.addressLine4
     this.county = obj.county
     this.cityOrTown = obj.cityOrTown
     this.postalCode = obj.postalCode

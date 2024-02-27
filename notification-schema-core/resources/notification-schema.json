@@ -842,6 +842,12 @@
               "maxLength": 30,
               "description": "Billing phone number"
             },
+            "contactName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255,
+              "description": "Billing Contact Name"
+            },
             "postalAddress": {
               "description": "Billing postal address",
               "type": "object",
@@ -857,6 +863,18 @@
                   "minLength": 0,
                   "maxLength": 255,
                   "description": "2nd line of address"
+                },
+                "addressLine3": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 255,
+                  "description": "3rd line of address"
+                },
+                "addressLine4": {
+                  "type": "string",
+                  "minLength": 0,
+                  "maxLength": 255,
+                  "description": "4th line of address"
                 },
                 "county": {
                   "type": "string",
