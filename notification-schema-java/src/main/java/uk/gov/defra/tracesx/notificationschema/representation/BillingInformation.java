@@ -20,6 +20,9 @@ public class BillingInformation {
   @NotBlank
   private String phoneNumber;
 
+  @NotBlank
+  private String contactName;
+
   @Valid
   private PostalAddress postalAddress;
 }
