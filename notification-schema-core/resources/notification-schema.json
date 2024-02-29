@@ -902,6 +902,10 @@
           "type": "boolean",
           "description": "Indicates whether CUC applies to the notification"
         },
+        "wasChargeable": {
+          "type": "boolean",
+          "description": "Indicates whether CUC previously applied to the notification"
+        },
         "commonUserCharge": {
           "type": "object",
           "additionalProperties": false,

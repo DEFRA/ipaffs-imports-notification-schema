@@ -539,6 +539,7 @@ public class PartOne {
               + ".not.null}")
   private Boolean isGVMSRoute;
   private Boolean isChargeable;
+  private Boolean wasChargeable;
   private BillingInformation billingInformation;
   private CommonUserCharge commonUserCharge;
 }
