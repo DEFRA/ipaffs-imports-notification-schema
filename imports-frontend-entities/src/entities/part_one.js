@@ -71,6 +71,7 @@ module.exports = class PartOne {
     this.billingInformation = getIfDefined(obj, 'billingInformation', BillingInformation)
     this.commonUserCharge = getIfDefined(obj, 'commonUserCharge', CommonUserCharge)
     this.isChargeable = obj.isChargeable
+    this.wasChargeable = obj.wasChargeable
 
     return Object.seal(new Proxy(this, handler))
   }
