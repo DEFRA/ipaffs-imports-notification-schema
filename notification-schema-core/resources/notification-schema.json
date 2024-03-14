@@ -1485,6 +1485,11 @@
         "inspectionOverride": {
           "$ref": "#/definitions/InspectionOverride",
           "description": "Details about the manual inspection override"
+        },
+        "autoClearedDateTime": {
+          "type": "string",
+          "javaType": "java.time.LocalDateTime",
+          "description": "Date of autoclearance"
         }
       }
     },
