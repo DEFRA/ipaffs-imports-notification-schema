@@ -47,6 +47,7 @@ module.exports = class PartTwo {
     this.inspectionRequired = obj.inspectionRequired
     this.inspectionOverride = _.get(obj, 'inspectionOverride')
         ? new InspectionOverride(obj.inspectionOverride) : undefined
+    this.autoClearedDateTime = obj.autoClearedDateTime
 
     return Object.seal(new Proxy(this, handler))
   }
