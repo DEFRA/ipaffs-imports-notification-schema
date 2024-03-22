@@ -830,10 +830,6 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "isConfirmed": {
-              "type": "boolean",
-              "description": "Indicates whether user has confirmed their billing information"
-            },
             "emailAddress": {
               "type": "string",
               "minLength": 1,

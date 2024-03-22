@@ -5,7 +5,6 @@ module.exports = class BillingInformation {
 
   constructor (obj = {}) {
 
-    this.isConfirmed = obj.isConfirmed
     this.emailAddress = obj.emailAddress
     this.phoneNumber = obj.phoneNumber
     this.contactName = obj.contactName

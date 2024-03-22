@@ -15,9 +15,6 @@ import lombok.extern.jackson.Jacksonized;
 public class BillingInformation {
 
   @NotBlank
-  private Boolean isConfirmed;
-
-  @NotBlank
   private String emailAddress;
 
   @NotBlank
