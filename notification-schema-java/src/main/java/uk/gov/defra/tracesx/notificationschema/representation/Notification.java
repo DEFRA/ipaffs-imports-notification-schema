@@ -51,7 +51,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
         + ".estimatedarrivalatbcp.must.be.in.future}")
 @LatestVeterinaryHealthCertificateRequired(
-    groups = LatestVeterinaryHealthCertificateRequiredValidation.class)
+    groups = LatestVeterinaryHealthCertificateRequiredValidation.class
+)
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")
