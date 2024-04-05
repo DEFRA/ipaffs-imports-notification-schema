@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Commod
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppGmsDeclaration;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesTotalPackages;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
@@ -35,6 +37,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+
 @MinCommoditiesGrossWeight(
     groups = {
         NotificationCedOrCvedpFieldValidation.class,
@@ -83,8 +86,21 @@ public class Commodities {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
               + ".totalnetweight.not.null}")
   private BigDecimal totalNetWeight;
-
-  private Integer numberOfPackages;
+/*  @MinCommoditiesTotalPackages(
+      groups = NotificationCvedpEuFieldValidation.class,
+          message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+      + ".chedp.min.packages}")
+*/
+  @NotNull(
+      groups = NotificationCvedpEuFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+          + ".chedp.min.packages}")
+  @Min(
+      value = 1,
+      groups = NotificationCvedpEuFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+          + ".chedp.min.packages}")
+  private Integer numberOfPackages = null;
 
   @NotNull(
       groups = {
