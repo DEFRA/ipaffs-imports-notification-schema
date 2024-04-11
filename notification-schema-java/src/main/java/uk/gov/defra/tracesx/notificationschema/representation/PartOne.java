@@ -289,10 +289,7 @@ public class PartOne {
   private Purpose purpose;
 
   @NotBlank(
-      groups = {
-          NotificationHighRiskFieldValidation.class,
-          NotificationCvedpEuFieldValidation.class
-      },
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
   @NotBlank(
