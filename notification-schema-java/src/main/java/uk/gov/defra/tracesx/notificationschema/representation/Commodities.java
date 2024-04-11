@@ -29,12 +29,14 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder(toBuilder = true)
 @Data
 @JsonInclude(Include.NON_EMPTY)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+
 @MinCommoditiesGrossWeight(
     groups = {
         NotificationCedOrCvedpFieldValidation.class,
@@ -50,6 +52,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLow
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
             + ".gmsdeclarationaccepted.message}")
+
 public class Commodities {
 
   @NotNull(
@@ -84,7 +87,17 @@ public class Commodities {
               + ".totalnetweight.not.null}")
   private BigDecimal totalNetWeight;
 
-  private Integer numberOfPackages;
+  @NotNull(
+      groups = NotificationSingleCvedpFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+          + ".singlechedp.min.packages}")
+  @Min(
+      groups = NotificationSingleCvedpFieldValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+          + ".singlechedp.min.packages}",
+      value = 1
+    )
+  private Integer numberOfPackages = null;
 
   @NotNull(
       groups = {

@@ -58,6 +58,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
@@ -484,6 +485,12 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCvedpFieldValidationHighRiskJourney.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+          + ".veterinaryInformation.properties.accompanyingDocuments.chedp.must.have.latest."
+          + "veterinary.document}"
+  )
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;

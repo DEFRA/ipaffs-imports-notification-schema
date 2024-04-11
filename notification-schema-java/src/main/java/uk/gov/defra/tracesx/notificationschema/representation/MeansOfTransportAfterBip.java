@@ -11,8 +11,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TransportMethod;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedPSoleValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredSingleChedpValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 @Builder
@@ -37,7 +39,12 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".eucvedp.not.empty}",
-      groups = {TransporterDetailsRequiredEuCvedpValidation.class})
+      groups = {TransporterDetailsRequiredEuCvedPSoleValidation.class})
+  @NotEmpty(
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
+              + ".singlechedp.not.empty}",
+      groups = {TransporterDetailsRequiredSingleChedpValidation.class})
   private String id = null;
 
   @NotNull(
@@ -76,6 +83,12 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
               + ".document.eucvedp.not.empty}",
       groups = {
-          TransporterDetailsRequiredEuCvedpValidation.class})
+          TransporterDetailsRequiredEuCvedPSoleValidation.class})
+  @NotEmpty(
+      message =
+      "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
+      + ".document.singlechedp.not.empty}",
+      groups = {
+          TransporterDetailsRequiredSingleChedpValidation.class})
   private String document = null;
 }
