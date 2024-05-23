@@ -43,9 +43,9 @@ public class ChedppNotNullKeyDataPairValidatorTest {
   }
 
   private CommodityComplement createCommodityComplement(Integer complementID, String speciesID,
-      Boolean isWoodPackaging) {
+      Boolean isCdsMatched) {
     return CommodityComplement.builder().complementID(complementID).speciesID(speciesID)
-        .isWoodPackaging(isWoodPackaging).build();
+        .isCdsMatched(isCdsMatched).build();
   }
 
   private ComplementParameterSet createComplementParameterSet(
@@ -88,16 +88,6 @@ public class ChedppNotNullKeyDataPairValidatorTest {
     assertFalse(validator.isValid(commodities, null));
   }
 
-  @Test
-  public void testValidWhenOnlyInvalidWoodPackagingCommodity() {
-    CommodityComplement commodityComplement = createCommodityComplement(1, "1", true);
-    ComplementParameterSet complementParameterSet = createComplementParameterSet(
-        commodityComplement);
-    commodityComplements.add(commodityComplement);
-    complementParameterSets.add(complementParameterSet);
-
-    assertTrue(validator.isValid(commodities, null));
-  }
 
   @Test
   public void testNotValidWhenNullKeyDataPairInComplementParameterSet() {
@@ -108,25 +98,6 @@ public class ChedppNotNullKeyDataPairValidatorTest {
     complementParameterSets.add(complementParameterSet);
 
     assertFalse(validator.isValid(commodities, null));
-  }
-
-  @Test
-  public void testValidWhenCommodityIsValidAndWoodPackagingIsInvalid() {
-    CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
-    ComplementParameterSet complementParameterSet = createComplementParameterSet(
-        commodityComplement,
-        ComplementParameterSetKeyDataPair.builder().key(FIELD_NAME).data("hello").build(),
-        ComplementParameterSetKeyDataPair.builder().key("foo").data("bar").build());
-    commodityComplements.add(commodityComplement);
-    complementParameterSets.add(complementParameterSet);
-
-    commodityComplement = createCommodityComplement(2, "2", true);
-    complementParameterSet = createComplementParameterSet(
-        commodityComplement);
-    commodityComplements.add(commodityComplement);
-    complementParameterSets.add(complementParameterSet);
-
-    assertTrue(validator.isValid(commodities, null));
   }
 
   @Test

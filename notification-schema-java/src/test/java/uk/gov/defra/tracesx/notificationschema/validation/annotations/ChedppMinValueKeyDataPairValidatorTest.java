@@ -43,9 +43,9 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   private CommodityComplement createCommodityComplement(Integer complementID, String speciesID,
-      Boolean isWoodPackaging) {
+      Boolean isCdsMatched) {
     return CommodityComplement.builder().complementID(complementID).speciesID(speciesID)
-        .isWoodPackaging(isWoodPackaging).build();
+        .isCdsMatched(isCdsMatched).build();
   }
 
   private ComplementParameterSet createComplementParameterSet(
@@ -98,17 +98,6 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testValidWhenOnlyInvalidWoodPackagingCommodity() {
-    CommodityComplement commodityComplement = createCommodityComplement(1, "1", true);
-    ComplementParameterSet complementParameterSet = createComplementParameterSet(
-        commodityComplement);
-    commodityComplements.add(commodityComplement);
-    complementParameterSets.add(complementParameterSet);
-
-    assertThat(validator.isValid(commodities, null)).isTrue();
-  }
-
-  @Test
   public void testNotValidWhenNullKeyDataPairInComplementParameterSet() {
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
@@ -146,7 +135,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testValidWhenCommodityIsValidAndWoodPackagingIsInvalid() {
+  public void testValidWhenCommodityIsValidAndCdsMatchedIsInvalid() {
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement,

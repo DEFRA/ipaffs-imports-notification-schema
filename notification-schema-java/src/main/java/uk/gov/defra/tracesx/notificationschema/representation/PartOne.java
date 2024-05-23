@@ -141,8 +141,6 @@ public class PartOne {
 
   private String customsReferenceNumber;
 
-  private Boolean containsWoodPackaging;
-
   private Boolean consignmentArrived;
 
   @NotNull(

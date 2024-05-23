@@ -21,7 +21,6 @@ module.exports = class PartOne {
     this.typeOfImp = obj.typeOfImp
     this.personResponsible = getIfDefined(obj, 'personResponsible', Party)
     this.customsReferenceNumber = obj.customsReferenceNumber
-    this.containsWoodPackaging = obj.containsWoodPackaging
     this.consignmentArrived = obj.consignmentArrived
     this.consignor = getIfDefined(obj, 'consignor', EconomicOperator)
     this.consignorTwo = getIfDefined(obj, 'consignorTwo', EconomicOperator)
