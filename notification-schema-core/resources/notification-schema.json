@@ -974,6 +974,11 @@
     "isCdsFullMatched": {
       "type": "boolean",
       "description": "Have all commodities been matched with corresponding CDS declaration(s)"
+    },
+    "chedTypeVersion": {
+      "type": "integer",
+      "javaType": "short",
+      "description": "The version of the ched type the notification was created with"
     }
   },
   "definitions": {
