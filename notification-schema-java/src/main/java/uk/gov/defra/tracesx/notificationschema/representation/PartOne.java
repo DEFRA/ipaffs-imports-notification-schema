@@ -24,6 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ProvideCtcMrnEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TypeOfImp;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
@@ -546,4 +547,5 @@ public class PartOne {
   private Boolean wasChargeable;
   private BillingInformation billingInformation;
   private CommonUserCharge commonUserCharge;
+  private ProvideCtcMrnEnum provideCtcMrn;
 }

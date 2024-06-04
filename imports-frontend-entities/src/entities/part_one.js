@@ -72,6 +72,7 @@ module.exports = class PartOne {
     this.commonUserCharge = getIfDefined(obj, 'commonUserCharge', CommonUserCharge)
     this.isChargeable = obj.isChargeable
     this.wasChargeable = obj.wasChargeable
+    this.provideCtcMrn = obj.provideCtcMrn
 
     return Object.seal(new Proxy(this, handler))
   }
