@@ -3,7 +3,7 @@ const PostalAddress = require('./postal_address')
 
 module.exports = class BillingInformation {
 
-  constructor(obj = {}) {
+  constructor (obj = {}) {
 
     this.isConfirmed = obj.isConfirmed
     this.emailAddress = obj.emailAddress

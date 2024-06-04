@@ -1,8 +1,8 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.Objects;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 

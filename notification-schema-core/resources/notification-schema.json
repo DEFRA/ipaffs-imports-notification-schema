@@ -346,7 +346,7 @@
                     "maxLength": 255,
                     "description": "Species common name of commodity for IMP notification simple commodity selection"
                   },
-                  "isCdsMatched" : {
+                  "isCdsMatched": {
                     "type": "boolean",
                     "description": "Has commodity been matched with corresponding CDS declaration"
                   }
@@ -826,7 +826,7 @@
           "javaType": "java.time.LocalDateTime",
           "description": "Original estimated date time of arrival"
         },
-        "billingInformation" : {
+        "billingInformation": {
           "type": "object",
           "additionalProperties": false,
           "properties": {

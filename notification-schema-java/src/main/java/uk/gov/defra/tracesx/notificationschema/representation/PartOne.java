@@ -10,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -58,6 +58,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
@@ -288,10 +289,7 @@ public class PartOne {
   private Purpose purpose;
 
   @NotBlank(
-      groups = {
-          NotificationHighRiskFieldValidation.class,
-          NotificationCvedpEuFieldValidation.class
-      },
+      groups = NotificationHighRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
   @NotBlank(
@@ -484,6 +482,12 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.veterinaryInformation"
               + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCvedpFieldValidationHighRiskJourney.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+          + ".veterinaryInformation.properties.accompanyingDocuments.chedp.must.have.latest."
+          + "veterinary.document}"
+  )
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;

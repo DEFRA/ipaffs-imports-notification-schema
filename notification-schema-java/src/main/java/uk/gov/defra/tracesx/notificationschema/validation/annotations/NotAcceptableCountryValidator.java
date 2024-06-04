@@ -3,8 +3,8 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static java.lang.Boolean.FALSE;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableReasonsEnum;
 
