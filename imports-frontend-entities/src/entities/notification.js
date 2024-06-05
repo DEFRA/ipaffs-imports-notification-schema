@@ -46,6 +46,7 @@ module.exports = class Notification {
     this.isBulkUploadInProgress = obj.isBulkUploadInProgress;
     this.requestId = obj.requestId;
     this.isCdsFullMatched = obj.isCdsFullMatched;
+    this.chedTypeVersion = obj.chedTypeVersion;
 
     validate(this)
 
