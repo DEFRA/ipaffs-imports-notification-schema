@@ -1,6 +1,6 @@
 {
   "name": "@ipaffs/imports-frontend-entities",
-  "version": "1.0.323",
+  "version": "1.0.324",
   "repository": {
     "type": "git"
   },
@@ -8,6 +8,7 @@
   "description": "Baseline schema and entities to use across all frontends",
   "files": [
     "etc/*.json",
+    "src/constants/*.js",
     "src/entities/base/*.js",
     "src/entities/*.js",
     "src/utils/*.js"
