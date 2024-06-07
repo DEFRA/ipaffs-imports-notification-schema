@@ -183,6 +183,6 @@ public class Notification {
   private Boolean isBulkUploadInProgress;
   private String requestId;
   private Boolean isCdsFullMatched;
-
   private short chedTypeVersion;
+  private Boolean isGMRMatched;
 }

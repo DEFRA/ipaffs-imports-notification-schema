@@ -47,6 +47,7 @@ module.exports = class Notification {
     this.requestId = obj.requestId;
     this.isCdsFullMatched = obj.isCdsFullMatched;
     this.chedTypeVersion = obj.chedTypeVersion;
+    this.isGMRMatched = obj.isGMRMatched;
 
     validate(this)
 
