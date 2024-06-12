@@ -31,8 +31,6 @@ public abstract class CommoditiesComplementParameterSetKeyDataPairValidator<A ex
     }
 
     List<Integer> commodityComplementIds = commodities.getCommodityComplement().stream()
-        .filter(commodityComplement ->
-            !Boolean.TRUE.equals(commodityComplement.getIsWoodPackaging()))
         .map(CommodityComplement::getComplementID)
         .collect(Collectors.toList());
 

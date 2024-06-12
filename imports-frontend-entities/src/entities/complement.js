@@ -9,7 +9,6 @@ module.exports = class CommodityComplement {
     this.complementID = obj.complementID
     this.complementName = obj.complementName
     this.eppoCode = obj.eppoCode
-    this.isWoodPackaging = obj.isWoodPackaging
     this.speciesID = obj.speciesID
     this.speciesName = obj.speciesName
     this.speciesTypeName = obj.speciesTypeName

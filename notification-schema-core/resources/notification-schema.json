@@ -131,10 +131,6 @@
           "maxLength": 32,
           "description": "Customs reference number"
         },
-        "containsWoodPackaging": {
-          "type": "boolean",
-          "description": "(Deprecated in IMTA-11832) Does the consignment contain wood packaging?"
-        },
         "consignmentArrived": {
           "type": "boolean",
           "description": "Has the consignment arrived at the BCP?"
@@ -283,10 +279,6 @@
                     "type": "string",
                     "maxLength": 10,
                     "description": "EPPO Code related to plant commodities and wood packaging"
-                  },
-                  "isWoodPackaging": {
-                    "type": "boolean",
-                    "description": "(Deprecated in IMTA-11832) Is this commodity wood packaging?"
                   },
                   "speciesID": {
                     "type": "string",
