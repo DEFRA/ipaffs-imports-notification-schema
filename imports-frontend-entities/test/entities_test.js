@@ -60,6 +60,9 @@ const RiskAssessment = require('../src/entities/risk_assessment')
 const SealCheck = require('../src/entities/seal_check')
 const CatchCertificateAttachment = require('../src/entities/catch_certificate_attachment')
 const CatchCertificateDetails = require('../src/entities/catch_certificate_details')
+const BillingInformation = require('../src/entities/billing_information')
+const CommonUserCharge = require('../src/entities/common_user_charge')
+const PostalAddress = require('../src/entities/postal_address')
 
 describe('Entities: ', () => {
 
@@ -120,7 +123,10 @@ describe('Entities: ', () => {
     RiskAssessment,
     SealCheck,
     CatchCertificateAttachment,
-    CatchCertificateDetails
+    CatchCertificateDetails,
+    CommonUserCharge,
+    BillingInformation,
+    PostalAddress
   ]
 
   it('are capable of storing data', () => {

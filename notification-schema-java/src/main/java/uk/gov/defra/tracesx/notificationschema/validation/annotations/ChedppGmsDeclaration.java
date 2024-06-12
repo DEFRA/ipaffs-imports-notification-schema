@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Documented
 public @interface ChedppGmsDeclaration {
 
-  String message() default "Confirm that CHIEF has asked you to make a GMS application";
+  String message() default "Confirm that CDS has asked you to make a GMS application";
 
   Class<?>[] groups() default {};
 

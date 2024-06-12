@@ -119,4 +119,8 @@ public class PartTwo {
   private InspectionRequired inspectionRequired;
 
   private InspectionOverride inspectionOverride;
+
+  @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
+  @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  private LocalDateTime autoClearedDateTime;
 }

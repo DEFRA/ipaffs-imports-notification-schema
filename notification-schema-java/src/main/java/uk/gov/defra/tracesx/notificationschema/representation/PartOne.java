@@ -366,8 +366,6 @@ public class PartOne {
   @NotNull(
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredEuCvedpValidation.class,
           TransporterDetailsRequiredCvedaValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
@@ -540,4 +538,8 @@ public class PartOne {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.isGVMSRoute"
               + ".not.null}")
   private Boolean isGVMSRoute;
+  private Boolean isChargeable;
+  private Boolean wasChargeable;
+  private BillingInformation billingInformation;
+  private CommonUserCharge commonUserCharge;
 }
