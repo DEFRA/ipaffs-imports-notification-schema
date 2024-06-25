@@ -1,7 +1,7 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 
 public class MinCommoditiesGrossWeightValidator

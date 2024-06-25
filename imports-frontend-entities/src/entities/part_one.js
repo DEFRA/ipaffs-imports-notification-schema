@@ -99,4 +99,3 @@ const getConsignmentValidation = inList => {
   })
   return consignmentValidationList
 }
-

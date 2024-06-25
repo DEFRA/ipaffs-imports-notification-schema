@@ -2,8 +2,8 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,8 +13,10 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Transp
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuTransportFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder
 @Data
@@ -42,10 +44,16 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.eucveda.not.empty}")
   @NotEmpty(
-      groups = NotificationCvedpEuFieldValidation.class,
+      groups = NotificationCvedpEuTransportFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.eucvedp.not.empty}")
+
+  @NotEmpty(
+      groups = NotificationSingleCvedpFieldValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.id.singlechedp.not.empty}")
   private String id = null;
 
   @NotNull(
@@ -92,11 +100,18 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
               + ".meansoftransportfromentrypoint.document.chedpp.not.empty}")
   @NotEmpty(
       groups = {
-          NotificationCvedpEuFieldValidation.class
+          NotificationCvedpEuTransportFieldValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.document.eucvedp.not.empty}")
+  @NotEmpty(
+      groups = {
+          NotificationSingleCvedpFieldValidation.class
+      },
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+              + ".meansoftransportfromentrypoint.document.singlechedp.not.empty}")
   @NotEmpty(
       groups = {
           NotificationCvedaEuFieldValidation.class,

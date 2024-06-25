@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @Data
-@JsonInclude(Include.NON_EMPTY)
+@JsonInclude(Include.NON_NULL)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class Identifier {

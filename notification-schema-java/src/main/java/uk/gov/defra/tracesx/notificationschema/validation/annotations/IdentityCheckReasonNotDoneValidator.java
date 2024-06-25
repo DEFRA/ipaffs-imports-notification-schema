@@ -4,8 +4,8 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason.REDUCED_CHECKS_REGIME;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_DONE;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
 public class IdentityCheckReasonNotDoneValidator

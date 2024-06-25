@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion.PENDING;
 
 import java.util.Collections;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
 import org.junit.Before;

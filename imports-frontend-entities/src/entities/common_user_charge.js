@@ -1,7 +1,6 @@
 const handler = require('./base/handler')
 module.exports = class CommonUserCharge {
-
-  constructor(obj = {}) {
+  constructor (obj = {}) {
 
     this.wasSentToTradeCharge = obj.wasSentToTradeCharge
 

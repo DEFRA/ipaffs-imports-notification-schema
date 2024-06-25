@@ -6,12 +6,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModelProperty;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,7 +51,8 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
         + ".estimatedarrivalatbcp.must.be.in.future}")
 @LatestVeterinaryHealthCertificateRequired(
-    groups = LatestVeterinaryHealthCertificateRequiredValidation.class)
+    groups = LatestVeterinaryHealthCertificateRequiredValidation.class
+)
 public class Notification {
 
   @ApiModelProperty(value = "The INS id number for this notification.")
@@ -182,4 +183,6 @@ public class Notification {
   private Boolean isBulkUploadInProgress;
   private String requestId;
   private Boolean isCdsFullMatched;
+
+  private short chedTypeVersion;
 }
