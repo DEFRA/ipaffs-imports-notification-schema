@@ -18,6 +18,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Extern
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateAttachmentRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 
 @Builder
@@ -28,11 +29,14 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChe
 @PhytosanitaryCertificateAttachmentRequired(groups = NotificationChedppFieldValidation.class)
 public class AccompanyingDocument {
 
+  @RetrospectiveCloningProperty()
   private DocumentType documentType = null;
+  @RetrospectiveCloningProperty()
   private String documentReference = null;
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @RetrospectiveCloningProperty()
   private LocalDate documentIssueDate = null;
 
   private UUID attachmentId = null;
@@ -40,6 +44,7 @@ public class AccompanyingDocument {
   private String attachmentContentType = null;
   private UUID uploadUserId = null;
   private UUID uploadOrganisationId = null;
+  @RetrospectiveCloningProperty()
   private ExternalReference externalReference = null;
 
   @JsonIgnore

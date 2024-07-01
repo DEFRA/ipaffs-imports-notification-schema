@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 
 @Builder(toBuilder = true)
 @Data
@@ -15,6 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ComplementParameterSetKeyDataPair {
 
+  @RetrospectiveCloningProperty()
   private String key;
+  @RetrospectiveCloningProperty()
   private String data;
 }

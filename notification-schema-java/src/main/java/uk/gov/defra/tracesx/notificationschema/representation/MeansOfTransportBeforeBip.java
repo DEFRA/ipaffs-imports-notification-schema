@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TransportMethod;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
@@ -54,6 +55,7 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.singlechedp.not.empty}")
+  @RetrospectiveCloningProperty()
   private String id = null;
 
   @NotNull(
@@ -83,6 +85,7 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.type.euced.not.null}")
+  @RetrospectiveCloningProperty()
   private TransportMethod type = null;
 
   @NotEmpty(
