@@ -189,4 +189,5 @@ public class Notification {
   private Boolean isCdsFullMatched;
   private short chedTypeVersion;
   private Boolean isGMRMatched;
+  private Boolean isAutoClearanceExempted;
 }

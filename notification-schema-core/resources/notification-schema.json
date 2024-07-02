@@ -992,6 +992,10 @@
     "isGMRMatched": {
       "type": "boolean",
       "description": "Indicates whether a CHED has been matched with a GVMS GMR via DMP"
+    },
+    "isAutoClearanceExempted": {
+      "type": "boolean",
+      "description": "Indicates whether CHED is exempted from autoclearance"
     }
   },
   "definitions": {
