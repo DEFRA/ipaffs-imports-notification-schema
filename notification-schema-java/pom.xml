@@ -5,11 +5,11 @@
   <parent>
     <groupId>uk.gov.defra.tracesx</groupId>
     <artifactId>IPAFFS-Common-Schema</artifactId>
-    <version>4.0.21-SNAPSHOT</version>
+    <version>4.0.21</version>
   </parent>
 
   <artifactId>notification-schema-java</artifactId>
-  <version>4.0.21-SNAPSHOT</version>
+  <version>4.0.21</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -19,7 +19,7 @@
 
   <scm>
     <connection>${parent.scm.connection}</connection>
-    <tag>HEAD</tag>
+    <tag>4.0.21</tag>
   </scm>
 
   <dependencies>
