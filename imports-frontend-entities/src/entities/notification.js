@@ -48,6 +48,7 @@ module.exports = class Notification {
     this.isCdsFullMatched = obj.isCdsFullMatched;
     this.chedTypeVersion = obj.chedTypeVersion;
     this.isGMRMatched = obj.isGMRMatched;
+    this.isAutoClearanceExempted = obj.isAutoclearanceExempted
 
     validate(this)
 
