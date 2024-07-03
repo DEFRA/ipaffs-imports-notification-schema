@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 
 @Builder
@@ -20,17 +21,24 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 public class EconomicOperatorAddress {
 
   @NotNull(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @RetrospectiveCloningProperty()
   private String addressLine1;
 
+  @RetrospectiveCloningProperty()
   private String addressLine2;
+
+  @RetrospectiveCloningProperty()
   private String addressLine3;
 
   @NotNull(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @RetrospectiveCloningProperty()
   private String city;
 
+  @RetrospectiveCloningProperty()
   private String postalZipCode;
 
   @NotNull(groups = NotificationCvedaFieldValidation.class, message = ErrorCodes.NOT_NULL)
+  @RetrospectiveCloningProperty()
   private String countryISOCode;
 
   private String ukTelephone;
@@ -38,7 +46,9 @@ public class EconomicOperatorAddress {
   @Valid
   private InternationalTelephone internationalTelephone;
 
+  @RetrospectiveCloningProperty()
   private String telephone;
 
+  @RetrospectiveCloningProperty()
   private String email;
 }

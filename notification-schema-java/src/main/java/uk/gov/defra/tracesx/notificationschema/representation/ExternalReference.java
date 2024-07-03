@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ExternalSystem;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 
 @Builder
 @Data
@@ -16,10 +17,15 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Extern
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ExternalReference {
 
+  @RetrospectiveCloningProperty()
   private ExternalSystem system;
+  @RetrospectiveCloningProperty()
   private String reference;
+  @RetrospectiveCloningProperty()
   private Boolean exactMatch;
+  @RetrospectiveCloningProperty()
   private Boolean verifiedByImporter;
+  @RetrospectiveCloningProperty()
   private Boolean verifiedByInspector;
 
   public ExternalReference(ExternalSystem system, String reference) {

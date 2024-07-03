@@ -25,6 +25,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ProvideCtcMrnEnum;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TypeOfImp;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
@@ -48,6 +49,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPur
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfEntryAndPointOfEntryNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfExitAndExitBipNotEmpty;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationContactDetailsEuFieldValidation;
@@ -160,6 +162,7 @@ public class PartOne {
       groups = NotificationChedppFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor.chedpp"
           + ".not.null}")
+  @RetrospectiveCloningProperty()
   private EconomicOperator consignor;
 
   private EconomicOperator consignorTwo;
@@ -176,6 +179,7 @@ public class PartOne {
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
           + ".not.null}")
+  @RetrospectiveCloningProperty()
   private EconomicOperator consignee;
 
   @NotNull(
@@ -192,6 +196,7 @@ public class PartOne {
       groups = NotificationLowRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp.importer"
           + ".not.null}")
+  @RetrospectiveCloningProperty()
   private EconomicOperator importer;
 
   @NotNull(
@@ -210,6 +215,7 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.chedpp"
               + ".not.null}")
+  @RetrospectiveCloningProperty()
   private EconomicOperator placeOfDestination;
 
   private EconomicOperator pod;
@@ -267,6 +273,7 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.chedpp.quantity.message}")
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private Commodities commodities;
 
   @Valid
@@ -287,6 +294,7 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
           + ".exitdate.not.null}"
   )
+  @RetrospectiveCloningProperty()
   private Purpose purpose;
 
   @NotBlank(
@@ -301,6 +309,7 @@ public class PartOne {
       groups = NotificationHighRiskEuCedFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".euced.not.null}")
+  @RetrospectiveCloningProperty()
   private String pointOfEntry;
 
   @NotNull(
@@ -335,6 +344,7 @@ public class PartOne {
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @RetrospectiveCloningProperty()
   private LocalDate arrivalDate;
 
   @NotNull(
@@ -359,6 +369,7 @@ public class PartOne {
           + ".euced.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
+  @RetrospectiveCloningProperty()
   private LocalTime arrivalTime;
 
   @Valid
@@ -369,6 +380,7 @@ public class PartOne {
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
+  @RetrospectiveCloningProperty()
   private EconomicOperator transporter;
 
   private Boolean transporterDetailsRequired;
@@ -418,6 +430,7 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansOfTransportFromEntryPoint.eucvedp.not.null}")
+  @RetrospectiveCloningProperty()
   private MeansOfTransportBeforeBip meansOfTransportFromEntryPoint;
 
   @NotNull(
@@ -489,11 +502,15 @@ public class PartOne {
           + ".veterinaryInformation.properties.accompanyingDocuments.chedp.must.have.latest."
           + "veterinary.document}"
   )
+  @RetrospectiveCloningProperty()
   private VeterinaryInformation veterinaryInformation;
 
   private String importerLocalReferenceNumber;
+
+  @RetrospectiveCloningProperty()
   private Route route;
 
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<@Valid NotificationSealsContainers> sealsContainers;
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)

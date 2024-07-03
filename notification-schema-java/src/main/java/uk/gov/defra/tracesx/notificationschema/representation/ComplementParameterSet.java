@@ -13,9 +13,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IsNonNegativeIntegerKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinValueKeyDataPair;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullKeyDataPair;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
@@ -47,8 +49,11 @@ public class ComplementParameterSet {
   public static final String VALIDITY_PERIOD = "validity_period";
   public static final String CONTAINER = "container";
 
+  @RetrospectiveCloningProperty()
   private UUID uniqueComplementID;
+  @RetrospectiveCloningProperty()
   private Integer complementID;
+  @RetrospectiveCloningProperty()
   private String speciesID;
 
   @Valid
@@ -92,8 +97,10 @@ public class ComplementParameterSet {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.type_package.message}")
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<ComplementParameterSetKeyDataPair> keyDataPair;
 
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<Identifier> identifiers;
 
   private List<CatchCertificate> catchCertificates;

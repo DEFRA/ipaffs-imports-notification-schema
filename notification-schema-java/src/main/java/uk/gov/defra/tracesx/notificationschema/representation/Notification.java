@@ -19,6 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ExternalSystem;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
@@ -27,6 +28,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.AccompanyingDocuments;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEstimatedArrivalAtBcp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LatestVeterinaryHealthCertificateRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.LatestVeterinaryHealthCertificateRequiredValidation;
@@ -69,6 +71,7 @@ public class Notification {
   @ApiModelProperty(
       value =
           "List of external references, which relate to downstream services")
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.APPEND)
   private List<ExternalReference> externalReferences;
 
   @ApiModelProperty(value = "Notification version.")
@@ -115,6 +118,7 @@ public class Notification {
           NotificationCvedpEuFieldValidation.class
       },
       message = ErrorCodes.NOT_NULL)
+  @RetrospectiveCloningProperty()
   private PartOne partOne;
 
   @ApiModelProperty(value = "Identification of the user checking the consignment")
