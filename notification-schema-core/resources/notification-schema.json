@@ -919,6 +919,15 @@
               "description": "Indicates whether the last applicable change was successfully send over the interface to Trade Charge"
             }
           }
+        },
+        "provideCtcMrn": {
+          "type": "string",
+          "description": "When the NCTS MRN will be added for the Common Transit Convention (CTC)",
+          "enum": [
+            "YES",
+            "YES_ADD_LATER",
+            "NO"
+          ]
         }
       }
     },
@@ -979,6 +988,10 @@
       "type": "integer",
       "javaType": "short",
       "description": "The version of the ched type the notification was created with"
+    },
+    "isGMRMatched": {
+      "type": "boolean",
+      "description": "Indicates whether a CHED has been matched with a GVMS GMR via DMP"
     }
   },
   "definitions": {
