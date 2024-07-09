@@ -28,10 +28,12 @@ import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.AccompanyingDocuments;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppEstimatedArrivalAtBcp;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LatestVeterinaryHealthCertificateRequired;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.NctsMrnRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ValidStatus;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.BasicValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.LatestVeterinaryHealthCertificateRequiredValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NctsMrnRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
@@ -54,6 +56,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
         + ".estimatedarrivalatbcp.must.be.in.future}")
 @LatestVeterinaryHealthCertificateRequired(
     groups = LatestVeterinaryHealthCertificateRequiredValidation.class
+)
+@NctsMrnRequired(
+    groups = NctsMrnRequiredValidation.class
 )
 public class Notification {
 

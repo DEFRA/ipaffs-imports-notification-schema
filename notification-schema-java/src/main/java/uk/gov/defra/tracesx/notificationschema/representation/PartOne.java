@@ -61,6 +61,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationProvideCtcMrnValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -564,5 +565,10 @@ public class PartOne {
   private Boolean wasChargeable;
   private BillingInformation billingInformation;
   private CommonUserCharge commonUserCharge;
+  @NotNull(
+      groups = NotificationProvideCtcMrnValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.provideCtcMrn"
+          + ".not.null}"
+  )
   private ProvideCtcMrnEnum provideCtcMrn;
 }
