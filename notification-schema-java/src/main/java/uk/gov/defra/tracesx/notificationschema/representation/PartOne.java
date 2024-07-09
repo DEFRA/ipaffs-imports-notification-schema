@@ -1,6 +1,5 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
-import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NET_WEIGHT;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.NUMBER_PACKAGE;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.QUANTITY;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.TYPE_PACKAGE;
@@ -56,6 +55,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCon
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationGvmsRouteValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
@@ -67,6 +67,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTra
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.ProvideCtcMrnValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCHEDPPValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCvedaValidation;
@@ -591,5 +592,10 @@ public class PartOne {
   private Boolean wasChargeable;
   private BillingInformation billingInformation;
   private CommonUserCharge commonUserCharge;
+  @NotNull(
+      groups = ProvideCtcMrnValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.provideCtcMrn"
+          + ".not.null}"
+  )
   private ProvideCtcMrnEnum provideCtcMrn;
 }
