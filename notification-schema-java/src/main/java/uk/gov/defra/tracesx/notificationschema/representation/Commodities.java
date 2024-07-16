@@ -31,6 +31,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder(toBuilder = true)
@@ -67,7 +68,10 @@ public class Commodities {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalgrossweight.not.null}")
   @NotNull(
-      groups = NotificationChedppFieldValidation.class,
+      groups = {
+          NotificationChedppFieldValidation.class,
+          NotificationSingleCedValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
               + ".totalgrossweight.not.null}")
@@ -83,7 +87,10 @@ public class Commodities {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".totalnetweight.not.null}")
   @NotNull(
-      groups = NotificationChedppFieldValidation.class,
+      groups = {
+          NotificationChedppFieldValidation.class,
+          NotificationSingleCedValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities.chedpp"
               + ".totalnetweight.not.null}")
@@ -111,6 +118,13 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".temperature.not.null}")
+  @NotNull(
+      groups = {
+          NotificationSingleCedValidation.class
+      },
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".singleced.temperature.not.null}")
   private CommodityTemperature temperature = null;
 
   @NotNull(
@@ -198,7 +212,10 @@ public class Commodities {
   private AnimalCertification animalsCertifiedAs = null;
 
   @NotNull(
-      groups = NotificationHighRiskEuCedFieldValidation.class,
+      groups = {
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationSingleCedValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".commodityintendedfor.not.null}")
