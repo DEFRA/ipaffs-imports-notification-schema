@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 
 @Builder
 @Data
@@ -16,7 +18,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class Identifier {
 
+  @RetrospectiveCloningProperty()
   private Integer speciesNumber;
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private Map<String, String> data;
   private EconomicOperator permanentAddress;
   private Boolean isPlaceOfDestinationThePermanentAddress;

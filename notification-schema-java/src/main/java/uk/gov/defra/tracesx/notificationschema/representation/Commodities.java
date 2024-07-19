@@ -18,9 +18,11 @@ import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityIntention;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.CommodityTemperature;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppGmsDeclaration;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.MinCommoditiesGrossWeight;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.QuantityImp;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
@@ -97,6 +99,7 @@ public class Commodities {
           + ".singlechedp.min.packages}",
       value = 1
     )
+  @RetrospectiveCloningProperty()
   private Integer numberOfPackages = null;
 
   @NotNull(
@@ -124,6 +127,7 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".numberofanimals.min.message}")
+  @RetrospectiveCloningProperty()
   private Integer numberOfAnimals = null;
 
   @NotNull(
@@ -131,6 +135,7 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
               + ".commodities.commodityComplement.min.message}")
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<CommodityComplement> commodityComplement = null;
 
   @Valid
@@ -139,6 +144,7 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
               + ".commodities.complementParameterSet.quantity.not.null}")
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<ComplementParameterSet> complementParameterSet = null;
 
   private Boolean includeNonAblactedAnimals = null;
@@ -154,12 +160,14 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".countryoforigin.not.null}")
+  @RetrospectiveCloningProperty()
   private String countryOfOrigin = null;
 
   private Boolean countryOfOriginIsPodCountry = null;
 
   private Boolean isLowRiskArticle72Country;
 
+  @RetrospectiveCloningProperty()
   private String regionOfOrigin = null;
 
   @Valid
@@ -173,6 +181,7 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".consignedcountry.not.null}")
+  @RetrospectiveCloningProperty()
   private String consignedCountry = null;
 
   @NotNull(
@@ -185,6 +194,7 @@ public class Commodities {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".animalscertifiedas.not.null}")
+  @RetrospectiveCloningProperty()
   private AnimalCertification animalsCertifiedAs = null;
 
   @NotNull(

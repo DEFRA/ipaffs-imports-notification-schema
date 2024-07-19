@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppSealsAndContainers;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
@@ -33,6 +34,7 @@ public class NotificationSealsContainers {
           NotificationCvedaEuFieldValidation.class
       },
       message = "Seal number cannot be empty")
+  @RetrospectiveCloningProperty()
   private String sealNumber;
 
   @NotBlank(
@@ -42,8 +44,10 @@ public class NotificationSealsContainers {
           NotificationCvedpEuFieldValidation.class
       },
       message = "Enter container or road trailer number")
+  @RetrospectiveCloningProperty()
   private String containerNumber;
 
+  @RetrospectiveCloningProperty()
   private boolean officialSeal;
   private String resealedSealNumber = null;
 }

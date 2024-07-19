@@ -17,10 +17,12 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImp
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForNonConformingEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.InternalMarketPurpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
@@ -42,6 +44,7 @@ public class Purpose {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
               + ".internalmarketpurpose.not.null}")
+  @RetrospectiveCloningProperty()
   private InternalMarketPurpose internalMarketPurpose;
   private String thirdCountryTranshipment;
   private ForNonConformingEnum forNonConforming;
@@ -49,7 +52,9 @@ public class Purpose {
   private String shipName;
   private String shipPort;
   private String exitBIP;
+  @RetrospectiveCloningProperty()
   private String thirdCountry;
+  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<String> transitThirdCountries;
   private ForImportOrAdmissionEnum forImportOrAdmission;
   private String exitDate;
@@ -66,6 +71,7 @@ public class Purpose {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.purposeGroup"
               + ".not.null}")
+  @RetrospectiveCloningProperty()
   private PurposeGroupEnum purposeGroup;
 
   @JsonSerialize(using = IsoDateSerializer.class)
