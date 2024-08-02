@@ -19,6 +19,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
 
 @Builder
 @Data
@@ -51,7 +52,8 @@ public class Party {
   @NotEmpty(
       groups = {
           NotificationCvedaEuFieldValidation.class,
-          NotificationHighRiskEuCedFieldValidation.class
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationSingleCedValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.personResponsible"
           + ".address.eucveda.not.empty}")

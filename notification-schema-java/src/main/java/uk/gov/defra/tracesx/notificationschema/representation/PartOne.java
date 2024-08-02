@@ -61,6 +61,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuChedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -162,6 +163,10 @@ public class PartOne {
       groups = NotificationChedppFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor.chedpp"
           + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCedValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
+          + ".consignor.not.null}")
   @RetrospectiveCloningProperty()
   private EconomicOperator consignor;
 
@@ -179,6 +184,10 @@ public class PartOne {
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
           + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCedValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
+          + ".consignee.not.null}")
   @RetrospectiveCloningProperty()
   private EconomicOperator consignee;
 
@@ -196,6 +205,10 @@ public class PartOne {
       groups = NotificationLowRiskFieldValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp.importer"
           + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCedValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
+          + ".importer.not.null}")
   @RetrospectiveCloningProperty()
   private EconomicOperator importer;
 
@@ -215,6 +228,11 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.chedpp"
               + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCedValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
+              + ".deliveryaddress.not.null}")
   @RetrospectiveCloningProperty()
   private EconomicOperator placeOfDestination;
 
@@ -233,7 +251,8 @@ public class PartOne {
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class,
-          NotificationCvedpEuFieldValidation.class
+          NotificationCvedpEuFieldValidation.class,
+          NotificationSingleCedValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
           + ".not.null}")
@@ -243,12 +262,6 @@ public class PartOne {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.chedpp.number_package.message}")
-  @ChedppMinValueKeyDataPair(
-      groups = NotificationChedppFieldValidation.class,
-      field = NET_WEIGHT,
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
-              + ".complementparameterset.keydatapair.chedpp.net_weight.message}")
   @ChedppNotNullKeyDataPair(
       groups = NotificationChedppFieldValidation.class,
       field = TYPE_PACKAGE,
@@ -286,6 +299,10 @@ public class PartOne {
           NotificationCvedpEuFieldValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
+  @NotNull(
+      groups = NotificationSingleCedValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced.purpose"
+          + ".not.null}")
   @ChedaPurposeExitDateNotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
@@ -306,7 +323,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".chedpp.not.null}")
   @NotBlank(
-      groups = NotificationHighRiskEuCedFieldValidation.class,
+      groups = {
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationSingleCedValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".euced.not.null}")
   @RetrospectiveCloningProperty()
@@ -331,7 +351,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
           + ".eucveda.not.null}")
   @NotNull(
-      groups = NotificationHighRiskEuCedFieldValidation.class,
+      groups = {
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationSingleCedValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
           + ".euced.not.null}")
   @NotNull(
@@ -364,7 +387,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
           + ".eucvedp.not.null}")
   @NotNull(
-      groups = NotificationHighRiskEuCedFieldValidation.class,
+      groups = {
+          NotificationHighRiskEuCedFieldValidation.class,
+          NotificationSingleCedValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
           + ".euced.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
@@ -532,6 +558,7 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationContactDetailsEuFieldValidation.class,
+          NotificationSingleCedValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.contactdetails"
           + ".not.null}")

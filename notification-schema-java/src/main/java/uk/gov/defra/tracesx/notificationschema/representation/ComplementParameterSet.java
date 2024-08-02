@@ -23,6 +23,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
 
 @Builder(toBuilder = true)
 @Data
@@ -69,6 +70,14 @@ public class ComplementParameterSet {
               + ".complementparameterset.keydatapair.net_weight.message}")
   @MinValueKeyDataPair(
       groups = {
+          NotificationSingleCedValidation.class
+      },
+      field = NET_WEIGHT,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.chedpp.net_weight.message}")
+  @MinValueKeyDataPair(
+      groups = {
           NotificationCvedaFieldValidation.class,
           NotificationCvedaEuFieldValidation.class
       },
@@ -87,6 +96,12 @@ public class ComplementParameterSet {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.number_package.message}")
+  @IsNonNegativeIntegerKeyDataPair(
+      groups = NotificationSingleCedValidation.class,
+      field = NUMBER_PACKAGE,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.singleced.number_package.message}")
   @NotNullKeyDataPair(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
@@ -97,6 +112,12 @@ public class ComplementParameterSet {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.type_package.message}")
+  @NotNullKeyDataPair(
+      groups = NotificationSingleCedValidation.class,
+      field = TYPE_PACKAGE,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.singleced.type_package.message}")
   @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<ComplementParameterSetKeyDataPair> keyDataPair;
 
