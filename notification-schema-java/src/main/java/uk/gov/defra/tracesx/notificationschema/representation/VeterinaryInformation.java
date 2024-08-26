@@ -43,7 +43,6 @@ public class VeterinaryInformation {
   private ExternalReference establishmentsOfOriginExternalReference;
 
   @Valid
-  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.APPEND)
   private List<AccompanyingDocument> accompanyingDocuments;
 
   private List<CatchCertificateAttachment> catchCertificateAttachments;

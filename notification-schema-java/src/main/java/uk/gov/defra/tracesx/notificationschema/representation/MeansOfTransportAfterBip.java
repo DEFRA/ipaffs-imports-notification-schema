@@ -46,11 +46,6 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".singlechedp.not.empty}",
       groups = {TransporterDetailsRequiredSingleChedpValidation.class})
-  @NotEmpty(
-      message =
-          "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
-              + ".singleced.not.empty}",
-      groups = {NotificationSingleCedValidation.class})
   private String id = null;
 
   @NotNull(
@@ -83,8 +78,7 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
               + ".document.eucveda.not.empty}",
       groups = {
-          TransporterDetailsRequiredEuCvedaValidation.class,
-          NotificationSingleCedValidation.class})
+          TransporterDetailsRequiredEuCvedaValidation.class})
   @NotEmpty(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
