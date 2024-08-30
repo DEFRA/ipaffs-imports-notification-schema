@@ -81,4 +81,6 @@ public class Purpose {
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
   private LocalTime estimatedArrivalTimeAtPortOfExit;
+
+  private String pointOfExit;
 }
