@@ -28,6 +28,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PurposeForInternalMarket;
 
 @Builder
@@ -66,7 +67,8 @@ public class Purpose {
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class,
-          NotificationCvedpEuFieldValidation.class
+          NotificationCvedpEuFieldValidation.class,
+          NotificationSingleCvedaValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.purposeGroup"

@@ -62,6 +62,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -128,6 +129,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     groups = {NotificationCvedaEuFieldValidation.class},
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexit"
         + ".exitbip.eucveda.not.null}")
+@PortOfExitAndExitBipNotEmpty(
+    groups = {NotificationSingleCvedaValidation.class},
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexit"
+        + ".exitbip.singlecveda.not.null}")
 public class PartOne {
 
   private TypeOfImp typeOfImp;
