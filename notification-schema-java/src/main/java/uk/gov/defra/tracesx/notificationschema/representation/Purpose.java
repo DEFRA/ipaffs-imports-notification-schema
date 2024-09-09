@@ -29,6 +29,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PurposeForInternalMarket;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.landbridge.NotNullEstimatedArrivalDateValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.landbridge.NotNullEstimatedArrivalTimeValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.landbridge.NotNullPointOfExitValidation;
 
 @Builder
 @Data
@@ -74,13 +77,25 @@ public class Purpose {
   @RetrospectiveCloningProperty()
   private PurposeGroupEnum purposeGroup;
 
+  @NotNull(
+      groups = NotNullEstimatedArrivalDateValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+          + ".estimatedArrivalDateAtPortOfExit.not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate estimatedArrivalDateAtPortOfExit;
 
+  @NotNull(
+      groups = NotNullEstimatedArrivalTimeValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+          + ".estimatedArrivalTimeAtPortOfExit.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
   private LocalTime estimatedArrivalTimeAtPortOfExit;
 
+  @NotNull(
+      groups = NotNullPointOfExitValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+          + ".pointOfExit.not.null}")
   private String pointOfExit;
 }
