@@ -12,4 +12,7 @@ public final class ChedTypeVersion {
 
   // CHED-D values
   public static final short SINGLE_JOURNEY_CHED_D = 2;
+
+  // CHED-A values
+  public static final short SINGLE_JOURNEY_CHED_A = 2;
 }

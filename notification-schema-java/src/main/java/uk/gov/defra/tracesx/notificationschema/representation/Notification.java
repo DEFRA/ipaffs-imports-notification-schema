@@ -71,7 +71,6 @@ public class Notification {
   @ApiModelProperty(
       value =
           "List of external references, which relate to downstream services")
-  @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.APPEND)
   private List<ExternalReference> externalReferences;
 
   @ApiModelProperty(value = "Notification version.")
