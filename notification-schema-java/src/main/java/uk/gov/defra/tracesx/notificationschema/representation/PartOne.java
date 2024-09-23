@@ -61,6 +61,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -116,7 +117,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     groups = NotificationChedppFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pod.required}")
 @PortOfEntryAndPointOfEntryNotEmpty(
-    groups = {NotificationCvedaEuFieldValidation.class},
+    groups = {
+        NotificationCvedaEuFieldValidation.class,
+        NotificationSingleCvedaValidation.class
+    },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofentry"
         + ".pointofentry.eucveda.not.null}")
 @PortOfEntryAndPointOfEntryNotEmpty(
@@ -164,7 +168,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignor.chedpp"
           + ".not.null}")
   @NotNull(
-      groups = NotificationSingleCedValidation.class,
+      groups = {
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
           + ".consignor.not.null}")
   @RetrospectiveCloningProperty()
@@ -185,7 +192,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.consignee"
           + ".not.null}")
   @NotNull(
-      groups = NotificationSingleCedValidation.class,
+      groups = {
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
           + ".consignee.not.null}")
   @RetrospectiveCloningProperty()
@@ -206,7 +216,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp.importer"
           + ".not.null}")
   @NotNull(
-      groups = NotificationSingleCedValidation.class,
+      groups = {
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
           + ".importer.not.null}")
   @RetrospectiveCloningProperty()
@@ -229,7 +242,10 @@ public class PartOne {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.deliveryaddress.chedpp"
               + ".not.null}")
   @NotNull(
-      groups = NotificationSingleCedValidation.class,
+      groups = {
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
               + ".deliveryaddress.not.null}")
@@ -347,7 +363,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate.chedpp"
           + ".not.null}")
   @NotNull(
-      groups = NotificationCvedaEuFieldValidation.class,
+      groups = {
+          NotificationCvedaEuFieldValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
           + ".eucveda.not.null}")
   @NotNull(
@@ -379,7 +398,10 @@ public class PartOne {
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime.chedpp"
           + ".not.null}")
   @NotNull(
-      groups = NotificationCvedaEuFieldValidation.class,
+      groups = {
+          NotificationCvedaEuFieldValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
           + ".eucveda.not.null}")
   @NotNull(
@@ -402,7 +424,8 @@ public class PartOne {
   @NotNull(
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredCvedaValidation.class
+          TransporterDetailsRequiredCvedaValidation.class,
+          NotificationSingleCvedaValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
@@ -505,7 +528,8 @@ public class PartOne {
               + ".estimatedjourneytimeinminutes.not.null}")
   @NotNull(
       groups = {
-          TransporterDetailsRequiredEuCvedaValidation.class
+          TransporterDetailsRequiredEuCvedaValidation.class,
+          NotificationSingleCvedaValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"

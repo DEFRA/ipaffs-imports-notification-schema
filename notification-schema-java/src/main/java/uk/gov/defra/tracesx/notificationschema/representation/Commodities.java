@@ -32,6 +32,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder(toBuilder = true)
@@ -204,7 +205,11 @@ public class Commodities {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".purpose.not.null}")
   @NotNull(
-      groups = {NotificationCvedaFieldValidation.class, NotificationCvedaEuFieldValidation.class},
+      groups = {
+          NotificationCvedaFieldValidation.class,
+          NotificationCvedaEuFieldValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".animalscertifiedas.not.null}")
