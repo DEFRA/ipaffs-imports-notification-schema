@@ -18,6 +18,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder
@@ -46,7 +47,10 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.singleced.not.empty}")
   @NotEmpty(
-      groups = NotificationCvedaEuFieldValidation.class,
+      groups = {
+          NotificationCvedaEuFieldValidation.class,
+          NotificationSingleCvedaValidation.class,
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.id.eucveda.not.empty}")
@@ -72,7 +76,10 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
               "{uk.gov.defra.tracesx.notificationschema.representation.partone"
                       + ".meansoftransportfromentrypoint.type.not.null}")
   @NotNull(
-      groups = NotificationCvedaEuFieldValidation.class,
+      groups = {
+          NotificationCvedaEuFieldValidation.class,
+          NotificationSingleCvedaValidation.class
+      },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
               + ".meansoftransportfromentrypoint.type.eucveda.not.null}")
@@ -129,7 +136,8 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
   @NotEmpty(
       groups = {
           NotificationCvedaEuFieldValidation.class,
-          NotificationSingleCedValidation.class
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
       },
       message =
            "{uk.gov.defra.tracesx.notificationschema.representation.partone"
