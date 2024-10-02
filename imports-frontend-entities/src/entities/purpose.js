@@ -20,6 +20,7 @@ module.exports = class Purpose {
     this.purposeGroup = obj.purposeGroup
     this.estimatedArrivalDateAtPortOfExit = obj.estimatedArrivalDateAtPortOfExit
     this.estimatedArrivalTimeAtPortOfExit = obj.estimatedArrivalTimeAtPortOfExit
+    this.pointOfExit = obj.pointOfExit
 
     return Object.seal(new Proxy(this, handler))
   }

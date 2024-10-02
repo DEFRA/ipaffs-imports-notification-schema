@@ -615,6 +615,12 @@
               "type": "string",
               "javaType": "java.time.LocalTime",
               "description": "Estimated time at port of exit"
+            },
+            "pointOfExit": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 255,
+              "description": "Place of departure"
             }
           }
         },
