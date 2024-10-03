@@ -1733,6 +1733,7 @@
           "enum": [
             "Non Acceptable",
             "Acceptable for Internal Market",
+            "Acceptable for Non Internal Market",
             "Acceptable if Channeled",
             "Acceptable for Transhipment",
             "Acceptable for Transit",
