@@ -18,6 +18,8 @@ public enum DecisionEnum implements EntityProperty {
   @CHEDPP
   @CVEDA
   ACCEPTABLE_FOR_INTERNAL_MARKET("Acceptable for Internal Market"),
+  @CED
+  ACCEPTABLE_FOR_NON_INTERNAL_MARKET("Acceptable for Non Internal Market"),
   @CVEDP
   @CHEDPP
   ACCEPTABLE_IF_CHANNELED("Acceptable if Channeled"),
