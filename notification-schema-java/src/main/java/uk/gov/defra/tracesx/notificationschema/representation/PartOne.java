@@ -319,6 +319,10 @@ public class PartOne {
       groups = NotificationSingleCedValidation.class,
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced.purpose"
           + ".not.null}")
+  @NotNull(
+      groups = NotificationSingleCvedaValidation.class,
+      message = "{uk.gov.defra.tracesx.notificationschema.representation.partone."
+          + "singlecheda.purpose.not.null}")
   @ChedaPurposeExitDateNotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
