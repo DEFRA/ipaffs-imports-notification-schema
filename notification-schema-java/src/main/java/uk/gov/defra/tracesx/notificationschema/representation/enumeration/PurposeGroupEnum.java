@@ -10,7 +10,8 @@ public enum PurposeGroupEnum {
   RE_IMPORT("For Re-Import"),
   PRIVATE_IMPORT("For Private Import"),
   TRANSFER_TO("For Transfer To"),
-  RE_CONFORMITY_CHECK("For Import Re-Conformity Check");
+  RE_CONFORMITY_CHECK("For Import Re-Conformity Check"),
+  NON_INTERNAL_MARKET("For Import Non-Internal Market");
 
   private String value;
 
