@@ -935,6 +935,14 @@
             "YES_ADD_LATER",
             "NO"
           ]
+        },
+        "storeTransporterContact": {
+          "type": "string",
+          "description": "Select whether the importer wishes to store transporter contact details",
+          "enum": [
+            "YES",
+            "NO"
+          ]
         }
       }
     },

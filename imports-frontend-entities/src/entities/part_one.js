@@ -73,6 +73,7 @@ module.exports = class PartOne {
     this.isChargeable = obj.isChargeable
     this.wasChargeable = obj.wasChargeable
     this.provideCtcMrn = obj.provideCtcMrn
+    this.storeTransporterContact = obj.storeTransporterContact
 
     return Object.seal(new Proxy(this, handler))
   }
