@@ -25,6 +25,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ProvideCtcMrnEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StoreTransporterContactEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TypeOfImp;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
@@ -68,6 +69,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVet
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PhytosanitaryCertificateRequiredValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.PointOfEntryControlPointValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.ProvideCtcMrnValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.StoreTransporterContactValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCEDValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCHEDPPValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCvedaValidation;
@@ -621,4 +623,12 @@ public class PartOne {
           + ".not.null}"
   )
   private ProvideCtcMrnEnum provideCtcMrn;
+
+  @NotNull(
+      groups = StoreTransporterContactValidation.class,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.storeTransporterContact"
+          + ".not.null}"
+  )
+  private StoreTransporterContactEnum storeTransporterContact;
 }
