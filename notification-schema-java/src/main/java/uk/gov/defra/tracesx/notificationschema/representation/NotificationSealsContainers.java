@@ -18,6 +18,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 
 @Builder
 @Data
@@ -37,7 +38,8 @@ public class NotificationSealsContainers {
       message = "Seal number cannot be empty")
   @NotBlank(
       groups = {
-          NotificationSingleCedValidation.class
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
       },
       message = "Add seal number")
   @RetrospectiveCloningProperty()
@@ -52,7 +54,8 @@ public class NotificationSealsContainers {
       message = "Enter container or road trailer number")
   @NotBlank(
       groups = {
-          NotificationSingleCedValidation.class
+          NotificationSingleCedValidation.class,
+          NotificationSingleCvedaValidation.class
       },
       message = "Add container or trailer number")
   @RetrospectiveCloningProperty()

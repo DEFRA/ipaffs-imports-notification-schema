@@ -24,6 +24,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCve
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 
 @Builder(toBuilder = true)
 @Data
@@ -85,6 +86,12 @@ public class ComplementParameterSet {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.number_animal.message}")
+  @MinValueKeyDataPair(
+      groups = NotificationSingleCvedaValidation.class,
+      field = NUMBER_ANIMAL,
+      message =
+          "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
+              + ".complementparameterset.keydatapair.singlecheda.number_animal.message}")
   @IsNonNegativeIntegerKeyDataPair(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
