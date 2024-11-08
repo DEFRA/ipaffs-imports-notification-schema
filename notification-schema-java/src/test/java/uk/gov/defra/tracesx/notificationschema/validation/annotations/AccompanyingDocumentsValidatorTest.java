@@ -13,6 +13,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 
  class AccompanyingDocumentsValidatorTest {
 
@@ -98,4 +99,9 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Docume
     assertThat(validator.isValid(notification, null)).isFalse();
   }
 
+  @Test
+  void isValid_ReturnsTrue_WhenIsCvedp() {
+    notification.setType(NotificationTypeEnum.CVEDP);
+    assertThat(validator.isValid(notification, null)).isTrue();
+  }
 }
