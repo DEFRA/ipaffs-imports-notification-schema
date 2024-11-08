@@ -3,13 +3,13 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedppIsPositiveDoubleKeyDataPairValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ChedppIsPositiveDoubleKeyDataPairValidatorTest {
 
   private static final String FIELD = "field";
   private final ChedppIsPositiveDoubleKeyDataPairValidator testSubject = new ChedppIsPositiveDoubleKeyDataPairValidator();
@@ -17,9 +17,9 @@ public class ChedppIsPositiveDoubleKeyDataPairValidatorTest {
   private ChedppIsPositiveDoubleKeyDataPair keyDataPair;
 
   @Test
-  public void initializeValidator_ReturnsNewInstance() {
+  void initializeValidator_ReturnsNewInstance() {
     when(keyDataPair.field()).thenReturn(FIELD);
-    assertThat(testSubject.initializeValidator(keyDataPair)).isEqualToComparingFieldByField(
-        new IsPositiveDoubleKeyDataPairValidation(FIELD));
+    assertThat(testSubject.initializeValidator(keyDataPair)).usingRecursiveComparison()
+        .isEqualTo(new IsPositiveDoubleKeyDataPairValidation(FIELD));
   }
 }

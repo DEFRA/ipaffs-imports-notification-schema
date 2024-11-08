@@ -43,7 +43,6 @@ module.exports = class Type {
         }
       },
       set(target, name, value) {
-        void value
         throw new Error('Type is immutable.')
       }
     }))

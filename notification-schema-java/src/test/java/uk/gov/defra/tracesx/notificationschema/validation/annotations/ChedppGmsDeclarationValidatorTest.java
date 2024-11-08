@@ -4,16 +4,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedppGmsDeclarationValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ChedppGmsDeclarationValidatorTest {
 
   private Commodities commodities;
   private ChedppGmsDeclarationValidator validator;
@@ -24,15 +24,15 @@ public class ChedppGmsDeclarationValidatorTest {
   private static final String JOINT = "JOINT";
   private static final String GMS = "GMS";
   private static final String SMS = "SMS";
-  
-  @Before
-  public void setup() {
+
+  @BeforeEach
+  void setup() {
     validator = new ChedppGmsDeclarationValidator();
     commodities = new Commodities();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfCommoditiesIsNull() {
+  void validatorShouldReturnTrueIfCommoditiesIsNull() {
     // When
     boolean result = validator.isValid(null, null);
 
@@ -41,7 +41,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueIfComplementParameterSetIsNull() {
+  void validatorShouldReturnTrueIfComplementParameterSetIsNull() {
     // Given
     Commodities commodities = new Commodities();
     commodities.setComplementParameterSet(null);
@@ -54,7 +54,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseWhenHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsNotSet() {
+  void validatorShouldReturnFalseWhenHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsNotSet() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(createComplementParameterSet(HMI, GMS));
@@ -68,7 +68,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueWhenHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsTrue() {
+  void validatorShouldReturnTrueWhenHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsTrue() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(createComplementParameterSet(HMI, GMS));
@@ -83,7 +83,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueWhenHmiGmsAndNonHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsTrue() {
+  void validatorShouldReturnTrueWhenHmiGmsAndNonHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsTrue() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(ComplementParameterSet.builder().build());
@@ -99,7 +99,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseWhenHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsFalse() {
+  void validatorShouldReturnFalseWhenHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsFalse() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(createComplementParameterSet(HMI, GMS));
@@ -114,7 +114,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseWhenHmiGmsAndNonHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsFalse() {
+  void validatorShouldReturnFalseWhenHmiGmsAndNonHmiGmsCommodityIsPresentAndTheGmsDeclarationFlagIsFalse() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(ComplementParameterSet.builder().build());
@@ -130,7 +130,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueWhenNoHmiGmsCommodityIsPresent() {
+  void validatorShouldReturnTrueWhenNoHmiGmsCommodityIsPresent() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(createComplementParameterSet(HMI, SMS));
@@ -145,7 +145,7 @@ public class ChedppGmsDeclarationValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueWhenAllKeyDataPairDataFieldsAreNull() {
+  void validatorShouldReturnTrueWhenAllKeyDataPairDataFieldsAreNull() {
     // Given
     List<ComplementParameterSet> complementParameterSetList = new ArrayList<>();
     complementParameterSetList.add(createComplementParameterSet(null, null));

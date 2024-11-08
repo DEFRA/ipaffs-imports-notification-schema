@@ -1,18 +1,17 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.COMMODITY_GROUP;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.LOW_RISK_ARTICLE_72_COMMODITY;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.QUANTITY;
 
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ComplementParameterSetTest {
+class ComplementParameterSetTest {
 
   @Test
-  public void isArticle72_ReturnsFalse_WhenDoesNotContainLowRiskArticle72CommodityKey() {
+  void isArticle72_ReturnsFalse_WhenDoesNotContainLowRiskArticle72CommodityKey() {
     ComplementParameterSet complementParameterSet = ComplementParameterSet.builder()
         .keyDataPair(List.of(
             ComplementParameterSetKeyDataPair.builder().key(QUANTITY).data("1").build(),
@@ -20,11 +19,11 @@ public class ComplementParameterSetTest {
         ))
         .build();
 
-    assertFalse(complementParameterSet.isArticle72());
+    assertThat(complementParameterSet.isArticle72()).isFalse();
   }
 
   @Test
-  public void isArticle72_ReturnsFalse_WhenLowRiskArticle72CommodityIsFalse() {
+  void isArticle72_ReturnsFalse_WhenLowRiskArticle72CommodityIsFalse() {
     ComplementParameterSet complementParameterSet = ComplementParameterSet.builder()
         .keyDataPair(List.of(
             ComplementParameterSetKeyDataPair.builder().key(QUANTITY).data("1").build(),
@@ -33,11 +32,11 @@ public class ComplementParameterSetTest {
         ))
         .build();
 
-    assertFalse(complementParameterSet.isArticle72());
+    assertThat(complementParameterSet.isArticle72()).isFalse();
   }
 
   @Test
-  public void isArticle72_ReturnsTrue_WhenLowRiskArticle72CommodityIsTrue() {
+  void isArticle72_ReturnsTrue_WhenLowRiskArticle72CommodityIsTrue() {
     ComplementParameterSet complementParameterSet = ComplementParameterSet.builder()
         .keyDataPair(List.of(
             ComplementParameterSetKeyDataPair.builder().key(QUANTITY).data("1").build(),
@@ -46,6 +45,6 @@ public class ComplementParameterSetTest {
         ))
         .build();
 
-    assertTrue(complementParameterSet.isArticle72());
+    assertThat(complementParameterSet.isArticle72()).isTrue();
   }
 }

@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AuthorityTypeTest {
+ class AuthorityTypeTest {
   private final static String EXIT_BIP_STRING = "exitbip";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = AuthorityType.EXITBIP.toString();
 
-    assertEquals(enumResult, EXIT_BIP_STRING);
+    assertThat(enumResult).isEqualTo(EXIT_BIP_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = AuthorityType.EXITBIP.getValue();
 
-    assertEquals(enumResult, EXIT_BIP_STRING);
+    assertThat(enumResult).isEqualTo(EXIT_BIP_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     AuthorityType enumResult = AuthorityType.fromValue(EXIT_BIP_STRING);
 
-    assertEquals(enumResult, AuthorityType.EXITBIP);
+    assertThat(enumResult).isEqualTo(AuthorityType.EXITBIP);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     AuthorityType enumResult = AuthorityType.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

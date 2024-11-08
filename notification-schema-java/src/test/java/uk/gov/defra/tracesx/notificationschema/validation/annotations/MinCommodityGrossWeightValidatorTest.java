@@ -1,56 +1,55 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 
-public class MinCommodityGrossWeightValidatorTest {
+class MinCommodityGrossWeightValidatorTest {
 
   private Commodities commodities;
   private MinCommoditiesGrossWeightValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     commodities = new Commodities();
     validator = new MinCommoditiesGrossWeightValidator();
   }
 
   @Test
-  public void validatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  void validatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void validatorReturnsTrueIfGrossWeightHigherThanNetWeight() {
+  void validatorReturnsTrueIfGrossWeightHigherThanNetWeight() {
     commodities.setTotalNetWeight(new BigDecimal("10"));
     commodities.setTotalGrossWeight(new BigDecimal("15"));
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
-  public void validatorReturnsFalseIfGrossWeightLowerThanNetWeight() {
+  void validatorReturnsFalseIfGrossWeightLowerThanNetWeight() {
     commodities.setTotalNetWeight(new BigDecimal("15"));
     commodities.setTotalGrossWeight(new BigDecimal("10"));
 
-    assertFalse(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isFalse();
   }
 
   @Test
-  public void validatorReturnsTrueIfTotalNetWeightIsNull() {
+  void validatorReturnsTrueIfTotalNetWeightIsNull() {
     commodities.setTotalGrossWeight(new BigDecimal("10"));
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
-  public void validatorReturnsTrueIfTotalGrossWeightIsNull() {
+  void validatorReturnsTrueIfTotalGrossWeightIsNull() {
     commodities.setTotalNetWeight(new BigDecimal("10"));
 
-    assertTrue(validator.isValid(commodities, null));
+    assertThat(validator.isValid(commodities, null)).isTrue();
   }
 }

@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AnimalsUnitTest {
+ class AnimalsUnitTest {
   private final static String PERCENT_STRING = "percent";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = AnimalsUnit.PERCENT.toString();
 
-    assertEquals(enumResult, PERCENT_STRING);
+    assertThat(enumResult).isEqualTo(PERCENT_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = AnimalsUnit.PERCENT.getValue();
 
-    assertEquals(enumResult, PERCENT_STRING);
+    assertThat(enumResult).isEqualTo(PERCENT_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     AnimalsUnit enumResult = AnimalsUnit.fromValue(PERCENT_STRING);
 
-    assertEquals(enumResult, AnimalsUnit.PERCENT);
+    assertThat(enumResult).isEqualTo(AnimalsUnit.PERCENT);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     AnimalsUnit enumResult = AnimalsUnit.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

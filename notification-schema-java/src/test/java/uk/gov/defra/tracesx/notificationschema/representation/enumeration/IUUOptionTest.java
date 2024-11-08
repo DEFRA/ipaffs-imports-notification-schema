@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class IUUOptionTest {
+class IUUOptionTest {
   private final static String IUUNA_STRING = "IUUNA";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = IUUOption.IUUNA.toString();
 
-    assertEquals(enumResult, IUUNA_STRING);
+    assertThat(enumResult).isEqualTo(IUUNA_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = IUUOption.IUUNA.getValue();
 
-    assertEquals(enumResult, IUUNA_STRING);
+    assertThat(enumResult).isEqualTo(IUUNA_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     IUUOption enumResult = IUUOption.fromValue(IUUNA_STRING);
 
-    assertEquals(enumResult, IUUOption.IUUNA);
+    assertThat(enumResult).isEqualTo(IUUOption.IUUNA);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     IUUOption enumResult = IUUOption.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

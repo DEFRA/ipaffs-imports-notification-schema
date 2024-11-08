@@ -7,11 +7,11 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.NotificationSealsContainers;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 
-public class NotificationSealsContainersTest {
+class NotificationSealsContainersTest {
 
   private static final Validator VALIDATOR =
       Validation.byDefaultProvider()
@@ -21,7 +21,7 @@ public class NotificationSealsContainersTest {
           .getValidator();
 
   @Test
-  public void validation_ReturnsNoViolations_WhenContainerNumberProvided() {
+  void validation_ReturnsNoViolations_WhenContainerNumberProvided() {
 
     NotificationSealsContainers sealsContainers = new NotificationSealsContainers();
     sealsContainers.setContainerNumber("12345675");
@@ -33,7 +33,7 @@ public class NotificationSealsContainersTest {
   }
 
   @Test
-  public void validation_ReturnsViolation_WhenContainerNumberIsNotProvided() {
+  void validation_ReturnsViolation_WhenContainerNumberIsNotProvided() {
 
     NotificationSealsContainers sealsContainers = new NotificationSealsContainers();
     Set<ConstraintViolation<NotificationSealsContainers>> violations = VALIDATOR.validate(

@@ -1,24 +1,23 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
 
 import jakarta.validation.ConstraintValidatorContext;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedaPurposeExitDateNotNullValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ChedaPurposeExitDateNotNullValidatorTest {
 
   private ChedaPurposeExitDateNotNullValidator validator;
   private Purpose purpose;
@@ -32,10 +31,14 @@ public class ChedaPurposeExitDateNotNullValidatorTest {
   @Mock
   ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext nodeBuilderContextMock;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     validator = new ChedaPurposeExitDateNotNullValidator();
     purpose = new Purpose();
+
+  }
+
+  void validatorMocking() {
     when(constraintValidatorContextMock
         .unwrap(HibernateConstraintValidatorContext.class))
         .thenReturn(hibernateConstraintValidatorContextMock);
@@ -49,16 +52,17 @@ public class ChedaPurposeExitDateNotNullValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseIfPurposeIsNull() {
+  void validatorShouldReturnFalseIfPurposeIsNull() {
+    validatorMocking();
     // Given / When
     boolean result = validator.isValid(null, constraintValidatorContextMock);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfForImportOrAdmissionIsNotTemporaryAdmissionHorses() {
+  void validatorShouldReturnTrueIfForImportOrAdmissionIsNotTemporaryAdmissionHorses() {
     // Given
     purpose.setForImportOrAdmission(ForImportOrAdmissionEnum.DEFINITIVE_IMPORT);
 
@@ -66,12 +70,12 @@ public class ChedaPurposeExitDateNotNullValidatorTest {
     boolean result = validator.isValid(purpose, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
 
   @Test
-  public void validatorShouldReturnTrueIfForImportOrAdmissionIsTemporaryAdmissionHorsesWithExitDate() {
+  void validatorShouldReturnTrueIfForImportOrAdmissionIsTemporaryAdmissionHorsesWithExitDate() {
     // Given
     purpose.setForImportOrAdmission(ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES);
     purpose.setExitDate("exit date");
@@ -80,18 +84,19 @@ public class ChedaPurposeExitDateNotNullValidatorTest {
     boolean result = validator.isValid(purpose, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfForImportOrAdmissionIsTemporaryAdmissionHorsesWithNoExitDate() {
+  void validatorShouldReturnFalseIfForImportOrAdmissionIsTemporaryAdmissionHorsesWithNoExitDate() {
     // Given
     purpose.setForImportOrAdmission(ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES);
+    validatorMocking();
 
     // When
     boolean result = validator.isValid(purpose, constraintValidatorContextMock);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 }

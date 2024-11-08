@@ -1,56 +1,55 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
-public class IdentityCheckEuStandardValidatorTest {
+class IdentityCheckEuStandardValidatorTest {
 
   private ConsignmentCheck check;
   private IdentityCheckResultValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new IdentityCheckResultValidator();
     check = new ConsignmentCheck();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  void testThatValidatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsFalse() {
+  void testThatValidatorReturnsTrueIfIdentityCheckDoneIsFalse() {
     check.setIdentityCheckDone(false);
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsSatisfactory() {
+  void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsSatisfactory() {
     check.setIdentityCheckDone(true);
     check.setIdentityCheckResult(SATISFACTORY);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsNotSatisfactory() {
+  void testThatValidatorReturnsTrueIfIdentityCheckDoneIsTrueAndResultIsNotSatisfactory() {
     check.setIdentityCheckDone(true);
     check.setIdentityCheckResult(NOT_SATISFACTORY);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsFalseIfIdentityCheckDoneIsTrueAndResultIsNull() {
+  void testThatValidatorReturnsFalseIfIdentityCheckDoneIsTrueAndResultIsNull() {
     check.setIdentityCheckDone(true);
 
-    assertFalse(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isFalse();
   }
 }

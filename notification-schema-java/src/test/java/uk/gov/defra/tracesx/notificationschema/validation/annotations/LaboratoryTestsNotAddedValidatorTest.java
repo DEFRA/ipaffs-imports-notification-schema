@@ -2,66 +2,65 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Collections;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 
-public class LaboratoryTestsNotAddedValidatorTest {
+class LaboratoryTestsNotAddedValidatorTest {
 
   private LaboratoryTestsNotAddedValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new LaboratoryTestsNotAddedValidator();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  void testThatValidatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIsLaboratoryTestsNotAddedNull() {
+  void testThatValidatorReturnsTrueIfIsLaboratoryTestsNotAddedNull() {
     PartTwo partTwo = new PartTwo();
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertThat(validator.isValid(partTwo, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsFalse() {
+  void testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsFalse() {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(FALSE);
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertThat(validator.isValid(partTwo, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsFalseWhenLaboratoryTestsRequiredIsTrueAndLaboratoryTestsNull() {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(TRUE);
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertThat(validator.isValid(partTwo, null)).isFalse();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsFalseWhenLaboratoryTestsRequiredIsTrueAndEmptyLaboratoryTestsList() {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(TRUE);
     partTwo.setLaboratoryTests(new LaboratoryTests());
 
-    assertFalse(validator.isValid(partTwo, null));
+    assertThat(validator.isValid(partTwo, null)).isFalse();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsTrueAndLaboratoryTestsListWithOneTest() {
     PartTwo partTwo = new PartTwo();
     partTwo.setLaboratoryTestsRequired(TRUE);
@@ -69,6 +68,6 @@ public class LaboratoryTestsNotAddedValidatorTest {
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertTrue(validator.isValid(partTwo, null));
+    assertThat(validator.isValid(partTwo, null)).isTrue();
   }
 }

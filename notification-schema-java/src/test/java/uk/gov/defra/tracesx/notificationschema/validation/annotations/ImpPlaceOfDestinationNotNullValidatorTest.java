@@ -1,30 +1,29 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.EconomicOperator;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ImpPlaceOfDestinationNotNullValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ImpPlaceOfDestinationNotNullValidatorTest {
 
   private ImpPlaceOfDestinationNotNullValidator validator;
 
   private PartOne partOne;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new ImpPlaceOfDestinationNotNullValidator();
     partOne = new PartOne();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfPartOneIsNull() {
+  void validatorShouldReturnFalseIfPartOneIsNull() {
     // Given
     partOne = null;
 
@@ -32,11 +31,11 @@ public class ImpPlaceOfDestinationNotNullValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfPlaceOfDestinationIsNull() {
+  void validatorShouldReturnFalseIfPlaceOfDestinationIsNull() {
     // Given
     partOne.setPlaceOfDestination(null);
 
@@ -44,11 +43,11 @@ public class ImpPlaceOfDestinationNotNullValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnTruePlaceOfDestinationIsNotNull() {
+  void validatorShouldReturnTruePlaceOfDestinationIsNotNull() {
     // Given
     EconomicOperator placeOfDestination = new EconomicOperator();
     partOne.setPlaceOfDestination(placeOfDestination);
@@ -57,6 +56,6 @@ public class ImpPlaceOfDestinationNotNullValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 }

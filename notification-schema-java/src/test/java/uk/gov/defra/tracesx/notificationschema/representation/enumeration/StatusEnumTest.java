@@ -1,45 +1,44 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class StatusEnumTest {
+class StatusEnumTest {
   private final static String AMEND_STRING = "AMEND";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = StatusEnum.AMEND.toString();
 
-    assertEquals(enumResult, AMEND_STRING);
+    assertThat(enumResult).isEqualTo(AMEND_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = StatusEnum.AMEND.getValue();
 
-    assertEquals(enumResult, AMEND_STRING);
+    assertThat(enumResult).isEqualTo(AMEND_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     StatusEnum enumResult = StatusEnum.fromValue(AMEND_STRING);
 
-    assertEquals(enumResult, StatusEnum.AMEND);
+    assertThat(enumResult).isEqualTo(StatusEnum.AMEND);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     StatusEnum enumResult = StatusEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 
   @Test
-  public void givenValidValuesUnderToProcessStatus_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenValidValuesUnderToProcessStatus_whenFromValueCalled_shouldReturnEnumValue() {
     StatusEnum enumResult = StatusEnum.fromValue("SUBMITTED,IN_PROGRESS,MODIFY");
-    assertEquals(enumResult, StatusEnum.TO_PROCESS);
+    assertThat(enumResult).isEqualTo(StatusEnum.TO_PROCESS);
   }
 }

@@ -1,34 +1,33 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum.DEFINITIVE_IMPORT;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum.RE_IMPORT;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PurposeGroupEnum.TRANSIT_TO_3RD_COUNTRY;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
 
-@RunWith(MockitoJUnitRunner.class)
-public class NotNullPurposeExitBipValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class NotNullPurposeExitBipValidatorTest {
 
   private NotNullPurposeExitBipValidator validator;
 
-  private PartOne partOne = new PartOne();
+  private final PartOne partOne = new PartOne();
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new NotNullPurposeExitBipValidator();
     partOne.setPurpose(new Purpose());
   }
 
   @Test
-  public void validatorShouldReturnTrueIfPurposeIsNull() {
+  void validatorShouldReturnTrueIfPurposeIsNull() {
     // Given
     partOne.setPurpose(null);
 
@@ -36,11 +35,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfForImportOrAdmissionIsTemporaryAdmissionHorsesAndPurposeExitBipIsNotNull() {
+  void validatorShouldReturnTrueIfForImportOrAdmissionIsTemporaryAdmissionHorsesAndPurposeExitBipIsNotNull() {
     // Given
     partOne.getPurpose().setForImportOrAdmission(ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES);
     partOne.getPurpose().setExitBIP("Some BIP");
@@ -49,11 +48,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfForImportOrAdmissionIsTemporaryAdmissionHorsesAndPurposeExitBipIsNull() {
+  void validatorShouldReturnFalseIfForImportOrAdmissionIsTemporaryAdmissionHorsesAndPurposeExitBipIsNull() {
     // Given
     partOne.getPurpose().setForImportOrAdmission(ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES);
     partOne.getPurpose().setExitBIP(null);
@@ -62,11 +61,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfForImportOrAdmissionIsHorsesReEntry() {
+  void validatorShouldReturnTrueIfForImportOrAdmissionIsHorsesReEntry() {
     // Given
     partOne.getPurpose().setForImportOrAdmission(ForImportOrAdmissionEnum.HORSES_RE_ENTRY);
 
@@ -74,11 +73,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenForImportOrAdmissionIsDefinitiveImport() {
+  void isValid_ReturnsTrue_WhenForImportOrAdmissionIsDefinitiveImport() {
     // Given
     partOne.getPurpose().setForImportOrAdmission(DEFINITIVE_IMPORT);
 
@@ -86,11 +85,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenPurposeGroupTransitToThirdCountryAndPurposeExitBipIsNull() {
+  void isValid_ReturnsFalse_WhenPurposeGroupTransitToThirdCountryAndPurposeExitBipIsNull() {
     // Given
     partOne.getPurpose().setPurposeGroup(TRANSIT_TO_3RD_COUNTRY);
     partOne.getPurpose().setExitBIP(null);
@@ -99,11 +98,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenPurposeGroupTransitToThirdCountryAndPurposeExitBipNotNull() {
+  void isValid_ReturnsTrue_WhenPurposeGroupTransitToThirdCountryAndPurposeExitBipNotNull() {
     // Given
     partOne.getPurpose().setPurposeGroup(TRANSIT_TO_3RD_COUNTRY);
     partOne.getPurpose().setExitBIP("Exit Bip");
@@ -112,11 +111,11 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenPurposeGroupNotTransitToThirdCountry() {
+  void isValid_ReturnsTrue_WhenPurposeGroupNotTransitToThirdCountry() {
     // Given
     partOne.getPurpose().setPurposeGroup(RE_IMPORT);
 
@@ -124,6 +123,6 @@ public class NotNullPurposeExitBipValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 }

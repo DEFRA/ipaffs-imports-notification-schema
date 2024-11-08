@@ -1,40 +1,37 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ChedppNotAcceptableReasonEnumTest {
+class ChedppNotAcceptableReasonEnumTest {
   private final static String DOCPHMDM_STRING = "doc-phmdm";
 
   @Test
-  public void chedppNotAcceptableReasonEnumShouldReturnValueWhenValueIsValid() {
+  void chedppNotAcceptableReasonEnumShouldReturnValueWhenValueIsValid() {
     ChedppNotAcceptableReasonEnum enumResult = ChedppNotAcceptableReasonEnum.fromValue(DOCPHMDM_STRING);
 
-    assertEquals(enumResult, ChedppNotAcceptableReasonEnum.DOCPHMDM);
-    assertNotNull(enumResult);
+    assertThat(enumResult).isEqualTo(ChedppNotAcceptableReasonEnum.DOCPHMDM);
   }
 
   @Test
-  public void chedppNotAcceptableReasonEnumShouldReturnNullWhenValueIsInvalid() {
+  void chedppNotAcceptableReasonEnumShouldReturnNullWhenValueIsInvalid() {
     ChedppNotAcceptableReasonEnum enumResult = ChedppNotAcceptableReasonEnum.fromValue("invalid");
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 
   @Test
-  public void chedppNotAcceptableReasonEnumShouldReturnStringValue() {
+  void chedppNotAcceptableReasonEnumShouldReturnStringValue() {
     String enumResult = ChedppNotAcceptableReasonEnum.DOCPHMDM.toString();
 
-    assertEquals(DOCPHMDM_STRING, enumResult);
+    assertThat(enumResult).isEqualTo(DOCPHMDM_STRING);
   }
 
   @Test
-  public void chedppNotAcceptableReasonEnumShouldReturnValue() {
+  void chedppNotAcceptableReasonEnumShouldReturnValue() {
     String enumResult = ChedppNotAcceptableReasonEnum.DOCPHMDM.getValue();
 
-    assertEquals(DOCPHMDM_STRING, enumResult);
+    assertThat(enumResult).isEqualTo(DOCPHMDM_STRING);
   }
 }

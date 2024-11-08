@@ -1,84 +1,83 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
-public class PhysicalCheckResultTest {
+class PhysicalCheckResultTest {
 
   private PhysicalCheckResultValidator validator;
   private ConsignmentCheck consignmentCheck;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new PhysicalCheckResultValidator();
     consignmentCheck = new ConsignmentCheck();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  void testThatValidatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsNull() {
-    assertTrue(validator.isValid(new ConsignmentCheck(), null));
+  void testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsNull() {
+    assertThat(validator.isValid(new ConsignmentCheck(), null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsFalseIfPhysicalCheckResultReturnsTrueButPhysicalCheckResultReturnsNull() {
     consignmentCheck.setPhysicalCheckDone(true);
 
-    assertFalse(validator.isValid(consignmentCheck, null));
+    assertThat(validator.isValid(consignmentCheck, null)).isFalse();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsFalseButPhysicalCheckResultReturnsNull() {
     consignmentCheck.setPhysicalCheckDone(false);
 
-    assertTrue(validator.isValid(consignmentCheck, null));
+    assertThat(validator.isValid(consignmentCheck, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsTrueAndPhysicalCheckResultReturnsSatisfactory() {
     consignmentCheck.setPhysicalCheckDone(true);
     consignmentCheck.setPhysicalCheckResult(SATISFACTORY);
 
-    assertTrue(validator.isValid(consignmentCheck, null));
+    assertThat(validator.isValid(consignmentCheck, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsTrueAndPhysicalCheckResultReturnsNotSatisfactory() {
     consignmentCheck.setPhysicalCheckDone(true);
     consignmentCheck.setPhysicalCheckResult(NOT_SATISFACTORY);
 
-    assertTrue(validator.isValid(consignmentCheck, null));
+    assertThat(validator.isValid(consignmentCheck, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsFalseAndPhysicalCheckResultReturnsSatisfactory() {
     consignmentCheck.setPhysicalCheckDone(false);
     consignmentCheck.setPhysicalCheckResult(SATISFACTORY);
 
-    assertTrue(validator.isValid(consignmentCheck, null));
+    assertThat(validator.isValid(consignmentCheck, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckResultReturnsFalseAndPhysicalCheckResultReturnsNotSatisfactory() {
     consignmentCheck.setPhysicalCheckDone(false);
     consignmentCheck.setPhysicalCheckResult(NOT_SATISFACTORY);
 
-    assertTrue(validator.isValid(consignmentCheck, null));
+    assertThat(validator.isValid(consignmentCheck, null)).isTrue();
   }
 }

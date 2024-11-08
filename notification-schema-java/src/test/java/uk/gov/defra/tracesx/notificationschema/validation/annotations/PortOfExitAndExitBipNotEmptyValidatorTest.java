@@ -1,32 +1,32 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.Purpose;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ForImportOrAdmissionEnum;
 
-@RunWith(MockitoJUnitRunner.class)
-public class PortOfExitAndExitBipNotEmptyValidatorTest {
+class PortOfExitAndExitBipNotEmptyValidatorTest {
 
   private PortOfExitAndExitBipNotEmptyValidator validator;
 
   private PartOne partOne;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new PortOfExitAndExitBipNotEmptyValidator();
     partOne = new PartOne();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfPartOneIsNull() {
+  void validatorShouldReturnTrueIfPartOneIsNull() {
     // Given
     partOne = null;
 
@@ -34,11 +34,11 @@ public class PortOfExitAndExitBipNotEmptyValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfPurposeIsNull() {
+  void validatorShouldReturnTrueIfPurposeIsNull() {
     // Given
     partOne = new PartOne();
 
@@ -46,32 +46,25 @@ public class PortOfExitAndExitBipNotEmptyValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 
-  @Test
-  public void validatorShouldHandleTestCasesCorrectly() {
-    ArrayList<ValidatorTestCase> expectedResultTestCases = buildExpectedResults();
-    for (ValidatorTestCase nextExpectedResult: expectedResultTestCases) {
-      runAndCheckValidation(nextExpectedResult);
-    }
-  }
-
-  private void runAndCheckValidation(ValidatorTestCase validatorTestCase){
-    partOne.setPortOfExit(validatorTestCase.portOfExit);
-    if (validatorTestCase.purpose != null) {
-      Purpose purpose = Purpose.builder().forImportOrAdmission(validatorTestCase.purpose).exitBIP(
-          validatorTestCase.exitBip).build();
+  @ParameterizedTest
+  @MethodSource("buildExpectedResults")
+  void validatorShouldHandleTestCasesCorrectly(ValidatorTestCase testCase) {
+    partOne.setPortOfExit(testCase.portOfExit);
+    if (testCase.purpose != null) {
+      Purpose purpose = Purpose.builder().forImportOrAdmission(testCase.purpose).exitBIP(
+          testCase.exitBip).build();
       partOne.setPurpose(purpose);
     }
 
-
     boolean result = validator.isValid(partOne, null);
 
-    assertEquals(validatorTestCase.expectedResult, result);
+    assertThat(result).isEqualTo(testCase.expectedResult);
   }
 
-  private ArrayList<ValidatorTestCase> buildExpectedResults(){
+  private static Stream<Arguments> buildExpectedResults(){
     ArrayList<ValidatorTestCase> list = new ArrayList<>();
 
     // Purpose set to Temporary admission horses
@@ -122,20 +115,10 @@ public class PortOfExitAndExitBipNotEmptyValidatorTest {
     list.add(new ValidatorTestCase("PORT",null,null,true));
     list.add(new ValidatorTestCase(null,null,null,true));
 
-    return list;
+    return list.stream().map(Arguments::of);
   }
 
-  private static class ValidatorTestCase {
-    public String portOfExit;
-    public String exitBip;
-    public boolean expectedResult;
-    ForImportOrAdmissionEnum purpose;
-
-    public ValidatorTestCase(String portOfExit, String exitBip, ForImportOrAdmissionEnum purpose, boolean expectedResult){
-      this.exitBip = exitBip;
-      this.portOfExit = portOfExit;
-      this.expectedResult = expectedResult;
-      this.purpose = purpose;
-    }
+  private record ValidatorTestCase(String portOfExit, String exitBip, ForImportOrAdmissionEnum purpose,
+                                   boolean expectedResult) {
   }
 }

@@ -1,39 +1,37 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-
-public class CommodityIntentionTest {
+class CommodityIntentionTest {
   private final static String HUMAN_STRING = "human";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = CommodityIntention.HUMAN.toString();
 
-    assertEquals(enumResult, HUMAN_STRING);
+    assertThat(enumResult).isEqualTo(HUMAN_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = CommodityIntention.HUMAN.getValue();
 
-    assertEquals(enumResult, HUMAN_STRING);
+    assertThat(enumResult).isEqualTo(HUMAN_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     CommodityIntention enumResult = CommodityIntention.fromValue(HUMAN_STRING);
 
-    assertEquals(enumResult, CommodityIntention.HUMAN);
+    assertThat(enumResult).isEqualTo(CommodityIntention.HUMAN);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     CommodityIntention enumResult = CommodityIntention.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

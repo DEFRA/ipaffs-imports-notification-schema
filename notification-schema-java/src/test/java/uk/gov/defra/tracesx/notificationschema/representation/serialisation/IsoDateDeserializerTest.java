@@ -6,21 +6,21 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.core.JsonParser;
 import java.io.IOException;
 import java.time.LocalDate;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class IsoDateDeserializerTest {
+@ExtendWith(MockitoExtension.class)
+class IsoDateDeserializerTest {
 
-  private IsoDateDeserializer isoDateDeserializer = new IsoDateDeserializer();
+  private final IsoDateDeserializer isoDateDeserializer = new IsoDateDeserializer();
 
   @Mock
   private JsonParser jsonParser;
 
   @Test
-  public void givenAValidDateString_whenDeserializerCalled_expectLocalDate() throws IOException {
+  void givenAValidDateString_whenDeserializerCalled_expectLocalDate() throws IOException {
     // given
     when(jsonParser.getText()).thenReturn("2020-08-04");
 

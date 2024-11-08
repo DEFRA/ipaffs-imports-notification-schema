@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class TransportMethodTest {
+class TransportMethodTest {
   private final static String OTHER_STRING = "Other";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = TransportMethod.OTHER.toString();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertThat(enumResult).isEqualTo(OTHER_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = TransportMethod.OTHER.getValue();
 
-    assertEquals(enumResult, OTHER_STRING);
+    assertThat(enumResult).isEqualTo(OTHER_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     TransportMethod enumResult = TransportMethod.fromValue(OTHER_STRING);
 
-    assertEquals(enumResult, TransportMethod.OTHER);
+    assertThat(enumResult).isEqualTo(TransportMethod.OTHER);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     TransportMethod enumResult = TransportMethod.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }
