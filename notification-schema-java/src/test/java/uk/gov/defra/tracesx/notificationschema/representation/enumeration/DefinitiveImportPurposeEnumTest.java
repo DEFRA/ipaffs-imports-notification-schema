@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class DefinitiveImportPurposeEnumTest {
+class DefinitiveImportPurposeEnumTest {
   private final static String SLAUGHTER_STRING = "slaughter";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = DefinitiveImportPurposeEnum.SLAUGHTER.toString();
 
-    assertEquals(enumResult, SLAUGHTER_STRING);
+    assertThat(enumResult).isEqualTo(SLAUGHTER_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = DefinitiveImportPurposeEnum.SLAUGHTER.getValue();
 
-    assertEquals(enumResult, SLAUGHTER_STRING);
+    assertThat(enumResult).isEqualTo(SLAUGHTER_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     DefinitiveImportPurposeEnum enumResult = DefinitiveImportPurposeEnum.fromValue(SLAUGHTER_STRING);
 
-    assertEquals(enumResult, DefinitiveImportPurposeEnum.SLAUGHTER);
+    assertThat(enumResult).isEqualTo(DefinitiveImportPurposeEnum.SLAUGHTER);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     DefinitiveImportPurposeEnum enumResult = DefinitiveImportPurposeEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

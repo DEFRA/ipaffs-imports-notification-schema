@@ -1,15 +1,14 @@
 package uk.gov.defra.tracesx.notificationschema.representation;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcceptableActionReasonEnum;
 
-public class DecisionTest {
+class DecisionTest {
 
   @Test
-  public void notAcceptableActionDestructionReasonIsSetCorrectly() {
+  void notAcceptableActionDestructionReasonIsSetCorrectly() {
     Decision decision = Decision.builder()
         .notAcceptableActionDestructionReason(NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS)
         .notAcceptableActionEntryRefusalReason(NotAcceptableActionReasonEnum.PACKAGING_MATERIAL)
@@ -22,19 +21,19 @@ public class DecisionTest {
         .notAcceptableActionUseForOtherPurposesReason(NotAcceptableActionReasonEnum.OTHER)
         .build();
 
-    assertEquals(decision.getNotAcceptableActionDestructionReason(),
-            NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS);
-    assertEquals(decision.getNotAcceptableActionEntryRefusalReason(),
-            NotAcceptableActionReasonEnum.PACKAGING_MATERIAL);
-    assertEquals(decision.getNotAcceptableActionQuarantineImposedReason(),
-            NotAcceptableActionReasonEnum.THE_INTERCEPTED_PART_OF_THE_CONSIGNMENT);
-    assertEquals(decision.getNotAcceptableActionSpecialTreatmentReason(),
-            NotAcceptableActionReasonEnum.OTHER);
-    assertEquals(decision.getNotAcceptableActionIndustrialProcessingReason(),
-            NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS);
-    assertEquals(decision.getNotAcceptableActionReDispatchReason(),
-            NotAcceptableActionReasonEnum.MEANS_OF_TRANSPORT);
-    assertEquals(decision.getNotAcceptableActionUseForOtherPurposesReason(),
-            NotAcceptableActionReasonEnum.OTHER);
+    assertThat(decision.getNotAcceptableActionDestructionReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS);
+    assertThat(decision.getNotAcceptableActionEntryRefusalReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.PACKAGING_MATERIAL);
+    assertThat(decision.getNotAcceptableActionQuarantineImposedReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.THE_INTERCEPTED_PART_OF_THE_CONSIGNMENT);
+    assertThat(decision.getNotAcceptableActionSpecialTreatmentReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.OTHER);
+    assertThat(decision.getNotAcceptableActionIndustrialProcessingReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.CONTAMINATED_PRODUCTS);
+    assertThat(decision.getNotAcceptableActionReDispatchReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.MEANS_OF_TRANSPORT);
+    assertThat(decision.getNotAcceptableActionUseForOtherPurposesReason()).isEqualTo(
+        NotAcceptableActionReasonEnum.OTHER);
   }
 }

@@ -6,21 +6,21 @@ import static org.mockito.Mockito.verify;
 import com.fasterxml.jackson.core.JsonGenerator;
 import java.io.IOException;
 import java.time.LocalTime;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class IsoTimeSerializerTest {
+@ExtendWith(MockitoExtension.class)
+class IsoTimeSerializerTest {
 
-  private IsoTimeSerializer isoTimeSerializer = new IsoTimeSerializer();
+  private final IsoTimeSerializer isoTimeSerializer = new IsoTimeSerializer();
 
   @Mock
   JsonGenerator jsonGenerator;
 
   @Test
-  public void givenAValidLocalTime_whenSerializerCalled_expectMethodCalledWithTimeAsString()
+  void givenAValidLocalTime_whenSerializerCalled_expectMethodCalledWithTimeAsString()
       throws IOException {
     // given
     LocalTime localTime = LocalTime.of(15, 45, 37, 29947000);

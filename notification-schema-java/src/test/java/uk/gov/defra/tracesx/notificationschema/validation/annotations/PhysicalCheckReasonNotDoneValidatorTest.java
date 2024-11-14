@@ -1,63 +1,62 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.FALSE;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason.OTHER;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.PhysicalCheckNotDoneReason.REDUCED_CHECKS_REGIME;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_DONE;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
-public class PhysicalCheckReasonNotDoneValidatorTest {
+class PhysicalCheckReasonNotDoneValidatorTest {
 
   private PhysicalCheckReasonNotDoneValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new PhysicalCheckReasonNotDoneValidator();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  void testThatValidatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIsPhysicalCheckDoneReturnsNull() {
+  void testThatValidatorReturnsTrueIfIsPhysicalCheckDoneReturnsNull() {
     ConsignmentCheck check = new ConsignmentCheck();
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsFalseIfPhysicalCheckIsNotDoneAndPhysicalCheckNotDoneReasonIsNull() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setPhysicalCheckResult(NOT_DONE);
 
-    assertFalse(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isFalse();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckIsNotDoneAndPhysicalCheckNotDoneReasonIsReducedChecksRegime() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setPhysicalCheckDone(FALSE);
     check.setPhysicalCheckNotDoneReason(REDUCED_CHECKS_REGIME);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfPhysicalCheckIsNotDoneAndPhysicalCheckNotDoneReasonIsOther() {
     ConsignmentCheck check = new ConsignmentCheck();
     check.setPhysicalCheckDone(FALSE);
     check.setPhysicalCheckNotDoneReason(OTHER);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 }

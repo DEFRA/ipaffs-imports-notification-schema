@@ -1,39 +1,39 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class ConsignmentLeaveTest {
+import org.junit.jupiter.api.Test;
+
+class ConsignmentLeaveTest {
   private final static String YES_STRING = "YES";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = ConsignmentLeave.YES.toString();
 
-    assertEquals(enumResult, YES_STRING);
+    assertThat(enumResult).isEqualTo(YES_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = ConsignmentLeave.YES.getValue();
 
-    assertEquals(enumResult, YES_STRING);
+    assertThat(enumResult).isEqualTo(YES_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     ConsignmentLeave enumResult = ConsignmentLeave.fromValue(YES_STRING);
 
-    assertEquals(enumResult, ConsignmentLeave.YES);
+    assertThat(enumResult).isEqualTo(ConsignmentLeave.YES);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     ConsignmentLeave enumResult = ConsignmentLeave.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

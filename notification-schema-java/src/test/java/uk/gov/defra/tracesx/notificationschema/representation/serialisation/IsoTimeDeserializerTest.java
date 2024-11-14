@@ -6,21 +6,21 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.core.JsonParser;
 import java.io.IOException;
 import java.time.LocalTime;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class IsoTimeDeserializerTest {
+@ExtendWith(MockitoExtension.class)
+class IsoTimeDeserializerTest {
 
-  private IsoTimeDeserializer isoTimeDeserializer = new IsoTimeDeserializer();
+  private final IsoTimeDeserializer isoTimeDeserializer = new IsoTimeDeserializer();
 
   @Mock
   private JsonParser jsonParser;
 
   @Test
-  public void givenAValidTimeString_whenDeserializerCalled_expectLocalTime() throws IOException {
+  void givenAValidTimeString_whenDeserializerCalled_expectLocalTime() throws IOException {
     // given
     when(jsonParser.getText()).thenReturn("15:45:37.029947Z");
 

@@ -5,8 +5,8 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
@@ -14,7 +14,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.ComplementParamete
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 
-public class PhytosanitaryCertificateRequiredValidatorTest {
+class PhytosanitaryCertificateRequiredValidatorTest {
 
   private static final String REGULATORY_AUTHORITY = "regulatory_authority";
   private static final String JOINT = "JOINT";
@@ -23,13 +23,13 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
 
   private PhytosanitaryCertificateRequiredValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new PhytosanitaryCertificateRequiredValidator();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenComplementParameterSetNull() {
+  void isValid_ReturnsTrue_WhenComplementParameterSetNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder().build())
@@ -43,7 +43,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenKeyDataPairNull() {
+  void isValid_ReturnsTrue_WhenKeyDataPairNull() {
     // Given
     List<ComplementParameterSetKeyDataPair> keyDataPairs = new ArrayList<>();
     keyDataPairs.add(ComplementParameterSetKeyDataPair.builder().build());
@@ -65,7 +65,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenKeyNull() {
+  void isValid_ReturnsTrue_WhenKeyNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -85,7 +85,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDataNull() {
+  void isValid_ReturnsTrue_WhenDataNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -107,7 +107,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoPhsiOrJointCommodities() {
+  void isValid_ReturnsTrue_WhenNoPhsiOrJointCommodities() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -133,7 +133,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenVeterinaryInformationNull() {
+  void isValid_ReturnsFalse_WhenVeterinaryInformationNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -156,7 +156,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenAccompanyingDocumentsNull() {
+  void isValid_ReturnsFalse_WhenAccompanyingDocumentsNull() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -180,7 +180,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenPhsiAndNoPhytosanitaryCertificate() {
+  void isValid_ReturnsFalse_WhenPhsiAndNoPhytosanitaryCertificate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -206,7 +206,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenJointAndNoPhytosanitaryCertificate() {
+  void isValid_ReturnsFalse_WhenJointAndNoPhytosanitaryCertificate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -232,7 +232,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenPhsiAndPhytosanitaryCertificate() {
+  void isValid_ReturnsTrue_WhenPhsiAndPhytosanitaryCertificate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()
@@ -259,7 +259,7 @@ public class PhytosanitaryCertificateRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenJointAndPhytosanitaryCertifiate() {
+  void isValid_ReturnsTrue_WhenJointAndPhytosanitaryCertifiate() {
     // Given
     PartOne partOne = PartOne.builder()
         .commodities(Commodities.builder()

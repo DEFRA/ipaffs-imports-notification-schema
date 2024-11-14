@@ -1,47 +1,46 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class PackageTypeTest {
+class PackageTypeTest {
   private final static String BAG_STRING = "Bag";
   private final static String INVALID_STRING = "Invalid";
   private final static String LEGACY_BULK = "Bulk";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = PackageType.BAG.toString();
 
-    assertEquals(enumResult, BAG_STRING);
+    assertThat(enumResult).isEqualTo(BAG_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = PackageType.BAG.getValue();
 
-    assertEquals(enumResult, BAG_STRING);
+    assertThat(enumResult).isEqualTo(BAG_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     PackageType enumResult = PackageType.fromValue(BAG_STRING);
 
-    assertEquals(enumResult, PackageType.BAG);
+    assertThat(enumResult).isEqualTo(PackageType.BAG);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     PackageType enumResult = PackageType.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 
   @Test
-  public void fromValue_whenCalledWithLegacyBulk_shouldReturnEnumValueOfLegacyBulk() {
+  void fromValue_whenCalledWithLegacyBulk_shouldReturnEnumValueOfLegacyBulk() {
     PackageType enumResult = PackageType.fromValue(LEGACY_BULK);
 
-    assertEquals(enumResult, PackageType.LEGACY_BULK);
+    assertThat(enumResult).isEqualTo(PackageType.LEGACY_BULK);
   }
 }

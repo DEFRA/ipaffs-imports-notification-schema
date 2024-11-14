@@ -1,73 +1,72 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ExternalSystemTest {
+class ExternalSystemTest {
   private final static String E_CERT = "E-CERT";
   private final static String E_PHYTO = "E-PHYTO";
   private final static String INVALID_STRING = "Invalid";
   private final static String NCTS = "NCTS";
 
   @Test
-  public void toString_ReturnsECertValue_WhenECertEnum() {
+  void toString_ReturnsECertValue_WhenECertEnum() {
     String enumResult = ExternalSystem.ECERT.toString();
-    assertEquals(enumResult, E_CERT);
+    assertThat(enumResult).isEqualTo(E_CERT);
   }
 
   @Test
-  public void toString_ReturnsEPhytoValue_WhenEPhytoEnum() {
+  void toString_ReturnsEPhytoValue_WhenEPhytoEnum() {
     String enumResult = ExternalSystem.EPHYTO.toString();
-    assertEquals(enumResult, E_PHYTO);
+    assertThat(enumResult).isEqualTo(E_PHYTO);
   }
 
   @Test
-  public void toString_ReturnsNCTSValue_WhenNCTS() {
+  void toString_ReturnsNCTSValue_WhenNCTS() {
     String enumResult = ExternalSystem.NCTS.toString();
-    assertEquals(enumResult, NCTS);
+    assertThat(enumResult).isEqualTo(NCTS);
   }
 
   @Test
-  public void getValue_ReturnsECertValue_WhenECertEnum() {
+  void getValue_ReturnsECertValue_WhenECertEnum() {
     String enumResult = ExternalSystem.ECERT.getValue();
-    assertEquals(enumResult, E_CERT);
+    assertThat(enumResult).isEqualTo(E_CERT);
   }
 
   @Test
-  public void getValue_ReturnsEPhytoValue_WhenEPhytoEnum() {
+  void getValue_ReturnsEPhytoValue_WhenEPhytoEnum() {
     String enumResult = ExternalSystem.EPHYTO.getValue();
-    assertEquals(enumResult, E_PHYTO);
+    assertThat(enumResult).isEqualTo(E_PHYTO);
   }
 
   @Test
-  public void getValue_ReturnsNCTSValue_WhenNCTS() {
+  void getValue_ReturnsNCTSValue_WhenNCTS() {
     String enumResult = ExternalSystem.NCTS.getValue();
-    assertEquals(enumResult, NCTS);
+    assertThat(enumResult).isEqualTo(NCTS);
   }
 
   @Test
-  public void fromValue_ReturnsECertEnum_WhenECertString() {
+  void fromValue_ReturnsECertEnum_WhenECertString() {
     ExternalSystem enumResult = ExternalSystem.fromValue(E_CERT);
-    assertEquals(enumResult, ExternalSystem.ECERT);
+    assertThat(enumResult).isEqualTo(ExternalSystem.ECERT);
   }
 
   @Test
-  public void fromValue_ReturnsEPhytoEnum_WhenEPhytoString() {
+  void fromValue_ReturnsEPhytoEnum_WhenEPhytoString() {
     ExternalSystem enumResult = ExternalSystem.fromValue(E_PHYTO);
-    assertEquals(enumResult, ExternalSystem.EPHYTO);
+    assertThat(enumResult).isEqualTo(ExternalSystem.EPHYTO);
   }
 
   @Test
-  public void fromValue_ReturnsNCTSEnum_WhenNCTSString() {
+  void fromValue_ReturnsNCTSEnum_WhenNCTSString() {
     ExternalSystem enumResult = ExternalSystem.fromValue(NCTS);
-    assertEquals(enumResult, ExternalSystem.NCTS);
+    assertThat(enumResult).isEqualTo(ExternalSystem.NCTS);
   }
 
   @Test
-  public void fromValue_ReturnsNull_WhenInvalidString() {
+  void fromValue_ReturnsNull_WhenInvalidString() {
     ExternalSystem enumResult = ExternalSystem.fromValue(INVALID_STRING);
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

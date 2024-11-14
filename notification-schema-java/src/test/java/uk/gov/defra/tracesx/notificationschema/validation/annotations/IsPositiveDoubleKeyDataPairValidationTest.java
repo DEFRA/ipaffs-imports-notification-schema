@@ -2,51 +2,29 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-public class IsPositiveDoubleKeyDataPairValidationTest {
+class IsPositiveDoubleKeyDataPairValidationTest {
   private IsPositiveDoubleKeyDataPairValidation validator;
-  private String data;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     validator = new IsPositiveDoubleKeyDataPairValidation("quantity");
   }
 
-  @Test
-  public void isValid_ReturnsFalse_WhenFieldValueIsNull() {
-    data = null;
-    assertThat(validator.isValid(data)).isFalse();
-  }
-
-  @Test
-  public void isValid_ReturnsFalse_WhenFieldValueIsNonPositiveNumber() {
-    data = "-1";
-    assertThat(validator.isValid(data)).isFalse();
-  }
-
-  @Test
-  public void isValid_ReturnsTrue_WhenFieldValueGreaterThanZero() {
-    data = "1";
-    assertThat(validator.isValid(data)).isTrue();
-  }
-
-  @Test
-  public void isValid_ReturnsFalse_WhenFieldValueIsNotANumber() {
-    data = "??";
-    assertThat(validator.isValid(data)).isFalse();
-  }
-
-  @Test
-  public void isValid_ReturnsFalse_WhenFieldValueIsZero() {
-    data = "0";
-    assertThat(validator.isValid(data)).isFalse();
-  }
-
-  @Test
-  public void isValid_ReturnsTrue_WhenFieldValueIsPositiveDecimal() {
-    data = "1.5";
-    assertThat(validator.isValid(data)).isTrue();
+  @ParameterizedTest
+  @CsvSource({
+      " ,                           false",
+      "1,                           true",
+      "-1,                          false",
+      "??,                          false",
+      "1.5,                         true",
+      "0,                           false"
+  })
+  void shouldValidateData(String quantity, boolean expected) {
+    boolean result = validator.isValid(quantity);
+    assertThat(result).isEqualTo(expected);
   }
 }

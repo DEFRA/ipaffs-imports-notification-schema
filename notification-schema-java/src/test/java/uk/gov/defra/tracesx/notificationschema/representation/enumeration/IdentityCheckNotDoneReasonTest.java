@@ -1,49 +1,48 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class IdentityCheckNotDoneReasonTest {
+class IdentityCheckNotDoneReasonTest {
 
   private final static String REDUCED_CHECKS_REGIME_STRING = "Reduced checks regime";
   private final static String NOT_REQUIRED_STRING = "Not required";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = IdentityCheckNotDoneReason.REDUCED_CHECKS_REGIME.toString();
 
-    assertEquals(enumResult, REDUCED_CHECKS_REGIME_STRING);
+    assertThat(enumResult).isEqualTo(REDUCED_CHECKS_REGIME_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_notRequired_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_notRequired_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = IdentityCheckNotDoneReason.NOT_REQUIRED.toString();
 
-    assertEquals(enumResult, NOT_REQUIRED_STRING);
+    assertThat(enumResult).isEqualTo(NOT_REQUIRED_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = IdentityCheckNotDoneReason.NOT_REQUIRED.getValue();
 
-    assertEquals(enumResult, NOT_REQUIRED_STRING);
+    assertThat(enumResult).isEqualTo(NOT_REQUIRED_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     IdentityCheckNotDoneReason enumResult = IdentityCheckNotDoneReason.fromValue(
         NOT_REQUIRED_STRING);
 
-    assertEquals(enumResult, IdentityCheckNotDoneReason.NOT_REQUIRED);
+    assertThat(enumResult).isEqualTo(IdentityCheckNotDoneReason.NOT_REQUIRED);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     IdentityCheckNotDoneReason enumResult = IdentityCheckNotDoneReason.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

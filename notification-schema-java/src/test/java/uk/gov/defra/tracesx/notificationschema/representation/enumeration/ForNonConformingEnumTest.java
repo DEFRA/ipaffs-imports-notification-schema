@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ForNonConformingEnumTest {
+class ForNonConformingEnumTest {
   private final static String CUSTOMS_WAREHOUSE_STRING = "Customs Warehouse";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = ForNonConformingEnum.CUSTOMS_WAREHOUSE.toString();
 
-    assertEquals(enumResult, CUSTOMS_WAREHOUSE_STRING);
+    assertThat(enumResult).isEqualTo(CUSTOMS_WAREHOUSE_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = ForNonConformingEnum.CUSTOMS_WAREHOUSE.getValue();
 
-    assertEquals(enumResult, CUSTOMS_WAREHOUSE_STRING);
+    assertThat(enumResult).isEqualTo(CUSTOMS_WAREHOUSE_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     ForNonConformingEnum enumResult = ForNonConformingEnum.fromValue(CUSTOMS_WAREHOUSE_STRING);
 
-    assertEquals(enumResult, ForNonConformingEnum.CUSTOMS_WAREHOUSE);
+    assertThat(enumResult).isEqualTo(ForNonConformingEnum.CUSTOMS_WAREHOUSE);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     ForNonConformingEnum enumResult = ForNonConformingEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

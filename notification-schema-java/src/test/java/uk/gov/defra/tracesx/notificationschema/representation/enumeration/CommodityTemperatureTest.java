@@ -1,39 +1,37 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
-
-public class CommodityTemperatureTest {
+class CommodityTemperatureTest {
   private final static String AMBIENT_STRING = "Ambient";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = CommodityTemperature.AMBIENT.toString();
 
-    assertEquals(enumResult, AMBIENT_STRING);
+    assertThat(enumResult).isEqualTo(AMBIENT_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = CommodityTemperature.AMBIENT.getValue();
 
-    assertEquals(enumResult, AMBIENT_STRING);
+    assertThat(enumResult).isEqualTo(AMBIENT_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     CommodityTemperature enumResult = CommodityTemperature.fromValue(AMBIENT_STRING);
 
-    assertEquals(enumResult, CommodityTemperature.AMBIENT);
+    assertThat(enumResult).isEqualTo(CommodityTemperature.AMBIENT);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     CommodityTemperature enumResult = CommodityTemperature.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

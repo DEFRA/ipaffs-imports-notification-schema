@@ -6,21 +6,21 @@ import static org.mockito.Mockito.verify;
 import com.fasterxml.jackson.core.JsonGenerator;
 import java.io.IOException;
 import java.time.LocalDate;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class IsoDateSerializerTest {
+@ExtendWith(MockitoExtension.class)
+class IsoDateSerializerTest {
 
-  private IsoDateSerializer isoDateSerializer = new IsoDateSerializer();
+  private final IsoDateSerializer isoDateSerializer = new IsoDateSerializer();
 
   @Mock
   JsonGenerator jsonGenerator;
 
   @Test
-  public void givenAValidLocalDate_whenSerializerCalled_expectMethodCalledWithDateAsString()
+  void givenAValidLocalDate_whenSerializerCalled_expectMethodCalledWithDateAsString()
       throws IOException {
     // given
     LocalDate localDate = LocalDate.of(2020, 8, 4);

@@ -1,29 +1,28 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ImpPortOfEntryValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ImpPortOfEntryValidatorTest {
 
   private ImpPortOfEntryValidator validator;
 
   private PartOne partOne;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new ImpPortOfEntryValidator();
     partOne = new PartOne();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfPartOneIsNull() {
+  void validatorShouldReturnFalseIfPartOneIsNull() {
     // Given
     partOne = null;
 
@@ -31,11 +30,11 @@ public class ImpPortOfEntryValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfThePortOfEntryFieldIsNull() {
+  void validatorShouldReturnFalseIfThePortOfEntryFieldIsNull() {
     // Given
     partOne.setPortOfEntry(null);
 
@@ -43,11 +42,11 @@ public class ImpPortOfEntryValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfThePortOfEntryFieldIsBlank() {
+  void validatorShouldReturnFalseIfThePortOfEntryFieldIsBlank() {
     // Given
     partOne.setPortOfEntry("");
 
@@ -55,11 +54,11 @@ public class ImpPortOfEntryValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
   @Test
-  public void validatorShouldReturnTrueIfThePortOfEntryFieldHasAValue() {
+  void validatorShouldReturnTrueIfThePortOfEntryFieldHasAValue() {
     // Given
     partOne.setPortOfEntry("Some port of entry");
 
@@ -67,6 +66,6 @@ public class ImpPortOfEntryValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertTrue(result);
+    assertThat(result).isTrue();
   }
 }

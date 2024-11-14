@@ -1,7 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType.FULL_IDENTITY_CHECK;
@@ -9,21 +8,20 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
 import jakarta.validation.ConstraintValidatorContext;
-import jakarta.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import jakarta.validation.ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedpIdentityCheckTest {
+@ExtendWith(MockitoExtension.class)
+class ChedpIdentityCheckTest {
 
   private ChedpIdentityCheckValidator validator;
   private PartTwo partTwo;
@@ -37,114 +35,125 @@ public class ChedpIdentityCheckTest {
   @Mock
   NodeBuilderCustomizableContext nodeBuilderContextMock;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new ChedpIdentityCheckValidator();
     partTwo = new PartTwo();
+  }
+
+  void validatorMocking() {
     when(constraintValidatorContextMock
-            .unwrap(HibernateConstraintValidatorContext.class))
-            .thenReturn(hibernateConstraintValidatorContextMock);
+        .unwrap(HibernateConstraintValidatorContext.class))
+        .thenReturn(hibernateConstraintValidatorContextMock);
 
     when(hibernateConstraintValidatorContextMock
-            .buildConstraintViolationWithTemplate(anyString()))
-            .thenReturn(hibernateConstraintViolationBuilder);
+        .buildConstraintViolationWithTemplate(anyString()))
+        .thenReturn(hibernateConstraintViolationBuilder);
 
     when(hibernateConstraintViolationBuilder.addPropertyNode(anyString()))
-            .thenReturn(nodeBuilderContextMock);
+        .thenReturn(nodeBuilderContextMock);
   }
 
   @Test
-  public void isValid_returnsFalse_whenPartTwoNull() {
-    assertFalse(validator.isValid(null, constraintValidatorContextMock));
+  void isValid_returnsFalse_whenPartTwoNull() {
+    validatorMocking();
+    assertThat(validator.isValid(null, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsFalse_whenConsignmentCheckNull() {
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+  void isValid_returnsFalse_whenConsignmentCheckNull() {
+    validatorMocking();
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckNullAndIdentityCheckTypeNull() {
+  void isValid_returnsFalse_whenDocumentCheckNullAndIdentityCheckTypeNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(new ConsignmentCheck());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckNullAndIdentityCheckResultNull() {
+  void isValid_returnsFalse_whenDocumentCheckNullAndIdentityCheckResultNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .identityCheckType(FULL_IDENTITY_CHECK)
         .build());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNullAndIdentityCheckNotNull() {
+  void isValid_returnsTrue_whenDocumentCheckNullAndIdentityCheckNotNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
-        .identityCheckType(FULL_IDENTITY_CHECK)
-        .identityCheckResult(NOT_SATISFACTORY)
-        .build());
-
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
-  }
-
-
-  @Test
-  public void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndIdentityCheckTypeNull() {
-    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
-        .documentCheckResult(SATISFACTORY)
-        .build());
-
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
-  }
-
-  @Test
-  public void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndIdentityCheckResultNull() {
-    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
-        .documentCheckResult(SATISFACTORY)
-        .identityCheckType(FULL_IDENTITY_CHECK)
-        .build());
-
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
-  }
-
-  @Test
-  public void isValid_returnsTrue_whenDocumentCheckSatisfactoryAndIdentityCheckNotNull() {
-    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
-        .documentCheckResult(SATISFACTORY)
         .identityCheckType(FULL_IDENTITY_CHECK)
         .identityCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndIdentityCheckTypeNull() {
+  void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndIdentityCheckTypeNull() {
+    validatorMocking();
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(SATISFACTORY)
+        .build());
+
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
+  }
+
+  @Test
+  void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndIdentityCheckResultNull() {
+    validatorMocking();
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(SATISFACTORY)
+        .identityCheckType(FULL_IDENTITY_CHECK)
+        .build());
+
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
+  }
+
+  @Test
+  void isValid_returnsTrue_whenDocumentCheckSatisfactoryAndIdentityCheckNotNull() {
+    partTwo.setConsignmentCheck(ConsignmentCheck.builder()
+        .documentCheckResult(SATISFACTORY)
+        .identityCheckType(FULL_IDENTITY_CHECK)
+        .identityCheckResult(NOT_SATISFACTORY)
+        .build());
+
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
+  }
+
+
+  @Test
+  void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndIdentityCheckTypeNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndIdentityCheckResultNull() {
+  void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndIdentityCheckResultNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .identityCheckType(FULL_IDENTITY_CHECK)
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndIdentityCheckNotNull() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndIdentityCheckNotNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .identityCheckType(FULL_IDENTITY_CHECK)
@@ -152,36 +161,36 @@ public class ChedpIdentityCheckTest {
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndDecisionNull() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndDecisionNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableNull() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableFalse() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableFalse() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(false).build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 }

@@ -1,28 +1,26 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
 import jakarta.validation.ConstraintValidatorContext;
-import jakarta.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import jakarta.validation.ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedpPhysicalCheckTest {
+@ExtendWith(MockitoExtension.class)
+class ChedpPhysicalCheckTest {
 
   private ChedpPhysicalCheckValidator validator;
   private PartTwo partTwo;
@@ -36,10 +34,13 @@ public class ChedpPhysicalCheckTest {
   @Mock
   NodeBuilderCustomizableContext nodeBuilderContextMock;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new ChedpPhysicalCheckValidator();
     partTwo = new PartTwo();
+  }
+
+  void validatorMocking() {
     when(constraintValidatorContextMock
         .unwrap(HibernateConstraintValidatorContext.class))
         .thenReturn(hibernateConstraintValidatorContextMock);
@@ -52,102 +53,108 @@ public class ChedpPhysicalCheckTest {
         .thenReturn(nodeBuilderContextMock);
   }
 
+
   @Test
-  public void isValid_returnsFalse_whenPartTwoNull() {
-    assertFalse(validator.isValid(null, constraintValidatorContextMock));
+  void isValid_returnsFalse_whenPartTwoNull() {
+    validatorMocking();
+    assertThat(validator.isValid(null, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsFalse_whenConsignmentCheckNull() {
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+  void isValid_returnsFalse_whenConsignmentCheckNull() {
+    validatorMocking();
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckNullAndPhysicalCheckResultNull() {
+  void isValid_returnsFalse_whenDocumentCheckNullAndPhysicalCheckResultNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(new ConsignmentCheck());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNullAndPhysicalCheckResultNotNull() {
+  void isValid_returnsTrue_whenDocumentCheckNullAndPhysicalCheckResultNotNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .physicalCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndPhysicalCheckResultNull() {
+  void isValid_returnsFalse_whenDocumentCheckSatisfactoryAndPhysicalCheckResultNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(SATISFACTORY)
         .build());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckSatisfactoryAndIdentityCheckNotNull() {
+  void isValid_returnsTrue_whenDocumentCheckSatisfactoryAndIdentityCheckNotNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(SATISFACTORY)
         .physicalCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
 
   @Test
-  public void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndPhysicalCheckResultNull() {
+  void isValid_returnsFalse_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndPhysicalCheckResultNull() {
+    validatorMocking();
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndPhysicalCheckResultNotNull() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableAndPhysicalCheckResultNotNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .physicalCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(true).build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndDecisionNull() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndDecisionNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableNull() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableNull() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableFalse() {
+  void isValid_returnsTrue_whenDocumentCheckNotSatisfactoryAndConsignmentAcceptableFalse() {
     partTwo.setConsignmentCheck(ConsignmentCheck.builder()
         .documentCheckResult(NOT_SATISFACTORY)
         .build());
     partTwo.setDecision(Decision.builder().consignmentAcceptable(false).build());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 }

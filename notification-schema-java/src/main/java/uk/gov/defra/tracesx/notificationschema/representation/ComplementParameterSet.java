@@ -145,8 +145,8 @@ public class ComplementParameterSet {
   @JsonIgnore
   public boolean isArticle72() {
     return this.keyDataPair.stream().filter(Objects::nonNull)
-        .anyMatch(keyDataPair ->
-            LOW_RISK_ARTICLE_72_COMMODITY.equals(keyDataPair.getKey())
-            && Boolean.parseBoolean(keyDataPair.getData()));
+        .anyMatch(keyDataPairMatched ->
+            LOW_RISK_ARTICLE_72_COMMODITY.equals(keyDataPairMatched.getKey())
+            && Boolean.parseBoolean(keyDataPairMatched.getData()));
   }
 }

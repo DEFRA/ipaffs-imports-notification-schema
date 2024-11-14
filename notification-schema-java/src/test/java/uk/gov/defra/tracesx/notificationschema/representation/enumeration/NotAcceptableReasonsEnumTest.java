@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class NotAcceptableReasonsEnumTest {
+class NotAcceptableReasonsEnumTest {
   private final static String ID_HEALTH_MARK_ERROR = "IdHealthMarkError";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = NotAcceptableReasonsEnum.IDHEALTHMARKERROR.toString();
 
-    assertEquals(enumResult, ID_HEALTH_MARK_ERROR);
+    assertThat(enumResult).isEqualTo(ID_HEALTH_MARK_ERROR);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = NotAcceptableReasonsEnum.IDHEALTHMARKERROR.getValue();
 
-    assertEquals(enumResult, ID_HEALTH_MARK_ERROR);
+    assertThat(enumResult).isEqualTo(ID_HEALTH_MARK_ERROR);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     NotAcceptableReasonsEnum enumResult = NotAcceptableReasonsEnum.fromValue(ID_HEALTH_MARK_ERROR);
 
-    assertEquals(enumResult, NotAcceptableReasonsEnum.IDHEALTHMARKERROR);
+    assertThat(enumResult).isEqualTo(NotAcceptableReasonsEnum.IDHEALTHMARKERROR);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     NotAcceptableReasonsEnum enumResult = NotAcceptableReasonsEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

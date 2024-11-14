@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class FreeCirculationPurposeEnumTest {
+class FreeCirculationPurposeEnumTest {
   private final static String FURTHER_PROCESS_STRING = "Further Process";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = FreeCirculationPurposeEnum.FURTHER_PROCESS.toString();
 
-    assertEquals(enumResult, FURTHER_PROCESS_STRING);
+    assertThat(enumResult).isEqualTo(FURTHER_PROCESS_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = FreeCirculationPurposeEnum.FURTHER_PROCESS.getValue();
 
-    assertEquals(enumResult, FURTHER_PROCESS_STRING);
+    assertThat(enumResult).isEqualTo(FURTHER_PROCESS_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     FreeCirculationPurposeEnum enumResult = FreeCirculationPurposeEnum.fromValue(FURTHER_PROCESS_STRING);
 
-    assertEquals(enumResult, FreeCirculationPurposeEnum.FURTHER_PROCESS);
+    assertThat(enumResult).isEqualTo(FreeCirculationPurposeEnum.FURTHER_PROCESS);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     FreeCirculationPurposeEnum enumResult = FreeCirculationPurposeEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

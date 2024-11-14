@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class NotificationTypeEnumTest {
+class NotificationTypeEnumTest {
   private final static String CED_STRING = "CED";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = NotificationTypeEnum.CED.toString();
 
-    assertEquals(enumResult, CED_STRING);
+    assertThat(enumResult).isEqualTo(CED_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = NotificationTypeEnum.CED.getValue();
 
-    assertEquals(enumResult, CED_STRING);
+    assertThat(enumResult).isEqualTo(CED_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     NotificationTypeEnum enumResult = NotificationTypeEnum.fromValue(CED_STRING);
 
-    assertEquals(enumResult, NotificationTypeEnum.CED);
+    assertThat(enumResult).isEqualTo(NotificationTypeEnum.CED);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     NotificationTypeEnum enumResult = NotificationTypeEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }
