@@ -166,4 +166,6 @@ public class ConsignmentCheck {
   private Boolean laboratoryCheckDone;
 
   private Result laboratoryCheckResult;
+
+  private String documentCheckAdditionalDetails;
 }
