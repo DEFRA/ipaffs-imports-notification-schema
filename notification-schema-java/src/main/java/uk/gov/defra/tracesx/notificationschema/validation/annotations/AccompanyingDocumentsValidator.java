@@ -3,7 +3,7 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.util.List;
-import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
+import java.util.Optional;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 
@@ -19,14 +19,24 @@ public class AccompanyingDocumentsValidator implements
   public boolean isValid(Notification notification,
       ConstraintValidatorContext constraintValidatorContext) {
 
-    VeterinaryInformation veterinaryInformation =
-        notification.getPartOne().getVeterinaryInformation();
-    List<AccompanyingDocument> partTwoDocuments =
-        notification.getPartTwo().getAccompanyingDocuments();
+    if (notification.isCvedp()) {
+      return true;
+    }
 
-    return (veterinaryInformation != null
-        && veterinaryInformation.getAccompanyingDocuments() != null
-        && !veterinaryInformation.getAccompanyingDocuments().isEmpty())
-        || (partTwoDocuments != null && !partTwoDocuments.isEmpty());
+    return veterinaryInformationPopulated(notification) || partTwoDocumentsPopulated(notification);
   }
+
+  private boolean veterinaryInformationPopulated(Notification notification) {
+    return !Optional.ofNullable(notification.getPartOne().getVeterinaryInformation())
+        .map(VeterinaryInformation::getAccompanyingDocuments)
+        .map(List::isEmpty)
+        .orElse(true);
+  }
+
+  private boolean partTwoDocumentsPopulated(Notification notification) {
+    return !Optional.ofNullable(notification.getPartTwo().getAccompanyingDocuments())
+        .map(List::isEmpty)
+        .orElse(true);
+  }
+
 }
