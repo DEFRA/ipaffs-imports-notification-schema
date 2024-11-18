@@ -20,6 +20,7 @@ module.exports = class ConsignmentCheck {
     this.laboratoryCheckDone = obj.laboratoryCheckDone
     this.laboratoryCheckResult = obj.laboratoryCheckResult
     this.identityCheckNotDoneReason = obj.identityCheckNotDoneReason
+    this.documentCheckAdditionalDetails = obj.documentCheckAdditionalDetails
 
     return Object.seal(new Proxy(this, handler))
   }

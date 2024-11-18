@@ -1292,6 +1292,12 @@
         "laboratoryCheckResult": {
           "$ref": "#/definitions/Result",
           "description": "Result of laboratory tests"
+        },
+        "documentCheckAdditionalDetails": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 150,
+          "description": "Additional details for document check"
         }
       }
     },
