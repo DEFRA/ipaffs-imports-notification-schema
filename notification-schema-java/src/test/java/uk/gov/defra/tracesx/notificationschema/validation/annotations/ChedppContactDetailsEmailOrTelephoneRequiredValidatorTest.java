@@ -9,18 +9,17 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import jakarta.validation.ConstraintValidatorContext;
-import jakarta.validation.ConstraintValidatorContext.ConstraintViolationBuilder;
 import jakarta.validation.ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.ContactDetails;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedppContactDetailsEmailOrTelephoneRequiredValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ChedppContactDetailsEmailOrTelephoneRequiredValidatorTest {
 
   private final ChedppContactDetailsEmailOrTelephoneRequiredValidator testSubject = new ChedppContactDetailsEmailOrTelephoneRequiredValidator();
   @Mock
@@ -31,25 +30,25 @@ public class ChedppContactDetailsEmailOrTelephoneRequiredValidatorTest {
   private ConstraintValidatorContext context;
 
   @Test
-  public void initialize_InitialiseWithMessage() {
+  void initialize_InitialiseWithMessage() {
     testSubject.initialize(constraintAnnotation);
     verify(constraintAnnotation, times(1)).message();
   }
 
   @Test
-  public void isValid_WhenValidEmail_ThenReturnValid() {
+  void isValid_WhenValidEmail_ThenReturnValid() {
     when(contactDetails.getEmail()).thenReturn("contactus@mail.com");
     assertThat(testSubject.isValid(contactDetails, context)).isTrue();
   }
 
   @Test
-  public void isValid_WhenValidTelephone_ThenReturnValid() {
+  void isValid_WhenValidTelephone_ThenReturnValid() {
     when(contactDetails.getTelephone()).thenReturn("07407414474");
     assertThat(testSubject.isValid(contactDetails, context)).isTrue();
   }
 
   @Test
-  public void isValid_WhenNullDetails_ThenReturnInvalid() {
+  void isValid_WhenNullDetails_ThenReturnInvalid() {
     HibernateConstraintValidatorContext validatorContext = mock(
         HibernateConstraintValidatorContext.class);
     when(context.unwrap(HibernateConstraintValidatorContext.class)).thenReturn(validatorContext);

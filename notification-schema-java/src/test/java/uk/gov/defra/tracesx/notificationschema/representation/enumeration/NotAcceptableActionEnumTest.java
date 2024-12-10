@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class NotAcceptableActionEnumTest {
+class NotAcceptableActionEnumTest {
   private final static String DESTRUCTION_STRING = "destruction";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = NotAcceptableActionEnum.DESTRUCTION.toString();
 
-    assertEquals(enumResult, DESTRUCTION_STRING);
+    assertThat(enumResult).isEqualTo(DESTRUCTION_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = NotAcceptableActionEnum.DESTRUCTION.getValue();
 
-    assertEquals(enumResult, DESTRUCTION_STRING);
+    assertThat(enumResult).isEqualTo(DESTRUCTION_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     NotAcceptableActionEnum enumResult = NotAcceptableActionEnum.fromValue(DESTRUCTION_STRING);
 
-    assertEquals(enumResult, NotAcceptableActionEnum.DESTRUCTION);
+    assertThat(enumResult).isEqualTo(NotAcceptableActionEnum.DESTRUCTION);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     NotAcceptableActionEnum enumResult = NotAcceptableActionEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

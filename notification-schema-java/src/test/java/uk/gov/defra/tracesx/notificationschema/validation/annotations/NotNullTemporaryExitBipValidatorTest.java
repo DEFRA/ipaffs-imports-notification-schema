@@ -9,23 +9,16 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
 
-@RunWith(MockitoJUnitRunner.class)
-public class NotNullTemporaryExitBipValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class NotNullTemporaryExitBipValidatorTest {
 
-  @DataPoints("Other decisions")
-  public static final DecisionEnum[] decisions =
-      new DecisionEnum[]{
-          ACCEPTABLE_FOR_TEMPORARY_IMPORT
-      };
   @Mock
   HibernateConstraintValidatorContext hibernateConstraintValidatorContextMock;
   @Mock
@@ -37,11 +30,13 @@ public class NotNullTemporaryExitBipValidatorTest {
   private NotNullTemporaryExitBipValidator validator;
   private Decision decision;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new NotNullTemporaryExitBipValidator();
     this.decision = Decision.builder().build();
+  }
 
+  void validatorMocking() {
     when(constraintValidatorContextMock
         .unwrap(HibernateConstraintValidatorContext.class))
         .thenReturn(hibernateConstraintValidatorContextMock);
@@ -55,24 +50,25 @@ public class NotNullTemporaryExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoPartTwo() {
+  void isValid_ReturnsTrue_WhenNoPartTwo() {
     assertThat(validator.isValid(null, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoDecision() {
+  void isValid_ReturnsTrue_WhenNoDecision() {
     assertThat(validator.isValid(decision, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDecisionIsNull() {
+  void isValid_ReturnsTrue_WhenDecisionIsNull() {
     decision.setDecision(null);
 
     assertThat(validator.isValid(decision, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenTemporaryExitBipIsNull() {
+  void isValid_ReturnsFalse_WhenTemporaryExitBipIsNull() {
+    validatorMocking();
     decision.setDecision(ACCEPTABLE_FOR_TEMPORARY_IMPORT);
     decision.setTemporaryExitBip(null);
 
@@ -80,7 +76,7 @@ public class NotNullTemporaryExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenTemporaryExitBipIsNullAndAcceptableForTransit() {
+  void isValid_ReturnsTrue_WhenTemporaryExitBipIsNullAndAcceptableForTransit() {
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTemporaryExitBip(null);
 
@@ -88,7 +84,8 @@ public class NotNullTemporaryExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenTemporaryExitBipIsEmptyString() {
+  void isValid_ReturnsFalse_WhenTemporaryExitBipIsEmptyString() {
+    validatorMocking();
     decision.setDecision(ACCEPTABLE_FOR_TEMPORARY_IMPORT);
     decision.setTemporaryExitBip("");
 
@@ -96,7 +93,7 @@ public class NotNullTemporaryExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDecisionIsAcceptableForTemporaryImport() {
+  void isValid_ReturnsTrue_WhenDecisionIsAcceptableForTemporaryImport() {
     decision.setDecision(ACCEPTABLE_FOR_TEMPORARY_IMPORT);
     decision.setTemporaryExitBip("GBPHD1");
 

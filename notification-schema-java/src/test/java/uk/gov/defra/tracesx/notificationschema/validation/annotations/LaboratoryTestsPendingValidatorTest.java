@@ -2,8 +2,7 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Conclusion.PENDING;
@@ -12,19 +11,19 @@ import java.util.Collections;
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTestResult;
 import uk.gov.defra.tracesx.notificationschema.representation.LaboratoryTests;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.SingleLaboratoryTest;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TestReason;
 
-@RunWith(MockitoJUnitRunner.class)
-public class LaboratoryTestsPendingValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class LaboratoryTestsPendingValidatorTest {
 
   private LaboratoryTestsPendingValidator validator;
   private PartTwo partTwo;
@@ -33,87 +32,90 @@ public class LaboratoryTestsPendingValidatorTest {
   @Mock
   ConstraintValidatorContext constraintValidatorContextMock;
   @Mock
-  ConstraintValidatorContext.ConstraintViolationBuilder constraintViolationBuilderMock;
-  @Mock
   HibernateConstraintViolationBuilder hibernateConstraintViolationBuilder;
   @Mock
   ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext nodeBuilderContextMock;
 
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     partTwo = new PartTwo();
     validator = new LaboratoryTestsPendingValidator();
+  }
+
+  void validatorMocking() {
     when(constraintValidatorContextMock
-            .unwrap(HibernateConstraintValidatorContext.class))
-            .thenReturn(hibernateConstraintValidatorContextMock);
+        .unwrap(HibernateConstraintValidatorContext.class))
+        .thenReturn(hibernateConstraintValidatorContextMock);
 
     when(hibernateConstraintValidatorContextMock
-            .buildConstraintViolationWithTemplate(anyString()))
-            .thenReturn(hibernateConstraintViolationBuilder);
+        .buildConstraintViolationWithTemplate(anyString()))
+        .thenReturn(hibernateConstraintViolationBuilder);
 
     when(hibernateConstraintViolationBuilder.addPropertyNode(anyString()))
-            .thenReturn(nodeBuilderContextMock);
+        .thenReturn(nodeBuilderContextMock);
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, constraintValidatorContextMock));
+  void testThatValidatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIsLaboratoryTestsNotAddedNull() {
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+  void testThatValidatorReturnsTrueIfIsLaboratoryTestsNotAddedNull() {
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsFalse() {
+  void testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsFalse() {
     partTwo.setLaboratoryTestsRequired(FALSE);
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsFalseWhenLaboratoryTestsRequiredIsTrueAndLaboratoryTestsNull() {
     partTwo.setLaboratoryTestsRequired(TRUE);
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueWhenLaboratoryTestsRequiredIsTrueAndEmptyLaboratoryTestsList() {
     partTwo.setLaboratoryTestsRequired(TRUE);
     partTwo.setLaboratoryTests(new LaboratoryTests());
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueWhenReasonIsRandom() {
+  void testThatValidatorReturnsTrueWhenReasonIsRandom() {
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.RANDOM);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void shouldFailValidationWhenReasonIsSuspiciousNoTests() {
+  void shouldFailValidationWhenReasonIsSuspiciousNoTests() {
+    validatorMocking();
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.SUSPICIOUS);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void shouldFailValidationWhenReasonIsSuspiciousAndOnePendingTest() {
+  void shouldFailValidationWhenReasonIsSuspiciousAndOnePendingTest() {
+    validatorMocking();
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.SUSPICIOUS);
@@ -124,22 +126,24 @@ public class LaboratoryTestsPendingValidatorTest {
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void shouldFailValidationWhenReasonIsReEnforcedNoTests() {
+  void shouldFailValidationWhenReasonIsReEnforcedNoTests() {
+    validatorMocking();
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.REENFORCED);
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(new SingleLaboratoryTest()));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void shouldFailValidationWhenReasonIsReEnforcedAndOnePendingTest() {
+  void shouldFailValidationWhenReasonIsReEnforcedAndOnePendingTest() {
+    validatorMocking();
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.REENFORCED);
@@ -150,11 +154,11 @@ public class LaboratoryTestsPendingValidatorTest {
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertFalse(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isFalse();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueWhenReasonIsRandomAndOnePendingTest() {
+  void testThatValidatorReturnsTrueWhenReasonIsRandomAndOnePendingTest() {
     partTwo.setLaboratoryTestsRequired(TRUE);
     LaboratoryTests laboratoryTests = new LaboratoryTests();
     laboratoryTests.setTestReason(TestReason.RANDOM);
@@ -165,6 +169,6 @@ public class LaboratoryTestsPendingValidatorTest {
     laboratoryTests.setSingleLaboratoryTests(Collections.singletonList(singleLaboratoryTest));
     partTwo.setLaboratoryTests(laboratoryTests);
 
-    assertTrue(validator.isValid(partTwo, constraintValidatorContextMock));
+    assertThat(validator.isValid(partTwo, constraintValidatorContextMock)).isTrue();
   }
 }

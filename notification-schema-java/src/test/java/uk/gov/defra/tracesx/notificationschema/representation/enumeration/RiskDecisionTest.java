@@ -2,36 +2,36 @@ package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class RiskDecisionTest {
+class RiskDecisionTest {
 
   private final static String INVALID_STRING = "Invalid";
   private final static String REQUIRED = "REQUIRED";
 
   @Test
-  public void givenAValidEnumValue_ReturnStringValue_WhenToStringCalled() {
+  void givenAValidEnumValue_ReturnStringValue_WhenToStringCalled() {
     String enumResult = RiskDecision.REQUIRED.toString();
 
     assertThat(enumResult).isEqualTo(REQUIRED);
   }
 
   @Test
-  public void givenAValidEnumValue_ReturnValue_WhenGetValueCalled() {
+  void givenAValidEnumValue_ReturnValue_WhenGetValueCalled() {
     String enumResult = RiskDecision.REQUIRED.getValue();
 
     assertThat(enumResult).isEqualTo(REQUIRED);
   }
 
   @Test
-  public void givenAValidValue_ReturnEnumValue_whenFromValueCalled() {
+  void givenAValidValue_ReturnEnumValue_whenFromValueCalled() {
     RiskDecision enumResult = RiskDecision.fromValue(REQUIRED);
 
     assertThat(enumResult).isEqualTo(RiskDecision.REQUIRED);
   }
 
   @Test
-  public void givenAnInvalidValue_ReturnNull_whenFromValueCalled() {
+  void givenAnInvalidValue_ReturnNull_whenFromValueCalled() {
     RiskDecision enumResult = RiskDecision.fromValue(INVALID_STRING);
 
     assertThat(enumResult).isNull();

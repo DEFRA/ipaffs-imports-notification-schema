@@ -1,20 +1,19 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
-@RunWith(MockitoJUnitRunner.class)
-public class NotNullKeyDataPairValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class NotNullKeyDataPairValidatorTest {
 
   @Mock
   private NotNullKeyDataPair mockKeyDataPair;
@@ -22,8 +21,8 @@ public class NotNullKeyDataPairValidatorTest {
   private NotNullKeyDataPairValidator validator;
   private List<ComplementParameterSetKeyDataPair> keyDataPairList;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new NotNullKeyDataPairValidator();
     when(mockKeyDataPair.field()).thenReturn("type_package");
     keyDataPairList = new ArrayList<>();
@@ -31,12 +30,12 @@ public class NotNullKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testKeyDataPairIsInValidIfObjectPassedIsNull() {
-    assertFalse(validator.isValid(null, null));
+  void testKeyDataPairIsInValidIfObjectPassedIsNull() {
+    assertThat(validator.isValid(null, null)).isFalse();
   }
 
   @Test
-  public void testTypePackageIsInvalidIfNoMatchingFieldPresent() {
+  void testTypePackageIsInvalidIfNoMatchingFieldPresent() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("netweight");
     keyDataPairList.add(pair);
@@ -45,26 +44,26 @@ public class NotNullKeyDataPairValidatorTest {
     pair.setKey("number_package");
     keyDataPairList.add(pair);
 
-    assertFalse(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isFalse();
   }
 
   @Test
-  public void testTypePackageIsInValidIfDataValueIsEmpty() {
+  void testTypePackageIsInValidIfDataValueIsEmpty() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("type_package");
     pair.setData("");
     keyDataPairList.add(pair);
 
-    assertFalse(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isFalse();
   }
 
   @Test
-  public void testTypePackageIsValidIfDataValueIsNotEmpty() {
+  void testTypePackageIsValidIfDataValueIsNotEmpty() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("type_package");
     pair.setData("bag");
     keyDataPairList.add(pair);
 
-    assertTrue(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isTrue();
   }
 }

@@ -2,19 +2,18 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.LOW_RISK_ARTICLE_72_COMMODITY;
 
 import java.util.List;
 import java.util.UUID;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CommoditiesTest {
+class CommoditiesTest {
 
   @Test
-  public void checkAddCommodityComplementItemWithNullList() {
+  void checkAddCommodityComplementItemWithNullList() {
     Commodities commodities = new Commodities();
 
     commodities.setCommodityComplement(null);
@@ -22,11 +21,11 @@ public class CommoditiesTest {
         .addCommodityComplementItem(new CommodityComplement())
         .addCommodityComplementItem(new CommodityComplement());
 
-    assertEquals(2, commodities.getCommodityComplement().size());
+    assertThat(commodities.getCommodityComplement()).hasSize(2);
   }
 
   @Test
-  public void checkAddComplementParameterSetItemWithNullList() {
+  void checkAddComplementParameterSetItemWithNullList() {
     Commodities commodities = new Commodities();
 
     commodities.setComplementParameterSet(null);
@@ -34,31 +33,31 @@ public class CommoditiesTest {
         .addComplementParameterSetItem(new ComplementParameterSet())
         .addComplementParameterSetItem(new ComplementParameterSet());
 
-    assertEquals(2, commodities.getComplementParameterSet().size());
+    assertThat(commodities.getComplementParameterSet()).hasSize(2);
   }
 
   @Test
-  public void isArticle72Consignment_ReturnsFalse_WhenComplementParameterSetIsNull() {
+  void isArticle72Consignment_ReturnsFalse_WhenComplementParameterSetIsNull() {
     Commodities commodities = Commodities.builder()
         .isLowRiskArticle72Country(true)
         .build();
 
-    assertFalse(commodities.isArticle72Consignment());
+    assertThat(commodities.isArticle72Consignment()).isFalse();
   }
 
   @Test
-  public void isArticle72Consignment_ReturnsFalse_WhenIsLowRiskArticle72CountryIsNull() {
+  void isArticle72Consignment_ReturnsFalse_WhenIsLowRiskArticle72CountryIsNull() {
     Commodities commodities = Commodities.builder()
         .complementParameterSet(List.of(
             buildComplementParameterSet(TRUE),
             buildComplementParameterSet(TRUE)
         )).build();
 
-    assertFalse(commodities.isArticle72Consignment());
+    assertThat(commodities.isArticle72Consignment()).isFalse();
   }
 
   @Test
-  public void isArticle72Consignment_ReturnsFalse_WhenIsLowRiskArticle72CountryIsFalse() {
+  void isArticle72Consignment_ReturnsFalse_WhenIsLowRiskArticle72CountryIsFalse() {
     Commodities commodities = Commodities.builder()
         .isLowRiskArticle72Country(false)
         .complementParameterSet(List.of(
@@ -66,11 +65,11 @@ public class CommoditiesTest {
             buildComplementParameterSet(TRUE)
         )).build();
 
-    assertFalse(commodities.isArticle72Consignment());
+    assertThat(commodities.isArticle72Consignment()).isFalse();
   }
 
   @Test
-  public void isArticle72Consignment_ReturnsFalse_WhenNotAllCommoditiesAreArticle72() {
+  void isArticle72Consignment_ReturnsFalse_WhenNotAllCommoditiesAreArticle72() {
     Commodities commodities = Commodities.builder()
         .isLowRiskArticle72Country(true)
         .complementParameterSet(List.of(
@@ -78,11 +77,11 @@ public class CommoditiesTest {
             buildComplementParameterSet(TRUE)
         )).build();
 
-    assertFalse(commodities.isArticle72Consignment());
+    assertThat(commodities.isArticle72Consignment()).isFalse();
   }
 
   @Test
-  public void isArticle72Consignment_ReturnsTrue_WhenAllCommoditiesAreArticle72() {
+  void isArticle72Consignment_ReturnsTrue_WhenAllCommoditiesAreArticle72() {
     Commodities commodities = Commodities.builder()
         .isLowRiskArticle72Country(true)
         .complementParameterSet(List.of(
@@ -90,7 +89,7 @@ public class CommoditiesTest {
             buildComplementParameterSet(TRUE)
         )).build();
 
-    assertTrue(commodities.isArticle72Consignment());
+    assertThat(commodities.isArticle72Consignment()).isTrue();
   }
 
   private ComplementParameterSet buildComplementParameterSet(Boolean isLowRiskArticle72Commodity) {

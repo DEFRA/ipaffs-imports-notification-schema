@@ -1,30 +1,30 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
-@RunWith(MockitoJUnitRunner.class)
-public class PortOfEntryAndPointOfEntryNotEmptyValidatorTest {
+class PortOfEntryAndPointOfEntryNotEmptyValidatorTest {
 
   private PortOfEntryAndPointOfEntryNotEmptyValidator validator;
 
   private PartOne partOne;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new PortOfEntryAndPointOfEntryNotEmptyValidator();
     partOne = new PartOne();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfPartOneIsNull() {
+  void validatorShouldReturnFalseIfPartOneIsNull() {
     // Given
     partOne = null;
 
@@ -32,26 +32,20 @@ public class PortOfEntryAndPointOfEntryNotEmptyValidatorTest {
     boolean result = validator.isValid(partOne, null);
 
     // Then
-    assertFalse(result);
+    assertThat(result).isFalse();
   }
 
-  @Test
-  public void validatorShouldHandleTestCasesCorrectly() {
-    ArrayList<ValidatorTestCase> expectedResultTestCases = buildExpectedResults();
-    for (ValidatorTestCase nextExpectedResult: expectedResultTestCases) {
-      runAndCheckValidation(nextExpectedResult);
-    }
-  }
-
-  private void runAndCheckValidation(ValidatorTestCase validatorTestCase){
-    partOne.setPointOfEntry(validatorTestCase.pointOfEntry);
-    partOne.setPortOfEntry(validatorTestCase.portOfEntry);
+  @ParameterizedTest
+  @MethodSource("buildExpectedResults")
+  void validatorShouldHandleTestCasesCorrectly(ValidatorTestCase testCase) {
+    partOne.setPointOfEntry(testCase.pointOfEntry);
+    partOne.setPortOfEntry(testCase.portOfEntry);
     boolean result = validator.isValid(partOne, null);
 
-    assertEquals(validatorTestCase.expectedResult, result);
+    assertThat(result).isEqualTo(testCase.expectedResult);
   }
 
-  private ArrayList<ValidatorTestCase> buildExpectedResults(){
+  private static Stream<Arguments> buildExpectedResults() {
     ArrayList<ValidatorTestCase> list = new ArrayList<>();
     // Both set
     list.add(new ValidatorTestCase("PORT","POINT",true));
@@ -73,18 +67,11 @@ public class PortOfEntryAndPointOfEntryNotEmptyValidatorTest {
     list.add(new ValidatorTestCase(null,"POINT",false));
     list.add(new ValidatorTestCase("","POINT",false));
     list.add(new ValidatorTestCase("","POINT",false));
-    return list;
+    return list.stream().map(Arguments::of);
   }
 
-  private static class ValidatorTestCase {
-    public String portOfEntry;
-    public String pointOfEntry;
-    public boolean expectedResult;
+  private record ValidatorTestCase(String portOfEntry, String pointOfEntry,
+                                   boolean expectedResult) {
 
-    public ValidatorTestCase(String portOfEntry, String pointOfEntry, boolean expectedResult){
-      this.pointOfEntry = pointOfEntry;
-      this.portOfEntry = portOfEntry;
-      this.expectedResult = expectedResult;
-    }
   }
 }

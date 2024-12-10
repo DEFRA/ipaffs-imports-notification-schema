@@ -1,60 +1,59 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType.FULL_IDENTITY_CHECK;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentificationCheckType.SEAL_CHECK;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 
-public class IdentityCheckTypeValidatorTest {
+class IdentityCheckTypeValidatorTest {
 
   private ConsignmentCheck check;
   private IdentityCheckTypeValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new IdentityCheckTypeValidator();
     check = new ConsignmentCheck();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfNullPassed() {
-    assertTrue(validator.isValid(null, null));
+  void testThatValidatorReturnsTrueIfNullPassed() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIdentityCheckResultIsNotSatisfactory() {
+  void testThatValidatorReturnsTrueIfIdentityCheckResultIsNotSatisfactory() {
     check.setIdentityCheckResult(NOT_SATISFACTORY);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsTrueIfIdentityCheckResultIsSatisfactoryAndTypeIsSealCheck() {
+  void testThatValidatorReturnsTrueIfIdentityCheckResultIsSatisfactoryAndTypeIsSealCheck() {
     check.setIdentityCheckResult(SATISFACTORY);
     check.setIdentityCheckType(SEAL_CHECK);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void
+  void
   testThatValidatorReturnsTrueIfIdentityCheckResultIsSatisfactoryAndTypeIsFullIdentityCheck() {
     check.setIdentityCheckResult(SATISFACTORY);
     check.setIdentityCheckType(FULL_IDENTITY_CHECK);
 
-    assertTrue(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isTrue();
   }
 
   @Test
-  public void testThatValidatorReturnsFalseIfIdentityCheckResultIsSatisfactoryButTypeIsNull() {
+  void testThatValidatorReturnsFalseIfIdentityCheckResultIsSatisfactoryButTypeIsNull() {
     check.setIdentityCheckResult(SATISFACTORY);
 
-    assertFalse(validator.isValid(check, null));
+    assertThat(validator.isValid(check, null)).isFalse();
   }
 }

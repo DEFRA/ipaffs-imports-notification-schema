@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class EconomicOperatorStatusTest {
+class EconomicOperatorStatusTest {
   private final static String SUSPENDED_STRING = "suspended";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = EconomicOperatorStatus.SUSPENDED.toString();
 
-    assertEquals(enumResult, SUSPENDED_STRING);
+    assertThat(enumResult).isEqualTo(SUSPENDED_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = EconomicOperatorStatus.SUSPENDED.getValue();
 
-    assertEquals(enumResult, SUSPENDED_STRING);
+    assertThat(enumResult).isEqualTo(SUSPENDED_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     EconomicOperatorStatus enumResult = EconomicOperatorStatus.fromValue(SUSPENDED_STRING);
 
-    assertEquals(enumResult, EconomicOperatorStatus.SUSPENDED);
+    assertThat(enumResult).isEqualTo(EconomicOperatorStatus.SUSPENDED);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     EconomicOperatorStatus enumResult = EconomicOperatorStatus.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

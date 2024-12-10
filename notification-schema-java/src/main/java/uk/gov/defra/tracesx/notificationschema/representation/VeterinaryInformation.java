@@ -13,11 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LatestHealthCertificateRequired;
-import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
 

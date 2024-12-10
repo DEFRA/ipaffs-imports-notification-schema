@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AnalysisTypeTest {
+class AnalysisTypeTest {
   private final static String INITIAL_ANALYSIS_STRING = "Initial analysis";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = AnalysisType.INITIAL.toString();
 
-    assertEquals(enumResult, INITIAL_ANALYSIS_STRING);
+    assertThat(enumResult).isEqualTo(INITIAL_ANALYSIS_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = AnalysisType.INITIAL.getValue();
 
-    assertEquals(enumResult, INITIAL_ANALYSIS_STRING);
+    assertThat(enumResult).isEqualTo(INITIAL_ANALYSIS_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     AnalysisType enumResult = AnalysisType.fromValue(INITIAL_ANALYSIS_STRING);
 
-    assertEquals(enumResult, AnalysisType.INITIAL);
+    assertThat(enumResult).isEqualTo(AnalysisType.INITIAL);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     AnalysisType enumResult = AnalysisType.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

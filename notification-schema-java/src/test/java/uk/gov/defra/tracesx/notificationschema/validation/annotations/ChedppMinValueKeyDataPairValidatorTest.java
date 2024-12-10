@@ -7,19 +7,19 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.CommodityComplement;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSet.ComplementParameterSetBuilder;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedppMinValueKeyDataPairValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ChedppMinValueKeyDataPairValidatorTest {
 
   private static final String FIELD_NAME = "data-field";
 
@@ -33,12 +33,11 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   private final List<CommodityComplement> commodityComplements = new ArrayList<>();
   private final List<ComplementParameterSet> complementParameterSets = new ArrayList<>();
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     validator = new ChedppMinValueKeyDataPairValidator();
     when(mockKeyDataPair.field()).thenReturn(FIELD_NAME);
     when(commodities.getCommodityComplement()).thenReturn(commodityComplements);
-    when(commodities.getComplementParameterSet()).thenReturn(complementParameterSets);
     validator.initialize(mockKeyDataPair);
   }
 
@@ -70,23 +69,24 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testValidWhenNoCommodityComplement() {
+  void testValidWhenNoCommodityComplement() {
     when(commodities.getCommodityComplement()).thenReturn(null);
     assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
-  public void testValidWhenNoComplementParameterSet() {
+  void testValidWhenNoComplementParameterSet() {
     assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
-  public void testValidWhenEmptyCommoditiesData() {
+  void testValidWhenEmptyCommoditiesData() {
     assertThat(validator.isValid(commodities, null)).isTrue();
   }
 
   @Test
-  public void testNotValidWhenNoMatchingComplementParameterSet() {
+  void testNotValidWhenNoMatchingComplementParameterSet() {
+    when(commodities.getComplementParameterSet()).thenReturn(complementParameterSets);
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement);
@@ -98,7 +98,8 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testValidWhenOnlyInvalidWoodPackagingCommodity() {
+  void testValidWhenOnlyInvalidWoodPackagingCommodity() {
+    when(commodities.getComplementParameterSet()).thenReturn(complementParameterSets);
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", true);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement);
@@ -109,7 +110,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testNotValidWhenNullKeyDataPairInComplementParameterSet() {
+  void testNotValidWhenNullKeyDataPairInComplementParameterSet() {
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement);
@@ -120,7 +121,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testNullPointerExceptionNotThrownWhenSpeciesIdIsNull() {
+  void testNullPointerExceptionNotThrownWhenSpeciesIdIsNull() {
     CommodityComplement commodityComplement = createCommodityComplement(1, null, null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
       commodityComplement,
@@ -133,7 +134,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testNullPointerExceptionNotThrownWhenComplementIdIsNull() {
+  void testNullPointerExceptionNotThrownWhenComplementIdIsNull() {
     CommodityComplement commodityComplement = createCommodityComplement(null, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
       commodityComplement,
@@ -146,7 +147,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testValidWhenCommodityIsValidAndWoodPackagingIsInvalid() {
+  void testValidWhenCommodityIsValidAndWoodPackagingIsInvalid() {
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement,
@@ -165,7 +166,7 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testValidWhenAllCommoditiesValid() {
+  void testValidWhenAllCommoditiesValid() {
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement,
@@ -194,7 +195,8 @@ public class ChedppMinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testNotValidWhenNotAllCommoditiesValid() {
+  void testNotValidWhenNotAllCommoditiesValid() {
+    when(commodities.getComplementParameterSet()).thenReturn(complementParameterSets);
     CommodityComplement commodityComplement = createCommodityComplement(1, "1", null);
     ComplementParameterSet complementParameterSet = createComplementParameterSet(
         commodityComplement,

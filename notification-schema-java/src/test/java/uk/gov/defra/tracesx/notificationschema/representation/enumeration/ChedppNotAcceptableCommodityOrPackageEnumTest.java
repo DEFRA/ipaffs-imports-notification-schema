@@ -1,42 +1,39 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class ChedppNotAcceptableCommodityOrPackageEnumTest {
+class ChedppNotAcceptableCommodityOrPackageEnumTest {
   private final static String COMMODITIES_STRING = "c";
 
   @Test
-  public void chedppNotAcceptableCommodityOrPackageEnumShouldReturnValueWhenValueIsValid() {
+  void chedppNotAcceptableCommodityOrPackageEnumShouldReturnValueWhenValueIsValid() {
     ChedppNotAcceptableCommodityOrPackageEnum enumResult = ChedppNotAcceptableCommodityOrPackageEnum
         .fromValue(COMMODITIES_STRING);
 
-    assertEquals(enumResult, ChedppNotAcceptableCommodityOrPackageEnum.COMMODITIES);
-    assertNotNull(enumResult);
+    assertThat(enumResult).isEqualTo(ChedppNotAcceptableCommodityOrPackageEnum.COMMODITIES);
   }
 
   @Test
-  public void chedppNotAcceptableCommodityOrPackageEnumShouldReturnNullWhenValueIsInvalid() {
+  void chedppNotAcceptableCommodityOrPackageEnumShouldReturnNullWhenValueIsInvalid() {
     ChedppNotAcceptableCommodityOrPackageEnum enumResult = ChedppNotAcceptableCommodityOrPackageEnum
         .fromValue("invalid");
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 
   @Test
-  public void chedppNotAcceptableCommodityOrPackageEnumShouldReturnStringValue() {
+  void chedppNotAcceptableCommodityOrPackageEnumShouldReturnStringValue() {
     String enumResult = ChedppNotAcceptableCommodityOrPackageEnum.COMMODITIES.toString();
 
-    assertEquals(COMMODITIES_STRING, enumResult);
+    assertThat(enumResult).isEqualTo(COMMODITIES_STRING);
   }
 
   @Test
-  public void chedppNotAcceptableCommodityOrPackageEnumShouldReturnValue() {
+  void chedppNotAcceptableCommodityOrPackageEnumShouldReturnValue() {
     String enumResult = ChedppNotAcceptableCommodityOrPackageEnum.COMMODITIES.getValue();
 
-    assertEquals(enumResult, COMMODITIES_STRING);
+    assertThat(enumResult).isEqualTo(COMMODITIES_STRING);
   }
 }

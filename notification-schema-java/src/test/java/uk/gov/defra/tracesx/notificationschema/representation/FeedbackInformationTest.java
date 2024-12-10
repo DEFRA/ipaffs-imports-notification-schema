@@ -2,12 +2,12 @@ package uk.gov.defra.tracesx.notificationschema.representation;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class FeedbackInformationTest {
+class FeedbackInformationTest {
 
   @Test
-  public void equals() {
+  void equals() {
     EqualsVerifier.forClass(FeedbackInformation.class)
         .usingGetClass()
         .suppress(Warning.NONFINAL_FIELDS)

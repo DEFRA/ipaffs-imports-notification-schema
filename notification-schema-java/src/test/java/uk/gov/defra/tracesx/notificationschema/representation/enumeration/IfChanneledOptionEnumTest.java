@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class IfChanneledOptionEnumTest {
+class IfChanneledOptionEnumTest {
   private final static String ARTICLE_8_STRING = "article8";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = IfChanneledOptionEnum.ARTICLE8.toString();
 
-    assertEquals(enumResult, ARTICLE_8_STRING);
+    assertThat(enumResult).isEqualTo(ARTICLE_8_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = IfChanneledOptionEnum.ARTICLE8.getValue();
 
-    assertEquals(enumResult, ARTICLE_8_STRING);
+    assertThat(enumResult).isEqualTo(ARTICLE_8_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     IfChanneledOptionEnum enumResult = IfChanneledOptionEnum.fromValue(ARTICLE_8_STRING);
 
-    assertEquals(enumResult, IfChanneledOptionEnum.ARTICLE8);
+    assertThat(enumResult).isEqualTo(IfChanneledOptionEnum.ARTICLE8);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     IfChanneledOptionEnum enumResult = IfChanneledOptionEnum.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

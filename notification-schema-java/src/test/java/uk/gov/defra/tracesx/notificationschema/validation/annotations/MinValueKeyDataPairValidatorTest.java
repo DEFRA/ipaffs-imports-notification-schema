@@ -1,20 +1,19 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.ComplementParameterSetKeyDataPair;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MinValueKeyDataPairValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class MinValueKeyDataPairValidatorTest {
 
   @Mock
   private MinValueKeyDataPair mockKeyDataPair;
@@ -22,8 +21,8 @@ public class MinValueKeyDataPairValidatorTest {
   private MinValueKeyDataPairValidator validator;
   private List<ComplementParameterSetKeyDataPair> keyDataPairList;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new MinValueKeyDataPairValidator();
     when(mockKeyDataPair.field()).thenReturn("number_package");
     keyDataPairList = new ArrayList<>();
@@ -31,12 +30,12 @@ public class MinValueKeyDataPairValidatorTest {
   }
 
   @Test
-  public void testKeyDataPairIsValidIfObjectPassedIsNull() {
-    assertTrue(validator.isValid(null, null));
+  void testKeyDataPairIsValidIfObjectPassedIsNull() {
+    assertThat(validator.isValid(null, null)).isTrue();
   }
 
   @Test
-  public void testNumPackagesIsInvalidIfNoMatchingFieldPresent() {
+  void testNumPackagesIsInvalidIfNoMatchingFieldPresent() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("netweight");
     keyDataPairList.add(pair);
@@ -45,41 +44,41 @@ public class MinValueKeyDataPairValidatorTest {
     pair.setKey("type_package");
     keyDataPairList.add(pair);
 
-    assertFalse(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isFalse();
   }
 
   @Test
-  public void testNumPackagesIsInvalidIfDataValueCannotBeParsedToInteger() {
+  void testNumPackagesIsInvalidIfDataValueCannotBeParsedToInteger() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("number_package");
     pair.setData("X");
     keyDataPairList.add(pair);
 
-    assertFalse(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isFalse();
   }
 
   @Test
-  public void testNumPackagesIsInvalidIfDataValueIsZero() {
+  void testNumPackagesIsInvalidIfDataValueIsZero() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("number_package");
     pair.setData("0");
     keyDataPairList.add(pair);
 
-    assertFalse(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isFalse();
   }
 
   @Test
-  public void testNumPackagesIsValidIfDataValueIsOne() {
+  void testNumPackagesIsValidIfDataValueIsOne() {
     ComplementParameterSetKeyDataPair pair = new ComplementParameterSetKeyDataPair();
     pair.setKey("number_package");
     pair.setData("1");
     keyDataPairList.add(pair);
 
-    assertTrue(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isTrue();
   }
 
   @Test
-  public void testNetWeightIsValidIfDataValueIsDecimal() {
+  void testNetWeightIsValidIfDataValueIsDecimal() {
     when(mockKeyDataPair.field()).thenReturn("netweight");
     validator.initialize(mockKeyDataPair);
 
@@ -88,11 +87,11 @@ public class MinValueKeyDataPairValidatorTest {
     pair.setData("12.34");
     keyDataPairList.add(pair);
 
-    assertTrue(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isTrue();
   }
 
   @Test
-  public void testNetWeightIsValidIfDataValueIsInteger() {
+  void testNetWeightIsValidIfDataValueIsInteger() {
     when(mockKeyDataPair.field()).thenReturn("netweight");
     validator.initialize(mockKeyDataPair);
 
@@ -101,6 +100,6 @@ public class MinValueKeyDataPairValidatorTest {
     pair.setData("1");
     keyDataPairList.add(pair);
 
-    assertTrue(validator.isValid(keyDataPairList, null));
+    assertThat(validator.isValid(keyDataPairList, null)).isTrue();
   }
 }

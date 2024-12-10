@@ -4,29 +4,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ChedppEstimatedArrivalAtBcpValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class ChedppEstimatedArrivalAtBcpValidatorTest {
 
-  private Notification notification = new Notification();
+  private final Notification notification = new Notification();
   private ChedppEstimatedArrivalAtBcpValidator validator;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     notification.setPartOne(new PartOne());
     notification.setStatus(StatusEnum.VALIDATED);
     validator = new ChedppEstimatedArrivalAtBcpValidator();
   }
 
   @Test
-  public void givenNoPartOneWhenValidatorCalledThenValidatorReturnsFalse() {
+  void givenNoPartOneWhenValidatorCalledThenValidatorReturnsFalse() {
     notification.setPartOne(null);
     Boolean result = validator.isValid(notification, null);
 
@@ -35,7 +35,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
 
 
   @Test
-  public void givenNotificationStatusInProgressWhenValidatorCalledThenValidatorReturnsTrue() {
+  void givenNotificationStatusInProgressWhenValidatorCalledThenValidatorReturnsTrue() {
     notification.getPartOne().setArrivalDate(LocalDate.now().minusDays(1));
     notification.getPartOne().setArrivalTime(LocalTime.now());
     notification.setStatus(StatusEnum.IN_PROGRESS);
@@ -46,7 +46,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenNotificationStatusSubmittedWhenValidatorCalledThenValidatorReturnsTrue() {
+  void givenNotificationStatusSubmittedWhenValidatorCalledThenValidatorReturnsTrue() {
     notification.getPartOne().setArrivalDate(LocalDate.now().minusDays(1));
     notification.getPartOne().setArrivalTime(LocalTime.now());
     notification.setStatus(StatusEnum.SUBMITTED);
@@ -57,7 +57,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenANullArrivalTimeWhenValidatorCalledThenValidatorReturnsTrue() {
+  void givenANullArrivalTimeWhenValidatorCalledThenValidatorReturnsTrue() {
     notification.getPartOne().setArrivalDate(LocalDate.now());
     notification.getPartOne().setArrivalTime(null);
 
@@ -67,7 +67,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenANullArrivalTimeAndArrivalDateWhenValidatorCalledThenValidatorReturnsTrue() {
+  void givenANullArrivalTimeAndArrivalDateWhenValidatorCalledThenValidatorReturnsTrue() {
     notification.getPartOne().setArrivalDate(null);
     notification.getPartOne().setArrivalTime(null);
 
@@ -77,7 +77,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenArrivalDateInTheFutureWhenValidatorCalledThenValidatorReturnsTrue() {
+  void givenArrivalDateInTheFutureWhenValidatorCalledThenValidatorReturnsTrue() {
     notification.getPartOne().setArrivalDate(LocalDate.now().plusDays(1));
     notification.getPartOne().setArrivalTime(LocalTime.now());
 
@@ -87,7 +87,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenArrivalDateOfTodayAndArrivalTimeInTheFutureWhenValidatorCalledThenValidatorReturnsTrue() {
+  void givenArrivalDateOfTodayAndArrivalTimeInTheFutureWhenValidatorCalledThenValidatorReturnsTrue() {
     notification.getPartOne().setArrivalDate(LocalDate.now());
     notification.getPartOne().setArrivalTime(LocalTime.now().plusHours(1));
 
@@ -97,7 +97,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenArrivalDateInThePastWhenValidatorCalledThenValidatorReturnsFalse() {
+  void givenArrivalDateInThePastWhenValidatorCalledThenValidatorReturnsFalse() {
     notification.getPartOne().setArrivalDate(LocalDate.now().minusDays(1));
     notification.getPartOne().setArrivalTime(LocalTime.now());
 
@@ -107,7 +107,7 @@ public class ChedppEstimatedArrivalAtBcpValidatorTest {
   }
 
   @Test
-  public void givenArrivalDateOfTodayAndArrivalTimeInThePastWhenValidatorCalledThenValidatorReturnsFalse() {
+  void givenArrivalDateOfTodayAndArrivalTimeInThePastWhenValidatorCalledThenValidatorReturnsFalse() {
     notification.getPartOne().setArrivalDate(LocalDate.now());
     notification.getPartOne().setArrivalTime(LocalTime.now().minusHours(1));
 

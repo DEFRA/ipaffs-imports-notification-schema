@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class TestReasonTest {
+class TestReasonTest {
   private final static String RANDOM_STRING = "Random";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = TestReason.RANDOM.toString();
 
-    assertEquals(enumResult, RANDOM_STRING);
+    assertThat(enumResult).isEqualTo(RANDOM_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = TestReason.RANDOM.getValue();
 
-    assertEquals(enumResult, RANDOM_STRING);
+    assertThat(enumResult).isEqualTo(RANDOM_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     TestReason enumResult = TestReason.fromValue(RANDOM_STRING);
 
-    assertEquals(enumResult, TestReason.RANDOM);
+    assertThat(enumResult).isEqualTo(TestReason.RANDOM);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     TestReason enumResult = TestReason.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

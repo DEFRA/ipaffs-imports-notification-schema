@@ -1,39 +1,38 @@
 package uk.gov.defra.tracesx.notificationschema.representation.enumeration;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AnimalCertificationTest {
+ class AnimalCertificationTest {
   private final static String APPROVED_STRING = "Approved";
   private final static String INVALID_STRING = "Invalid";
 
   @Test
-  public void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
+  void givenAValidEnumValue_whenToStringCalled_shouldReturnStringValue() {
     String enumResult = AnimalCertification.APPROVED.toString();
 
-    assertEquals(enumResult, APPROVED_STRING);
+    assertThat(enumResult).isEqualTo(APPROVED_STRING);
   }
 
   @Test
-  public void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
+  void givenAValidEnumValue_whenGetValueCalled_shouldReturnValue() {
     String enumResult = AnimalCertification.APPROVED.getValue();
 
-    assertEquals(enumResult, APPROVED_STRING);
+    assertThat(enumResult).isEqualTo(APPROVED_STRING);
   }
 
   @Test
-  public void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
+  void givenAValueValid_whenFromValueCalled_shouldReturnEnumValue() {
     AnimalCertification enumResult = AnimalCertification.fromValue(APPROVED_STRING);
 
-    assertEquals(enumResult, AnimalCertification.APPROVED);
+    assertThat(enumResult).isEqualTo(AnimalCertification.APPROVED);
   }
 
   @Test
-  public void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
+  void givenAnInvalidValue_whenFromValueCalled_shouldReturnNull() {
     AnimalCertification enumResult = AnimalCertification.fromValue(INVALID_STRING);
 
-    assertNull(enumResult);
+    assertThat(enumResult).isNull();
   }
 }

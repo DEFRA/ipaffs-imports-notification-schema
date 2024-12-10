@@ -5,11 +5,11 @@
   <parent>
     <groupId>uk.gov.defra.tracesx</groupId>
     <artifactId>IPAFFS-Common-Schema</artifactId>
-    <version>4.0.37</version>
+    <version>4.0.40</version>
   </parent>
 
   <artifactId>notification-schema-java</artifactId>
-  <version>4.0.37</version>
+  <version>4.0.40</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -19,7 +19,7 @@
 
   <scm>
     <connection>${parent.scm.connection}</connection>
-    <tag>4.0.37</tag>
+    <tag>4.0.40</tag>
   </scm>
 
   <dependencies>
@@ -57,8 +57,13 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -70,6 +75,11 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

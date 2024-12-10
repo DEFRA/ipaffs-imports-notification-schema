@@ -5,22 +5,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
 import uk.gov.defra.tracesx.notificationschema.representation.Notification;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.PartTwo;
 import uk.gov.defra.tracesx.notificationschema.representation.VeterinaryInformation;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotificationTypeEnum;
 
-public class AccompanyingDocumentsValidatorTest {
+ class AccompanyingDocumentsValidatorTest {
 
   private AccompanyingDocumentsValidator validator;
   private Notification notification;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     validator = new AccompanyingDocumentsValidator();
     notification = new Notification();
     VeterinaryInformation veterinaryInformation = new VeterinaryInformation();
@@ -36,66 +37,71 @@ public class AccompanyingDocumentsValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenValidPartOneAndPartTwoAccompanyingDocuments() {
+  void isValid_ReturnsTrue_WhenValidPartOneAndPartTwoAccompanyingDocuments() {
     assertThat(validator.isValid(notification, null)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenValidPartOneAndPartTwoNullAccompanyingDocuments() {
+  void isValid_ReturnsTrue_WhenValidPartOneAndPartTwoNullAccompanyingDocuments() {
     notification.getPartTwo().setAccompanyingDocuments(null);
     assertThat(validator.isValid(notification, null)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenValidPartOneAndPartTwoEmptyAccompanyingDocuments() {
+  void isValid_ReturnsTrue_WhenValidPartOneAndPartTwoEmptyAccompanyingDocuments() {
     notification.getPartTwo().setAccompanyingDocuments(new ArrayList<>());
     assertThat(validator.isValid(notification, null)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenPartOneNullVeterinaryInformationAndPartTwoValidAccompanyingDocuments() {
+  void isValid_ReturnsTrue_WhenPartOneNullVeterinaryInformationAndPartTwoValidAccompanyingDocuments() {
     notification.getPartOne().setVeterinaryInformation(null);
     assertThat(validator.isValid(notification, null)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenPartOneNullAccompanyingDocumentsAndPartTwoValidAccompanyingDocuments() {
+  void isValid_ReturnsTrue_WhenPartOneNullAccompanyingDocumentsAndPartTwoValidAccompanyingDocuments() {
     notification.getPartOne().getVeterinaryInformation().setAccompanyingDocuments(null);
     assertThat(validator.isValid(notification, null)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenPartOneEmptyAccompanyingDocumentsAndPartTwoValidAccompanyingDocuments() {
+  void isValid_ReturnsTrue_WhenPartOneEmptyAccompanyingDocumentsAndPartTwoValidAccompanyingDocuments() {
     notification.getPartOne().getVeterinaryInformation().setAccompanyingDocuments(new ArrayList<>());
     assertThat(validator.isValid(notification, null)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenPartOneNullVeterinaryInformationAndPartTwoNullAccompanyingDocuments() {
+  void isValid_ReturnsFalse_WhenPartOneNullVeterinaryInformationAndPartTwoNullAccompanyingDocuments() {
     notification.getPartOne().setVeterinaryInformation(null);
     notification.getPartTwo().setAccompanyingDocuments(null);
     assertThat(validator.isValid(notification, null)).isFalse();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenPartOneEmptyAccompanyingDocumentsAndPartTwoNullAccompanyingDocuments() {
+  void isValid_ReturnsFalse_WhenPartOneEmptyAccompanyingDocumentsAndPartTwoNullAccompanyingDocuments() {
     notification.getPartOne().getVeterinaryInformation().setAccompanyingDocuments(new ArrayList<>());
     notification.getPartTwo().setAccompanyingDocuments(null);
     assertThat(validator.isValid(notification, null)).isFalse();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenPartOneEmptyAccompanyingDocumentsAndPartTwoEmptyAccompanyingDocuments() {
+  void isValid_ReturnsFalse_WhenPartOneEmptyAccompanyingDocumentsAndPartTwoEmptyAccompanyingDocuments() {
     notification.getPartOne().getVeterinaryInformation().setAccompanyingDocuments(new ArrayList<>());
     notification.getPartTwo().setAccompanyingDocuments(new ArrayList<>());
     assertThat(validator.isValid(notification, null)).isFalse();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenPartOneNullAccompanyingDocumentsAndPartTwoEmptyAccompanyingDocuments() {
+  void isValid_ReturnsFalse_WhenPartOneNullAccompanyingDocumentsAndPartTwoEmptyAccompanyingDocuments() {
     notification.getPartOne().getVeterinaryInformation().setAccompanyingDocuments(null);
     notification.getPartTwo().setAccompanyingDocuments(new ArrayList<>());
     assertThat(validator.isValid(notification, null)).isFalse();
   }
 
+  @Test
+  void isValid_ReturnsTrue_WhenIsCvedp() {
+    notification.setType(NotificationTypeEnum.CVEDP);
+    assertThat(validator.isValid(notification, null)).isTrue();
+  }
 }

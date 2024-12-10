@@ -180,6 +180,10 @@ public class Decision {
   @JsonDeserialize(using = IsoDateDeserializer.class)
   private LocalDate temporaryDeadline;
 
+  // SuppressWarning java:S1700 as Sonarqube state that its confusing that the enum has the same
+  // name as the class, I don't believe this is true, we can refactor this name,
+  // but it will cause 10+ changes to the code and not necessarily make it clearer
+  @SuppressWarnings("java:S1700")
   private DecisionEnum decision;
   private FreeCirculationPurposeEnum freeCirculationPurpose;
   private DefinitiveImportPurposeEnum definitiveImportPurpose;

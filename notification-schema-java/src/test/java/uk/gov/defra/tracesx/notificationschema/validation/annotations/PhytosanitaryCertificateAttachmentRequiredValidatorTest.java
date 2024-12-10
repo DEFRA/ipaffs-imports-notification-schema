@@ -5,21 +5,21 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.DocumentType.VETERINARY_HEALTH_CERTIFICATE;
 
 import java.util.UUID;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.AccompanyingDocument;
 
-public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
+class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
 
   private PhytosanitaryCertificateAttachmentRequiredValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new PhytosanitaryCertificateAttachmentRequiredValidator();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDocumentTypeNull() {
+  void isValid_ReturnsTrue_WhenDocumentTypeNull() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder().build();
 
@@ -31,7 +31,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNotPhytosanitaryCertificate() {
+  void isValid_ReturnsTrue_WhenNotPhytosanitaryCertificate() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder()
         .documentType(VETERINARY_HEALTH_CERTIFICATE)
@@ -45,7 +45,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenAttachmentNotPresent() {
+  void isValid_ReturnsFalse_WhenAttachmentNotPresent() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder()
         .documentType(PHYTOSANITARY_CERTIFICATE)
@@ -59,7 +59,7 @@ public class PhytosanitaryCertificateAttachmentRequiredValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenAttachmentPresent() {
+  void isValid_ReturnsTrue_WhenAttachmentPresent() {
     // Given
     AccompanyingDocument accompanyingDocument = AccompanyingDocument.builder()
         .documentType(PHYTOSANITARY_CERTIFICATE)

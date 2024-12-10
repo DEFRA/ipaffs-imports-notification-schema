@@ -1,44 +1,43 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 
-public class NotNullCustomsReferenceNumberValidatorTest {
+class NotNullCustomsReferenceNumberValidatorTest {
 
   private PartOne partOne;
   private NotNullCustomsReferenceNumberValidator validator;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     partOne = new PartOne();
     validator = new NotNullCustomsReferenceNumberValidator();
   }
 
   @Test
-  public void validatorReturnsFalse_ifNoPartOne() {
-    assertFalse(validator.isValid(null, null));
+  void validatorReturnsFalse_ifNoPartOne() {
+    assertThat(validator.isValid(null, null)).isFalse();
   }
 
   @Test
-  public void validatorReturnsFalse_ifNoCustomsReferenceNumber() {
-    assertFalse(validator.isValid(partOne, null));
+  void validatorReturnsFalse_ifNoCustomsReferenceNumber() {
+    assertThat(validator.isValid(partOne, null)).isFalse();
   }
 
   @Test
-  public void validatorReturnsTrue_ifCustomsReferenceNumber() {
+  void validatorReturnsTrue_ifCustomsReferenceNumber() {
     partOne.setCustomsReferenceNumber("ABCD1234");
 
-    assertTrue(validator.isValid(partOne, null));
+    assertThat(validator.isValid(partOne, null)).isTrue();
   }
 
   @Test
-  public void validatorReturnsFalse_ifEmptyCustomsReferenceNumber() {
+  void validatorReturnsFalse_ifEmptyCustomsReferenceNumber() {
     partOne.setCustomsReferenceNumber("");
 
-    assertFalse(validator.isValid(partOne, null));
+    assertThat(validator.isValid(partOne, null)).isFalse();
   }
 }

@@ -8,21 +8,21 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class IsoOffsetDateTimeSerializerTest {
+@ExtendWith(MockitoExtension.class)
+class IsoOffsetDateTimeSerializerTest {
 
-  private IsoOffsetDateTimeSerializer isoOffsetDateTimeSerializer = new IsoOffsetDateTimeSerializer();
+  private final IsoOffsetDateTimeSerializer isoOffsetDateTimeSerializer = new IsoOffsetDateTimeSerializer();
 
   @Mock
   JsonGenerator jsonGenerator;
 
   @Test
-  public void givenAValidLocalDateTime_whenSerializerCalled_expectMethodCalledWithDateTimeAsString()
+  void givenAValidLocalDateTime_whenSerializerCalled_expectMethodCalledWithDateTimeAsString()
       throws IOException {
     // given
     LocalDate localDate = LocalDate.of(2020, 8, 4);

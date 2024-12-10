@@ -10,23 +10,15 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
 
-@RunWith(MockitoJUnitRunner.class)
-public class NotNullTransitDestinationThirdCountryValidatorTest {
-
-  @DataPoints("Other decisions")
-  public static final DecisionEnum[] decisions =
-      new DecisionEnum[]{
-          ACCEPTABLE_FOR_TRANSIT
-      };
+@ExtendWith(MockitoExtension.class)
+class NotNullTransitDestinationThirdCountryValidatorTest {
   @Mock
   HibernateConstraintValidatorContext hibernateConstraintValidatorContextMock;
   @Mock
@@ -38,11 +30,13 @@ public class NotNullTransitDestinationThirdCountryValidatorTest {
   private NotNullTransitDestinationThirdCountryValidator validator;
   private Decision decision;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new NotNullTransitDestinationThirdCountryValidator();
     this.decision = Decision.builder().build();
+  }
 
+  void validatorMocking() {
     when(constraintValidatorContextMock
         .unwrap(HibernateConstraintValidatorContext.class))
         .thenReturn(hibernateConstraintValidatorContextMock);
@@ -56,24 +50,25 @@ public class NotNullTransitDestinationThirdCountryValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoPartTwo() {
+  void isValid_ReturnsTrue_WhenNoPartTwo() {
     assertThat(validator.isValid(null, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoDecision() {
+  void isValid_ReturnsTrue_WhenNoDecision() {
     assertThat(validator.isValid(decision, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDecisionIsNull() {
+  void isValid_ReturnsTrue_WhenDecisionIsNull() {
     decision.setDecision(null);
 
     assertThat(validator.isValid(decision, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenTransitDestinationThirdCountryIsNull() {
+  void isValid_ReturnsFalse_WhenTransitDestinationThirdCountryIsNull() {
+    validatorMocking();
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTransitDestinationThirdCountry(null);
 
@@ -81,7 +76,7 @@ public class NotNullTransitDestinationThirdCountryValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenTransitDestinationThirdCountryIsNullAndAcceptableForTranshipment() {
+  void isValid_ReturnsTrue_WhenTransitDestinationThirdCountryIsNullAndAcceptableForTranshipment() {
     decision.setDecision(ACCEPTABLE_FOR_TRANSHIPMENT);
     decision.setTransitDestinationThirdCountry(null);
 
@@ -89,7 +84,8 @@ public class NotNullTransitDestinationThirdCountryValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenTransitDestinationThirdCountryIsEmptyString() {
+  void isValid_ReturnsFalse_WhenTransitDestinationThirdCountryIsEmptyString() {
+    validatorMocking();
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTransitDestinationThirdCountry("");
 
@@ -97,7 +93,7 @@ public class NotNullTransitDestinationThirdCountryValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDecisionIsAcceptableForTransit() {
+  void isValid_ReturnsTrue_WhenDecisionIsAcceptableForTransit() {
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTransitDestinationThirdCountry("AF");
 

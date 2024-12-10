@@ -9,23 +9,16 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintViolationBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.defra.tracesx.notificationschema.representation.Decision;
-import uk.gov.defra.tracesx.notificationschema.representation.enumeration.DecisionEnum;
 
-@RunWith(MockitoJUnitRunner.class)
-public class NotNullTransitExitBipValidatorTest {
+@ExtendWith(MockitoExtension.class)
+class NotNullTransitExitBipValidatorTest {
 
-  @DataPoints("Other decisions")
-  public static final DecisionEnum[] decisions =
-      new DecisionEnum[]{
-          ACCEPTABLE_FOR_TRANSIT
-      };
   @Mock
   HibernateConstraintValidatorContext hibernateConstraintValidatorContextMock;
   @Mock
@@ -37,11 +30,13 @@ public class NotNullTransitExitBipValidatorTest {
   private NotNullTransitExitBipValidator validator;
   private Decision decision;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new NotNullTransitExitBipValidator();
     this.decision = Decision.builder().build();
+  }
 
+  void validatorMocking() {
     when(constraintValidatorContextMock
         .unwrap(HibernateConstraintValidatorContext.class))
         .thenReturn(hibernateConstraintValidatorContextMock);
@@ -55,24 +50,25 @@ public class NotNullTransitExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoPartTwo() {
+  void isValid_ReturnsTrue_WhenNoPartTwo() {
     assertThat(validator.isValid(null, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenNoDecision() {
+  void isValid_ReturnsTrue_WhenNoDecision() {
     assertThat(validator.isValid(decision, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDecisionIsNull() {
+  void isValid_ReturnsTrue_WhenDecisionIsNull() {
     decision.setDecision(null);
 
     assertThat(validator.isValid(decision, constraintValidatorContextMock)).isTrue();
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenTransitExitBipIsNull() {
+  void isValid_ReturnsFalse_WhenTransitExitBipIsNull() {
+    validatorMocking();
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTransitExitBip(null);
 
@@ -80,7 +76,7 @@ public class NotNullTransitExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenTransitExitBipIsNullAndAcceptableForTranshipment() {
+  void isValid_ReturnsTrue_WhenTransitExitBipIsNullAndAcceptableForTranshipment() {
     decision.setDecision(ACCEPTABLE_FOR_TRANSHIPMENT);
     decision.setTransitExitBip(null);
 
@@ -88,7 +84,8 @@ public class NotNullTransitExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsFalse_WhenTransitExitBipIsEmptyString() {
+  void isValid_ReturnsFalse_WhenTransitExitBipIsEmptyString() {
+    validatorMocking();
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTransitExitBip("");
 
@@ -96,7 +93,7 @@ public class NotNullTransitExitBipValidatorTest {
   }
 
   @Test
-  public void isValid_ReturnsTrue_WhenDecisionIsAcceptableForTransit() {
+  void isValid_ReturnsTrue_WhenDecisionIsAcceptableForTransit() {
     decision.setDecision(ACCEPTABLE_FOR_TRANSIT);
     decision.setTransitExitBip("GBPHD1");
 

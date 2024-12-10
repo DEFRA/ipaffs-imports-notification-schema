@@ -3,42 +3,29 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.FromDataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.EnumSource.Mode;
 import uk.gov.defra.tracesx.notificationschema.representation.Commodities;
 import uk.gov.defra.tracesx.notificationschema.representation.PartOne;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.AnimalCertification;
 
-@RunWith(Theories.class)
-public class ImpPortOfExitDateNotNullValidatorTest {
+class ImpPortOfExitDateNotNullValidatorTest {
 
   private ImpPortOfExitDateNotNullValidator validator;
 
   private PartOne partOne;
 
-  @DataPoints("Non Transit AnimalCertifications")
-  public static Collection<AnimalCertification> nonTransitAnimalCertifications() {
-    return Arrays.stream(AnimalCertification.values())
-        .filter(animalCertification -> animalCertification != AnimalCertification.TRANSIT)
-        .collect(Collectors.toList());
-  }
-
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     validator = new ImpPortOfExitDateNotNullValidator();
     partOne = new PartOne();
   }
 
   @Test
-  public void validatorShouldReturnFalseIfPartOneIsNull() {
+  void validatorShouldReturnFalseIfPartOneIsNull() {
     partOne = null;
 
     boolean result = validator.isValid(partOne, null);
@@ -47,7 +34,7 @@ public class ImpPortOfExitDateNotNullValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseIfCommoditiesIsNull() {
+  void validatorShouldReturnFalseIfCommoditiesIsNull() {
     partOne.setCommodities(null);
 
     boolean result = validator.isValid(partOne, null);
@@ -56,7 +43,7 @@ public class ImpPortOfExitDateNotNullValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnTrueIfAnimalCertificationIsNull() {
+  void validatorShouldReturnTrueIfAnimalCertificationIsNull() {
     partOne.setCommodities(Commodities.builder().build());
 
     boolean result = validator.isValid(partOne, null);
@@ -64,9 +51,10 @@ public class ImpPortOfExitDateNotNullValidatorTest {
     assertThat(result).isTrue();
   }
 
-  @Theory
-  public void validatorShouldReturnTrueIfAnimalCertificationIsSetAndNotTransit(
-      @FromDataPoints("Non Transit AnimalCertifications") AnimalCertification animalCertification) {
+  @ParameterizedTest
+  @EnumSource(value = AnimalCertification.class, mode = Mode.EXCLUDE, names = {"TRANSIT"})
+  void validatorShouldReturnTrueIfAnimalCertificationIsSetAndNotTransit(
+      AnimalCertification animalCertification) {
     partOne.setCommodities(Commodities.builder().animalsCertifiedAs(animalCertification).build());
 
     boolean result = validator.isValid(partOne, null);
@@ -75,7 +63,7 @@ public class ImpPortOfExitDateNotNullValidatorTest {
   }
 
   @Test
-  public void validatorShouldReturnFalseIfAnimalCertificationIsTransitAndThePortOfExitDateIsNull() {
+  void validatorShouldReturnFalseIfAnimalCertificationIsTransitAndThePortOfExitDateIsNull() {
     partOne.setCommodities(
         Commodities.builder().animalsCertifiedAs(AnimalCertification.TRANSIT).build());
 
@@ -85,7 +73,7 @@ public class ImpPortOfExitDateNotNullValidatorTest {
   }
 
   @Test
-  public void
+  void
       validatorShouldReturnTrueIfAnimalCertificationIsTransitAndThePortOfExitDateIsPopulated() {
     partOne.setCommodities(
         Commodities.builder().animalsCertifiedAs(AnimalCertification.TRANSIT).build());
