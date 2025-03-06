@@ -8,9 +8,14 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY_FOLLOWING_OFFICIAL_INTERVENTION;
 
+import java.time.Month;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
+import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 
 class ChedaDocumentCheckResultValidatorTest {
 
@@ -143,14 +148,6 @@ class ChedaDocumentCheckResultValidatorTest {
   }
 
   @Test
-  void isValid_returnsTrue_whenDocumentCheckNullEuStandardAndNationalRequirementNotSet() {
-    check.setEuStandard(NOT_SET);
-    check.setNationalRequirements(NOT_SET);
-
-    assertThat(validator.isValid(check, null)).isFalse();
-  }
-
-  @Test
   void isValid_returnsTrue_whenDocumentCheckEuStandardNullAndNationalRequirementNotSet() {
     check.setDocumentCheckResult(NOT_SET);
     check.setNationalRequirements(NOT_SET);
@@ -166,4 +163,18 @@ class ChedaDocumentCheckResultValidatorTest {
     assertThat(validator.isValid(check, null)).isFalse();
   }
 
+  @ParameterizedTest
+  @EnumSource(Result.class)
+  void isValid_returnsTrue_ForDocumentCheckResultsThatAreNotNotSet(Result result) {
+    check.setEuStandard(NOT_SET);
+    check.setNationalRequirements(NOT_SET);
+
+    check.setDocumentCheckResult(result);
+
+    if (result != NOT_SET) {
+      assertThat(validator.isValid(check, null)).isTrue();
+    } else {
+      assertThat(validator.isValid(check, null)).isFalse();
+    }
+  }
 }
