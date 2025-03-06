@@ -17,8 +17,7 @@ public class ChedaDocumentCheckResultValidator implements
     if (consignmentCheck != null && !isExistingCHEDANotification(consignmentCheck)) {
       return (consignmentCheck.getEuStandard() == NOT_SET
           && consignmentCheck.getNationalRequirements() == NOT_SET
-          && (consignmentCheck.getDocumentCheckResult() == SATISFACTORY
-          || consignmentCheck.getDocumentCheckResult() == NOT_SATISFACTORY));
+          && consignmentCheck.getDocumentCheckResult() != NOT_SET);
     }
 
     return true;
