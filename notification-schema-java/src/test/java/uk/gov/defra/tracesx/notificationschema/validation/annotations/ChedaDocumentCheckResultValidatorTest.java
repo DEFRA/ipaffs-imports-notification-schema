@@ -8,12 +8,10 @@ import static uk.gov.defra.tracesx.notificationschema.representation.enumeration
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY_FOLLOWING_OFFICIAL_INTERVENTION;
 
-import java.time.Month;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import uk.gov.defra.tracesx.notificationschema.representation.ConsignmentCheck;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result;
 
