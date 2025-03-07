@@ -1,9 +1,6 @@
 package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
-import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SATISFACTORY;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_SET;
-import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.SATISFACTORY;
-import static uk.gov.defra.tracesx.notificationschema.validation.utils.ConsignmentCheckUtil.isExistingCHEDANotification;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -14,10 +11,8 @@ public class ChedaDocumentCheckResultValidator implements
 
   @Override
   public boolean isValid(ConsignmentCheck consignmentCheck, ConstraintValidatorContext context) {
-    if (consignmentCheck != null && !isExistingCHEDANotification(consignmentCheck)) {
-      return (consignmentCheck.getEuStandard() == NOT_SET
-          && consignmentCheck.getNationalRequirements() == NOT_SET
-          && consignmentCheck.getDocumentCheckResult() != NOT_SET);
+    if (consignmentCheck != null) {
+      return consignmentCheck.getDocumentCheckResult() != NOT_SET;
     }
 
     return true;
