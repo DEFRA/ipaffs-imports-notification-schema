@@ -12,7 +12,8 @@ public class ChedaDocumentCheckResultValidator implements
   @Override
   public boolean isValid(ConsignmentCheck consignmentCheck, ConstraintValidatorContext context) {
     if (consignmentCheck != null) {
-      return consignmentCheck.getDocumentCheckResult() != NOT_SET;
+      return consignmentCheck.getDocumentCheckResult() != null
+          && consignmentCheck.getDocumentCheckResult() != NOT_SET;
     }
 
     return true;

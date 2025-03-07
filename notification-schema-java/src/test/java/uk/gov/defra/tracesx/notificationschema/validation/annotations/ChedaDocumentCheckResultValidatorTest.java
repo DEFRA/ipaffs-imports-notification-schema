@@ -27,6 +27,13 @@ class ChedaDocumentCheckResultValidatorTest {
     assertThat(validator.isValid(null, null)).isTrue();
   }
 
+  @Test
+  void isValid_returnsFalse_whenDocCheckResultIsNull() {
+    check.setDocumentCheckResult(null);
+
+    assertThat(validator.isValid(check, null)).isFalse();
+  }
+
   @ParameterizedTest
   @EnumSource(Result.class)
   void isValid_returnsTrue_ForDocumentCheckResultsThatAreNotNotSet(Result result) {
