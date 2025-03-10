@@ -13,12 +13,13 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Retrospect
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaRowSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskNonChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 
 @Builder
 @Data
@@ -39,7 +40,8 @@ public class NotificationSealsContainers {
   @NotBlank(
       groups = {
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "Add seal number")
   @RetrospectiveCloningProperty()
@@ -55,7 +57,8 @@ public class NotificationSealsContainers {
   @NotBlank(
       groups = {
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "Add container or trailer number")
   @RetrospectiveCloningProperty()

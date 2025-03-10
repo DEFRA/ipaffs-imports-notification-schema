@@ -13,12 +13,13 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Transp
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuSingleJourneyValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaRowSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuTransportFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder
@@ -49,7 +50,8 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
   @NotEmpty(
       groups = {
           NotificationCvedaEuFieldValidation.class,
-          NotificationSingleCvedaValidation.class,
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
@@ -78,7 +80,8 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
   @NotNull(
       groups = {
           NotificationCvedaEuFieldValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
@@ -137,7 +140,8 @@ public class MeansOfTransportBeforeBip implements MeansOfTransport {
       groups = {
           NotificationCvedaEuFieldValidation.class,
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message =
            "{uk.gov.defra.tracesx.notificationschema.representation.partone"

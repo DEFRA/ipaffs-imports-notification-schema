@@ -54,7 +54,9 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaRowSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationGvmsRouteValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
@@ -62,7 +64,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationTransporterContactDetailsEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -121,7 +122,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
 @PortOfEntryAndPointOfEntryNotEmpty(
     groups = {
         NotificationCvedaEuFieldValidation.class,
-        NotificationSingleCvedaValidation.class
+        NotificationCvedaEuSingleJourneyValidation.class
     },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofentry"
         + ".pointofentry.eucveda.not.null}")
@@ -172,7 +173,8 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
           + ".consignor.not.null}")
@@ -196,7 +198,8 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
           + ".consignee.not.null}")
@@ -220,7 +223,8 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
           + ".importer.not.null}")
@@ -246,7 +250,8 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationSingleCedValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.singleced"
@@ -333,7 +338,10 @@ public class PartOne {
   private Purpose purpose;
 
   @NotBlank(
-      groups = NotificationHighRiskFieldValidation.class,
+      groups = {
+          NotificationHighRiskFieldValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
+      },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.pointofentry"
           + ".not.null}")
   @NotBlank(
@@ -367,7 +375,8 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationCvedaEuFieldValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaldate"
           + ".eucveda.not.null}")
@@ -402,7 +411,8 @@ public class PartOne {
   @NotNull(
       groups = {
           NotificationCvedaEuFieldValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.arrivaltime"
           + ".eucveda.not.null}")
@@ -427,7 +437,8 @@ public class PartOne {
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class,
           TransporterDetailsRequiredCvedaValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.transporter"
           + ".not.null}")
@@ -531,7 +542,8 @@ public class PartOne {
   @NotNull(
       groups = {
           TransporterDetailsRequiredEuCvedaValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone"
