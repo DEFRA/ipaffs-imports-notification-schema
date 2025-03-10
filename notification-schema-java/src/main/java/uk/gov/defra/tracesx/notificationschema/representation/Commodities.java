@@ -26,13 +26,14 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.Retrospect
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaRowSingleJourneyValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEuCedFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationLowRiskFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCedValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidation;
 
 @Builder(toBuilder = true)
@@ -208,7 +209,8 @@ public class Commodities {
       groups = {
           NotificationCvedaFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
-          NotificationSingleCvedaValidation.class
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"

@@ -25,7 +25,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCed
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCedOrCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaNonEuFieldValidation;
+import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaRowFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedpFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationDocumentCheckValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHighRiskEUDocumentCheckValidation;
@@ -79,19 +79,19 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationHig
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".reasonidentitychecknotdone.not.null}")
 @EuStandardValidator(
-    groups = NotificationCvedaNonEuFieldValidation.class,
+    groups = NotificationCvedaRowFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".eustandard.not.null}")
 @ChedaDocumentCheckResult(
-    groups = NotificationCvedaNonEuFieldValidation.class,
+    groups = NotificationCvedaRowFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
             + ".documentarycheck.invalid.nonhighriskeu}")
 public class ConsignmentCheck {
 
   @NotNull(
-      groups = NotificationCvedaNonEuFieldValidation.class,
+      groups = NotificationCvedaRowFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.consignmentcheck"
               + ".eustandard.not.null}")
