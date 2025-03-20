@@ -131,7 +131,10 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofentry"
         + ".pointofentry.eucvedp.not.null}")
 @PortOfExitAndExitBipNotEmpty(
-    groups = {NotificationCvedaEuFieldValidation.class},
+    groups = {
+        NotificationCvedaEuFieldValidation.class,
+        NotificationCvedaEuSingleJourneyValidation.class
+    },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexit"
         + ".exitbip.eucveda.not.null}")
 public class PartOne {
