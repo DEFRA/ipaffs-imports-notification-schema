@@ -140,7 +140,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
         + ".exitbip.eucveda.not.null}")
 @NotNullPurposeExitDate(
     groups = {
-        NotificationCvedaFieldValidation.class,
         NotificationCvedaEuSingleJourneyValidation.class,
         NotificationCvedaRowSingleJourneyValidation.class
     },
