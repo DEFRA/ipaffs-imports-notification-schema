@@ -67,4 +67,15 @@ class NotNullPurposeExitDateValidatorTest {
         .build();
     assertTrue(validator.isValid(partOne, null));
   }
+
+  @Test
+  void shouldReturnFalseIfTemporaryAdmissionHorsesAndExitDateIsBlank() {
+    PartOne partOne = PartOne.builder()
+        .purpose(Purpose.builder()
+            .forImportOrAdmission(ForImportOrAdmissionEnum.TEMPORARY_ADMISSION_HORSES)
+            .exitDate("")
+            .build())
+        .build();
+    assertFalse(validator.isValid(partOne, null));
+  }
 }

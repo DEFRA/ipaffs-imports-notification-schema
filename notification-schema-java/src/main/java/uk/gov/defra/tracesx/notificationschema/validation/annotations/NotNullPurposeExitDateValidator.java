@@ -20,7 +20,7 @@ public class NotNullPurposeExitDateValidator implements
     Purpose purpose = partOne.getPurpose();
 
     if (TEMPORARY_ADMISSION_HORSES.equals(purpose.getForImportOrAdmission())) {
-      return purpose.getExitDate() != null;
+      return purpose.getExitDate() != null && !purpose.getExitDate().trim().isEmpty();
     }
 
     return true;
