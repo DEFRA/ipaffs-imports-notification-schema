@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum IdentityCheckNotDoneReason {
   REDUCED_CHECKS_REGIME("Reduced checks regime"),
-  NOT_REQUIRED("Not required");
+  NOT_REQUIRED("Not required"),
+  CHILLED_EQUINE_SEMEN_FACILITATION_SCHEME("Chilled equine semen facilitation scheme");
 
   private String value;
 

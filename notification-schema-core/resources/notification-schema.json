@@ -1250,7 +1250,8 @@
           "description": "What was the reason for skipping identity check",
           "enum": [
             "Reduced checks regime",
-            "Not required"
+            "Not required",
+            "Chilled equine semen facilitation scheme"
           ]
         },
         "physicalCheckDone": {
