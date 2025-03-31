@@ -2,6 +2,7 @@ package uk.gov.defra.tracesx.notificationschema.validation.annotations;
 
 import static java.lang.Boolean.FALSE;
 import static org.assertj.core.api.Assertions.assertThat;
+import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason.CHILLED_EQUINE_SEMEN_FACILITATION_SCHEME;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason.NOT_REQUIRED;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.IdentityCheckNotDoneReason.REDUCED_CHECKS_REGIME;
 import static uk.gov.defra.tracesx.notificationschema.representation.enumeration.Result.NOT_DONE;
@@ -55,6 +56,16 @@ class IdentityCheckReasonNotDoneValidatorTest {
     check.setIdentityCheckDone(FALSE);
     check.setIdentityCheckResult(NOT_DONE);
     check.setIdentityCheckNotDoneReason(NOT_REQUIRED);
+
+    assertThat(validator.isValid(check, null)).isTrue();
+  }
+
+  @Test
+  void testThatValidatorReturnsTrueIfIdentityCheckIsNotDoneAndIdentityCheckNotDoneReasonIsCESFS() {
+    ConsignmentCheck check = new ConsignmentCheck();
+    check.setIdentityCheckDone(FALSE);
+    check.setIdentityCheckResult(NOT_DONE);
+    check.setIdentityCheckNotDoneReason(CHILLED_EQUINE_SEMEN_FACILITATION_SCHEME);
 
     assertThat(validator.isValid(check, null)).isTrue();
   }
