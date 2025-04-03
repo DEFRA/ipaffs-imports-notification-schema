@@ -47,6 +47,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.PermanentAddress;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfEntryAndPointOfEntryNotEmpty;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PortOfExitAndExitBipNotEmpty;
@@ -145,6 +146,11 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
     + ".exitdate.not.null}")
+@PermanentAddress(
+    groups = NotificationCvedaEuSingleJourneyValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+        + ".commodities.complementParameterSet.identifiers.permanentAddress.not.null}"
+)
 
 public class PartOne {
 
