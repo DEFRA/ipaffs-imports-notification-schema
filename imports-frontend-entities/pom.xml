@@ -5,7 +5,7 @@
   <parent>
     <groupId>uk.gov.defra.tracesx</groupId>
     <artifactId>IPAFFS-Common-Schema</artifactId>
-    <version>4.0.52</version>
+    <version>4.0.53-SNAPSHOT</version>
   </parent>
 
   <properties>
@@ -14,7 +14,7 @@
   </properties>
 
   <artifactId>node-common-notification-schema</artifactId>
-  <version>4.0.52</version>
+  <version>4.0.53-SNAPSHOT</version>
   <name>notification-frontend-entities</name>
   <url>https://maven.apache.org</url>
 </project>
