@@ -104,7 +104,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationNot
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".transitexitbip.not.null}")
 @NotNullTransitThirdCountry(
-    groups = NotificationCvedaOrCvedpFieldValidation.class,
+    groups = NotificationCvedpFieldValidation.class,
     message =
         "{uk.gov.defra.tracesx.notificationschema.representation.parttwo.decision"
             + ".transitthirdcountry.not.null}")
