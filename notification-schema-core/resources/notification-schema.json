@@ -2916,6 +2916,12 @@
             "INCONCLUSIVE"
           ]
         },
+        "requiredInspectionRate": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "The required inspection rate as a percentage designated by the Risk Engine for this Commodity"
+        },
         "hmiDecision": {
           "type": "string",
           "description": "HMI decision required",

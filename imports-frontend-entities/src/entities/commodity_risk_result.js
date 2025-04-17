@@ -5,6 +5,7 @@ module.exports = class CommodityRiskResult {
 
     this.riskDecision = obj.riskDecision
     this.exitRiskDecision = obj.exitRiskDecision
+    this.requiredInspectionRate = obj.requiredInspectionRate
     this.hmiDecision = obj.hmiDecision
     this.phsiDecision = obj.phsiDecision
     this.phsiClassification = obj.phsiClassification

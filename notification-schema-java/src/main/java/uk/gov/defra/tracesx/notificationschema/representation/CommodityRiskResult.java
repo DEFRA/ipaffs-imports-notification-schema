@@ -20,13 +20,15 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RiskDe
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class CommodityRiskResult {
 
+  private UUID uniqueId;
   private RiskDecision riskDecision;
   private RiskDecision exitRiskDecision;
+  private Integer requiredInspectionRate;
+
   private HmiDecision hmiDecision;
   private PhsiDecision phsiDecision;
   private PhsiClassification phsiClassification;
   private Phsi phsi;
-  private UUID uniqueId;
   private String eppoCode;
   private String variety;
   private Boolean isWoody;
