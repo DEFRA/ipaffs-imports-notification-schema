@@ -337,7 +337,9 @@ public class PartOne {
           NotificationChedppFieldValidation.class,
           NotificationCvedaEuFieldValidation.class,
           NotificationHighRiskEuCedFieldValidation.class,
-          NotificationCvedpEuFieldValidation.class
+          NotificationCvedpEuFieldValidation.class,
+          NotificationCvedaEuSingleJourneyValidation.class,
+          NotificationCvedaRowSingleJourneyValidation.class
       },
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose.not.null}")
   @NotNull(
