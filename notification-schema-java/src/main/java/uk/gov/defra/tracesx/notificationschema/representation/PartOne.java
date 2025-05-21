@@ -34,6 +34,7 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoO
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedaPartOneDestinationCountryProvided;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedaPurposeExitDateNotNull;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppInvalidPodCheck;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedppIsPositiveDoubleKeyDataPair;
@@ -94,6 +95,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     groups = {
         NotificationCvedaFieldValidation.class,
         NotificationHighRiskEuChedValidation.class,
+        NotificationCvedaRowSingleJourneyValidation.class
     },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
         + ".exitbip.not.null}")
@@ -146,6 +148,13 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     },
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
     + ".exitdate.not.null}")
+@ChedaPartOneDestinationCountryProvided(
+    groups = {
+        NotificationCvedaEuSingleJourneyValidation.class,
+        NotificationCvedaRowSingleJourneyValidation.class
+    },
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.purpose"
+    + ".thirdcountry.not.null}")
 @PermanentAddress(
     groups = NotificationCvedaEuSingleJourneyValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
