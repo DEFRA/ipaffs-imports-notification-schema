@@ -6,7 +6,8 @@ import java.util.Arrays;
 public enum PhsiClassification {
   MANDATORY("Mandatory"),
   REDUCED("Reduced"),
-  CONTROLLED("Controlled");
+  CONTROLLED("Controlled"),
+  NOT_NOTIFIABLE("NotNotifiable");
 
   private String value;
 
