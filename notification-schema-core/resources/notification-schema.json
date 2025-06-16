@@ -2944,7 +2944,8 @@
           "enum": [
             "Mandatory",
             "Reduced",
-            "Controlled"
+            "Controlled",
+            "NotNotifiable"
           ]
         },
         "phsi": {
