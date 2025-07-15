@@ -46,6 +46,7 @@ import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfE
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExit;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateInFuture;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ImpPortOfExitDateNotNull;
+import uk.gov.defra.tracesx.notificationschema.validation.annotations.IsCatchCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitBip;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.NotNullPurposeExitDate;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PermanentAddress;
@@ -115,6 +116,11 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
     groups = NotificationLowRiskFieldValidation.class,
     message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.portofexitdate"
         + ".must.be.in.future}")
+@IsCatchCertificateRequired(
+    groups = NotificationCvedpEuFieldValidation.class,
+    message = "{uk.gov.defra.tracesx.notificationschema.representation.partone"
+        + ".veterinaryInformation.catchCertificateAttachments.numberOfCatchCertificates"
+        + ".must.not.be.zero}")
 @PhytosanitaryCertificateRequired(groups = PhytosanitaryCertificateRequiredValidation.class)
 @ChedppInvalidPodCheck(
     groups = NotificationChedppFieldValidation.class,
