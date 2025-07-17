@@ -110,4 +110,12 @@ class IsCatchCertificateRequiredValidatorTest {
 
     assertThat(result).isTrue();
   }
+  @Test
+  void shouldReturnTrueIfCatchCertificateIsNotRequired() {
+    partOne.setIsCatchCertificateRequired(false);
+
+    boolean result = validator.isValid(partOne, null);
+
+    assertThat(result).isTrue();
+  }
 }
