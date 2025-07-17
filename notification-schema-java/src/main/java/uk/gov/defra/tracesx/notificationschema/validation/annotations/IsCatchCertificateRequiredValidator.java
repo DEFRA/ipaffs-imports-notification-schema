@@ -16,6 +16,10 @@ public class IsCatchCertificateRequiredValidator
 
   @Override
   public boolean isValid(PartOne partOne, ConstraintValidatorContext constraintValidatorContext) {
+    if (partOne != null && partOne.getIsCatchCertificateRequired() != null
+        && !partOne.getIsCatchCertificateRequired()) {
+      return true;
+    }
     boolean isNonSpsIuuCommodity = Optional.ofNullable(partOne)
         .map(PartOne::getCommodities)
         .map(Commodities::getCommodityComplement)
