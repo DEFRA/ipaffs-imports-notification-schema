@@ -1,4 +1,4 @@
-@Library('pipeline-library') _
+@Library('pipeline-library@feature/IMTA-20347-switch-between-git-lab-and-git-hub') _
 
 schemaPipeline {
     SERVICE_NAME = "imports-notification-schema"
