@@ -99,6 +99,7 @@ public class PartTwo {
   private ControlAuthority controlAuthority;
 
   private String bipLocalReferenceNumber;
+  private String requestAmendmentAdditionalDetails;
   private String signedOnBehalfOf;
   private String onwardTransportation;
   private Set<ValidationMessageCode> consignmentValidation;

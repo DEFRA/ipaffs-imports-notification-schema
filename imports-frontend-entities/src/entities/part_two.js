@@ -33,6 +33,7 @@ module.exports = class PartTwo {
     this.controlAuthority = _.get(obj, 'controlAuthority')
         ? new ControlAuthority(obj.controlAuthority) : undefined
     this.bipLocalReferenceNumber = obj.bipLocalReferenceNumber
+    this.requestAmendmentAdditionalDetails = obj.requestAmendmentAdditionalDetails
     this.signedOnBehalfOf = obj.signedOnBehalfOf
     this.onwardTransportation = obj.onwardTransportation
     this.consignmentValidation = getConsignmentValidation(
