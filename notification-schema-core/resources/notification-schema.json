@@ -1468,6 +1468,7 @@
         "requestAmendmentAdditionalDetails": {
           "type": "string",
           "minLength": 0,
+          "maxLength": 150,
           "description": "Request Amendment Additional Details"
         },
         "signedOnBehalfOf": {
