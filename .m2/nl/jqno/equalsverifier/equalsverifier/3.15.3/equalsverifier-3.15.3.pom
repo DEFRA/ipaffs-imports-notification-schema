@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>nl.jqno.equalsverifier</groupId>
+  <artifactId>equalsverifier</artifactId>
+  <version>3.15.3</version>
+  <packaging>pom</packaging>
+  <name>EqualsVerifier | release normal jar</name>
+  <description>EqualsVerifier can be used in JUnit unit tests to verify whether the contract for the equals and hashCode methods is met.</description>
+  <url>https://www.jqno.nl/equalsverifier</url>
+  <inceptionYear>2009</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>Jan</id>
+      <name>Jan Ouwens</name>
+      <email>jan.ouwens@gmail.com</email>
+      <url>https://jqno.nl</url>
+      <timezone>Central European Time</timezone>
+    </developer>
+  </developers>
+  <mailingLists>
+    <mailingList>
+      <name>General Discussion</name>
+      <archive>https://groups.google.com/group/equalsverifier</archive>
+    </mailingList>
+  </mailingLists>
+  <scm>
+    <connection>scm:git:https://github.com/jqno/equalsverifier</connection>
+    <developerConnection>scm:git:https://github.com/jqno/equalsverifier</developerConnection>
+    <url>https://github.com/jqno/equalsverifier</url>
+  </scm>
+  <issueManagement>
+    <url>https://github.com/jqno/equalsverifier/issues</url>
+  </issueManagement>
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/jqno/equalsverifier/actions</url>
+  </ciManagement>
+  <dependencies>
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier-core</artifactId>
+      <version>3.15.3</version>
+      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier-16</artifactId>
+      <version>3.15.3</version>
+      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier-17</artifactId>
+      <version>3.15.3</version>
+      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.objenesis</groupId>
+      <artifactId>objenesis</artifactId>
+      <version>3.3</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+      <version>1.14.9</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

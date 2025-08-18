@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>uk.gov.defra.tracesx</groupId>
+  <artifactId>shared-resources</artifactId>
+  <version>1.0.0</version>
+
+  <distributionManagement>
+    <repository>
+      <id>release</id>
+      <name>Releases</name>
+      <url>${repo.releases.url}</url>
+    </repository>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:git:https://giteux.azure.defra.cloud/imports/shared-resources.git</connection>
+    <tag>1.0.0</tag>
+  </scm>
+
+  <properties>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+    <maven-remote-resources-plugin.version>3.0.0</maven-remote-resources-plugin.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <version>${maven-remote-resources-plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>bundle</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <includes>
+            <include>google_checks_ipaffs.xml</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${maven-release-plugin.version}</version>
+        <configuration>
+          <tagNameFormat>@{project.version}</tagNameFormat>
+          <releaseProfiles>release</releaseProfiles>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
