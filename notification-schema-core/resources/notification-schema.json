@@ -1465,6 +1465,12 @@
           "maxLength": 90,
           "description": "Local reference number at BIP"
         },
+        "requestAmendmentAdditionalDetails": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 150,
+          "description": "Request Amendment Additional Details"
+        },
         "signedOnBehalfOf": {
           "type": "string",
           "minLength": 1,
