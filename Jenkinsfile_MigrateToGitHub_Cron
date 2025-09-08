@@ -1,8 +1,0 @@
-@Library('pipeline-library') _
-
-githubMigrationPipeline {
-    GITHUB_REPO = 'DEFRA/ipaffs-imports-notification-schema'
-    GITLAB_PROJECT = 'imports/imports-notification-schema'
-    MIGRATE_PULL_REQUEST = true
-    LOG_LEVEL = 'DEBUG'
-}
