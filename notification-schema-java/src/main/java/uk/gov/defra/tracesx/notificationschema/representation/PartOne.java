@@ -80,7 +80,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 @Builder
 @Data
@@ -485,7 +484,6 @@ public class PartOne {
   @Valid
   @NotNull(
       groups = {TransporterDetailsRequiredEuCvedaValidation.class,
-          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredCEDValidation.class},
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.not"
@@ -531,9 +529,7 @@ public class PartOne {
   private MeansOfTransportBeforeBip meansOfTransportFromEntryPoint;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class
-      },
+      groups = {TransporterDetailsRequiredCEDValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuredate"
           + ".not.null}")
   @NotNull(
@@ -551,8 +547,7 @@ public class PartOne {
   private LocalDate departureDate;
 
   @NotNull(
-      groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class},
+      groups = {TransporterDetailsRequiredCEDValidation.class},
       message = "{uk.gov.defra.tracesx.notificationschema.representation.partone.departuretime"
           + ".not.null}")
   @NotNull(

@@ -13,7 +13,6 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Econom
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 @Builder
 @Data
@@ -28,7 +27,6 @@ public class EconomicOperator {
   @NotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
-          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredEuCvedpValidation.class
       },
       message =
@@ -47,7 +45,6 @@ public class EconomicOperator {
   @NotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
-          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredEuCvedpValidation.class
       },
       message =
@@ -66,7 +63,6 @@ public class EconomicOperator {
   @NotNull(
       groups = {
           NotificationCvedaFieldValidation.class,
-          TransporterDetailsRequiredValidation.class,
           TransporterDetailsRequiredEuCvedpValidation.class
       },
       message =

@@ -15,7 +15,6 @@ import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDeta
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedaValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredEuCvedpValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredSingleChedpValidation;
-import uk.gov.defra.tracesx.notificationschema.validation.groups.TransporterDetailsRequiredValidation;
 
 @Builder
 @Data
@@ -28,8 +27,7 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
               + ".not.empty}",
-      groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class})
+      groups = {TransporterDetailsRequiredCEDValidation.class})
   @NotEmpty(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.id"
@@ -63,17 +61,14 @@ public class MeansOfTransportAfterBip implements MeansOfTransport {
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport.type"
               + ".not.null}",
-      groups = {TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class})
+      groups = {TransporterDetailsRequiredCEDValidation.class})
   private TransportMethod type = null;
 
   @NotEmpty(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
               + ".document.not.empty}",
-      groups = {
-          TransporterDetailsRequiredValidation.class,
-          TransporterDetailsRequiredCEDValidation.class})
+      groups = {TransporterDetailsRequiredCEDValidation.class})
   @NotEmpty(
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.meansoftransport"
