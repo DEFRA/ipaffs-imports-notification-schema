@@ -14,7 +14,7 @@
   </parent>
 
   <properties>
-    <project.scm.id>gitlab</project.scm.id>
+    <project.scm.id>github</project.scm.id>
 
     <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -43,7 +43,7 @@
   </modules>
 
   <scm>
-    <connection>scm:git:https://giteux.azure.defra.cloud/imports/imports-notification-schema.git
+    <connection>scm:git:https://github.com/DEFRA/ipaffs-imports-notification-schema.git
     </connection>
     <tag>HEAD</tag>
   </scm>
