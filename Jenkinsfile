@@ -1,4 +1,4 @@
-@Library('pipeline-library') _
+@Library('pipeline-library@IMTA-20453-upgrading-pipeline-to-handle-JDK21') _
 
 schemaPipeline {
     SERVICE_NAME = "imports-notification-schema"
