@@ -2885,6 +2885,11 @@
       "type": "object",
       "description": "Result of risk assessment by the risk scorer",
       "properties": {
+        "fallback": {
+          "type": "boolean",
+          "description": "Indicates the risk assessment is from the fallback logic rather than risk engine decision",
+          "default": false
+        },
         "commodityResults": {
           "type": "array",
           "description": "List of risk assessed commodities",
