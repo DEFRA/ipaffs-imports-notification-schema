@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NO_COLOUR='\033[0m'
 LOG_PREFIX="Pre-push hook:"
 FAILED_MESSAGE="${LOG_PREFIX} ${RED}[FAILED]${NO_COLOUR}"
-REPO_NAME="imports-notification-schema"
+REPO_NAME="ipaffs-imports-notification-schema"
 
 trufflehog --help > /dev/null 2>&1 || { echo -e "${FAILED_MESSAGE} truffleHog is not installed. Please install via https://github.com/trufflesecurity/truffleHog" ; exit 1; }
 [ -z "$DEFRA_WORKSPACE" ] && echo -e "${FAILED_MESSAGE} Please set DEFRA_WORKSPACE env var to your Defra workspace" && exit 1;
