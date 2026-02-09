@@ -9,6 +9,7 @@ import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeDeserializer;
@@ -26,4 +27,7 @@ public class RiskAssessment {
   @JsonSerialize(using = IsoDateTimeSerializer.class)
   @JsonDeserialize(using = IsoDateTimeDeserializer.class)
   private LocalDateTime assessmentDateTime;
+
+  @Default
+  private Boolean fallback = false;
 }

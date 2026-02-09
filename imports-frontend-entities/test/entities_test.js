@@ -190,4 +190,14 @@ describe('Entities: ', () => {
     })
     chai.assert.deepEqual(destinationTypes, expected)
   })
+
+  it('sets default fallback on RiskAssessment', () => {
+    const riskAssessment = new RiskAssessment()
+    chai.expect(riskAssessment.fallback).to.equal(false)
+  })
+
+  it('preserves fallback from input on RiskAssessment', () => {
+    const riskAssessment = new RiskAssessment({ fallback: true })
+    chai.expect(riskAssessment.fallback).to.equal(true)
+  })
 })

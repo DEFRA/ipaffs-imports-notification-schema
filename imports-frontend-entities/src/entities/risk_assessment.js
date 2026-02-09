@@ -10,6 +10,7 @@ module.exports = class RiskAssessment {
 
     this.commodityResults = getList(_.get(obj, 'commodityResults', []), CommodityRiskResult)
     this.assessmentDateTime = obj.assessmentDateTime
+    this.fallback = _.get(obj, 'fallback', false)
 
     return Object.seal(new Proxy(this, handler))
   }
