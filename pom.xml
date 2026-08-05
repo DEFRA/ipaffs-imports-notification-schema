@@ -28,7 +28,7 @@
     <maven.deploy.plugin.version>3.1.1</maven.deploy.plugin.version>
     <maven.help.plugin.version>3.4.0</maven.help.plugin.version>
     <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
-    <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+    <maven.release.plugin.version>3.3.1</maven.release.plugin.version>
     <maven-remote-resources-plugin.version>3.0.0</maven-remote-resources-plugin.version>
     <maven.versions.plugin.version>2.16.0</maven.versions.plugin.version>
     <shared-resources.version>1.0.0</shared-resources.version>
@@ -49,15 +49,10 @@
   </scm>
 
   <distributionManagement>
-    <snapshotRepository>
-      <id>release</id>
-      <name>Snapshots</name>
-      <url>https://artifactoryv2.azure.defra.cloud/artifactory/maven-snapshots-local</url>
-    </snapshotRepository>
     <repository>
-      <id>release</id>
-      <name>Releases</name>
-      <url>${repo.releases.url}</url>
+        <id>github</id>
+        <name>GitHub Packages</name>
+        <url>https://maven.pkg.github.com/DEFRA/ipaffs-imports-notification-schema</url>
     </repository>
   </distributionManagement>
 
