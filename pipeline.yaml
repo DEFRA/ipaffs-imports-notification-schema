@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pr:
+  branches:
+    exclude:
+      - '*'
+
+pool:
+  name: 'DEFRA-COMMON-UBUNTU-SSV5'
+
+resources:
+  repositories:
+    - repository: ipaffs-infra
+      type: github
+      endpoint: DEFRA
+      name: DEFRA/ipaffs-infra
+      ref: refs/heads/main
+
+stages:
+  - template: /pipelines/templates/java-library-template.yaml@ipaffs-infra
