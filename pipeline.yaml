@@ -23,4 +23,6 @@ stages:
   - template: /pipelines/templates/java-library-template.yaml@ipaffs-infra
     parameters:
       mvnGoals: resources:resources package
+      sonarAnalysis: true
+      sonarReferenceBranch: master
 
