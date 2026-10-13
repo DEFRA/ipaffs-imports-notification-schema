@@ -14,7 +14,6 @@
   </parent>
 
   <properties>
-    <project.scm.id>github</project.scm.id>
 
     <java.version>21</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -43,8 +42,7 @@
   </modules>
 
   <scm>
-    <connection>scm:git:https://github.com/DEFRA/ipaffs-imports-notification-schema.git
-    </connection>
+    <connection>scm:git:https://github.com/DEFRA/ipaffs-imports-notification-schema</connection>
     <tag>HEAD</tag>
   </scm>
 
@@ -95,6 +93,7 @@
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <tagNameFormat>@{project.version}</tagNameFormat>
+            <localCheckout>true</localCheckout>
             <releaseProfiles>release</releaseProfiles>
           </configuration>
         </plugin>
