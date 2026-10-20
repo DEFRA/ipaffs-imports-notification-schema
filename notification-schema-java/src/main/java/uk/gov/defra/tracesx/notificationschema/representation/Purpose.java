@@ -20,8 +20,12 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Purpos
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.RetrospectiveCloningMergeMethod;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
@@ -83,6 +87,8 @@ public class Purpose {
           + ".estimatedArrivalDateAtPortOfExit.not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate estimatedArrivalDateAtPortOfExit;
 
   @NotNull(
@@ -91,6 +97,8 @@ public class Purpose {
           + ".estimatedArrivalTimeAtPortOfExit.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoTimeValueDeserializer.class)
   private LocalTime estimatedArrivalTimeAtPortOfExit;
 
   @NotNull(

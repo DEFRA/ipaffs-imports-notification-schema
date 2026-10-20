@@ -5,11 +5,11 @@
   <parent>
     <groupId>uk.gov.defra.tracesx</groupId>
     <artifactId>ipaffs-common-schema</artifactId>
-    <version>4.0.72-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>notification-schema-java</artifactId>
-  <version>4.0.72-SNAPSHOT</version>
+  <version>5.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -17,7 +17,12 @@
     <equalsverifier.version>3.15.3</equalsverifier.version>
     <mockito.version>5.20.0</mockito.version>
     <byte-buddy.version>1.17.7</byte-buddy.version>
-    <lombok.version>1.18.42</lombok.version>
+    <!-- 1.18.46 or later, for lombok.jacksonized.jacksonVersion -->
+    <lombok.version>1.18.46</lombok.version>
+    <!-- Jackson 3 as Spring Boot 4.1 manages it -->
+    <jackson3.version>3.1.5</jackson3.version>
+    <!-- Jackson 3 needs jackson-annotations 2.21; applications use their own Jackson versions -->
+    <jackson-bom.version>2.21.7</jackson-bom.version>
     <maven.surefire.plugin.version>3.2.2</maven.surefire.plugin.version>
   </properties>
 
@@ -42,6 +47,15 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <!-- For the Jackson 3 annotations next to the Jackson 2 ones, so Spring Boot 4 applications
+      write the same JSON. Optional: applications on Jackson 2 don't need it, and ignore the
+      annotations. -->
+    <dependency>
+      <groupId>tools.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson3.version}</version>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>jakarta.validation</groupId>

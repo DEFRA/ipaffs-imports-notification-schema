@@ -23,6 +23,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.NotAcc
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.SpecificWarehouseNonConformingConsignmentEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.FreeCirculationPurpose;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.IfChanneledOption;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.InternalMarket;
@@ -152,6 +154,8 @@ public class Decision {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate notAcceptableActionByDate;
 
   private List<NotAcceptableReasonsEnum> notAcceptableReasons;
@@ -178,6 +182,8 @@ public class Decision {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate temporaryDeadline;
 
   // SuppressWarning java:S1700 as Sonarqube state that its confusing that the enum has the same

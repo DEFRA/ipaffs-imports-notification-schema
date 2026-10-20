@@ -29,10 +29,16 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StoreT
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TypeOfImp;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedaPartOneDestinationCountryProvided;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.ChedaPurposeExitDateNotNull;
@@ -431,6 +437,8 @@ public class PartOne {
           + ".not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   @RetrospectiveCloningProperty()
   private LocalDate arrivalDate;
 
@@ -463,6 +471,8 @@ public class PartOne {
           + ".euced.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoTimeValueDeserializer.class)
   @RetrospectiveCloningProperty()
   private LocalTime arrivalTime;
 
@@ -544,6 +554,8 @@ public class PartOne {
           + ".eucvedp.not.null}")
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate departureDate;
 
   @NotNull(
@@ -560,6 +572,8 @@ public class PartOne {
           + ".eucvedp.not.null}")
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoTimeValueDeserializer.class)
   private LocalTime departureTime;
 
   @NotNull(
@@ -609,6 +623,9 @@ public class PartOne {
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoOffsetDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(
+      using = IsoOffsetDateTimeValueDeserializer.class)
   private LocalDateTime submissionDate;
 
   private Set<ValidationMessageCode> consignmentValidation;
@@ -620,6 +637,8 @@ public class PartOne {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate portOfExitDate;
 
   @Valid
@@ -645,6 +664,9 @@ public class PartOne {
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoOffsetDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(
+      using = IsoOffsetDateTimeValueDeserializer.class)
   private LocalDateTime originalEstimatedDateTime;
   private Boolean isCatchCertificateRequired;
   @NotNull(

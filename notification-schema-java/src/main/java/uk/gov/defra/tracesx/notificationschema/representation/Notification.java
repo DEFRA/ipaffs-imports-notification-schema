@@ -22,6 +22,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Notifi
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.StatusEnum;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.ValidationMessageCode;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.AccompanyingDocuments;
@@ -80,6 +82,9 @@ public class Notification {
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoOffsetDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(
+      using = IsoOffsetDateTimeValueDeserializer.class)
   @ApiModelProperty(value = "Date when the notification was last updated.")
   private LocalDateTime lastUpdated;
 
@@ -127,6 +132,9 @@ public class Notification {
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoOffsetDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(
+      using = IsoOffsetDateTimeValueDeserializer.class)
   @ApiModelProperty(value = "Date when the notification was validated or rejected")
   private LocalDateTime decisionDate;
 
@@ -179,6 +187,9 @@ public class Notification {
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoOffsetDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(
+      using = IsoOffsetDateTimeValueDeserializer.class)
   private LocalDateTime riskDecisionLockingTime;
 
   private Boolean isRiskDecisionLocked;

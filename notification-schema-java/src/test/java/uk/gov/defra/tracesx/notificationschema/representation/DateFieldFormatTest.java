@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -21,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import tools.jackson.databind.json.JsonMapper;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
@@ -28,8 +30,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoT
 
 /**
  * Pins the JSON format of every date and time field that has a custom serializer, and that the
- * same JSON reads back to the same value. Fields are found by scanning this package, so a new
- * annotated field is covered automatically.
+ * same JSON reads back to the same value, with both Jackson 2 and Jackson 3. Fields are found by
+ * scanning this package, so a new annotated field is covered automatically.
  */
 class DateFieldFormatTest {
 
@@ -52,6 +54,7 @@ class DateFieldFormatTest {
               "2020-08-04T15:45:37.029947Z")));
 
   private final ObjectMapper objectMapper = new ObjectMapper();
+  private final JsonMapper jsonMapper = JsonMapper.builder().build();
 
   @Test
   void findsTheAnnotatedDateFields() {
@@ -74,6 +77,54 @@ class DateFieldFormatTest {
     Object read = objectMapper.readValue(
         objectMapper.writeValueAsString(Map.of(fieldName, json)), field.getDeclaringClass());
     assertThat(field.get(read)).isEqualTo(value);
+  }
+
+  @ParameterizedTest(name = "{0}.{1} = {3}")
+  @MethodSource("dateFieldSamples")
+  void jackson3WritesAndReadsTheSameDateFormat(
+      String className, String fieldName, Object value, String json) throws Exception {
+    Field field = Class.forName(PACKAGE + "." + className).getDeclaredField(fieldName);
+    field.setAccessible(true);
+    Object instance = newInstance(field.getDeclaringClass());
+    field.set(instance, value);
+
+    JsonNode written = objectMapper.readTree(jsonMapper.writeValueAsString(instance));
+    assertThat(written.get(fieldName).isTextual()).isTrue();
+    assertThat(written.get(fieldName).textValue()).isEqualTo(json);
+
+    Object read = jsonMapper.readValue(
+        jsonMapper.writeValueAsString(Map.of(fieldName, json)), field.getDeclaringClass());
+    assertThat(field.get(read)).isEqualTo(value);
+  }
+
+  @Test
+  void everyDateFieldHasTheJackson3Annotations() {
+    assertThat(annotatedFields()).allSatisfy(field -> {
+      var serialize = field.getAnnotation(tools.jackson.databind.annotation.JsonSerialize.class);
+      var deserialize =
+          field.getAnnotation(tools.jackson.databind.annotation.JsonDeserialize.class);
+
+      assertThat(serialize).as(field.toString()).isNotNull();
+      assertThat(deserialize).as(field.toString()).isNotNull();
+      assertThat(serialize.using().getSimpleName()).as(field.toString()).isEqualTo(
+          field.getAnnotation(JsonSerialize.class).using().getSimpleName()
+              .replace("Serializer", "ValueSerializer"));
+      assertThat(deserialize.using().getSimpleName()).as(field.toString()).isEqualTo(
+          field.getAnnotation(JsonDeserialize.class).using().getSimpleName()
+              .replace("Deserializer", "ValueDeserializer"));
+    });
+  }
+
+  // Lombok's @Jacksonized builders, which lombok.config generates for Jackson 2 and 3
+  @Test
+  void jackson3ReadsTheBuilderClasses() {
+    List<Class<?>> builderClasses = representationClasses().stream()
+        .filter(type -> type.isAnnotationPresent(JsonDeserialize.class)
+            && type.getAnnotation(JsonDeserialize.class).builder() != Void.class)
+        .toList();
+
+    assertThat(builderClasses).isNotEmpty().allSatisfy(type ->
+        assertThat(jsonMapper.readValue("{}", type)).isEqualTo(newInstance(type)));
   }
 
   static Stream<Arguments> dateFieldSamples() {
