@@ -14,6 +14,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateTimeValueSerializer;
 
 @Builder
 @Data
@@ -26,6 +28,8 @@ public class RiskAssessment {
 
   @JsonSerialize(using = IsoDateTimeSerializer.class)
   @JsonDeserialize(using = IsoDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateTimeValueDeserializer.class)
   private LocalDateTime assessmentDateTime;
 
   @Default

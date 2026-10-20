@@ -15,6 +15,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.LatestHealthCertificateRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationSingleCvedpFieldValidationHighRiskJourney;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationVeterinaryApprovedEstablishmentValidation;
@@ -49,5 +51,7 @@ public class VeterinaryInformation {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate dateOfIssue;
 }

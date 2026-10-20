@@ -17,6 +17,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Docume
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ExternalSystem;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.PhytosanitaryCertificateAttachmentRequired;
 import uk.gov.defra.tracesx.notificationschema.validation.annotations.RetrospectiveCloningProperty;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
@@ -36,6 +38,8 @@ public class AccompanyingDocument {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   @RetrospectiveCloningProperty()
   private LocalDate documentIssueDate = null;
 

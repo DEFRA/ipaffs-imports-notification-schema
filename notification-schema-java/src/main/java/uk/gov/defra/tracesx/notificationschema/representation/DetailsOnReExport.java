@@ -17,6 +17,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.TransportType;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 
 @Builder
 @Data
@@ -27,6 +29,8 @@ public final class DetailsOnReExport {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate date;
 
   @Size(min = 1, max = 50)

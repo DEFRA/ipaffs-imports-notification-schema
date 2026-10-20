@@ -14,6 +14,8 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Inspec
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.OverrideReason;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoOffsetDateTimeValueSerializer;
 
 @Builder
 @Data
@@ -26,6 +28,9 @@ public class InspectionOverride {
 
   @JsonSerialize(using = IsoOffsetDateTimeSerializer.class)
   @JsonDeserialize(using = IsoOffsetDateTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoOffsetDateTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(
+      using = IsoOffsetDateTimeValueDeserializer.class)
   private LocalDateTime overriddenOn;
 
   private UserInformation overriddenBy;

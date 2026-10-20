@@ -16,8 +16,12 @@ import uk.gov.defra.tracesx.notificationschema.representation.enumeration.Analys
 import uk.gov.defra.tracesx.notificationschema.representation.enumeration.ConservationOfSample;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoDateValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeDeserializer;
 import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeSerializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeValueDeserializer;
+import uk.gov.defra.tracesx.notificationschema.representation.serialisation.IsoTimeValueSerializer;
 import uk.gov.defra.tracesx.notificationschema.validation.ErrorCodes;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationChedppFieldValidation;
 import uk.gov.defra.tracesx.notificationschema.validation.groups.NotificationCvedaEuFieldValidation;
@@ -92,9 +96,13 @@ public class Applicant {
 
   @JsonSerialize(using = IsoDateSerializer.class)
   @JsonDeserialize(using = IsoDateDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoDateValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoDateValueDeserializer.class)
   private LocalDate sampleDate;
 
   @JsonSerialize(using = IsoTimeSerializer.class)
   @JsonDeserialize(using = IsoTimeDeserializer.class)
+  @tools.jackson.databind.annotation.JsonSerialize(using = IsoTimeValueSerializer.class)
+  @tools.jackson.databind.annotation.JsonDeserialize(using = IsoTimeValueDeserializer.class)
   private LocalTime sampleTime;
 }
