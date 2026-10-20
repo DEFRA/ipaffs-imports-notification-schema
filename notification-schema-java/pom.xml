@@ -44,13 +44,14 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
     </dependency>
+    <!-- The Jackson 2 and Jackson 3 annotations are both here, so each application brings the
+      Jackson it uses: Spring Boot 3 applications Jackson 2, Spring Boot 4 applications Jackson 3.
+      The JVM ignores annotations whose classes aren't on the classpath. -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+      <optional>true</optional>
     </dependency>
-    <!-- For the Jackson 3 annotations next to the Jackson 2 ones, so Spring Boot 4 applications
-      write the same JSON. Optional: applications on Jackson 2 don't need it, and ignore the
-      annotations. -->
     <dependency>
       <groupId>tools.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
