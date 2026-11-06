@@ -4,13 +4,12 @@ RED='\033[0;31m'
 NO_COLOUR='\033[0m'
 LOG_PREFIX="Pre-push hook:"
 FAILED_MESSAGE="${LOG_PREFIX} ${RED}[FAILED]${NO_COLOUR}"
-REPO_NAME="ipaffs-imports-notification-schema"
+REPO_DIR="$(git rev-parse --show-toplevel)"
 
 trufflehog --help > /dev/null 2>&1 || { echo -e "${FAILED_MESSAGE} truffleHog is not installed. Please install via https://github.com/trufflesecurity/truffleHog" ; exit 1; }
-[ -z "$DEFRA_WORKSPACE" ] && echo -e "${FAILED_MESSAGE} Please set DEFRA_WORKSPACE env var to your Defra workspace" && exit 1;
 
 echo "${LOG_PREFIX} RUNNING truffleHog to test for leaked secrets."
-trufflehog git --fail --regex --since_commit "$(git rev-parse origin/HEAD)" --branch "$(git rev-parse --abbrev-ref HEAD)" file://"${DEFRA_WORKSPACE}"/${REPO_NAME}
+trufflehog --no-update git --fail --regex --since_commit "$(git rev-parse origin/HEAD)" --branch "$(git rev-parse --abbrev-ref HEAD)" file://"${REPO_DIR}"
 exit_code=$?
 
 if [[ $exit_code -ne 0 ]]; then

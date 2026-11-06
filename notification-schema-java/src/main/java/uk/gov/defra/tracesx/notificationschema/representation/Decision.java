@@ -160,8 +160,7 @@ public class Decision {
 
   private List<NotAcceptableReasonsEnum> notAcceptableReasons;
 
-  @Valid
-  private List<SingleChedppNotAcceptableReason> chedppNotAcceptableReasons;
+  private List<@Valid SingleChedppNotAcceptableReason> chedppNotAcceptableReasons;
 
   private String notAcceptableCountry;
 

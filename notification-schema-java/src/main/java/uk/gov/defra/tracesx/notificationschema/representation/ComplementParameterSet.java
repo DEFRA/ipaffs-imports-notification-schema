@@ -59,7 +59,6 @@ public class ComplementParameterSet {
   @RetrospectiveCloningProperty()
   private String speciesID;
 
-  @Valid
   @MinValueKeyDataPair(
       groups = {
           NotificationCedOrCvedpFieldValidation.class,
@@ -130,7 +129,7 @@ public class ComplementParameterSet {
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.commodities"
               + ".complementparameterset.keydatapair.singleced.type_package.message}")
   @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
-  private List<ComplementParameterSetKeyDataPair> keyDataPair;
+  private List<@Valid ComplementParameterSetKeyDataPair> keyDataPair;
 
   @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<Identifier> identifiers;

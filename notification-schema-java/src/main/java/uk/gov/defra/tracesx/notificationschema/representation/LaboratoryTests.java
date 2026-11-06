@@ -32,6 +32,5 @@ public class LaboratoryTests {
   private LocalDateTime testDate;
 
   private TestReason testReason;
-  @Valid
-  private List<SingleLaboratoryTest> singleLaboratoryTests;
+  private List<@Valid SingleLaboratoryTest> singleLaboratoryTests;
 }
