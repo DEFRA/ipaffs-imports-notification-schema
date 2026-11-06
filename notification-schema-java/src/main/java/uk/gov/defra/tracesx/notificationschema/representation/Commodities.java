@@ -154,14 +154,13 @@ public class Commodities {
   @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
   private List<CommodityComplement> commodityComplement = null;
 
-  @Valid
   @QuantityImp(
       groups = NotificationLowRiskFieldValidation.class,
       message =
           "{uk.gov.defra.tracesx.notificationschema.representation.partone.euimp"
               + ".commodities.complementParameterSet.quantity.not.null}")
   @RetrospectiveCloningProperty(mergeMethod = RetrospectiveCloningMergeMethod.REPLACE)
-  private List<ComplementParameterSet> complementParameterSet = null;
+  private List<@Valid ComplementParameterSet> complementParameterSet = null;
 
   private Boolean includeNonAblactedAnimals = null;
 

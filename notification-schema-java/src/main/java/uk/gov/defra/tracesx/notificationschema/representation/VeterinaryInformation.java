@@ -42,8 +42,7 @@ public class VeterinaryInformation {
   private List<String> accompanyingDocumentNumbers;
   private ExternalReference establishmentsOfOriginExternalReference;
 
-  @Valid
-  private List<AccompanyingDocument> accompanyingDocuments;
+  private List<@Valid AccompanyingDocument> accompanyingDocuments;
 
   private List<CatchCertificateAttachment> catchCertificateAttachments;
 
