@@ -1,0 +1,40 @@
+trigger:
+  branches:
+    include:
+      - '*'
+  # the package copies its schema files from notification-schema-core when it is packed
+  paths:
+    include:
+      - imports-frontend-entities
+      - notification-schema-core/resources
+      - frontend-entities-pipeline.yaml
+
+pr:
+  branches:
+    exclude:
+      - '*'
+
+pool:
+  name: 'DEFRA-COMMON-UBUNTU-SSV5'
+
+resources:
+  repositories:
+    - repository: ipaffs-infra
+      type: github
+      endpoint: DEFRA
+      name: DEFRA/ipaffs-infra
+      ref: refs/heads/main
+
+variables:
+  - name: nodeVersion
+    value: 26.13.0
+
+stages:
+  - template: /pipelines/templates/node-library-template.yaml@ipaffs-infra
+    parameters:
+      nodeVersion: "${{ variables.nodeVersion }}"
+      packagePath: imports-frontend-entities
+      # the package has no lint script
+      runLint: false
+
+# vim: set ts=2 sts=2 sw=2 et:
