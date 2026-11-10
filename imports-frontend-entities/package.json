@@ -2,7 +2,9 @@
   "name": "@defra/imports-frontend-entities",
   "version": "1.0.353",
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/DEFRA/ipaffs-imports-notification-schema.git",
+    "directory": "imports-frontend-entities"
   },
   "private": false,
   "description": "Baseline schema and entities to use across all frontends",
@@ -18,11 +20,10 @@
     "test": "nyc mocha --recursive",
     "test-jenkins": "NODE_ENV=test ENV_DOMAIN=test JUNIT_REPORT_PATH=./report.xml nyc --reporter=cobertura ./node_modules/.bin/mocha --reporter mocha-jenkins-reporter --recursive --colors",
     "posttest-jenkins": "NODE_ENV=test ENV_DOMAIN=test nyc --reporter=lcov ./node_modules/.bin/mocha --reporter mocha-sonarqube-reporter test --reporter-options output=coverage/unit.xml --recursive --colors",
-    "release": "release-it --ci --no-git",
-    "login": "npm-cli-login -u $ARTIFACTORY_USERNAME -p $ARTIFACTORY_PASSWORD -e imports-jenkins@defra.onmicrosoft.com -r https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-releases-local -s @defra"
+    "release": "release-it --ci --no-git"
   },
   "publishConfig": {
-    "registry": "https://artifactoryv2.azure.defra.cloud/artifactory/api/npm/npm-snapshots-local/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": "",
   "license": "ISC",

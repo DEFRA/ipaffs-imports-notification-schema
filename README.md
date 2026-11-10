@@ -44,6 +44,26 @@ For java representation and validation classes:
 1. Make any changes required to the schema in `notification-schema-core/resources/notification-schema.json`
 2. If required, update frontend schema entities in `imports-frontend-entities`
 3. If required, update Java schema entities in `notification-schema-java`
+4. If the schema or `imports-frontend-entities` changed, bump `version` in
+   `imports-frontend-entities/package.json` so the npm package is released too
+
+### Publishing the npm package
+`@defra/imports-frontend-entities` is published to GitHub Packages by
+`frontend-entities-pipeline.yaml`, which uses the `node-library-template` from `ipaffs-infra`. Every
+branch runs its tests and packs it. Master publishes the version in
+`imports-frontend-entities/package.json` when that version is new, so bump it in the pull request. The package copies `notification-schema-core/resources/*.json` into `etc/` when
+it is packed, so a schema change needs a version bump as well.
+
+Frontends read it from GitHub Packages, which needs a token even to install. Their `service/.npmrc`
+has:
+
+```
+@defra:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+```
+
+Locally, set `NPM_TOKEN` to a GitHub personal access token (classic) with the `read:packages` scope,
+authorised for the DEFRA organisation.
 
 ### Using the Java schema entities locally
 1. Run `mvn install` in the project root `imports-notification-schema` directory - using a different directory will not create all the necessary files
