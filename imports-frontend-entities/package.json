@@ -23,7 +23,7 @@
     "release": "release-it --ci --no-git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://pkgs.dev.azure.com/defragovuk/DEFRA-EUTD-IPAFFS/_packaging/DEFRA-EUTD-IPAFFS/npm/registry/"
   },
   "author": "",
   "license": "ISC",
