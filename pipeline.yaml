@@ -25,4 +25,5 @@ stages:
       mvnGoals: resources:resources package
       sonarAnalysis: true
       sonarReferenceBranch: master
+      mavenRegistry: feed
 

@@ -48,9 +48,9 @@
 
   <distributionManagement>
     <repository>
-        <id>github</id>
-        <name>GitHub Packages</name>
-        <url>https://maven.pkg.github.com/DEFRA/ipaffs-imports-notification-schema</url>
+      <id>DEFRA-EUTD-IPAFFS</id>
+      <name>IPAFFS Azure Artifacts feed</name>
+      <url>https://pkgs.dev.azure.com/defragovuk/DEFRA-EUTD-IPAFFS/_packaging/DEFRA-EUTD-IPAFFS/maven/v1</url>
     </repository>
   </distributionManagement>
 

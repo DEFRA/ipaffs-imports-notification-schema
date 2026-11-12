@@ -37,6 +37,8 @@ stages:
     parameters:
       nodeVersion: "${{ variables.nodeVersion }}"
       packagePath: imports-frontend-entities
+      # Azure Artifacts feed; published with System.AccessToken, no PAT
+      registryUrl: https://pkgs.dev.azure.com/defragovuk/DEFRA-EUTD-IPAFFS/_packaging/DEFRA-EUTD-IPAFFS/npm/registry/
       # the package has no lint script
       runLint: false
 
