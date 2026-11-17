@@ -1,6 +1,6 @@
 {
   "name": "@defra/imports-frontend-entities",
-  "version": "1.0.353",
+  "version": "1.0.354",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DEFRA/ipaffs-imports-notification-schema.git",
@@ -38,7 +38,8 @@
     "release-it": "15.8.0"
   },
   "dependencies": {
-    "ajv": "6.12.6",
-    "lodash": "4.17.21"
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "lodash": "^4.18.1"
   }
 }
